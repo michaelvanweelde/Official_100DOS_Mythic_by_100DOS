@@ -23,6 +23,7 @@ input.sheet-background_override_switch_12:checked ~ div.sheet-background { backg
 input.sheet-background_override_switch_13:checked ~ div.sheet-background { background: #ff00ff; 	color: black;}
 input.sheet-background_override_switch_14:checked ~ div.sheet-background { background-image: linear-gradient(#a0e050, #800020); color: white }
 input.sheet-background_override_switch_15:checked ~ div.sheet-background { background-image: linear-gradient(#800020, #3a305b); color: white; }
+input.sheet-background_override_switch_16:checked ~ div.sheet-background { background-image: linear-gradient(#15f4ee, #ff08fc); color: darkgreen; }
 
 
 
@@ -43,7 +44,6 @@ button[type='action'] {
 	font-family: Saira Semi Condensed;
 	text-align: center;
 }
-
 
 /* All horizontal rule elements receive the following CSS property. */
 hr { border-top: 1px dotted black; }
@@ -109,6 +109,7 @@ ______________________________ start of multipurpose or special-use classes such
 .sheet-background_radius {
 	border: 2px solid black;
 	border-radius: 11px;
+
 }
 
 .sheet-full_width_49px { width: calc(100% - 49px); }
@@ -122,10 +123,11 @@ ______________________________ start of multipurpose or special-use classes such
 .sheet-radius_border_right_wep { border-bottom-right-radius: 10px !important; }
 .sheet-radius_border_left { border-bottom-left-radius: 10px !important; }
 
-.sheet-collapsible_entity_toggle { display: block; }
-.sheet-collapsible_entity_block { display: none; }
-.sheet-collapsible_entity_switch:checked ~ .sheet-collapsible_entity_block { display: block; }
-.sheet-collapsible_entity_switch:checked ~ .sheet-collapsible_entity_toggle { display: none; }
+/* These hider checkboxes have names which match the select element on a 1-2-3;
+the appropriate element is displayed on a 4 all elements are hidden */
+.sheet-hider:not(:checked) + :not(span) { display: none }
+.sheet-hidernot:checked + :not(span) { display: none }
+
 
 .sheet-hidden { display: none; }
 
@@ -400,34 +402,14 @@ ______________________________ start of grid structure for initiative and sheet 
 	grid-template-columns: 45px 75px 60px 95px 60px 60px 45px;
 }
 
-
-
-/* ______________________________ end of grid structure for initiative and sheet tabs ______________________________
-______________________________ start of tab buttons toggles ______________________________ */
-
-
-
-.sheet-core,
-.sheet-medical,
-.sheet-equipment,
-.sheet-advancements,
-.sheet-journal,
-.sheet-vehicles,
-.sheet-settings { display: none }
-/* show the selected tab */
-
-.sheet-tabstoggle[value='core'] ~ div.sheet-core,
-.sheet-tabstoggle[value='equipment'] ~ div.sheet-equipment,
-.sheet-tabstoggle[value='medical'] ~ div.sheet-medical,
-.sheet-tabstoggle[value='advancements'] ~ div.sheet-advancements,
-.sheet-tabstoggle[value='journal'] ~ div.sheet-journal,
-.sheet-tabstoggle[value='vehicles'] ~ div.sheet-vehicles,
-.sheet-tabstoggle[value='settings'] ~ div.sheet-settings { display: block }
 .sheet-core_bttn:checked + button {
 	background: rgb(200, 0, 0);
 	color: white;
 	vertical-align: center;
 }
+
+/* ______________________________ end of grid structure for initiative and sheet tabs ______________________________
+______________________________ start of tab buttons toggles ______________________________ */
 
 
 
@@ -1009,12 +991,7 @@ ______________________________ start of vehicles tab ___________________________
 
 .sheet-vehicles_descriptor { border-bottom-left-radius: 8px; }
 
-/* These hider checkboxes have names which match the select element on a 1-2-3;
-the appropriate element is displayed on a 4 all elements are hidden */
-.sheet-hider:not(:checked) + div { display: none }
-.sheet-hider:not(:checked) + input { display: none }
-.sheet-hidernot:checked + div { display: none }
-.sheet-hidernot:checked + input { display: none }
+
 
 
 
@@ -1130,9 +1107,9 @@ ______________________________ start of rolltemplate ___________________________
 	display: inline-block;
 	min-width: 1.5em;
 	text-align: center;
-	border: 1px solid white;
+	border: 1px solid white!important;
 	border-radius: 3px 3px 3px 3px;
-	background: #394C6A;
+	background: #394C6A !important;
 	color: white;
 	line-height: 1.6em;
 	font-size: 1.2em;
@@ -1145,27 +1122,19 @@ ______________________________ start of rolltemplate ___________________________
 	display: inline-block;
 	min-width: 1.5em;
 	text-align: center;
-	border: 1px solid white;
+	border: 1px solid white!important;
 	border-radius: 3px 3px 3px 3px;
-	background: #394C6A
+	background: #394C6A  !important
 }
 
 .sheet-rolltemplate-mythic .inlinerollresult.fullcrit {
-	border: 3px solid #B31515;
+	border: 3px solid #B31515!important;
 }
 
 .sheet-rolltemplate-mythic .inlinerollresult.fullfail {
-	border: 3px solid #3FB315;
+	border: 3px solid #3FB315!important;
 }
 
 .sheet-rolltemplate-mythic .inlinerollresult.importantroll {
-	border: 3px solid #4A57ED;
-}
-
-.sheet-rolltemplate-mythic .sheet-mythic_crit .inlinerollresult.fullcrit {
-	border: 3px solid #3FB315;
-}
-
-.sheet-rolltemplate-mythic .sheet-mythic_crit .inlinerollresult.fullfail {
-	border: 3px solid #B31515;
+	border: 3px solid #4A57ED!important;
 }

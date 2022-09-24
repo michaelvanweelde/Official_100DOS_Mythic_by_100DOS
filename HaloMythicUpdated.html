@@ -1,7 +1,7 @@
 <!-- Every fieldset requires to be of class repeating_[word1word2]. -->
 <!-- Every fieldset requires its named element to be of attr_ prefix. -->
-<input type='checkbox' name='attr_npc_sheet' class='collapsible_entity_switch hidden' />
-<div class='background_radius collapsible_entity_toggle'>
+<input type='checkbox' name='attr_npc_sheet' class='hidernot hidden' />
+<div class='background_radius'>
   <input name='attr_faction' type='radio' value='1' class='background_switch_1' display=none hidden checked />
   <input name='attr_faction' type='radio' value='2' class='background_switch_2' display=none hidden />
   <input name='attr_faction' type='radio' value='6' class='background_switch_6' display=none hidden />
@@ -28,6 +28,7 @@
   <input name='attr_color_override' type='radio' value='13' class='background_override_switch_13' display=none hidden />
   <input name='attr_color_override' type='radio' value='14' class='background_override_switch_14' display=none hidden />
   <input name='attr_color_override' type='radio' value='15' class='background_override_switch_15' display=none hidden />
+  <input name='attr_color_override' type='radio' value='16' class='background_override_switch_16' display=none hidden />
   <div class='background radius_border_heading'>
 
 
@@ -259,6 +260,7 @@
 
     <!-- ______________________________ initiative plus sheet tabs grid ______________________________ -->
 
+
     <div class='tabs_main'>
 
       <div class='initiative_container'>
@@ -281,19 +283,19 @@
       </div>
       <div class='sheet_tabs'>
         <input name='attr_sheetTab' type='checkbox' value='core' class='hidden core_bttn' checked />
-        <button name='act_core' type='action' class='core_bttn bold_text'>Core</button>
+        <button name='act_core' type='action' class='bold_text'>Core</button>
         <input name='attr_sheetTab' type='checkbox' value='equipment' class='hidden core_bttn' />
-        <button name='act_equipment' type='action' class='equipment_bttn bold_text'>Equipment</button>
+        <button name='act_equipment' type='action' class='bold_text'>Equipment</button>
         <input name='attr_sheetTab' type='checkbox' value='medical' class='hidden core_bttn' />
-        <button name='act_medical' type='action' class='medical_bttn bold_text'>Medical</button>
+        <button name='act_medical' type='action' class='bold_text'>Medical</button>
         <input name='attr_sheetTab' type='checkbox' value='advancements' class='hidden core_bttn' />
-        <button name='act_advancements' type='action' class='advancements_bttn bold_text'>Advancements</button>
+        <button name='act_advancements' type='action' class='bold_text'>Advancements</button>
         <input name='attr_sheetTab' type='checkbox' value='journal' class='hidden core_bttn' />
-        <button name='act_journal' type='action' class='journal_bttn bold_text'>Journal</button>
+        <button name='act_journal' type='action' class='bold_text'>Journal</button>
         <input name='attr_sheetTab' type='checkbox' value='vehicles' class='hidden core_bttn' />
-        <button name='act_vehicles' type='action' class='vehicles_bttn bold_text'>Vehicles</button>
+        <button name='act_vehicles' type='action' class='bold_text'>Vehicles</button>
         <input name='attr_sheetTab' type='checkbox' value='settings' class='hidden core_bttn' />
-        <button name='act_settings' type='action' class='settings_bttn huge_text'>⚙</button>
+        <button name='act_settings' type='action' class='huge_text'>⚙</button>
       </div>
 
     </div>
@@ -306,7 +308,7 @@
     <div class='infographic_main'>
 
       <div class='infographic_toggles'>
-        <label><input type='checkbox' name='attr_infographic' class='collapsible_entity_switch select_button hidden' checked/><span class='select_text'>Expanded I</span></label>
+        <label><input type='checkbox' name='attr_infographic' class='hider select_button hidden' checked/><span class='select_text'>Expanded I</span></label>
         <label><input type='checkbox' name='attr_to-gm' value='/w gm' class='select_button hidden' /><span class='select_text'>To GM</span></label>
         <label><input type='checkbox' name='attr_inlinemod-toggle' value='?{Modifier|0}' class='select_button hidden' checked/><span class='select_text'>Inline Mod</span></label>
         <p>   </p>
@@ -380,8 +382,8 @@
         </div>
 
       </div>
-      <input type='checkbox' name='attr_infographic' class='collapsible_entity_switch hidden' checked/>
-      <div class='collapsible_entity_block'>
+      <input type='checkbox' name='attr_infographic' class='hider hidden' checked/>
+      <div class=''>
         <fieldset name='info' class='repeating_info'>
           <div class='infographic_gridR'>
 
@@ -448,16 +450,9 @@
 
 
   <!-- ______________________________ sheet tabs _________________________________ -->
-  <!-- ______________________________ SHEET TABS LOGIC ______________________________ -->
-
-  <input name='attr_sheetTab' type='hidden' value='core' class='tabstoggle' />
-
-
-
   <!-- ______________________________ start of tab Core ______________________________ -->
-
-  <div class='core box radius_border_box'>
-
+<input name='attr_sheetTab' type='checkbox'  value='core' class='hider hidden' />
+  <div class='box radius_border_box'>
     <!-- Core Data Standard -->
     <div class='core_lists '>
 
@@ -1098,17 +1093,17 @@
     </div>
     <div class='edge_padding ssc'>
       <input name='attr_ability' type='text' placeholder='SQUAD UP' class='full_width_49px' />
-      <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='collapsible_entity_switch select_button hidden' /><span class='select_text'>▼</span></label>
+      <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
       <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{ability} }} {{description=@{ability_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-      <input name='attr_collapse' type='checkbox'  value='2' class='collapsible_entity_switch hidden' />
-      <textarea name='attr_ability_desc' class='collapsible_entity_block'
+      <input name='attr_collapse' type='checkbox'  value='2' class='hider hidden' />
+      <textarea name='attr_ability_desc' class=''
       placeholder='Prerequisites: Race Human, Faction Type U.N.S.C. Military Branch&#10;&#10;Benefit: When with others from the Army, Marine, Air Force, Navy, ORION, ODST, Militiaman, and Spartan IV Soldier Types: these characters gain a +5 Bonus to Courage. The Characters also gain a +10 Bonus to Warfare Melee and Warfare Range Tests when taking Combined Actions.'></textarea>
       <fieldset name='abilities' class='repeating_abilities'>
         <input name='attr_ability_r' type='text' placeholder='Name' class='full_width_49px' />
-        <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='3' class='collapsible_entity_switch select_button hidden' /><span class='select_text '>▼</span></label>
+        <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text '>▼</span></label>
         <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{ability_r} }} {{description=@{ability_desc_r} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-        <input name='attr_collapse' type='checkbox'  value='3' class='collapsible_entity_switch hidden' />
-        <textarea name='attr_ability_desc_r' class='collapsible_entity_block'></textarea>
+        <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
+        <textarea name='attr_ability_desc_r' class=''></textarea>
       </fieldset>
     </div>
 
@@ -1120,8 +1115,8 @@
   </div>
 
   <!-- ______________________________ start of tab Equipment ______________________________ -->
-
-  <div class='equipment box radius_border_box ssc'>
+  <input name='attr_sheetTab' type='checkbox'  value='equipment' class='hider hidden' />
+  <div class='box radius_border_box ssc'>
     <div class='equipment_divider'>
 
       <div class='equipment_ranged_weapons ssc'>
@@ -1174,10 +1169,10 @@
             </div>
             <div>
               <input name='attr_R_weapon_special_rules' type='text' placeholder='Description' class='full_width_49px border_none radius_border_left' />
-              <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='collapsible_entity_switch select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
+              <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
               <label class='margin_adjust_wep2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{R_weapon_special_rules} }} {{description=@{R_weapon_description} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-              <input name='attr_collapse' type='checkbox'  value='3' class='collapsible_entity_switch hidden' />
-              <textarea name='attr_R_weapon_description' class='collapsible_entity_block description_rounded_margin' placeholder='Weapon Attachment: Benefit, Type Mount, Restriction, etc.'></textarea>
+              <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
+              <textarea name='attr_R_weapon_description' class=' description_rounded_margin' placeholder='Weapon Attachment: Benefit, Type Mount, Restriction, etc.'></textarea>
             </div>
           </div>
           <hr>
@@ -1244,10 +1239,10 @@
             </div>
             <div>
               <input name='attr_M_weapon_special_rules' type='text' placeholder='Description' class='full_width_49px border_none radius_border_left' />
-              <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='collapsible_entity_switch select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
+              <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
               <label class='margin_adjust_wep2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{M_weapon_special_rules} }} {{description=@{M_weapon_description} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-              <input name='attr_collapse' type='checkbox'  value='3' class='collapsible_entity_switch hidden' />
-              <textarea name='attr_M_weapon_description' class='collapsible_entity_block description_rounded_margin' placeholder='Weapon Modification e.g. Gravity Hammer Crushing thruster'></textarea>
+              <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
+              <textarea name='attr_M_weapon_description' class=' description_rounded_margin' placeholder='Weapon Modification e.g. Gravity Hammer Crushing thruster'></textarea>
             </div>
           </div>
           <hr>
@@ -1281,10 +1276,10 @@
       <input name='attr_gear_weight' type='text' value='0' class='equipment_gear_gs5' />
       <input name='attr_gear_bp' type='text' placeholder='Break Points' class='equipment_gear_gs6' />
       <input name='attr_gear_pg#' type='text' placeholder='Page #' class='equipment_gear_gs7' />
-      <label class='margin_adjust equipment_gear_gs8'><input type='checkbox' name='attr_collapse' value='7' class='collapsible_entity_switch select_button hidden'><span class='select_text'>▼</span></label>
+      <label class='margin_adjust equipment_gear_gs8'><input type='checkbox' name='attr_collapse' value='7' class='hider select_button hidden'><span class='select_text'>▼</span></label>
     </div>
-    <input name='attr_collapse' type='checkbox'  value='7' class='collapsible_entity_switch hidden' />
-    <textarea name='attr_gear_desc' placeholder='Different equipment will have special rules.' class='collapsible_entity_block equipment_gear_dropdown'></textarea>
+    <input name='attr_collapse' type='checkbox'  value='7' class='hider hidden' />
+    <textarea name='attr_gear_desc' placeholder='Different equipment will have special rules.' class=' equipment_gear_dropdown'></textarea>
 
     <fieldset name='gear' class='repeating_gear'>
       <div class='equipment_gear'>
@@ -1295,10 +1290,10 @@
         <input name='attr_gear_weight_r' type='text' value='0' class='equipment_gear_gs5' />
         <input name='attr_gear_bp_r' type='text' placeholder='Break Points' class='equipment_gear_gs6' />
         <input name='attr_gear_pg#_r' type='text' placeholder='Page #' class='equipment_gear_gs7' />
-        <label class='margin_adjust equipment_gear_gs8'><input type='checkbox' name='attr_collapse_r' value='2' class='collapsible_entity_switch select_button hidden' /><span class='select_text'>▼</span></label>
+        <label class='margin_adjust equipment_gear_gs8'><input type='checkbox' name='attr_collapse_r' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
       </div>
-      <input name='attr_collapse_r' type='checkbox'  value='2' class='collapsible_entity_switch hidden' />
-      <textarea name='attr_attachments' class='collapsible_entity_block equipment_gear_dropdown'></textarea>
+      <input name='attr_collapse_r' type='checkbox'  value='2' class='hider hidden' />
+      <textarea name='attr_attachments' class=' equipment_gear_dropdown'></textarea>
     </fieldset>
     <br>
 
@@ -1352,10 +1347,10 @@
             <input class='full_width' type='text' name='attr_permutation_hardpoints' placeholder='Hpts'>
             <input class='full_width' type='text' name='attr_permutation_page' placeholder='Pg#'>
           </div>
-          <label class='margin_adjust'><input type='checkbox' name='attr_collapse3' value='2' class='collapsible_entity_switch select_button hidden' /><span class='select_text'>▼</span></label>
+          <label class='margin_adjust'><input type='checkbox' name='attr_collapse3' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
           <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{permutation_name} }} {{description=@{permutation_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-          <input name='attr_collapse3' type='checkbox'  value='2' class='collapsible_entity_switch hidden' />
-          <textarea name='attr_permutation_desc' placeholder='All Human BDUs and Armor are designed to take Permutations. Permutations are attachments that modify Armor and offer various forms of function. Each section of Armor can only fit so many Permutations, which are shown as Hardpoints.' class='collapsible_entity_block'></textarea>
+          <input name='attr_collapse3' type='checkbox'  value='2' class='hider hidden' />
+          <textarea name='attr_permutation_desc' placeholder='All Human BDUs and Armor are designed to take Permutations. Permutations are attachments that modify Armor and offer various forms of function. Each section of Armor can only fit so many Permutations, which are shown as Hardpoints.' class=''></textarea>
         </div>
         <fieldset name='permutations' class='repeating_permutations'>
           <div>
@@ -1365,10 +1360,10 @@
               <input class='full_width' type='text' name='attr_permutation_hardpoints_r' placeholder='Hpts'>
               <input class='full_width' type='text' name='attr_permutation_page_r' placeholder='Pg#'>
             </div>
-            <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='collapsible_entity_switch select_button hidden' /><span class='select_text'>▼</span></label>
+            <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
             <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{permutation_name_r} }} {{description=@{permutation_desc_r} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-            <input name='attr_collapse' type='checkbox'  value='2' class='collapsible_entity_switch hidden' />
-            <textarea name='attr_permutation_desc_r' class='collapsible_entity_block'></textarea>
+            <input name='attr_collapse' type='checkbox'  value='2' class='hider hidden' />
+            <textarea name='attr_permutation_desc_r' class=''></textarea>
           </div>
         </fieldset>
 
@@ -1378,10 +1373,10 @@
         <textarea name='attr_armor_desc'></textarea>
         <fieldset name='armors' class='repeating_armors'>
           <input class='full_width_49px' type='text' name='attr_armor_name_r' placeholder='Name'>
-          <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='collapsible_entity_switch select_button hidden' /><span class='select_text'>▼</span></label>
+          <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
           <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{armor_name_r} }} {{description=@{armor_desc_r} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-          <input name='attr_collapse' type='checkbox'  value='2' class='collapsible_entity_switch hidden' />
-          <textarea name='attr_armor_desc_r' class='collapsible_entity_block'></textarea>
+          <input name='attr_collapse' type='checkbox'  value='2' class='hider hidden' />
+          <textarea name='attr_armor_desc_r' class=''></textarea>
         </fieldset>
       </div>
     </div>
@@ -1391,8 +1386,8 @@
 
 
   <!-- ______________________________ start of tab Medical ______________________________ -->
-
-  <div class='medical box radius_border_box'>
+  <input name='attr_sheetTab' type='checkbox'  value='medical' class='hider hidden' />
+  <div class='box radius_border_box'>
     <!-- Medical -->
     <div class='medical-grid'>
 
@@ -1583,8 +1578,8 @@
 
 
   <!-- ______________________________ start of tab Advancements ______________________________ -->
-
-  <div class='advancements box radius_border_box ssc'>
+  <input name='attr_sheetTab' type='checkbox'  value='advancements' class='hider hidden' />
+  <div class='box radius_border_box ssc'>
 
     <h2>Experience Summary</h2>
     <div class='text_centered'>
@@ -1657,7 +1652,7 @@
       <h3>CR</h3>
       <h3>CH</h3>
       <h3>LD</h3>
-      <label class='text_centered bttn_top_padding'><input type='checkbox' name='attr_characteristic_spending_lock' class='collapsible_entity_switch select_button hidden' /><span class='select_text'>Apply</span></label>
+      <label class='text_centered bttn_top_padding'><input type='checkbox' name='attr_characteristic_spending_lock' class='hider select_button hidden' /><span class='select_text'>Apply</span></label>
     </div>
 
     <div class="characteristic_spending_window">
@@ -1723,17 +1718,17 @@
     </div>
     <div class='edge_padding ssc'>
       <input name='attr_ability' type='text' placeholder='SQUAD UP' class='full_width_49px' />
-      <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='collapsible_entity_switch select_button hidden' /><span class='select_text'>▼</span></label>
+      <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
       <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{ability} }} {{description=@{ability_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-      <input name='attr_collapse' type='checkbox'  value='2' class='collapsible_entity_switch hidden' />
-      <textarea name='attr_ability_desc' class='collapsible_entity_block'
+      <input name='attr_collapse' type='checkbox'  value='2' class='hider hidden' />
+      <textarea name='attr_ability_desc' class=''
       placeholder='Prerequisites: Race Human, Faction Type U.N.S.C. Military Branch&#10;&#10;Benefit: When with others from the Army, Marine, Air Force, Navy, ORION, ODST, Militiaman, and Spartan IV Soldier Types: these characters gain a +5 Bonus to Courage. The Characters also gain a +10 Bonus to Warfare Melee and Warfare Range Tests when taking Combined Actions.'></textarea>
       <fieldset name='abilities' class='repeating_abilities'>
         <input name='attr_ability_r' type='text' placeholder='Name' class='full_width_49px' />
-        <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='3' class='collapsible_entity_switch select_button hidden' /><span class='select_text '>▼</span></label>
+        <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text '>▼</span></label>
         <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{ability_r} }} {{description=@{ability_desc_r} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-        <input name='attr_collapse' type='checkbox'  value='3' class='collapsible_entity_switch hidden' />
-        <textarea name='attr_ability_desc_r' class='collapsible_entity_block'></textarea>
+        <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
+        <textarea name='attr_ability_desc_r' class=''></textarea>
       </fieldset>
     </div>
 
@@ -1743,8 +1738,8 @@
 
 
   <!-- ______________________________ start of tab Journal ______________________________ -->
-
-  <div class='journal box radius_border_box'>
+  <input name='attr_sheetTab' type='checkbox'  value='journal' class='hider hidden' />
+  <div class='box radius_border_box'>
     <!-- Journal -->
     <h2>Journal: Objectives</h2>
     <div class='edge_padding ssc'>
@@ -1768,8 +1763,8 @@
 
 
   <!-- ______________________________ start of tab Vehicles ______________________________ -->
-
-  <div class='vehicles box ssc radius_border_box'>
+  <input name='attr_sheetTab' type='checkbox'  value='vehicles' class='hider hidden' />
+  <div class='box ssc radius_border_box'>
     <!-- Vehicles -->
     <div class='vehicles_divider'>
       <fieldset name='vehicles-R' class='repeating_vehicles'>
@@ -1917,17 +1912,17 @@
           <div class='vehicles_G76 '>
             <div>
               <input name='attr_aditional_info' type='text' placeholder='Additional Info' class='full_width_49px' />
-              <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='5' class='collapsible_entity_switch select_button hidden' /><span class='select_text '>▼</span></label>
+              <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='5' class='hider select_button hidden' /><span class='select_text '>▼</span></label>
               <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{aditional_info} }} {{description=@{aditional_info_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-              <input name='attr_collapse' type='checkbox'  value='5' class='collapsible_entity_switch hidden' />
-              <textarea name='attr_aditional_info_desc' class='collapsible_entity_block' placeholder='Enter any vehicle-specific rules or other unique information here.'></textarea>
+              <input name='attr_collapse' type='checkbox'  value='5' class='hider hidden' />
+              <textarea name='attr_aditional_info_desc' class='' placeholder='Enter any vehicle-specific rules or other unique information here.'></textarea>
             </div>
             <div>
               <input name='attr_modifications' type='text' placeholder='Modifications' class='full_width_49px vehicles_descriptor' />
-              <label class='margin_adjust'><input type='checkbox' name='attr_collapse2' value='6' class='collapsible_entity_switch select_button hidden' /><span class='select_text radius_border_right'>▼</span></label>
+              <label class='margin_adjust'><input type='checkbox' name='attr_collapse2' value='6' class='hider select_button hidden' /><span class='select_text radius_border_right'>▼</span></label>
               <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{modifications} }} {{description=@{modifications_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-              <input name='attr_collapse2' type='checkbox'  value='6' class='collapsible_entity_switch hidden' />
-              <textarea name='attr_modifications_desc' class='collapsible_entity_block description_rounded_margin' placeholder='Vehicles in Halo Mythic can be modified in many ways.  These use a Vehicle’s Weapon Points and Size Points, which are specialized Hardpoints on a Vehicle.  Each Modification takes a specified amount of Weapon and Size Points.
+              <input name='attr_collapse2' type='checkbox'  value='6' class='hider hidden' />
+              <textarea name='attr_modifications_desc' class=' description_rounded_margin' placeholder='Vehicles in Halo Mythic can be modified in many ways.  These use a Vehicle’s Weapon Points and Size Points, which are specialized Hardpoints on a Vehicle.  Each Modification takes a specified amount of Weapon and Size Points.
               &#10;Vehicle modifications are classified into five categories; Body, Propulsion, Electronic, Combat, and Miscellaneous.'></textarea>
             </div>
           </div>
@@ -1986,10 +1981,10 @@
               </div>
               <div>
                 <input name='attr_V_R_weapon_special_rules' type='text' placeholder='Description' class='full_width_49px border_none' />
-                <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='collapsible_entity_switch select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
+                <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
                 <label class='margin_adjust_wep2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{V_R_weapon_special_rules} }} {{description=@{V_R_attachments} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-                <input name='attr_collapse' type='checkbox'  value='3' class='collapsible_entity_switch hidden' />
-                <textarea name='attr_V_R_attachments' class='collapsible_entity_block description_rounded_margin'></textarea>
+                <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
+                <textarea name='attr_V_R_attachments' class=' description_rounded_margin'></textarea>
               </div>
             </div>
             <br>
@@ -2042,10 +2037,10 @@
               </div>
               <div>
                 <input name='attr_V_M_weapon_special_rules' type='text' placeholder='Description' class='full_width_49px border_none' />
-                <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='collapsible_entity_switch select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
+                <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
                 <label class='margin_adjust_wep2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{V_M_weapon_special_rules} }} {{description=@{V_M_weapon_description} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-                <input name='attr_collapse' type='checkbox'  value='3' class='collapsible_entity_switch hidden' />
-                <textarea name='attr_V_M_weapon_description' class='collapsible_entity_block description_rounded_margin'></textarea>
+                <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
+                <textarea name='attr_V_M_weapon_description' class=' description_rounded_margin'></textarea>
               </div>
             </div>
             <br>
@@ -2058,8 +2053,8 @@
 
 
   <!-- ______________________________ start of tab Settings ______________________________ -->
-
-  <div class='settings box radius_border_box'>
+  <input name='attr_sheetTab' type='checkbox'  value='settings' class='hider hidden' />
+  <div class=' box radius_border_box'>
     <!-- Settings -->
     <h2>Settings</h2>
     <h3>Species Overrides</h3>
@@ -2141,6 +2136,7 @@
       <option value='13'>Far too vibrant    Pink</option>
       <option value='14'>Funky      Mango</option>
       <option value='15'>burgundy   Purple</option>
+      <option value='16'>You will suffer as I have</option>
     </select>
     <br>
 
@@ -2156,7 +2152,7 @@
     <br>
 
     <h3>NPC Sheet</h3>
-    <label class='text_centered bttn_top_padding'><input type='checkbox' name='attr_npc_sheet' class='collapsible_entity_switch select_button hidden' /><span class='select_text'>NPC Sheet</span></label>
+    <label class='text_centered bttn_top_padding'><input type='checkbox' name='attr_npc_sheet' class='hider select_button hidden' /><span class='select_text'>NPC Sheet</span></label>
 
 
   </div>
@@ -2176,8 +2172,8 @@
 
 <!-- ______________________________ start of Npc sheet ______________________________ -->
 
-<input type='checkbox' name='attr_npc_sheet' class='collapsible_entity_switch hidden' />
-<div class='background_radius collapsible_entity_block box'>
+<input type='checkbox' name='attr_npc_sheet' class='hider hidden' />
+<div class='background_radius  box'>
   <div class='tabs_main'>
 
     <div class='initiative_container bttn_top_padding'>
@@ -2210,10 +2206,10 @@
 
   </div>
   <div class='infographic_toggles'>
-    <label><input type='checkbox' name='attr_infographic' class='collapsible_entity_switch select_button hidden' /><span class='select_text'>Expanded I</span></label>
+    <label><input type='checkbox' name='attr_infographic' class='hider select_button hidden' /><span class='select_text'>Expanded I</span></label>
     <label><input type='checkbox' name='attr_to-gm' value='/w gm' class='select_button hidden' /><span class='select_text'>To GM</span></label>
     <label><input type='checkbox' name='attr_inlinemod-toggle' value='?{Modifier|0}' class='select_button hidden' checked/><span class='select_text'>Inline Mod</span></label>
-    <label><input type='checkbox' name='attr_npc_sheet' class='auto_margin collapsible_entity_switch select_button hidden' /><span class='select_text'>NPC Sheet</span></label>
+    <label><input type='checkbox' name='attr_npc_sheet' class='auto_margin hider select_button hidden' /><span class='select_text'>NPC Sheet</span></label>
     <button class='clear infographic_override' type='roll' name='autodamage' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{avrdam= [[0+[[([[(?{Amount of hits|1}*?{Amount of D10s|0})d10]] + [[?{Amount of hits|1}*?{Base|0}]] - [[?{Amount of hits|1}*(?{Armor|0} - ?{Pierce|0})d1]])d1]]]]}}'>Auto-Damage</button>
     <button class='clear infographic_override' type='roll' name='multiroll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{multiroll= [[ ?{How many rolls?|1}d100<[[?{Using|Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} |Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} |Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} |Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CR} + @{CR_advancement} + @{fatigue_mod} |Charisma, @{CH} + @{CH_advancement} + @{fatigue_mod}|Leadership, @{LD} + @{LD_advancement} + @{fatigue_mod} } + ?{Modifier|0} ]] ]] }}'>Multi-Roll</button>
     <button class='clear infographic_override' type='roll' name='scatter' value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{scatter-range= [[[[(abs(?{Degrees of Failiure|0})+floor(?{range from target|0}/100))*?{Target at|Normal range,1|Max range,2|Extreme range,4})]]?{Scatter Type|Explosives and thrown weapons,d5|Shots,d10}]]}} {{scatter-direction=[[1d10]]d1}}">Scatter</button>
@@ -2284,8 +2280,8 @@
     </div>
 
   </div>
-  <input type='checkbox' name='attr_infographic' class='collapsible_entity_switch hidden' checked/>
-  <div class='collapsible_entity_block'>
+  <input type='checkbox' name='attr_infographic' class='hider hidden' checked/>
+  <div class=''>
     <fieldset name='info' class='repeating_info'>
       <div class='infographic_gridR'>
 
@@ -2473,8 +2469,8 @@
     <div>
 
       <div>
-        <input name='attr_NPC_tabs' type='checkbox'  value='1' class='collapsible_entity_switch hidden' />
-        <div class="collapsible_entity_block">
+        <input name='attr_NPC_tabs' type='checkbox'  value='1' class='hider hidden' />
+        <div class="">
           <fieldset name='vehicles-R' class='repeating_vehicles'>
             <div class='vehicles_grid1'>
               <input name='attr_vehicle-name' type='text' class='vehicles_Gn full_width' placeholder='Name' />
@@ -2620,17 +2616,17 @@
               <div class='vehicles_G76 '>
                 <div>
                   <input name='attr_aditional_info' type='text' placeholder='Additional Info' class='full_width_49px' />
-                  <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='5' class='collapsible_entity_switch select_button hidden' /><span class='select_text '>▼</span></label>
+                  <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='5' class='hider select_button hidden' /><span class='select_text '>▼</span></label>
                   <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{aditional_info} }} {{description=@{aditional_info_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-                  <input name='attr_collapse' type='checkbox'  value='5' class='collapsible_entity_switch hidden' />
-                  <textarea name='attr_aditional_info_desc' class='collapsible_entity_block' placeholder='Enter any vehicle-specific rules or other unique information here.'></textarea>
+                  <input name='attr_collapse' type='checkbox'  value='5' class='hider hidden' />
+                  <textarea name='attr_aditional_info_desc' class='' placeholder='Enter any vehicle-specific rules or other unique information here.'></textarea>
                 </div>
                 <div>
                   <input name='attr_modifications' type='text' placeholder='Modifications' class='full_width_49px vehicles_descriptor' />
-                  <label class='margin_adjust'><input type='checkbox' name='attr_collapse2' value='6' class='collapsible_entity_switch select_button hidden' /><span class='select_text radius_border_right'>▼</span></label>
+                  <label class='margin_adjust'><input type='checkbox' name='attr_collapse2' value='6' class='hider select_button hidden' /><span class='select_text radius_border_right'>▼</span></label>
                   <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{modifications} }} {{description=@{modifications_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-                  <input name='attr_collapse2' type='checkbox'  value='6' class='collapsible_entity_switch hidden' />
-                  <textarea name='attr_modifications_desc' class='collapsible_entity_block description_rounded_margin' placeholder='Vehicles in Halo Mythic can be modified in many ways.  These use a Vehicle’s Weapon Points and Size Points, which are specialized Hardpoints on a Vehicle.  Each Modification takes a specified amount of Weapon and Size Points.
+                  <input name='attr_collapse2' type='checkbox'  value='6' class='hider hidden' />
+                  <textarea name='attr_modifications_desc' class=' description_rounded_margin' placeholder='Vehicles in Halo Mythic can be modified in many ways.  These use a Vehicle’s Weapon Points and Size Points, which are specialized Hardpoints on a Vehicle.  Each Modification takes a specified amount of Weapon and Size Points.
                   &#10;Vehicle modifications are classified into five categories; Body, Propulsion, Electronic, Combat, and Miscellaneous.'></textarea>
                 </div>
               </div>
@@ -2641,8 +2637,8 @@
       </div>
 
       <div>
-        <input name='attr_NPC_tabs' type='checkbox'  value='2' class='collapsible_entity_switch hidden' />
-        <div class="collapsible_entity_block">
+        <input name='attr_NPC_tabs' type='checkbox'  value='2' class='hider hidden' />
+        <div class="">
 
           <div class='NPC_medical radius_border_top NPC_medical_header'>
             <label class='medical_initial_label'><h2 class='medical_h2 medical_h2_rollable radius_border_top'>Hit Location</h2> <button type='roll' name='button' value='@{to-gm}&{template:mythic} {{loc=[[1d100]]}}' class='hidden'></button></label>
@@ -2753,8 +2749,8 @@
       </div>
 
       <div>
-        <input name='attr_NPC_tabs' type='checkbox'  value='3' class='collapsible_entity_switch hidden' />
-        <div class="collapsible_entity_block">
+        <input name='attr_NPC_tabs' type='checkbox'  value='3' class='hider hidden' />
+        <div class="">
           <div class='vehicle_weapons NPC_margin'>
             <div class='equipment_ranged_weapons'>
               <h3 class='radius_border_top'>Vehicle Ranged Weapons</h3>
@@ -2806,10 +2802,10 @@
                   </div>
                   <div>
                     <input name='attr_V_R_weapon_special_rules' type='text' placeholder='Description' class='full_width_49px border_none' />
-                    <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='collapsible_entity_switch select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
+                    <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
                     <label class='margin_adjust_wep2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{V_R_weapon_special_rules} }} {{description=@{V_R_attachments} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-                    <input name='attr_collapse' type='checkbox'  value='3' class='collapsible_entity_switch hidden' />
-                    <textarea name='attr_V_R_attachments' class='collapsible_entity_block description_rounded_margin'></textarea>
+                    <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
+                    <textarea name='attr_V_R_attachments' class=' description_rounded_margin'></textarea>
                   </div>
                 </div>
               </fieldset>
@@ -2861,10 +2857,10 @@
                   </div>
                   <div>
                     <input name='attr_V_M_weapon_special_rules' type='text' placeholder='Description' class='full_width_49px border_none' />
-                    <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='collapsible_entity_switch select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
+                    <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
                     <label class='margin_adjust_wep2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{V_M_weapon_special_rules} }} {{description=@{V_M_weapon_description} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-                    <input name='attr_collapse' type='checkbox'  value='3' class='collapsible_entity_switch hidden' />
-                    <textarea name='attr_V_M_weapon_description' class='collapsible_entity_block description_rounded_margin'></textarea>
+                    <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
+                    <textarea name='attr_V_M_weapon_description' class=' description_rounded_margin'></textarea>
                   </div>
                 </div>
               </fieldset>
@@ -2926,10 +2922,10 @@
             </div>
             <div>
               <input name='attr_R_weapon_special_rules' type='text' placeholder='Description' class='full_width_49px border_none radius_border_left' />
-              <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='collapsible_entity_switch select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
+              <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
               <label class='margin_adjust_wep2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{R_weapon_special_rules} }} {{description=@{R_attachments} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-              <input name='attr_collapse' type='checkbox'  value='3' class='collapsible_entity_switch hidden' />
-              <textarea name='attr_R_attachments' class='collapsible_entity_block description_rounded_margin' placeholder='Weapon Attachment: Benefit, Type Mount, Restriction, etc.'></textarea>
+              <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
+              <textarea name='attr_R_attachments' class=' description_rounded_margin' placeholder='Weapon Attachment: Benefit, Type Mount, Restriction, etc.'></textarea>
             </div>
           </div>
         </fieldset>
@@ -2994,10 +2990,10 @@
             </div>
             <div>
               <input name='attr_M_weapon_special_rules' type='text' placeholder='Description' class='full_width_49px border_none radius_border_left' />
-              <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='collapsible_entity_switch select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
+              <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
               <label class='margin_adjust_wep2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{M_weapon_special_rules} }} {{description=@{M_weapon_description} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-              <input name='attr_collapse' type='checkbox'  value='3' class='collapsible_entity_switch hidden' />
-              <textarea name='attr_M_weapon_description' class='collapsible_entity_block description_rounded_margin' placeholder='Weapon Modification e.g. Gravity Hammer Crushing thruster'></textarea>
+              <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
+              <textarea name='attr_M_weapon_description' class=' description_rounded_margin' placeholder='Weapon Modification e.g. Gravity Hammer Crushing thruster'></textarea>
             </div>
           </div>
         </fieldset>
@@ -3009,16 +3005,16 @@
   <h2 class='medical_h2 radius_border_top'>Additional info</h2>
   <div class='edge_padding ssc'>
     <input name='attr_medical_textfield_name' type='text' placeholder='Name' class='full_width_49px' />
-    <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='collapsible_entity_switch select_button hidden' /><span class='select_text'>▼</span></label>
+    <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
     <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{medical_textfield_name} }} {{description=@{medical_textfield} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-    <input name='attr_collapse' type='checkbox'  value='2' class='collapsible_entity_switch hidden ' />
-    <textarea name='attr_medical_textfield' class='collapsible_entity_block NPC_textfield_override radius_border_bottom'></textarea>
+    <input name='attr_collapse' type='checkbox'  value='2' class='hider hidden ' />
+    <textarea name='attr_medical_textfield' class=' NPC_textfield_override radius_border_bottom'></textarea>
     <fieldset name='attr_medical_textfield' class='repeating_medical'>
       <input name='attr_medical_textfield_name' type='text' placeholder='Name' class='full_width_49px' />
-      <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='3' class='collapsible_entity_switch select_button hidden' /><span class='select_text '>▼</span></label>
+      <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text '>▼</span></label>
       <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{medical_textfield_name} }} {{description=@{medical_textfield} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-      <input name='attr_collapse' type='checkbox'  value='3' class='collapsible_entity_switch hidden' />
-      <textarea name='attr_medical_textfield' class='collapsible_entity_block NPC_textfield_override radius_border_bottom'></textarea>
+      <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
+      <textarea name='attr_medical_textfield' class=' NPC_textfield_override radius_border_bottom'></textarea>
     </fieldset>
   </div>
 
