@@ -606,12 +606,8 @@ ______________________________ start of equipment tab __________________________
 .sheet-equipment_ranged_weapons_gs20 { grid-area: rw20; 	color: white; font-size: 12px; width: 50px!important;}
 .sheet-equipment_ranged_weapons_gs21 { grid-area: rw21; 	color: white; font-size: 12px; padding: 0px 2px }
 .sheet-equipment_ranged_weapons_gs22 { grid-area: rw22; 	color: white; font-size: 12px; border: none; border-bottom: 1px dotted white; }
-.sheet-equipment_ranged_weapons_gs23 { grid-area: rw23; 	color: white; font-size: 30px; margin-top: -27px; text-align: center; height: 12px; }
+.sheet-equipment_ranged_weapons_gs23 { grid-area: rw23; 	color: white; font-size: 12px; padding: 0px 2px }
 .sheet-equipment_ranged_weapons_gs24 { grid-area: rw24; 	color: white; font-size: 12px; border: none; border-bottom: 1px dotted white; }
-.sheet-equipment_ranged_weapons_gs25 { grid-area: rw25; 	color: white; font-size: 30px; margin-top: -27px; text-align: center; height: 12px; }
-.sheet-equipment_ranged_weapons_gs26 { grid-area: rw26; 	color: white; font-size: 12px; border: none; border-bottom: 1px dotted white; }
-.sheet-equipment_ranged_weapons_gs27 { grid-area: rw27; 	color: white; font-size: 12px; padding: 0px 2px }
-.sheet-equipment_ranged_weapons_gs28 { grid-area: rw28; 	color: white; font-size: 12px; border: none; border-bottom: 1px dotted white; }
 
 .sheet-equipment_ranged_weapons_grid1 {
 	align-items: center;
@@ -641,9 +637,9 @@ ______________________________ start of equipment tab __________________________
 .sheet-equipment_ranged_weapons_grid4 {
 	align-items: center;
 	display: grid;
-	grid-template-columns: auto 12% 4% 12% 4% 12% auto auto;
+	grid-template-columns: 23px auto 40px 85px;
 	grid-template-areas:
-	'rw21 rw22 rw23 rw24 rw25 rw26 rw27 rw28';
+	'rw21 rw22 rw23 rw24';
 }
 
 .sheet-equipment_melee_weapons_gs1 { grid-area: mw1;	color: white; font-size: 12px; padding: 0px 2px }
