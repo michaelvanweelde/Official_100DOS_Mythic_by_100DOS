@@ -433,11 +433,12 @@ ______________________________ start of minimisable infographic ________________
 
 .sheet-infographic_main { margin-left: 5px; }
 
-.sheet-infographic_override{ margin-top: -4px!important; height: 20px; font-weight: bold;}
+.sheet-infographic_buttons{ margin-top: -4px!important; height: 20px; font-weight: bold; border-color: white;}
+.sheet-infographic_select{ margin-top: -4px!important; height: 26px; font-weight: bold; border-color: white; padding-top: 1px}
 .sheet-infographic_toggles {
 	display: grid;
 	grid-column-gap: 10px;
-	grid-template-columns: 82px 52px 80px 78px 113px 86px 66px auto;
+	grid-template-columns: 82px 52px 80px 90px 113px 86px 66px auto;
 }
 
 .sheet-infographic_grid {
@@ -1047,6 +1048,27 @@ ______________________________ start of NPC sheet overrides ____________________
 
 
 /* ______________________________ end of NPC sheet overrides ______________________________
+______________________________ start of GM sheet overrides ___________________________________________________________ */
+
+.sheet-GM_infographic {
+	color: white;
+	text-align: left;
+	display: grid;
+	grid-template-columns: auto 10px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 10px 50px 50px 50px 50px 50px 50px 50px;
+}
+.sheet-GM_infographic_header {
+	margin-top: 5px;
+	margin-bottom: -5px;
+}
+
+.sheet-GM_infographic_element {
+	align-content: center;
+	margin-left: -3px;
+	width: calc(100% + 3px) !important;
+}
+
+
+/* ______________________________ end of GM sheet overrides ______________________________
 ______________________________ start of rolltemplate ___________________________________________________________ */
 
 
