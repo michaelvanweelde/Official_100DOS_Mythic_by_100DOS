@@ -43,7 +43,9 @@ button[type='action'] {
 	color: white;
 	font-family: Saira Semi Condensed;
 	text-align: center;
+
 }
+
 
 /* All horizontal rule elements receive the following CSS property. */
 hr { border-top: 1px dotted black; }
@@ -64,6 +66,7 @@ button[type="roll"].sheet-clear::before {
 
 /* All button elements of type roll when hovered over: */
 button[type='roll']:hover { background: rgb(200, 0, 0) !important; }
+button[type='action']:hover {background: rgb(200, 0, 0) !important; }
 label:hover { cursor: pointer; }
 
 /* Both header elements 2 and 3 receive the following CSS properties. */
