@@ -219,7 +219,7 @@ the appropriate element is displayed on a 4 all elements are hidden */
 	border-bottom-right-radius: 8px;
 }
 .sheet-description_rounded_margin {
-	margin-bottom: 0px;
+	margin-bottom: -4px;
 	border-radius: 0px 0px 8px 8px;
 }
 
@@ -594,6 +594,8 @@ ______________________________ start of equipment tab __________________________
 .sheet-equipment_ranged_weapons_gs22 { grid-area: rw22; 	color: white; font-size: 12px; border: none; border-bottom: 1px dotted white; }
 .sheet-equipment_ranged_weapons_gs23 { grid-area: rw23; 	color: white; font-size: 12px; padding: 0px 2px }
 .sheet-equipment_ranged_weapons_gs24 { grid-area: rw24; 	color: white; font-size: 12px; border: none; border-bottom: 1px dotted white; }
+.sheet-equipment_ranged_weapons_gs25 { grid-area: rw25; 	color: white; font-size: 12px; border: none; border-bottom: 1px dotted white;}
+.sheet-equipment_ranged_weapons_gs26 { grid-area: rw26; 	color: white; font-size: 12px; border: none; border-bottom: 1px dotted white;}
 
 .sheet-equipment_ranged_weapons_grid1 {
 	align-items: center;
@@ -626,6 +628,17 @@ ______________________________ start of equipment tab __________________________
 	grid-template-columns: 23px auto 40px 85px;
 	grid-template-areas:
 	'rw21 rw22 rw23 rw24';
+}
+.sheet-equipment_ranged_weapons_grid5 {
+	padding-top: 1px;
+	border-top: 1px solid white;
+	align-items: center;
+	column-gap: 20px;
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-areas:
+	'rw25 rw26';
+
 }
 
 .sheet-equipment_melee_weapons_gs1 { grid-area: mw1;	color: white; font-size: 12px; padding: 0px 2px }
@@ -666,12 +679,11 @@ ______________________________ start of equipment tab __________________________
 .sheet-equipment_gear_gs4 { grid-area: eg4; width: 100%; text-align: center; align-self: center; }
 .sheet-equipment_gear_gs5 { grid-area: eg5; width: 100%; text-align: center; align-self: center; }
 .sheet-equipment_gear_gs6 { grid-area: eg6; width: 100%; text-align: center; align-self: center; }
-.sheet-equipment_gear_gs7 { grid-area: eg7; width: 100%; text-align: center; align-self: center; }
 .sheet-equipment_gear_gs8 { margin-top: 5px !important; font-size: 16px}
 .sheet-equipment_gear {
 	display: grid;
 	padding-right: 2px;
-	grid-template-columns: 28px auto 60px 80px 80px 80px 80px 25px;
+	grid-template-columns: 28px auto 60px 80px 80px 80px 25px;
 	grid-template-areas:
 	'eg1 eg2 eg3 eg4 eg5 eg6 eg7';
 }
@@ -706,7 +718,7 @@ ______________________________ start of equipment tab __________________________
 .sheet-equipment_permutations_grid {
 	margin: 0px 50.5px 0.6px 0px;
 	display: grid;
-	grid-template-columns: auto 100px 40px 40px;
+	grid-template-columns: auto 150px;
 }
 
 
