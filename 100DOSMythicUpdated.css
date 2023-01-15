@@ -271,8 +271,6 @@ ______________________________ start of grid structure for character information
 	'ah6 ah12 ah13 ah19 ah25';
 }
 
-
-
 /* ______________________________ end of grid structure for character information ______________________________
 ______________________________ start of structure for characteristics ______________________________ */
 
@@ -437,8 +435,8 @@ ______________________________ start of minimisable infographic ________________
 
 .sheet-infographic_main { margin-left: 5px; }
 
-.sheet-infographic_buttons{ margin-top: -4px!important; height: 20px; font-weight: bold; border-color: white;}
-.sheet-infographic_select{ margin-top: -4px!important; height: 26px; font-weight: bold; border-color: white; padding-top: 1px}
+.sheet-infographic_buttons{ margin-top: -4px!important; height: 20px; font-weight: bold; border-color: lightgrey;}
+.sheet-infographic_select{ margin-top: -4px!important; height: 26px; font-weight: bold; border-color: lightgrey; padding-top: 1px}
 .sheet-infographic_toggles {
 	display: grid;
 	grid-column-gap: 10px;
