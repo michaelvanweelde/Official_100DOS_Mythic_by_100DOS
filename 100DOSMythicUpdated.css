@@ -112,7 +112,7 @@ ______________________________ start of multipurpose or special-use classes such
 .sheet-background_radius {
 	border: 2px solid black;
 	border-radius: 11px;
-
+	margin: -15px;
 }
 
 .sheet-full_width_49px { width: calc(100% - 49px); }
@@ -279,11 +279,15 @@ ______________________________ start of structure for characteristics __________
 
 
 .sheet-characteristics_background {
-	background: black;
-	padding: 3px 0px 6px 3px;
+	background: #404040;
+	border-top: 		3px solid #404040;
+	border-bottom: 	4px solid #404040;
+	border-left: 		2px solid #404040;
+	border-right: 	2px solid #404040;
+	border-radius: 	6px;
 	display: grid;
 	grid-column-gap: 0.5%;
-	grid-template-columns: 9.53% 9.53% 9.53% 9.53% 9.53% 9.53% 9.53% 9.53% 9.53% 9.53%;
+	grid-template-columns: repeat(9,calc(100%/10 - 0.5%)) calc(100%/10);
 	grid-template-rows: 26px 40px 26px;
 }
 
