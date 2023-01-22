@@ -1,5 +1,51 @@
 <!-- Every fieldset requires to be of class repeating_[word1word2]. -->
 <!-- Every fieldset requires its named element to be of attr_ prefix. -->
+
+<div class="compendium-drop-target">
+<input name="attr_comp_Name" accept="Name" type="text" />
+<input name="attr_comp_field" accept="COMP_field" type="text" />
+<input name="attr_comp_type" accept="COMP_type" type="text" />
+<input name="attr_comp_atribute" accept="COMP_atribute" type="text" />
+<input name="attr_comp_range" accept="COMP_range" type="text" />
+<input name="attr_comp_damage_roll" accept="COMP_damage_roll" type="text" />
+<input name="attr_comp_damage_base" accept="COMP_damage_base" type="text" />
+<input name="attr_comp_pierce" accept="COMP_pierce" type="text" />
+<input name="attr_comp_hitmod" accept="COMP_hitmod" type="text" />
+<input name="attr_comp_magazine" accept="COMP_magazine" type="text" />
+<input name="attr_comp_rof" accept="COMP_rof" type="text" />
+<input name="attr_comp_reload" accept="COMP_reload" type="text" />
+<input name="attr_comp_weight" accept="COMP_weight" type="text" />
+<input name="attr_comp_special_rules" accept="COMP_special_rules" type="text" />
+<input name="attr_comp_description" accept="COMP_description" type="text" />
+<input name="attr_comp_price" accept="COMP_price" type="text" />
+<input name="attr_comp_breakpoints" accept="COMP_breakpoints" type="text" />
+<input name="attr_comp_base-mod" accept="COMP_base-mod" type="text" />
+<input name="attr_comp_pierce-mod" accept="COMP_pierce-mod" type="text" />
+<input name="attr_comp_armor_head" accept="COMP_armor_head" type="text" />
+<input name="attr_comp_armor_arms" accept="COMP_armor_arms" type="text" />
+<input name="attr_comp_armor_chest" accept="COMP_armor_chest" type="text" />
+<input name="attr_comp_armor_legs" accept="COMP_armor_legs" type="text" />
+<input name="attr_comp_shield_integrity" accept="COMP_shield_integrity" type="text" />
+<input name="attr_comp_shield_delay" accept="COMP_shield_delay" type="text" />
+<input name="attr_comp_shield_recharge" accept="COMP_shield_recharge" type="text" />
+<input name="attr_comp_variant" accept="COMP_variant" type="text" />
+<hr>
+<input name="attr_comp_category" accept="Category" type="text" />
+<input name="attr_comp_name" accept="name" type="text" />
+<input name="attr_comp_data" accept="data" type="text" />
+<hr>
+<input name="attr_test1" type="text" />
+<input name="attr_test2" type="text" />
+<input name="attr_test3" type="text" />
+<hr>
+
+
+
+
+
+
+
+
 <input type='checkbox' name='attr_sheet_select' value='0' class='hider hidden' checked />
 <div class='background_radius'>
   <input name='attr_faction' type='radio' value='1' class='background_switch_1' display=none hidden checked />
@@ -114,9 +160,9 @@
       <button name='WFM' type='roll' class='clear full_width characteristics_button'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Warfare Melee}} {{roll=[[@{settings_rounding}([[@{WFM} + @{WFM_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>WFM |<input name='attr_WFM_total' value='@{WFM} + @{WFM_advancement}+@{fatigue_mod}' class='input_background input_char_background' disabled /></button>
       <button name='INT' type='roll' class='clear full_width characteristics_button'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Intelligence}} {{roll=[[@{settings_rounding}([[@{INT} + @{INT_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>INT |<input name='attr_INT_total' value='@{INT} + @{INT_advancement}+@{fatigue_mod}' class='input_background input_char_background' disabled /></button>
       <button name='PER' type='roll' class='clear full_width characteristics_button'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Perception}} {{roll=[[@{settings_rounding}([[@{PER} + @{PER_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>PER |<input name='attr_PER_total' value='@{PER} + @{PER_advancement}+@{fatigue_mod}' class='input_background input_char_background' disabled /></button>
-      <button name='CR' type='roll' class='clear full_width characteristics_button'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Courage}} {{roll=[[@{settings_rounding}([[@{CR} + @{CR_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>CR |<input name='attr_CR_total' value='@{CR} + @{CR_advancement}+@{fatigue_mod}' class='input_background input_char_background' disabled /></button>
-      <button name='CH' type='roll' class='clear full_width characteristics_button'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Charisma}} {{roll=[[@{settings_rounding}([[@{CH} + @{CH_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>CH |<input name='attr_CH_total' value='@{CH} + @{CH_advancement}+@{fatigue_mod}' class='input_background input_char_background' disabled /></button>
-      <button name='LD' type='roll' class='clear full_width characteristics_button'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Leadership}} {{roll=[[@{settings_rounding}([[@{LD} + @{LD_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>LD |<input name='attr_LD_total' value='@{LD} + @{LD_advancement}+@{fatigue_mod}' class='input_background input_char_background' disabled /></button>
+      <button name='COU' type='roll' class='clear full_width characteristics_button'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Courage}} {{roll=[[@{settings_rounding}([[@{COU} + @{COU_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>COU |<input name='attr_COU_total' value='@{COU} + @{COU_advancement}+@{fatigue_mod}' class='input_background input_char_background' disabled /></button>
+      <button name='CHA' type='roll' class='clear full_width characteristics_button'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Charisma}} {{roll=[[@{settings_rounding}([[@{CHA} + @{CHA_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>CHA |<input name='attr_CHA_total' value='@{CHA} + @{CHA_advancement}+@{fatigue_mod}' class='input_background input_char_background' disabled /></button>
+      <button name='LDR' type='roll' class='clear full_width characteristics_button'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Leadership}} {{roll=[[@{settings_rounding}([[@{LDR} + @{LDR_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>LDR |<input name='attr_LDR_total' value='@{LDR} + @{LDR_advancement}+@{fatigue_mod}' class='input_background input_char_background' disabled /></button>
       <input name='attr_STR' type='text' value='0' class='characteristics_input full_width' />
       <input name='attr_TOU' type='text' value='0' class='characteristics_input full_width' />
       <input name='attr_AGI' type='text' value='0' class='characteristics_input full_width' />
@@ -124,9 +170,9 @@
       <input name='attr_WFM' type='text' value='0' class='characteristics_input full_width' />
       <input name='attr_INT' type='text' value='0' class='characteristics_input full_width' />
       <input name='attr_PER' type='text' value='0' class='characteristics_input full_width' />
-      <input name='attr_CR' type='text' value='0' class='characteristics_input full_width' />
-      <input name='attr_CH' type='text' value='0' class='characteristics_input full_width' />
-      <input name='attr_LD' type='text' value='0' class='characteristics_input full_width' />
+      <input name='attr_COU' type='text' value='0' class='characteristics_input full_width' />
+      <input name='attr_CHA' type='text' value='0' class='characteristics_input full_width' />
+      <input name='attr_LDR' type='text' value='0' class='characteristics_input full_width' />
       <select name='attr_STR_advancement' class='full_width'>
         <option value='0' selected='selected'>N/A +0</option>
         <option value='5'>S +5</option>
@@ -183,7 +229,7 @@
         <option value='20'>T +20</option>
         <option value='25'>M +25</option>
       </select>
-      <select name='attr_CR_advancement' class='full_width'>
+      <select name='attr_COU_advancement' class='full_width'>
         <option value='0' selected='selected'>N/A +0</option>
         <option value='5'>S +5</option>
         <option value='10'>R +10</option>
@@ -191,7 +237,7 @@
         <option value='20'>T +20</option>
         <option value='25'>M +25</option>
       </select>
-      <select name='attr_CH_advancement' class='full_width'>
+      <select name='attr_CHA_advancement' class='full_width'>
         <option value='0' selected='selected'>N/A +0</option>
         <option value='5'>S +5</option>
         <option value='10'>R +10</option>
@@ -199,7 +245,7 @@
         <option value='20'>T +20</option>
         <option value='25'>M +25</option>
       </select>
-      <select name='attr_LD_advancement' class='full_width'>
+      <select name='attr_LDR_advancement' class='full_width'>
         <option value='0' selected='selected'>N/A +0</option>
         <option value='5'>S +5</option>
         <option value='10'>R +10</option>
@@ -317,7 +363,7 @@
           <option value='2'>GM sheet</option>
         </select>
         <button class='clear infographic_buttons' type='roll' name='autodamage' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{avrdam= [[0+[[([[(?{Amount of hits|1}*?{Amount of D10s|0})d10]] + [[?{Amount of hits|1}*?{Base|0}]] - [[?{Amount of hits|1}*(?{Armor|0} - ?{Pierce|0})d1]])d1]]]]}}'>Auto-Damage</button>
-        <button class='clear infographic_buttons' type='roll' name='multiroll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{multiroll= [[ ?{How many rolls?|1}d100<[[?{Using|Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} |Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} |Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} |Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CR} + @{CR_advancement} + @{fatigue_mod} |Charisma, @{CH} + @{CH_advancement} + @{fatigue_mod}|Leadership, @{LD} + @{LD_advancement} + @{fatigue_mod} } + ?{Modifier|0} ]] ]] }}'>Multi-Roll</button>
+        <button class='clear infographic_buttons' type='roll' name='multiroll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{multiroll= [[ ?{How many rolls?|1}d100<[[?{Using|Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} |Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} |Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} |Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod} } + ?{Modifier|0} ]] ]] }}'>Multi-Roll</button>
         <button class='clear infographic_buttons' type='roll' name='scatter' value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{scatter-range= [[[[(abs(?{Degrees of Failiure|0})+floor(?{range from target|0}/100))*?{Target at|Normal range,1|Max range,2|Extreme range,4})]]d10]]}} {{scatter-direction=[[1d10]]d1}}">Scatter</button>
       </div>
 
@@ -483,9 +529,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' selected='selected'>CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' selected='selected'>CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_appeal' type='number' value='0' />
           <input name='attr_mod3_appeal' type='checkbox' value='20' class='skills_item' />
@@ -504,9 +550,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_athletics' type='number' value='0' />
           <input name='attr_mod3_athletics' type='checkbox' value='20' class='skills_item' />
@@ -525,9 +571,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' selected='selected'>PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_camouflage' type='number' value='0' />
           <input name='attr_mod3_camouflage' type='checkbox' value='20' class='skills_item' />
@@ -546,9 +592,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' selected='selected'>LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' selected='selected'>LDR</option>
           </select>
           <input name='attr_mod2_command' type='number' value='0' />
           <input name='attr_mod3_command' type='checkbox' value='20' class='skills_item' />
@@ -567,9 +613,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' selected='selected'>INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_cryptography' type='number' value='0' />
           <input name='attr_mod3_cryptography' type='checkbox' value='40' class='skills_item' />
@@ -588,9 +634,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' selected='selected'>CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' selected='selected'>CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_deception' type='number' value='0' />
           <input name='attr_mod3_deception' type='checkbox' value='20' class='skills_item' />
@@ -609,9 +655,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' selected='selected'>INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_demolition' type='number' value='0' />
           <input name='attr_mod3_demolition' type='checkbox' value='40' class='skills_item' />
@@ -630,9 +676,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_evasion' type='number' value='0' />
           <input name='attr_mod3_evasion' type='checkbox' value='20' class='skills_item' />
@@ -651,9 +697,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' selected='selected'>CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' selected='selected'>CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_gambling' type='number' value='0' />
           <input name='attr_mod3_gambling' type='checkbox' value='20' class='skills_item' />
@@ -672,9 +718,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' selected='selected'>LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' selected='selected'>LDR</option>
           </select>
           <input name='attr_mod2_interrogation' type='number' value='0' />
           <input name='attr_mod3_interrogation' type='checkbox' value='20' class='skills_item' />
@@ -693,9 +739,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' selected='selected'>LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' selected='selected'>LDR</option>
           </select>
           <input name='attr_mod2_intimidation' type='number' value='0' />
           <input name='attr_mod3_intimidation' type='checkbox' value='20' class='skills_item' />
@@ -714,9 +760,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' selected='selected'>PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_investigation' type='number' value='0' />
           <input name='attr_mod3_investigation' type='checkbox' value='20' class='skills_item' />
@@ -735,9 +781,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' selected='selected'>INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_medication' type='number' value='0' />
           <input name='attr_mod3_medication' type='checkbox' value='40' class='skills_item' />
@@ -756,9 +802,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' selected='selected'>PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_nav_air' type='number' value='0' />
           <input name='attr_mod3_nav_air' type='checkbox' value='20' class='skills_item' />
@@ -777,9 +823,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' selected='selected'>PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_nav_land' type='number' value='0' />
           <input name='attr_mod3_nav_land' type='checkbox' value='20' class='skills_item' />
@@ -798,9 +844,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' selected='selected'>PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_nav_space' type='number' value='0' />
           <input name='attr_mod3_nav_space' type='checkbox' value='20' class='skills_item' />
@@ -819,9 +865,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' selected='selected'>PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_nav_slipspace' type='number' value='0' />
           <input name='attr_mod3_nav_slipspace' type='checkbox' value='20' class='skills_item' />
@@ -840,9 +886,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' selected='selected'>LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' selected='selected'>LDR</option>
           </select>
           <input name='attr_mod2_negotiation' type='number' value='0' />
           <input name='attr_mod3_negotiation' type='checkbox' value='20' class='skills_item' />
@@ -861,9 +907,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' selected='selected'>INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_pilot_air' type='number' value='0' />
           <input name='attr_mod3_pilot_air' type='checkbox' value='20' class='skills_item' />
@@ -882,9 +928,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' selected='selected'>INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_pilot_land' type='number' value='0' />
           <input name='attr_mod3_pilot_land' type='checkbox' value='20' class='skills_item' />
@@ -903,9 +949,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' selected='selected'>INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_pilot_space' type='number' value='0' />
           <input name='attr_mod3_pilot_space' type='checkbox' value='20' class='skills_item' />
@@ -924,9 +970,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' selected='selected'>INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_security' type='number' value='0' />
           <input name='attr_mod3_security' type='checkbox' value='40' class='skills_item' />
@@ -945,9 +991,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_stunting' type='number' value='0' />
           <input name='attr_mod3_stunting' type='checkbox' value='20' class='skills_item' />
@@ -966,9 +1012,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' selected='selected'>PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_survival' type='number' value='0' />
           <input name='attr_mod3_survival' type='checkbox' value='20' class='skills_item' />
@@ -987,9 +1033,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' selected='selected'>INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_mod2_technology' type='number' value='0' />
           <input name='attr_mod3_technology' type='checkbox' value='40' class='skills_item' />
@@ -1012,9 +1058,9 @@
               <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
               <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
               <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-              <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-              <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' selected='selected'>CH</option>
-              <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+              <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+              <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' selected='selected'>CHA</option>
+              <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
             </select>
             <input name='attr_skill_mod2' type='number' value='0' />
             <input name='attr_skill_mod3' type='checkbox' value='20+@{skill_mod4}' class='skills_item' />
@@ -1045,9 +1091,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' selected='selected'>INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_education_mod2' type='number' value='0' />
           <div class='education4'><input name='attr_education_mod3' type='checkbox' value='5' class='skills_item ' /></div>
@@ -1067,9 +1113,9 @@
               <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
               <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' selected='selected'>INT</option>
               <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-              <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-              <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' >CH</option>
-              <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+              <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+              <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
+              <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
             </select>
             <input name='attr_education_mod2' type='number' value='0' />
             <div class='education4'><input name='attr_education_mod3' type='checkbox' value='5' class='skills_item ' /></div>
@@ -1140,9 +1186,9 @@
                 <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
                 <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
                 <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-                <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-                <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}'>CH</option>
-                <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+                <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+                <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}'>CHA</option>
+                <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
               </select>
             </div>
             <div class='equipment_ranged_weapons_grid2'>
@@ -1213,9 +1259,9 @@
                 <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' selected='selected'>WFM</option>
                 <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
                 <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-                <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-                <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}'>CH</option>
-                <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+                <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+                <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}'>CHA</option>
+                <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
               </select>
             </div>
             <div class='equipment_ranged_weapons_grid2'>
@@ -1766,9 +1812,9 @@
       <h3>WFM</h3>
       <h3>INT</h3>
       <h3>PER</h3>
-      <h3>CR</h3>
-      <h3>CH</h3>
-      <h3>LD</h3>
+      <h3>COU</h3>
+      <h3>CHA</h3>
+      <h3>LDR</h3>
       <label class='text_centered bttn_top_padding'><input type='checkbox' name='attr_characteristic_spending_lock' class='hider select_button hidden' /><span class='select_text'>Apply</span></label>
     </div>
 
@@ -2063,9 +2109,9 @@
                   <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
                   <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
                   <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-                  <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-                  <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}'>CH</option>
-                  <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+                  <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+                  <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}'>CHA</option>
+                  <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
                 </select>
               </div>
               <div class='equipment_ranged_weapons_grid2'>
@@ -2136,9 +2182,9 @@
                   <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' selected='selected'>WFM</option>
                   <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
                   <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-                  <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-                  <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}'>CH</option>
-                  <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+                  <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+                  <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}'>CHA</option>
+                  <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
                 </select>
               </div>
               <div class='equipment_ranged_weapons_grid2'>
@@ -2342,7 +2388,7 @@
       <option value='2'>GM manager sheet</option>
     </select>
     <button class='clear infographic_buttons' type='roll' name='autodamage' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{avrdam= [[0+[[([[(?{Amount of hits|1}*?{Amount of D10s|0})d10]] + [[?{Amount of hits|1}*?{Base|0}]] - [[?{Amount of hits|1}*(?{Armor|0} - ?{Pierce|0})d1]])d1]]]]}}'>Auto-Damage</button>
-    <button class='clear infographic_buttons' type='roll' name='multiroll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{multiroll= [[ ?{How many rolls?|1}d100<[[?{Using|Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} |Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} |Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} |Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CR} + @{CR_advancement} + @{fatigue_mod} |Charisma, @{CH} + @{CH_advancement} + @{fatigue_mod}|Leadership, @{LD} + @{LD_advancement} + @{fatigue_mod} } + ?{Modifier|0} ]] ]] }}'>Multi-Roll</button>
+    <button class='clear infographic_buttons' type='roll' name='multiroll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{multiroll= [[ ?{How many rolls?|1}d100<[[?{Using|Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} |Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} |Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} |Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod} } + ?{Modifier|0} ]] ]] }}'>Multi-Roll</button>
     <button class='clear infographic_buttons' type='roll' name='scatter' value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{scatter-range= [[[[(abs(?{Degrees of Failiure|0})+floor(?{range from target|0}/100))*?{Target at|Normal range,1|Max range,2|Extreme range,4})]]d10]]}} {{scatter-direction=[[1d10]]d1}}">Scatter</button>
   </div>
 
@@ -2488,9 +2534,9 @@
           <button name='WFM' type='roll' class='clear full_width NPC_characteristics_roll'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Warfare Melee}} {{roll=[[@{settings_rounding}([[@{WFM} + @{WFM_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>WFM</button>
           <button name='INT' type='roll' class='clear full_width NPC_characteristics_roll'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Intelligence}} {{roll=[[@{settings_rounding}([[@{INT} + @{INT_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>INT</button>
           <button name='PER' type='roll' class='clear full_width NPC_characteristics_roll'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Perception}} {{roll=[[@{settings_rounding}([[@{PER} + @{PER_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>PER</button>
-          <button name='CR' type='roll' class='clear full_width NPC_characteristics_roll'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Courage}} {{roll=[[@{settings_rounding}([[@{CR} + @{CR_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>CR</button>
-          <button name='CH' type='roll' class='clear full_width NPC_characteristics_roll'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Charisma}} {{roll=[[@{settings_rounding}([[@{CH} + @{CH_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>CH</button>
-          <button name='LD' type='roll' class='clear full_width NPC_characteristics_roll'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Leadership}} {{roll=[[@{settings_rounding}([[@{LD} + @{LD_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>LD</button>
+          <button name='COU' type='roll' class='clear full_width NPC_characteristics_roll'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Courage}} {{roll=[[@{settings_rounding}([[@{COU} + @{COU_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>COU</button>
+          <button name='CHA' type='roll' class='clear full_width NPC_characteristics_roll'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Charisma}} {{roll=[[@{settings_rounding}([[@{CHA} + @{CHA_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>CHA</button>
+          <button name='LDR' type='roll' class='clear full_width NPC_characteristics_roll'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Leadership}} {{roll=[[@{settings_rounding}([[@{LDR} + @{LDR_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>LDR</button>
         </div>
         <div>
           <p class='bold_text'>&nbsp;</p>
@@ -2501,9 +2547,9 @@
           <input name='attr_WFM' type='text' value='0' class='NPC_characteristics_fields full_width' />
           <input name='attr_INT' type='text' value='0' class='NPC_characteristics_fields full_width' />
           <input name='attr_PER' type='text' value='0' class='NPC_characteristics_fields full_width' />
-          <input name='attr_CR' type='text' value='0' class='NPC_characteristics_fields full_width' />
-          <input name='attr_CH' type='text' value='0' class='NPC_characteristics_fields full_width' />
-          <input name='attr_LD' type='text' value='0' class='NPC_characteristics_fields full_width' />
+          <input name='attr_COU' type='text' value='0' class='NPC_characteristics_fields full_width' />
+          <input name='attr_CHA' type='text' value='0' class='NPC_characteristics_fields full_width' />
+          <input name='attr_LDR' type='text' value='0' class='NPC_characteristics_fields full_width' />
         </div>
         <div> </div>
         <div>
@@ -2573,9 +2619,9 @@
             <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
             <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
             <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-            <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-            <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}' selected='selected'>CH</option>
-            <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+            <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+            <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' selected='selected'>CHA</option>
+            <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
           </select>
           <input name='attr_skill_mod2' type='number' value='0' />
           <input name='attr_skill_mod3' type='checkbox' value='20+@{skill_mod4}' class='skills_item' />
@@ -2900,9 +2946,9 @@
                       <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
                       <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
                       <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-                      <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-                      <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}'>CH</option>
-                      <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+                      <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+                      <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}'>CHA</option>
+                      <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
                     </select>
                   </div>
                   <div class='equipment_ranged_weapons_grid2'>
@@ -2972,9 +3018,9 @@
                       <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' selected='selected'>WFM</option>
                       <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
                       <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-                      <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-                      <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}'>CH</option>
-                      <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+                      <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+                      <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}'>CHA</option>
+                      <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
                     </select>
                   </div>
                   <div class='equipment_ranged_weapons_grid2'>
@@ -3049,9 +3095,9 @@
                 <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
                 <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
                 <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-                <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-                <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}'>CH</option>
-                <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+                <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+                <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}'>CHA</option>
+                <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
               </select>
             </div>
             <div class='equipment_ranged_weapons_grid2'>
@@ -3121,9 +3167,9 @@
                 <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' selected='selected'>WFM</option>
                 <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
                 <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-                <option value='@{CR} + @{CR_advancement} + @{fatigue_mod}' >CR</option>
-                <option value='@{CH} + @{CH_advancement} + @{fatigue_mod}'>CH</option>
-                <option value='@{LD} + @{LD_advancement} + @{fatigue_mod}' >LD</option>
+                <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+                <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}'>CHA</option>
+                <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
               </select>
             </div>
             <div class='equipment_ranged_weapons_grid2'>
@@ -3224,7 +3270,7 @@
       <option value='2'>GM manager sheet</option>
     </select>
     <button class='clear infographic_buttons' type='roll' name='autodamage' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{avrdam= [[0+[[([[(?{Amount of hits|1}*?{Amount of D10s|0})d10]] + [[?{Amount of hits|1}*?{Base|0}]] - [[?{Amount of hits|1}*(?{Armor|0} - ?{Pierce|0})d1]])d1]]]]}}'>Auto-Damage</button>
-    <button class='clear infographic_buttons' type='roll' name='multiroll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{multiroll= [[ ?{How many rolls?|1}d100<[[?{Using|Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} |Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} |Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} |Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CR} + @{CR_advancement} + @{fatigue_mod} |Charisma, @{CH} + @{CH_advancement} + @{fatigue_mod}|Leadership, @{LD} + @{LD_advancement} + @{fatigue_mod} } + ?{Modifier|0} ]] ]] }}'>Multi-Roll</button>
+    <button class='clear infographic_buttons' type='roll' name='multiroll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{multiroll= [[ ?{How many rolls?|1}d100<[[?{Using|Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} |Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} |Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} |Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod} } + ?{Modifier|0} ]] ]] }}'>Multi-Roll</button>
     <button class='clear infographic_buttons' type='roll' name='scatter' value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{scatter-range= [[[[(abs(?{Degrees of Failiure|0})+floor(?{range from target|0}/100))*?{Target at|Normal range,1|Max range,2|Extreme range,4})]]?{Scatter Type|Explosives and thrown weapons,d5|Shots,d10}]]}} {{scatter-direction=[[1d10]]d1}}">Scatter</button>
   </div>
 
@@ -3244,7 +3290,7 @@
         <button name='WFR' type='roll' class='clear full_width characteristics_button'value='@{to-gm}&{template:mythic} {{character= @{GM_NPC_name}}} {{roll-name=Warfare ranged}} {{roll=[[@{settings_rounding}([[@{GM_NPC_WFR}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>WFR</button>
         <button name='INT' type='roll' class='clear full_width characteristics_button'value='@{to-gm}&{template:mythic} {{character= @{GM_NPC_name}}} {{roll-name=INT}} {{roll=[[@{settings_rounding}([[@{GM_NPC_INT}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>INT</button>
         <button name='PER' type='roll' class='clear full_width characteristics_button'value='@{to-gm}&{template:mythic} {{character= @{GM_NPC_name}}} {{roll-name=PER}} {{roll=[[@{settings_rounding}([[@{GM_NPC_PER}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>PER</button>
-        <button name='CRG' type='roll' class='clear full_width characteristics_button'value='@{to-gm}&{template:mythic} {{character= @{GM_NPC_name}}} {{roll-name=CRG}} {{roll=[[@{settings_rounding}([[@{GM_NPC_CRG}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>CRG</button>
+        <button name='COU' type='roll' class='clear full_width characteristics_button'value='@{to-gm}&{template:mythic} {{character= @{GM_NPC_name}}} {{roll-name=COU}} {{roll=[[@{settings_rounding}([[@{GM_NPC_COU}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>COU</button>
         <button name='CHA' type='roll' class='clear full_width characteristics_button'value='@{to-gm}&{template:mythic} {{character= @{GM_NPC_name}}} {{roll-name=CHA}} {{roll=[[@{settings_rounding}([[@{GM_NPC_CHA}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>CHA</button>
         <button name='LDR' type='roll' class='clear full_width characteristics_button'value='@{to-gm}&{template:mythic} {{character= @{GM_NPC_name}}} {{roll-name=LDR}} {{roll=[[@{settings_rounding}([[@{GM_NPC_LDR}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>LDR</button>
         <p></p>
@@ -3267,7 +3313,7 @@
         <input class='GM_infographic_element' type='number' name='attr_GM_NPC_WFR' value="0"/>
         <input class='GM_infographic_element' type='number' name='attr_GM_NPC_INT' value="0"/>
         <input class='GM_infographic_element' type='number' name='attr_GM_NPC_PER' value="0"/>
-        <input class='GM_infographic_element' type='number' name='attr_GM_NPC_CRG' value="0"/>
+        <input class='GM_infographic_element' type='number' name='attr_GM_NPC_COU' value="0"/>
         <input class='GM_infographic_element' type='number' name='attr_GM_NPC_CHA' value="0"/>
         <input class='GM_infographic_element' type='number' name='attr_GM_NPC_LDR' value="0"/>
         <p></p>
@@ -3283,7 +3329,7 @@
   </div>
 
 
-
+</div>
 
 
 
@@ -4266,11 +4312,105 @@
 
 
 
+
+/*
+<option value='@{STR} + @{STR_advancement} + @{fatigue_mod}' >STR</option>
+<option value='@{TOU} + @{TOU_advancement} + @{fatigue_mod}' >TOU</option>
+<option value='@{AGI} + @{AGI_advancement} + @{fatigue_mod}' >AGI</option>
+<option value='@{WFR} + @{WFR_advancement} + @{fatigue_mod}' selected='selected'>WFR</option>
+<option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
+<option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' >INT</option>
+<option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
+<option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
+<option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}'>CHA</option>
+<option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
+
+
+
+"COMP_rof": "Semi 3",
+"Category": "Ranged weapons",
+"COMP_type": "Rocket Launcher",
+"COMP_field": "Ran_Wep",
+"COMP_price": "88",
+"COMP_range": "20m-300m",
+"COMP_hitmod": "0",
+"COMP_pierce": "9",
+"COMP_reload": "13 half actions",
+"COMP_weight": "20.9",
+"COMP_atribute": "WFR",
+"COMP_magazine": "5",
+"COMP_damage_base": "8",
+"COMP_damage_roll": "3D10",
+"COMP_description": "If the weapon impacts or detonates under a 20 Meter Range, the Fuel Rod’s RadEXP shot will not explode, and will only gain Blast (1). If impacting further than 20 Meters, the shot gains Blast (5), Kill (2). Shots will detonate once they reach the 300 Meters.",
+"COMP_special_rules": "[TH] [HW] Blast (5), Kill (2) Special Rule.",
+"blobs": {}
+*/
+
+
+
+
+
+
+
     // ___________________________________________________________________________
     // __________________________Compendium sheet worker__________________________
     // ___________________________________________________________________________
-    on('clicked:testbutton', () => {
-      getAttrs([''], function(values) {
+
+    on('change:comp_data', () => {
+      getAttrs([
+      "comp_name",
+      "comp_data"
+
+
+      ], values => {
+        const {comp_name, comp_data} = values;
+        const comp_data_Parsed = JSON.parse(comp_data)
+        if (comp_data_Parsed.COMP_atribute == "STR") {comp_data_Parsed.COMP_atribute = "@{STR} + @{STR_advancement} + @{fatigue_mod}"}
+        if (comp_data_Parsed.COMP_atribute == "TOU") {comp_data_Parsed.COMP_atribute = "@{TOU} + @{TOU_advancement} + @{fatigue_mod}"}
+        if (comp_data_Parsed.COMP_atribute == "AGI") {comp_data_Parsed.COMP_atribute = "@{AGI} + @{AGI_advancement} + @{fatigue_mod}"}
+        if (comp_data_Parsed.COMP_atribute == "WFR") {comp_data_Parsed.COMP_atribute = "@{WFR} + @{WFR_advancement} + @{fatigue_mod}"}
+        if (comp_data_Parsed.COMP_atribute == "WFM") {comp_data_Parsed.COMP_atribute = "@{WFM} + @{WFM_advancement} + @{fatigue_mod}"}
+        if (comp_data_Parsed.COMP_atribute == "INT") {comp_data_Parsed.COMP_atribute = "@{INT} + @{INT_advancement} + @{fatigue_mod}"}
+        if (comp_data_Parsed.COMP_atribute == "PER") {comp_data_Parsed.COMP_atribute = "@{PER} + @{PER_advancement} + @{fatigue_mod}"}
+        if (comp_data_Parsed.COMP_atribute == "COU") {comp_data_Parsed.COMP_atribute = "@{COU} + @{COU_advancement} + @{fatigue_mod}"}
+        if (comp_data_Parsed.COMP_atribute == "CHA") {comp_data_Parsed.COMP_atribute = "@{CHA} + @{CHA_advancement} + @{fatigue_mod}"}
+        if (comp_data_Parsed.COMP_atribute == "LDR") {comp_data_Parsed.COMP_atribute = "@{LDR} + @{LDR_advancement} + @{fatigue_mod}"}
+
+
+
+    // _________________Compendium Ranged weapon sheet worker___________________
+        if (comp_data_Parsed.COMP_field == "Ran_Wep") {
+          const UUID = generateRowID();
+          const updateAttrs = {};
+          updateAttrs["repeating_rangedweapons_" + UUID + "_weapon_name"] = comp_name
+          updateAttrs["repeating_rangedweapons_" + UUID + "_weapon_type"] = comp_data_Parsed.COMP_type
+          updateAttrs["repeating_rangedweapons_" + UUID + "_Weapon_attr"] = comp_data_Parsed.COMP_atribute
+          updateAttrs["repeating_rangedweapons_" + UUID + "_weapon_range"] = comp_data_Parsed.COMP_range
+          updateAttrs["repeating_rangedweapons_" + UUID + "_weapon_dam-roll"] = comp_data_Parsed.COMP_damage_roll
+          updateAttrs["repeating_rangedweapons_" + UUID + "_weapon_base"] = comp_data_Parsed.COMP_damage_base
+          updateAttrs["repeating_rangedweapons_" + UUID + "_weapon_pierce"] = comp_data_Parsed.COMP_pierce
+          updateAttrs["repeating_rangedweapons_" + UUID + "_weapon_hitmod"] = comp_data_Parsed.COMP_hitmod
+          updateAttrs["repeating_rangedweapons_" + UUID + "_weapon_mag"] = comp_data_Parsed.COMP_magazine
+          updateAttrs["repeating_rangedweapons_" + UUID + "_weapon_mag_max"] = comp_data_Parsed.COMP_magazine
+          updateAttrs["repeating_rangedweapons_" + UUID + "_weapon_rof"] = comp_data_Parsed.COMP_rof
+          updateAttrs["repeating_rangedweapons_" + UUID + "_weapon_reload"] = comp_data_Parsed.COMP_reload
+          updateAttrs["repeating_rangedweapons_" + UUID + "_weapon_special_rules"] = comp_data_Parsed.COMP_special_rules
+          updateAttrs["repeating_rangedweapons_" + UUID + "_description"] = comp_data_Parsed.COMP_description
+          setAttrs(updateAttrs);
+        };
+
+
+      });
+    });
+
+
+
+
+
+
+
+
+/*
         var newrowid = generateRowID();
         var newrowattrs = {};
         var y = 0;
@@ -4300,7 +4440,7 @@
         };
       });
     });
-
+*/
 
 
 
