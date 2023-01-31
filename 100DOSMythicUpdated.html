@@ -31,12 +31,9 @@
 <input name="attr_comp_variant" accept="COMP_variant" type="text" />
 <hr>
 <input name="attr_comp_category" accept="Category" type="text" />
-<input name="attr_comp_name" accept="name" type="text" />
+<input name="attr_comp_Name" accept="Name" type="text" />
 <input name="attr_comp_data" accept="data" type="text" />
 <hr>
-<input name="attr_test1" type="text" />
-<input name="attr_test2" type="text" />
-<input name="attr_test3" type="text" />
 <hr>
 
 
@@ -278,14 +275,14 @@
         <input name='attr_full_move' type='text' class='movementgs3 mythicgs_width' />
         <input name='attr_charge_move' type='text' class='movementgs4 mythicgs_width' />
         <input name='attr_run_move' type='text' class='movementgs5 mythicgs_width' />
-        <input name='attr_sprint_move' type='text' class='movementgs6 mythicgs_width' />
+        <input name='attr_blur_move' type='text' class='movementgs6 mythicgs_width' />
         <input name='attr_jump_move' type='text' class='movementgs7 mythicgs_width' />
         <input name='attr_leap_move' type='text' class='movementgs8 mythicgs_width' />
         <p class='movementgs9 '>Half</p>
         <p class='movementgs10 '>Full</p>
         <p class='movementgs11 '>Charge</p>
         <p class='movementgs12 '>Run</p>
-        <p class='movementgs13 '>Sprint</p>
+        <p class='movementgs13 '>Blur</p>
         <p class='movementgs14 '>Jump</p>
         <p class='movementgs15 '>Leap</p>
       </div>
@@ -1826,9 +1823,9 @@
       <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_base' type='number' value='0' />
       <input class='characteristic_spending_number' name='attr_characteristic_spending_int_base' type='number' value='0' />
       <input class='characteristic_spending_number' name='attr_characteristic_spending_per_base' type='number' value='0' />
-      <input class='characteristic_spending_number' name='attr_characteristic_spending_cr_base'  type='number' value='0' />
-      <input class='characteristic_spending_number' name='attr_characteristic_spending_ch_base'  type='number' value='0' />
-      <input class='characteristic_spending_number' name='attr_characteristic_spending_ld_base'  type='number' value='0' />
+      <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_base'  type='number' value='0' />
+      <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_base'  type='number' value='0' />
+      <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_base'  type='number' value='0' />
       <h3 class="characteristic_spending_text">Base</h3>
     </div>
 
@@ -1840,9 +1837,9 @@
       <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_spending' type='number' value='0' />
       <input class='characteristic_spending_number' name='attr_characteristic_spending_int_spending' type='number' value='0' />
       <input class='characteristic_spending_number' name='attr_characteristic_spending_per_spending' type='number' value='0' />
-      <input class='characteristic_spending_number' name='attr_characteristic_spending_cr_spending'  type='number' value='0' />
-      <input class='characteristic_spending_number' name='attr_characteristic_spending_ch_spending'  type='number' value='0' />
-      <input class='characteristic_spending_number' name='attr_characteristic_spending_ld_spending'  type='number' value='0' />
+      <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_spending'  type='number' value='0' />
+      <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_spending'  type='number' value='0' />
+      <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_spending'  type='number' value='0' />
       <h3 class="characteristic_spending_text">Spent</h3>
     </div>
 
@@ -1854,9 +1851,9 @@
       <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_extra' type='number' value='0' />
       <input class='characteristic_spending_number' name='attr_characteristic_spending_int_extra' type='number' value='0' />
       <input class='characteristic_spending_number' name='attr_characteristic_spending_per_extra' type='number' value='0' />
-      <input class='characteristic_spending_number' name='attr_characteristic_spending_cr_extra'  type='number' value='0' />
-      <input class='characteristic_spending_number' name='attr_characteristic_spending_ch_extra'  type='number' value='0' />
-      <input class='characteristic_spending_number' name='attr_characteristic_spending_ld_extra'  type='number' value='0' />
+      <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_extra'  type='number' value='0' />
+      <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_extra'  type='number' value='0' />
+      <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_extra'  type='number' value='0' />
       <h3 class="characteristic_spending_text">Extra</h3>
     </div>
 
@@ -1868,9 +1865,9 @@
       <input class='characteristic_spending_number_total' name='attr_characteristic_spending_wfm_total' value='@{characteristic_spending_wfm_base} + @{characteristic_spending_wfm_spending} + @{characteristic_spending_wfm_extra}' disabled="true" type='number'/>
       <input class='characteristic_spending_number_total' name='attr_characteristic_spending_int_total' value='@{characteristic_spending_int_base} + @{characteristic_spending_int_spending} + @{characteristic_spending_int_extra}' disabled="true" type='number'/>
       <input class='characteristic_spending_number_total' name='attr_characteristic_spending_per_total' value='@{characteristic_spending_per_base} + @{characteristic_spending_per_spending} + @{characteristic_spending_per_extra}' disabled="true" type='number'/>
-      <input class='characteristic_spending_number_total' name='attr_characteristic_spending_cr_total'  value='@{characteristic_spending_cr_base}  + @{characteristic_spending_cr_spending}  + @{characteristic_spending_cr_extra}' disabled="true" type='number'/>
-      <input class='characteristic_spending_number_total' name='attr_characteristic_spending_ch_total'  value='@{characteristic_spending_ch_base}  + @{characteristic_spending_ch_spending}  + @{characteristic_spending_ch_extra}' disabled="true" type='number'/>
-      <input class='characteristic_spending_number_total' name='attr_characteristic_spending_ld_total'  value='@{characteristic_spending_ld_base}  + @{characteristic_spending_ld_spending}  + @{characteristic_spending_ld_extra}' disabled="true" type='number'/>
+      <input class='characteristic_spending_number_total' name='attr_characteristic_spending_cou_total'  value='@{characteristic_spending_cou_base}  + @{characteristic_spending_cou_spending}  + @{characteristic_spending_cou_extra}' disabled="true" type='number'/>
+      <input class='characteristic_spending_number_total' name='attr_characteristic_spending_cha_total'  value='@{characteristic_spending_cha_base}  + @{characteristic_spending_cha_spending}  + @{characteristic_spending_cha_extra}' disabled="true" type='number'/>
+      <input class='characteristic_spending_number_total' name='attr_characteristic_spending_ldr_total'  value='@{characteristic_spending_ldr_base}  + @{characteristic_spending_ldr_spending}  + @{characteristic_spending_ldr_extra}' disabled="true" type='number'/>
       <h3 class="characteristic_spending_text_total">Total</h3>
     </div>
 
@@ -2567,7 +2564,7 @@
           <h1 class='NPC_characteristics_fields'>Full</h1>
           <h1 class='NPC_characteristics_fields'>Charge</h1>
           <h1 class='NPC_characteristics_fields'>Run</h1>
-          <h1 class='NPC_characteristics_fields'>Sprint</h1>
+          <h1 class='NPC_characteristics_fields'>Blur</h1>
           <h1 class='NPC_characteristics_fields'>Jump</h1>
           <h1 class='NPC_characteristics_fields'>Leap</h1>
           <h1 class='NPC_characteristics_fields'>Carry</h1>
@@ -2580,7 +2577,7 @@
           <input name='attr_full_move' type='text' class='NPC_characteristics_fields full_width' />
           <input name='attr_charge_move' type='text' class='NPC_characteristics_fields full_width' />
           <input name='attr_run_move' type='text' class='NPC_characteristics_fields full_width' />
-          <input name='attr_sprint_move' type='text' class='NPC_characteristics_fields full_width' />
+          <input name='attr_blur_move' type='text' class='NPC_characteristics_fields full_width' />
           <input name='attr_jump_move' type='text' class='NPC_characteristics_fields full_width' />
           <input name='attr_leap_move' type='text' class='NPC_characteristics_fields full_width' />
           <input name='attr_carry' type='text' class='NPC_characteristics_fields full_width' />
@@ -3401,7 +3398,7 @@
             full_move: (move_mod * 2),
             charge_move: (move_mod * 3),
             run_move: (move_mod * 6),
-            sprint_move: (move_mod * 8),
+            blur_move: (move_mod * 8),
             jump_move:(str_mod / 4),
             leap_move:(agi_mod / 2),
             carry: (weight_mod),
@@ -3487,7 +3484,7 @@
               full_move: (1),
               charge_move: (2),
               run_move: (3),
-              sprint_move: (4)
+              blur_move: (4)
             });
           }
 
@@ -3498,7 +3495,7 @@
               full_move: (1),
               charge_move: (4),
               run_move: (6),
-              sprint_move: (4)
+              blur_move: (4)
             });
           }
         }
@@ -4239,9 +4236,9 @@
       'wfm',
       'int',
       'per',
-      'cr',
-      'ch',
-      'ld',
+      'cou',
+      'cha',
+      'ldr',
       'characteristic_spending_str_base', 'characteristic_spending_str_spending', 'characteristic_spending_str_extra',
       'characteristic_spending_tou_base', 'characteristic_spending_tou_spending', 'characteristic_spending_tou_extra',
       'characteristic_spending_agi_base', 'characteristic_spending_agi_spending', 'characteristic_spending_agi_extra',
@@ -4249,9 +4246,9 @@
       'characteristic_spending_wfm_base', 'characteristic_spending_wfm_spending', 'characteristic_spending_wfm_extra',
       'characteristic_spending_int_base', 'characteristic_spending_int_spending', 'characteristic_spending_int_extra',
       'characteristic_spending_per_base', 'characteristic_spending_per_spending', 'characteristic_spending_per_extra',
-      'characteristic_spending_cr_base', 'characteristic_spending_cr_spending', 'characteristic_spending_cr_extra',
-      'characteristic_spending_ch_base', 'characteristic_spending_ch_spending', 'characteristic_spending_ch_extra',
-      'characteristic_spending_ld_base', 'characteristic_spending_ld_spending', 'characteristic_spending_ld_extra',
+      'characteristic_spending_cou_base', 'characteristic_spending_cou_spending', 'characteristic_spending_cou_extra',
+      'characteristic_spending_cha_base', 'characteristic_spending_cha_spending', 'characteristic_spending_cha_extra',
+      'characteristic_spending_ldr_base', 'characteristic_spending_ldr_spending', 'characteristic_spending_ldr_extra',
       ], function(values) {
         var str_base     = parseInt(values['characteristic_spending_str_base'], 10) || 0;
         var str_spending = parseInt(values['characteristic_spending_str_spending'], 10) || 0;
@@ -4281,17 +4278,17 @@
         var per_spending = parseInt(values['characteristic_spending_per_spending'], 10) || 0;
         var per_extra    = parseInt(values['characteristic_spending_per_extra'], 10) || 0;
 
-        var cr_base     = parseInt(values['characteristic_spending_cr_base'], 10) || 0;
-        var cr_spending = parseInt(values['characteristic_spending_cr_spending'], 10) || 0;
-        var cr_extra    = parseInt(values['characteristic_spending_cr_extra'], 10) || 0;
+        var cou_base     = parseInt(values['characteristic_spending_cou_base'], 10) || 0;
+        var cou_spending = parseInt(values['characteristic_spending_cou_spending'], 10) || 0;
+        var cou_extra    = parseInt(values['characteristic_spending_cou_extra'], 10) || 0;
 
-        var ch_base     = parseInt(values['characteristic_spending_ch_base'], 10) || 0;
-        var ch_spending = parseInt(values['characteristic_spending_ch_spending'], 10) || 0;
-        var ch_extra    = parseInt(values['characteristic_spending_ch_extra'], 10) || 0;
+        var cha_base     = parseInt(values['characteristic_spending_cha_base'], 10) || 0;
+        var cha_spending = parseInt(values['characteristic_spending_cha_spending'], 10) || 0;
+        var cha_extra    = parseInt(values['characteristic_spending_cha_extra'], 10) || 0;
 
-        var ld_base     = parseInt(values['characteristic_spending_ld_base'], 10) || 0;
-        var ld_spending = parseInt(values['characteristic_spending_ld_spending'], 10) || 0;
-        var ld_extra    = parseInt(values['characteristic_spending_ld_extra'], 10) || 0;
+        var ldr_base     = parseInt(values['characteristic_spending_ldr_base'], 10) || 0;
+        var ldr_spending = parseInt(values['characteristic_spending_ldr_spending'], 10) || 0;
+        var ldr_extra    = parseInt(values['characteristic_spending_ldr_extra'], 10) || 0;
 
         setAttrs({
           str: str_base + str_spending + str_extra,
@@ -4301,9 +4298,9 @@
           wfm: wfm_base + wfm_spending + wfm_extra,
           int: int_base + int_spending + int_extra,
           per: per_base + per_spending + per_extra,
-          cr: cr_base + cr_spending + cr_extra,
-          ch: ch_base + ch_spending + ch_extra,
-          ld: ld_base + ld_spending + ld_extra,
+          cou: cou_base + cou_spending + cou_extra,
+          cha: cha_base + cha_spending + cha_extra,
+          ldr: ldr_base + ldr_spending + ldr_extra,
           characteristic_spending_lock: 0
         });
       });

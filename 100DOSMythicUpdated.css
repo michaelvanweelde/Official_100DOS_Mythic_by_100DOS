@@ -1143,19 +1143,27 @@ ______________________________ start of rolltemplate ___________________________
 	display: inline-block;
 	min-width: 1.5em;
 	text-align: center;
-	border: 1px solid white!important;
+	border: 1px solid white;
 	border-radius: 3px 3px 3px 3px;
-	background: #394C6A  !important
+	background: #394C6A
 }
 
 .sheet-rolltemplate-mythic .inlinerollresult.fullcrit {
-	border: 3px solid #B31515!important;
+	border: 3px solid #B31515;
 }
 
 .sheet-rolltemplate-mythic .inlinerollresult.fullfail {
-	border: 3px solid #3FB315!important;
+	border: 3px solid #3FB315;
 }
 
 .sheet-rolltemplate-mythic .inlinerollresult.importantroll {
-	border: 3px solid #4A57ED!important;
+	border: 3px solid #4A57ED;
+}
+
+.sheet-rolltemplate-mythic .sheet-mythic_crit .inlinerollresult.fullcrit {
+	border: 3px solid #3FB315;
+}
+
+.sheet-rolltemplate-mythic .sheet-mythic_crit .inlinerollresult.fullfail {
+	border: 3px solid #B31515;
 }
