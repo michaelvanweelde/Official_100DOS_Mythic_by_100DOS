@@ -161,14 +161,12 @@ the appropriate element is displayed on a 4 all elements are hidden */
 
 .sheet-box {
 	background: #4d4d4d;
-	border-color: black;
-	border-style: solid;
-	border-width: 1px;
+	border-top: 2px black solid;
 	color: white;
 }
 
 .sheet-table {
-	background: #506b95;
+	background: #4a648c;
 	color: white;
 	font-family: Saira Semi Condensed;
 }
@@ -440,7 +438,7 @@ ______________________________ start of minimisable infographic ________________
 .sheet-infographic_toggles {
 	display: grid;
 	grid-column-gap: 10px;
-	grid-template-columns: 52px 80px 90px 113px 86px 66px auto;
+	grid-template-columns: 52px 80px 90px 113px 86px 66px 88px auto;
 }
 
 .sheet-infographic_grid {
@@ -455,10 +453,10 @@ ______________________________ start of minimisable infographic ________________
 .sheet-infographic_g4 { grid-area: mi4; color: white; justify-self: right; margin-top: 3px; margin-right: 3px; }
 .sheet-infographic_g5 { grid-area: mi5; border-bottom-right-radius: 9px; }
 .sheet-infographic_field2x3 {
-	border: 1px solid #506b95;
-	border-bottom: 2px solid #506b95;
+	border: 1px solid #4a648c;
+	border-bottom: 2px solid #4a648c;
 	border-radius: 10px;
-	background: #506b95;
+	background: #4a648c;
 	display: grid;
 	grid-template-columns: 50px 46px;
 	grid-template-rows: 25px 25px 25px;
@@ -473,10 +471,10 @@ ______________________________ start of minimisable infographic ________________
 .sheet-infographic_g8 { grid-area: mi8; color: white; font-family: Saira Semi Condensed; justify-self: right; margin-top: 3px; margin-right: 3px; }
 .sheet-infographic_g9 { grid-area: mi9; }
 .sheet-infographic_field4x3 {
-	border: 1px solid #506b95;
-	border-bottom: 2px solid #506b95;
+	border: 1px solid #4a648c;
+	border-bottom: 2px solid #4a648c;
 	border-radius: 10px;
-	background: #506b95;
+	background: #4a648c;
 	display: grid;
 	grid-template-columns: 50px 50px 50px 50px;
 	grid-template-rows: 25px 25px 25px;
@@ -572,10 +570,10 @@ ______________________________ start of equipment tab __________________________
 	'e3 e3 e3';
 }
 
-.sheet-equipment_ranged_weapons { grid-area: e1; background:#475f85; border-radius: 10px; padding: 2px; z-index: 1;}
-.sheet-equipment_melee_weapons { grid-area: e2; background:#475f85; border-radius: 10px; padding: 2px; }
+.sheet-equipment_ranged_weapons { grid-area: e1; background:#4a648c; border-radius: 10px; padding: 2px; z-index: 1;}
+.sheet-equipment_melee_weapons { grid-area: e2; background:#4a648c; border-radius: 10px; padding: 2px; }
 .sheet-equipment_numerics { grid-area: e3; margin-top: 10px; }
-.sheet-equipment_ranged_weapons_rep { background:#475f85; border:1px solid white; border-radius: 10px; padding: 2px; }
+.sheet-equipment_ranged_weapons_rep { background:#4a648c; border:1px solid white; border-radius: 10px; padding: 2px; }
 
 .sheet-equipment_ranged_weapons_gs1 { grid-area: rw1;		color: white; font-size: 12px; padding: 0px 2px }
 .sheet-equipment_ranged_weapons_gs2 { grid-area: rw2;		color: white; font-size: 12px; border: none; border-bottom: 1px dotted white; }
@@ -698,7 +696,7 @@ ______________________________ start of equipment tab __________________________
 
 .sheet-equipment_header {
 	background: #394C6A;
-	border: 3px solid #475f85;
+	border: 3px solid #4a648c;
 	border-bottom: none;
 	border-radius: 10px 10px 0px 0px;
 	font-family: Orbitron;
@@ -713,9 +711,9 @@ ______________________________ start of equipment tab __________________________
 }
 
 .sheet-equipment_armor_input { width: 100%; height: 50px; }
-.sheet-equipment_armor_gs1 { background: #475f85; padding: 2px; }
-.sheet-equipment_armor_gs2 { background: #475f85; padding: 2px; }
-.sheet-equipment_armor_gs3 { background: #475f85; padding: 2px; }
+.sheet-equipment_armor_gs1 { background: #4a648c; padding: 2px; }
+.sheet-equipment_armor_gs2 { background: #4a648c; padding: 2px; }
+.sheet-equipment_armor_gs3 { background: #4a648c; padding: 2px; }
 .sheet-equipment_armor_grid {
 	width: 100%;
 	display: grid;
@@ -737,7 +735,7 @@ ______________________________ start of medical tab ____________________________
 
 .sheet-medicalHOV{
   border-radius: 9px;
-	border: 3px solid #475f85;
+	border: 3px solid #4a648c;
 }
 .sheet-medicalHOV:not(:hover) + div{display: none;}
 
@@ -745,7 +743,7 @@ ______________________________ start of medical tab ____________________________
 .sheet-medicalgF {
 	grid-area: mF;
 	border-radius: 10px;
-	background: #475f85;
+	background: #4a648c;
 	display: grid;
 	column-gap: 5px;
   grid-template-columns: auto;
@@ -779,7 +777,7 @@ ______________________________ start of medical tab ____________________________
 }
 .sheet-medical_h2_background,
 .sheet-medical_background {
-	background: #475f85;
+	background: #4a648c;
 	margin-bottom: 10px;
 	border-radius: 10px;
 	padding: 2px;
@@ -812,16 +810,16 @@ ______________________________ start of advancements tab _______________________
 
 .sheet-characteristic_spending_number{width: 100%!important; text-align: center; text-indent: 18px;}
 .sheet-characteristic_spending_number_total{width: 100%!important; text-align: center; text-indent: 18px; background-color: black !important;}
-.sheet-characteristic_spending_text{border-right: 3px solid #475f85}
-.sheet-characteristic_spending_text_total{border-right: 3px solid #475f85; border-bottom: 3px solid #475f85; border-bottom-right-radius: 10px}
+.sheet-characteristic_spending_text{border-right: 3px solid #4a648c}
+.sheet-characteristic_spending_text_total{border-right: 3px solid #4a648c; border-bottom: 3px solid #4a648c; border-bottom-right-radius: 10px}
 
 .sheet-characteristic_spending_window{
 	display: grid;
 	grid-template-columns: 9% 9% 9% 9% 9% 9% 9% 9% 9% 9% auto;
 }
 
-.sheet-faction_training { grid-area: t1; padding: 2px; background: #475f85; }
-.sheet-weapon_training {  grid-area: t2; padding: 2px; background: #475f85; }
+.sheet-faction_training { grid-area: t1; padding: 2px; background: #4a648c; }
+.sheet-weapon_training {  grid-area: t2; padding: 2px; background: #4a648c; }
 .sheet-training {
 	margin: 10px 0px 10px 1.5%;
 	display: grid;
@@ -857,9 +855,9 @@ ______________________________ start of vehicles tab ___________________________
 
 
 
-.sheet-vehicles_grid1 { margin-right: 10px; background: #506b95; border-top: 2px solid #506b95; border-left: 2px solid #506b95; border-right: 2px solid #506b95; border-top-left-radius: 10px; border-top-right-radius: 10px; color: white; font-family: Saira Semi Condensed; }
-.sheet-vehicles_grid2 { margin-right: 10px; background: #506b95; border-left: 2px solid #506b95; border-right: 2px solid #506b95; color: white; font-family: Saira Semi Condensed; }
-.sheet-vehicles_grid3 { margin-right: 10px; background: #506b95; border-left: 2px solid #506b95; border-right: 2px solid #506b95; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; color: white; font-family: Saira Semi Condensed; }
+.sheet-vehicles_grid1 { margin-right: 10px; background: #4a648c; border-top: 2px solid #4a648c; border-left: 2px solid #4a648c; border-right: 2px solid #4a648c; border-top-left-radius: 10px; border-top-right-radius: 10px; color: white; font-family: Saira Semi Condensed; }
+.sheet-vehicles_grid2 { margin-right: 10px; background: #4a648c; border-left: 2px solid #4a648c; border-right: 2px solid #4a648c; color: white; font-family: Saira Semi Condensed; }
+.sheet-vehicles_grid3 { margin-right: 10px; background: #4a648c; border-left: 2px solid #4a648c; border-right: 2px solid #4a648c; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; color: white; font-family: Saira Semi Condensed; }
 .sheet-vehicle_weapons { grid-area: vgw; }
 .sheet-vehicles_divider {
 	display: grid;
@@ -1002,7 +1000,30 @@ ______________________________ start of vehicles tab ___________________________
 
 
 /* ______________________________ end of vehicles tab ______________________________
-______________________________ start of NPC sheet overrides ___________________________________________________________ */
+______________________________ start of settings tab _______________________________ */
+
+.sheet-settings_grid{
+	display: grid;
+	grid-template-columns: auto auto;
+	column-gap: 5px;
+}
+
+.sheet-bordered_container{
+	border: 2px solid #4a648c;
+	border-radius: 10px;
+	background: #4a648c;
+}
+
+.sheet-tokenmoddisplay{	height: 82px !important;}
+.sheet-tokenmodbuttons{width: 60px !important;}
+
+.sheet-tokenmodbuttons_grid{
+	display: grid;
+	grid-template-columns: 55px 62px 68px 51px auto;
+}
+
+/* ______________________________ end of settings tab ______________________________
+______________________________ start of NPC sheet overrides ________________________ */
 
 .sheet-NPC_stats_fields { height: 26px !important; font-size: 16px; color: white; width: auto;}
 .sheet-NPC_stats_grid{
@@ -1031,7 +1052,7 @@ ______________________________ start of NPC sheet overrides ____________________
 }
 
 .sheet-NPC_medical {
-	background: #475f85;
+	background: #4a648c;
 	margin-right: 10px;
 	padding: 2px 2px 2px 2px;
 	color: white;
@@ -1094,7 +1115,7 @@ ______________________________ start of rolltemplate ___________________________
 }
 
 .sheet-rolltemplate-mythic .sheet-template-content {
-	background: #506b95;
+	background: #4a648c;
 	background-image: url(https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Assets/Mythic_rolltemplate_background.png?raw=true);
 	border-radius: 0px 0px 10px 10px;
 	border-left: 2px solid grey;

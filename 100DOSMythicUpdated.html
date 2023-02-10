@@ -361,6 +361,7 @@
           <button class='clear infographic_buttons' type='roll' name='autodamage' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{avrdam= [[0+[[([[(?{Amount of hits|1}*?{Amount of D10s|0})d10]] + [[?{Amount of hits|1}*?{Base|0}]] - [[?{Amount of hits|1}*(?{Armor|0} - ?{Pierce|0})d1]])d1]]]]}}'>Auto-Damage</button>
           <button class='clear infographic_buttons' type='roll' name='multiroll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{multiroll= [[ ?{How many rolls?|1}d100<[[?{Using|Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} |Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} |Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} |Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod} } + ?{Modifier|0} ]] ]] }}'>Multi-Roll</button>
           <button class='clear infographic_buttons' type='roll' name='scatter' value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{scatter-range= [[[[(abs(?{Degrees of Failiure|0})+floor(?{range from target|0}/100))*?{Target at|Normal range,1|Max range,2|Extreme range,4})]]d10]]}} {{scatter-direction=[[1d10]]d1}}">Scatter</button>
+          <button class='clear infographic_buttons' type='roll' name='tokenmod' value='!token-mod --set tooltip|"@{Tokenmod_text} @{Tokenmod_armor} @{Tokenmod_shields} @{Tokenmod_wounds} @{Tokenmod_camo} @{Tokenmod_medical}" @{Tokenmod_custom}'>Tokenmod</button>
         </div>
 
         <div class='infographic_grid'>
@@ -2206,90 +2207,116 @@
     <!-- ______________________________ start of tab Settings ______________________________ -->
     <input name='attr_sheetTab' type='checkbox'  value='settings' class='hider hidden' />
     <div class=' box radius_border_box'>
-      <!-- Settings -->
-      <h2>Settings</h2>
-      <h3>Species Overrides</h3>
-      <select name='attr_settings_race' class='full_width edge_padding'>
-        <option selected='selected' value='0'>Racial Features: N/A </option>
-        <option value='1'>Spartan 2 / Spartan 3 / Spartan 4 </option>
-        <option value='2'>Sangheili / Elite </option>
-        <option value='3'>Jiralhanae / Brutes </option>
-        <option value='4'>Kig-yar Ruutian / Trilogy Jackals </option>
-        <option value='5'>Kig-yar T'vaoan / Reach Jackals / Skirmishers </option>
-        <option value='6'>Kig-yar Ibie'shan / 4/5 Jackals </option>
-        <option value='7'>Prelate </option>
-        <option value='8'>Mgalekgolo / Hunters </option>
-        <option value='9'>Promethean Knight </option>
-        <option value='10'>Huragok / Engineer</option>
-        <option value='11'>Dont Auto Calculate Speed And Weight</option>
-      </select>
-      <br>
 
-      <h3>Initiative Overrides</h3>
-      <select name='attr_initmod0' class='full_width edge_padding'>
-        <option selected='selected' value='[[floor'>No tiebreaker</option>
-        <option value='[['>Decimal tiebreaker</option>
-        <option value='tiebreaker [[@{AGI_total}]] roll [[floor'>AGI tiebreaker</option>
-      </select>
-      <br>
+      <div class="settings_grid">
 
-      <h3>Auto Roll Hit Locations</h3>
-      <select name='attr_settings_hitroll' class='full_width edge_padding'>
-        <option value='{{loc=[[1d100]]}}'selected='selected'>Automatically roll hit locations</option>
-        <option value=' '>Don't automatically roll hit locations</option>
-      </select>
-      <br>
 
-      <h3>Weapon Description in Damage Roll</h3>
-      <select name='attr_settings_weapondescription' class='full_width edge_padding'>
-        <option value='description'>Include weapon description</option>
-        <option value=' 'selected='selected'>Exclude weapon description</option>
-      </select>
-      <br>
+        <div class="bordered_container">
+          <h3 class="radius_border_top">General settings</h3>
+          <br>
 
-      <h3>Display DOS as decimals</h3>
-      <select name='attr_settings_rounding' class='full_width edge_padding'>
-        <option value='floor('selected='selected'>Rounded down</option>
-        <option value='('>not rounded</option>
-      </select>
-      <br>
+          <h3 class="radius_border_top">Species Overrides</h3>
+          <select name='attr_settings_race' class='full_width edge_padding radius_border_bottom'>
+            <option selected='selected' value='0'>Racial Features: N/A </option>
+            <option value='1'>Spartan 2 / Spartan 3 / Spartan 4 </option>
+            <option value='2'>Sangheili / Elite </option>
+            <option value='3'>Jiralhanae / Brutes </option>
+            <option value='4'>Kig-yar Ruutian / Trilogy Jackals </option>
+            <option value='5'>Kig-yar T'vaoan / Reach Jackals / Skirmishers </option>
+            <option value='6'>Kig-yar Ibie'shan / 4/5 Jackals </option>
+            <option value='7'>Prelate </option>
+            <option value='8'>Mgalekgolo / Hunters </option>
+            <option value='9'>Promethean Knight </option>
+            <option value='10'>Huragok / Engineer</option>
+            <option value='11'>Dont Auto Calculate Speed And Weight</option>
+          </select>
+          <br>
 
-      <h3>Calculate The Negative Impact Of Fatigue Automatically</h3>
-      <select name='attr_settings_fatigue' class='full_width edge_padding'>
-        <option value='0'selected='selected'>Auto calculate Fatigue</option>
-        <option value='1'>auto calculate Fatigue Enduring</option>
-        <option value='2'>Dont auto calculate Fatigue</option>
-      </select>
-      <br>
+          <h3 class="radius_border_top">Initiative Overrides</h3>
+          <select name='attr_initmod0' class='full_width edge_padding radius_border_bottom'>
+            <option selected='selected' >No tiebreaker</option>
+            <option value='[['value='[[floor'>Decimal tiebreaker</option>
+            <option value='tiebreaker [[@{AGI_total}]] roll [[floor'>AGI tiebreaker</option>
+          </select>
+          <br>
 
-      <h3>Add half mythic agility to initiative</h3>
-      <select name='attr_initmod4' class='full_width edge_padding'>
-        <option value='1'selected='selected'>Half mythic agility</option>
-        <option value='0'>No mythic agility (3.7 legacy)</option>
-      </select>
-      <br>
+          <h3 class="radius_border_top">Auto Roll Hit Locations</h3>
+          <select name='attr_settings_hitroll' class='full_width edge_padding radius_border_bottom'>
+            <option value='{{loc=[[1d100]]}}'selected='selected'>Automatically roll hit locations</option>
+            <option value=' '>Don't automatically roll hit locations</option>
+          </select>
+          <br>
 
-      <h3>Sheet color override</h3>
-      <select name='attr_color_override' class='full_width edge_padding'>
-        <option value='0' selected='selected'>Disabled</option>
-        <option value='1'>UNSC        Green</option>
-        <option value='2'>Covenant    Purple</option>
-        <option value='3'>Forerunner  Orange</option>
-        <option value='4'>Banished    Red</option>
-        <option value='5'>ONI         Blue</option>
-        <option value='6'>URF         Tan</option>
-        <option value='7'>SOS        burgundy</option>
-        <option value='8'>Pure        White</option>
-        <option value='9'>Darkmode    Grey</option>
-        <option value='10'>Metalic    Blue</option>
-        <option value='11'>Dull       Gold</option>
-        <option value='12'>You asked for this #696969</option>
-        <option value='13'>Far too vibrant    Pink</option>
-        <option value='14'>Funky      Mango</option>
-        <option value='15'>burgundy   Purple</option>
-        <option value='16'>You will suffer as I have</option>
-      </select>
-      <br>
+          <h3 class="radius_border_top">Weapon Description in Damage Roll</h3>
+          <select name='attr_settings_weapondescription' class='full_width edge_padding radius_border_bottom'>
+            <option value='description'selected='selected'>Include weapon description</option>
+            <option value=' '>Exclude weapon description</option>
+          </select>
+          <br>
+
+          <h3 class="radius_border_top">Display DOS as decimals</h3>
+          <select name='attr_settings_rounding' class='full_width edge_padding radius_border_bottom'>
+            <option value='floor('>Rounded down</option>
+            <option value='('selected='selected'>not rounded</option>
+          </select>
+          <br>
+
+          <h3 class="radius_border_top">Auto Calculate Impact Of Fatigue</h3>
+          <select name='attr_settings_fatigue' class='full_width edge_padding radius_border_bottom'>
+            <option value='0'selected='selected'>Auto calculate Fatigue</option>
+            <option value='1'>auto calculate Fatigue Enduring</option>
+            <option value='2'>Dont auto calculate Fatigue</option>
+          </select>
+          <br>
+
+          <h3 class="radius_border_top">Add half mythic agility to initiative</h3>
+          <select name='attr_initmod4' class='full_width edge_padding radius_border_bottom'>
+            <option value='1'selected='selected'>Half mythic agility</option>
+            <option value='0'>No mythic agility</option>
+          </select>
+          <br>
+
+          <h3 class="radius_border_top">Sheet color override</h3>
+          <select name='attr_color_override' class='full_width edge_padding radius_border_bottom'>
+            <option value='0' selected='selected'>Disabled</option>
+            <option value='1'>UNSC        Green</option>
+            <option value='2'>Covenant    Purple</option>
+            <option value='3'>Forerunner  Orange</option>
+            <option value='4'>Banished    Red</option>
+            <option value='5'>ONI         Blue</option>
+            <option value='6'>URF         Tan</option>
+            <option value='7'>SOS        burgundy</option>
+            <option value='8'>Pure        White</option>
+            <option value='9'>Darkmode    Grey</option>
+            <option value='10'>Metalic    Blue</option>
+            <option value='11'>Dull       Gold</option>
+            <option value='12'>You asked for this #696969</option>
+            <option value='13'>Far too vibrant    Pink</option>
+            <option value='14'>Funky      Mango</option>
+            <option value='15'>burgundy   Purple</option>
+            <option value='16'>You will suffer as I have</option>
+          </select>
+        </div>
+
+        <div class="bordered_container">
+          <h3 class="radius_border_top">Token mod settings</h3>
+          <br>
+
+          <h3 class="radius_border_top">Display selection</h3>
+          <textarea class="tokenmoddisplay radius_border_bottom" name='attr_Tokenmod_text' placeholder='Type your custom text'></textarea>
+          <div class="tokenmodbuttons_grid">
+          <label><input type='checkbox' name='attr_Tokenmod_armor' value='ARMR[@{armor_head}/@{armor_arms}/@{armor_chest}/@{armor_legs}]' class='select_button hidden' /><span class='select_text tokenmodbuttons'>Armor</span></label>
+          <label><input type='checkbox' name='attr_Tokenmod_shields' value='SLDS[@{shields}/@{shields|max}]' class='select_button hidden' /><span class='select_text tokenmodbuttons'>Shields</span></label>
+          <label><input type='checkbox' name='attr_Tokenmod_wounds' value='WNDS[@{wounds}/@{wounds|max}]' class='select_button hidden' /><span class='select_text tokenmodbuttons'>Wounds</span></label>
+          <label><input type='checkbox' name='attr_Tokenmod_camo' value='CAMO[?{Camo result in dos|0}]DOS' class='select_button hidden' /><span class='select_text tokenmodbuttons'>Camo</span></label>
+          <label><input type='checkbox' name='attr_Tokenmod_medical' value='-' class='select_button hidden' /><span class='select_text tokenmodbuttons'>Medical</span></label>
+          </div>
+          <h3 class="radius_border_top">Extra commands</h3>
+          <textarea class="tokenmoddisplay radius_border_bottom" name='attr_Tokenmod_custom' placeholder='Type your custom commands here (They will be appended to the token mod command)'></textarea>
+        </div>
+
+
+      </div>
     </div>
   </div>
 
@@ -2345,11 +2372,12 @@
       <select name='attr_sheet_select' class='full_width infographic_select'>
         <option value='0' selected='selected'>PC sheet</option>
         <option value='1'>NPC sheet</option>
-        <option value='2'>GM manager sheet</option>
+        <option value='2'>GM sheet</option>
       </select>
       <button class='clear infographic_buttons' type='roll' name='autodamage' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{avrdam= [[0+[[([[(?{Amount of hits|1}*?{Amount of D10s|0})d10]] + [[?{Amount of hits|1}*?{Base|0}]] - [[?{Amount of hits|1}*(?{Armor|0} - ?{Pierce|0})d1]])d1]]]]}}'>Auto-Damage</button>
       <button class='clear infographic_buttons' type='roll' name='multiroll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{multiroll= [[ ?{How many rolls?|1}d100<[[?{Using|Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} |Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} |Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} |Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod} } + ?{Modifier|0} ]] ]] }}'>Multi-Roll</button>
       <button class='clear infographic_buttons' type='roll' name='scatter' value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{scatter-range= [[[[(abs(?{Degrees of Failiure|0})+floor(?{range from target|0}/100))*?{Target at|Normal range,1|Max range,2|Extreme range,4})]]d10]]}} {{scatter-direction=[[1d10]]d1}}">Scatter</button>
+      <button class='clear infographic_buttons' type='roll' name='tokenmod' value='!token-mod --set tooltip|"@{Tokenmod_text} @{Tokenmod_armor} @{Tokenmod_shields} @{Tokenmod_wounds} @{Tokenmod_camo} @{Tokenmod_medical}" @{Tokenmod_custom}'>Tokenmod</button>
     </div>
 
     <div class='infographic_grid'>
@@ -4397,10 +4425,10 @@
           const UUID1 = generateRowID();
           const UUID2 = generateRowID();
           const updateAttrs = {};
-          updateAttrs["repeating_armor_" + UUID2 + "_armor_head"] = (parseInt(compcheck(comp_data_Parsed.COMP_armor_head))+tou_total) +"|"+ parseInt(compcheck(comp_data_Parsed.COMP_armor_head))
-          updateAttrs["repeating_armor_" + UUID2 + "_armor_arms"] = (parseInt(compcheck(comp_data_Parsed.COMP_armor_arms))+tou_total) +"|"+ parseInt(compcheck(comp_data_Parsed.COMP_armor_arms))
-          updateAttrs["repeating_armor_" + UUID2 + "_armor_chest"] = (parseInt(compcheck(comp_data_Parsed.COMP_armor_chest))+tou_total) +"|"+ parseInt(compcheck(comp_data_Parsed.COMP_armor_chest))
-          updateAttrs["repeating_armor_" + UUID2 + "_armor_legs"] = (parseInt(compcheck(comp_data_Parsed.COMP_armor_legs))+tou_total) +"|"+ parseInt(compcheck(comp_data_Parsed.COMP_armor_legs))
+          updateAttrs["repeating_armor_" + UUID2 + "_armor_head"] = (parseInt(compcheck(comp_data_Parsed.COMP_armor_head))+tou_total) +"-"+ parseInt(compcheck(comp_data_Parsed.COMP_armor_head))
+          updateAttrs["repeating_armor_" + UUID2 + "_armor_arms"] = (parseInt(compcheck(comp_data_Parsed.COMP_armor_arms))+tou_total) +"-"+ parseInt(compcheck(comp_data_Parsed.COMP_armor_arms))
+          updateAttrs["repeating_armor_" + UUID2 + "_armor_chest"] = (parseInt(compcheck(comp_data_Parsed.COMP_armor_chest))+tou_total) +"-"+ parseInt(compcheck(comp_data_Parsed.COMP_armor_chest))
+          updateAttrs["repeating_armor_" + UUID2 + "_armor_legs"] = (parseInt(compcheck(comp_data_Parsed.COMP_armor_legs))+tou_total) +"-"+ parseInt(compcheck(comp_data_Parsed.COMP_armor_legs))
           updateAttrs["repeating_armor_" + UUID2 + "_shields"] = compcheck(comp_data_Parsed.COMP_shield_integrity)
           updateAttrs["repeating_armor_" + UUID2 + "_shields_max"] = compcheck(comp_data_Parsed.COMP_shield_integrity)
           updateAttrs["repeating_armor_" + UUID2 + "_shields_delay"] = compcheck(comp_data_Parsed.COMP_shield_delay)
