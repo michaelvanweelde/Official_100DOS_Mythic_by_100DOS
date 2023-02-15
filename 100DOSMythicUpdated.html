@@ -1076,8 +1076,8 @@
           </div>
           <fieldset name='education' class='repeating_education'>
             <div class='education_grid'>
-              <input name='attr_education_name' type='text' class='full_width text_left' />
-              <select name='attr_education_mod1' class=' full_width full_height'>
+              <input name='attr_education_name_r' type='text' class='full_width text_left' />
+              <select name='attr_education_mod1_r' class=' full_width full_height'>
                 <option value='@{STR} + @{STR_advancement} + @{fatigue_mod}' >STR</option>
                 <option value='@{TOU} + @{TOU_advancement} + @{fatigue_mod}' >TOU</option>
                 <option value='@{AGI} + @{AGI_advancement} + @{fatigue_mod}' >AGI</option>
@@ -1089,12 +1089,12 @@
                 <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
                 <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
               </select>
-              <input name='attr_education_mod2' type='number' value='0' />
-              <div class='education4'><input name='attr_education_mod3' type='checkbox' value='5' class='skills_item ' /></div>
-              <div class='education5'><input name='attr_education_mod3' type='checkbox' value='10' class='skills_item' /></div>
+              <input name='attr_education_mod2_r' type='number' value='0' />
+              <div class='education4'><input name='attr_education_mod3_r' type='checkbox' value='5' class='skills_item ' /></div>
+              <div class='education5'><input name='attr_education_mod3_r' type='checkbox' value='10' class='skills_item' /></div>
               <button name='education_roll' type='roll' class='clear'
-              value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=@{education_name} }} {{roll=[[@{settings_rounding}([[@{education_mod1}]]+@{education_mod2}+@{education_mod3}+@{inlinemod-toggle}-1d100)/10)]]}}'>
-              <input name='attr_education_total' value='@{education_mod1}+@{education_mod2}+@{education_mod3}' class='input_background' disabled /></button>
+              value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=@{education_name_r} }} {{roll=[[@{settings_rounding}([[@{education_mod1_r}]]+@{education_mod2_r}+@{education_mod3_r}+@{inlinemod-toggle}-1d100)/10)]]}}'>
+              <input name='attr_education_total_r' value='@{education_mod1_r}+@{education_mod2_r}+@{education_mod3_r}' class='input_background' disabled /></button>
             </div>
           </fieldset>
         </div>
@@ -1320,15 +1320,15 @@
       <fieldset name='gear' class='repeating_gear'>
         <div class='equipment_gear'>
           <label class='equipment_gear_gs1'><input type='checkbox' checked name='attr_gear_carried_r' value='1' class='select_button hidden'/><span class='select_text'>&nbsp;✔&nbsp;</span></label>
-          <input name='attr_gear_name' type='text' placeholder='Gear / Item Name' class='equipment_gear_gs2' />
-          <input name='attr_gear_quantity' type='text' value='1' placeholder='Amount' class='equipment_gear_gs3' />
-          <input name='attr_gear_cost' type='text' value='0' class='equipment_gear_gs4' />
-          <input name='attr_gear_weight' type='text' value='0' class='equipment_gear_gs5' />
-          <input name='attr_gear_bp' type='text' placeholder='Break Points' class='equipment_gear_gs6' />
+          <input name='attr_gear_name_r' type='text' placeholder='Gear / Item Name' class='equipment_gear_gs2' />
+          <input name='attr_gear_quantity_r' type='text' value='1' placeholder='Amount' class='equipment_gear_gs3' />
+          <input name='attr_gear_cost_r' type='text' value='0' class='equipment_gear_gs4' />
+          <input name='attr_gear_weight_r' type='text' value='0' class='equipment_gear_gs5' />
+          <input name='attr_gear_bp_r' type='text' placeholder='Break Points' class='equipment_gear_gs6' />
           <label class='margin_adjust equipment_gear_gs8'><input type='checkbox' name='attr_collapse' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
         </div>
         <input name='attr_collapse' type='checkbox'  value='2' class='hider hidden' />
-        <textarea name='attr_description' class=' equipment_gear_dropdown'></textarea>
+        <textarea name='attr_description_r' class=' equipment_gear_dropdown'></textarea>
       </fieldset>
       <br>
 
@@ -1693,7 +1693,7 @@
           <!-- Every textarea element requires a closing tag; cannot be a void element. -->
           <textarea name='attr_medical_textfield' class='radius_border_bottom' placeholder='Not all injuries in 100DOS are lethal. Exhaustion, combat trauma, or exchanging blows with bare fists can all leave a character tattered, but intact. Fatigue measures the amount of non-lethal injury a character can take. For every level of Fatigue a Character has, they take a -5 Penalty to all Tests made.&#10;&#10;Once a Character surpasses their Toughness Modifier, multiplied by 2, in Fatigue, they fall into a coma. The Character’s coma will last one hour for every level of Fatigue the Character has. Every hour that passes, the level of Fatigue is reduced by one. The Character may wake up once their level of Fatigue is their Toughness Modifier or lower.'></textarea>
           <fieldset class='repeating_medical'>
-            <textarea name='attr_medical_textfield' class='radius_border'></textarea>
+            <textarea name='attr_medical_textfield_r' class='radius_border'></textarea>
           </fieldset>
         </div>
 
@@ -1779,7 +1779,7 @@
         <h3>LDR</h3>
         <label class='text_centered bttn_top_padding'><input type='checkbox' name='attr_characteristic_spending_lock' class='hider select_button hidden' /><span class='select_text'>Apply</span></label>
       </div>
-
+<input class='characteristic_spending_number' name='attr_test' type='number' value='0' />
       <div class="characteristic_spending_window">
         <input class='characteristic_spending_number' name='attr_characteristic_spending_str_base' type='number' value='0' />
         <input class='characteristic_spending_number' name='attr_characteristic_spending_tou_base' type='number' value='0' />
@@ -1822,6 +1822,22 @@
         <h3 class="characteristic_spending_text">Extra</h3>
       </div>
 
+      <fieldset name='abilities' class='repeating_characteristics'>
+        <div class="characteristic_spending_window">
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_str_extra' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_tou_extra' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_agi_extra' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_wfr_extra' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_extra' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_int_extra' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_per_extra' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_extra'  type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_extra'  type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_extra'  type='number' value='0' />
+          <h3 class="characteristic_spending_text">Extra2</h3>
+        </div>
+        </fieldset>
+
       <div class="characteristic_spending_window">
         <input class='characteristic_spending_number_total' name='attr_characteristic_spending_str_total' value='@{characteristic_spending_str_base} + @{characteristic_spending_str_spending} + @{characteristic_spending_str_extra}' disabled="true" type='number'/>
         <input class='characteristic_spending_number_total' name='attr_characteristic_spending_tou_total' value='@{characteristic_spending_tou_base} + @{characteristic_spending_tou_spending} + @{characteristic_spending_tou_extra}' disabled="true" type='number'/>
@@ -1835,6 +1851,7 @@
         <input class='characteristic_spending_number_total' name='attr_characteristic_spending_ldr_total'  value='@{characteristic_spending_ldr_base}  + @{characteristic_spending_ldr_spending}  + @{characteristic_spending_ldr_extra}' disabled="true" type='number'/>
         <h3 class="characteristic_spending_text_total">Total</h3>
       </div>
+
 
       <br>
 
@@ -3193,12 +3210,13 @@
       <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{medical_textfield_name} }} {{description=@{medical_textfield} }}' class='hidden'></button><span class='select_text'>❖</span></label>
       <input name='attr_collapse' type='checkbox'  value='2' class='hider hidden ' />
       <textarea name='attr_medical_textfield' class=' NPC_textfield_override radius_border_bottom'></textarea>
+
       <fieldset name='attr_medical_textfield' class='repeating_medical'>
-        <input name='attr_medical_textfield_name' type='text' placeholder='Name' class='full_width_49px' />
+        <input name='attr_medical_textfield_name_r' type='text' placeholder='Name' class='full_width_49px' />
         <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text '>▼</span></label>
         <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{medical_textfield_name} }} {{description=@{medical_textfield} }}' class='hidden'></button><span class='select_text'>❖</span></label>
         <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
-        <textarea name='attr_medical_textfield' class=' NPC_textfield_override radius_border_bottom'></textarea>
+        <textarea name='attr_medical_textfield_r' class=' NPC_textfield_override radius_border_bottom'></textarea>
       </fieldset>
     </div>
 
@@ -3309,6 +3327,56 @@
 
 
   <script type='text/worker'>
+    // ___________________________________________________________________________
+    // __________________________General sum sheet worker_________________________
+    // ___________________________________________________________________________
+    /* ===== PARAMETERS ==========
+    destinations = the name of the attribute that stores the total quantity
+            can be a single attribute, or an array: ['total_cost', 'total_weight']
+            If more than one, the matching fields must be in the same order.
+        section = name of repeating fieldset, without the repeating_
+        fields = the name of the attribute field to be summed
+              destination and fields both can be a single attribute: 'weight'
+              or an array of attributes: ['weight','number','equipped']
+    */
+    const repeatingSum = (destinations, section, fields) => {
+        if (!Array.isArray(destinations)) destinations = [destinations.replace(/\s/g, '').split(',')];
+        if (!Array.isArray(fields)) fields = [fields.replace(/\s/g, '').split(',')];
+        getSectionIDs(`repeating_${section}`, idArray => {
+            const attrArray = idArray.reduce((m, id) => [...m, ...(fields.map(field => `repeating_${section}_${id}_${field}`))], []);
+            getAttrs([...attrArray], v => {
+                const getValue = (section, id, field) => v[`repeating_${section}_${id}_${field}`] === 'on' ? 1 : parseFloat(v[`repeating_${section}_${id}_${field}`]) || 0;
+                const commonMultipliers = (fields.length <= destinations.length) ? [] : fields.splice(destinations.length, fields.length - destinations.length);
+                const output = {};
+                destinations.forEach((destination, index) => {
+                    output[destination] = idArray.reduce((total, id) => total + getValue(section, id, fields[index]) * commonMultipliers.reduce((subtotal, mult) => subtotal * getValue(section, id, mult), 1), 0);
+                });
+                setAttrs(output);
+            });
+        });
+    };
+
+
+
+    const repeatingSumReturn = (section, fields, multiplier = 1) => {
+      sumTotal = 0;
+      if (!Array.isArray(fields)) fields = [fields];
+      getSectionIDs(`repeating_${section}`, idArray => {
+        const attrArray = idArray.reduce( (m,id) => [...m, ...(fields.map(field => `repeating_${section}_${id}_${field}`))],[]);
+        getAttrs(attrArray, v => {
+          // getValue: if not a number, returns 1 if it is 'on' (checkbox), otherwise returns 0..
+          getValue = (section, id,field) => parseFloat(v[`repeating_${section}_${id}_${field}`]) || (v[`repeating_${section}_${id}_${field}`] === 'on' ? 1 : 0);
+          sumTotal = idArray.reduce((total, id) => total + fields.reduce((subtotal,field) => subtotal * getValue(section, id,field),1),0);
+          console.log("Sum1= "+ sumTotal);
+        });
+
+      });
+      console.log("Sum2= "+ sumTotal);
+      return sumTotal
+      // return 1 //This was a test and worked, somehow I need to grab the sum total value
+    };
+
+
     // ___________________________________________________________________________
     // ____________________Movement and Weight sheet worker_______________________
     // ___________________________________________________________________________
@@ -3563,634 +3631,16 @@
     // ___________________________________________________________________________
     // ____________________Medical sheet worker___________________________________
     // ___________________________________________________________________________
-    on('change:medical_g1 change:medical_g2 change:medical_g3 change:medical_g4 change:medical_g5 change:medical_g6 change:medical_g7 change:medical_g8 change:medical_g9 change:medical_g10 change:medical_g11 change:medical_g12 change:medical_g13 change:medical_g14 change:medical_g15 change:medical_g16 change:medical_g17 change:medical_override', function() {
-      getAttrs(['medical_g1', 'medical_g2', 'medical_g3', 'medical_g4', 'medical_g5', 'medical_g6', 'medical_g7', 'medical_g8', 'medical_g9', 'medical_g10', 'medical_g11', 'medical_g12', 'medical_g13', 'medical_g14', 'medical_g15', 'medical_g16', 'medical_g17', 'medical_override'], function(values) {
-        var g1 = parseInt(values['medical_g1'], 10) || 0;
-        var g2 = parseInt(values['medical_g2'], 10) || 0;
-        var g3 = parseInt(values['medical_g3'], 10) || 0;
-        var g4 = parseInt(values['medical_g4'], 10) || 0;
-        var g5 = parseInt(values['medical_g5'], 10) || 0;
-        var g6 = parseInt(values['medical_g6'], 10) || 0;
-        var g7 = parseInt(values['medical_g7'], 10) || 0;
-        var g8 = parseInt(values['medical_g8'], 10) || 0;
-        var g9 = parseInt(values['medical_g9'], 10) || 0;
-        var g10 = parseInt(values['medical_g10'], 10) || 0;
-        var g11 = parseInt(values['medical_g11'], 10) || 0;
-        var g12 = parseInt(values['medical_g12'], 10) || 0;
-        var g13 = parseInt(values['medical_g13'], 10) || 0;
-        var g14 = parseInt(values['medical_g14'], 10) || 0;
-        var g15 = parseInt(values['medical_g15'], 10) || 0;
-        var g16 = parseInt(values['medical_g16'], 10) || 0;
-        var g17 = parseInt(values['medical_g17'], 10) || 0;
-        var medical_override = parseInt(values['medical_override'], 10) || 0;
-
-        // --------------------------------------------------------------------------------------------------------------
-        // 4.0 standard -------------------------------------------------------------------------------------------------
-        // --------------------------------------------------------------------------------------------------------------
-        if(medical_override == 0){
-          //Finger / toe
-          if (g1 == 0)
-          {setAttrs({medical_g1_text: "No Effect / Healthy"});}
-          if (g1 >= 1 && g1 <= 15)
-          {setAttrs({medical_g1_text: "-1 WFM + WFR to Finger,-2 Agility to Toe"});}
-          if (g1 >= 16 && g1 <= 30)
-          {setAttrs({medical_g1_text: "-2 WFM and WFR to Finger, -4 Agility to Toe"});}
-          if (g1 >= 31 && g1 <= 45)
-          {setAttrs({medical_g1_text: "Body Location broken, damaged. No longer usable. -4 Strength to Finger, -4 Agility to Toe"});}
-          if (g1 >= 46)
-          {setAttrs({medical_g1_text: "Body Location Destroyed. -4 Strength to Finger, -4 Agility to Toe"});}
-
-          //Heart
-          if (g2 == 0)
-          {setAttrs({medical_g2_text: "No Effect / Healthy"});}
-          if (g2 >= 1 && g2 <= 15)
-          {setAttrs({medical_g2_text: "-2 Strength, Toughness, Agility"});}
-          if (g2 >= 16 && g2 <= 25)
-          {setAttrs({medical_g2_text: "-5 Strength, Toughness, Agility"});}
-          if (g2 >= 26 && g2 <= 40)
-          {setAttrs({medical_g2_text: "-10 Strength, Toughness, Agility"});}
-          if (g2 >= 41 && g2 <= 59)
-          {setAttrs({medical_g2_text: "Body Location broken, damaged. +10 Fatigue, -15 Strength, Toughness, Agility"});}
-          if (g2 >= 60)
-          {setAttrs({medical_g2_text: "Body Location Destroyed, instant death"});}
-
-          //Neck
-          if (g3 == 0)
-          {setAttrs({medical_g3_text: "No Effect / Healthy"});}
-          if (g3 >= 1 && g3 <= 15)
-          {setAttrs({medical_g3_text: "-2 Toughness"});}
-          if (g3 >= 16 && g3 <= 25)
-          {setAttrs({medical_g3_text: "-5 Toughness"});}
-          if (g3 >= 26 && g3 <= 30)
-          {setAttrs({medical_g3_text: "-10 Toughness"});}
-          if (g3 >= 31 && g3 <= 40)
-          {setAttrs({medical_g3_text: "-10 Toughness, +1 Fatigue"});}
-          if (g3 >= 41 && g3 <= 59)
-          {setAttrs({medical_g3_text: "Body Location broken, damaged. -20 Toughness, Paralyzed and Helpless"});}
-          if (g3 >= 60)
-          {setAttrs({medical_g3_text: "Body Location Destroyed, instant death"});}
-
-          //Skull / Brain
-          if (g4 == 0)
-          {setAttrs({medical_g4_text: "No Effect / Healthy"});}
-          if (g4 >= 1 && g4 <= 15)
-          {setAttrs({medical_g4_text: "-2 Perception, Intellect, Warfare Range, Warfare Melee"});}
-          if (g4 >= 16 && g4 <= 25)
-          {setAttrs({medical_g4_text: "-5 Perception, Intellect, Warfare Range, Warfare Melee"});}
-          if (g4 >= 26 && g4 <= 40)
-          {setAttrs({medical_g4_text: "-10 Perception, Intellect, Warfare Range, Warfare Melee"});}
-          if (g4 >= 41 && g4 <= 59)
-          {setAttrs({medical_g4_text: "Body Location broken, damaged. +10 Fatigue, -15 Perception, Intellect, Warfare Range, Warfare Melee"});}
-          if (g4 >= 60)
-          {setAttrs({medical_g4_text: "Body Location Destroyed, instant death"});}
-
-          //Nose / Ear
-          if (g5 == 0)
-          {setAttrs({medical_g5_text: "No Effect / Healthy"});}
-          if (g5 >= 1 && g5 <= 15)
-          {setAttrs({medical_g5_text: "-2 Perception to Smelling or Hearing Perception Tests"});}
-          if (g5 >= 16 && g5 <= 25)
-          {setAttrs({medical_g5_text: "-5 Perception to Smelling or Hearing Perception Tests"});}
-          if (g5 >= 26 && g5 <= 30)
-          {setAttrs({medical_g5_text: "-10 Perception to Smelling or Hearing Perception Tests"});}
-          if (g5 >= 31 && g5 <= 40)
-          {setAttrs({medical_g5_text: "-15 Perception to Smelling or Hearing Perception Tests"});}
-          if (g5 >= 41 && g5 <= 59)
-          {setAttrs({medical_g5_text: "Body Location broken, -20 Perception to Smelling or Hearing Perception Tests"});}
-          if (g5 >= 60)
-          {setAttrs({medical_g5_text: "Body Location Destroyed, cannot make Smelling Tests, or halves Perception for Hearing Tests"});}
-
-          //Limb (Arm / Leg)
-          if (g6 == 0)
-          {setAttrs({medical_g6_text: "No Effect / Healthy"});}
-          if (g6 >= 1 && g6 <= 15)
-          {setAttrs({medical_g6_text: "-2 Strength to Arm, or -2 Agility to Leg"});}
-          if (g6 >= 16 && g6 <= 25)
-          {setAttrs({medical_g6_text: "-5 Strength to Arm, or -5 Agility to Leg"});}
-          if (g6 >= 26 && g6 <= 30)
-          {setAttrs({medical_g6_text: "-10 Strength to Arm, or -10 Agility to Leg"});}
-          if (g6 >= 31 && g6 <= 40)
-          {setAttrs({medical_g6_text: "-15 Strength to Arm, or -15 Agility to Leg"});}
-          if (g6 >= 41 && g6 <= 59)
-          {setAttrs({medical_g6_text: "Body Location damaged, -15 Strength to Arm, or -15 Agility to Leg. -5 to any Action with this limb"});}
-          if (g6 >= 60)
-          {setAttrs({medical_g6_text: "Body Location Destroyed, limb cannot be used. +3 Fatigue."});}
-
-          //Small / Large Intestines
-          if (g7 == 0)
-          {setAttrs({medical_g7_text: "No Effect / Healthy"});}
-          if (g7 >= 1 && g7 <= 15)
-          {setAttrs({medical_g7_text: "-2 Toughness, -5 Agility"});}
-          if (g7 >= 16 && g7 <= 25)
-          {setAttrs({medical_g7_text: "-4 Toughness, -4 Agility"});}
-          if (g7 >= 26 && g7 <= 30)
-          {setAttrs({medical_g7_text: "-6 Toughness, -6 Agility"});}
-          if (g7 >= 31 && g7 <= 40)
-          {setAttrs({medical_g7_text: "-10 Toughness, -10 Agility"});}
-          if (g7 >= 41 && g7 <= 59)
-          {setAttrs({medical_g7_text: "Body Location damaged, -15 Toughness, -15 Agility. +2 Fatigue"});}
-          if (g7 >= 60)
-          {setAttrs({medical_g7_text: "Body Location Destroyed, -20 Toughness, -20 Agility. +5 Fatigue"});}
-
-          //Lungs
-          if (g8 == 0)
-          {setAttrs({medical_g8_text: "No Effect / Healthy"});}
-          if (g8 >= 1 && g8 <= 15)
-          {setAttrs({medical_g8_text: "-2 Toughness, Stunned for 1D5-Toughness Modifier in Rounds"});}
-          if (g8 >= 16 && g8 <= 25)
-          {setAttrs({medical_g8_text: "-5 Toughness, Stunned for 2D5-Toughness Modifier in Rounds"});}
-          if (g8 >= 26 && g8 <= 30)
-          {setAttrs({medical_g8_text: "-10 Toughness, Stunned for 3D5-Toughness Modifier in Rounds"});}
-          if (g8 >= 31 && g8 <= 40)
-          {setAttrs({medical_g8_text: "-15 Toughness, Stunned for 4D5-Toughness Modifier in Rounds"});}
-          if (g8 >= 41 && g8 <= 59)
-          {setAttrs({medical_g8_text: "Body Location damaged, -20 Toughness, Stunned for 5D5-Toughness Modifier in Rounds"});}
-          if (g8 >= 60)
-          {setAttrs({medical_g8_text: "Body Location Destroyed, -25 Toughness, Stunned for 6D5-Toughness Modifier in Rounds. Character will take 2 Wounds whenever they take a Movement Action quicker than 2 Meters per Turn"});}
-
-          //Kidney / Stomach / Liver
-          if (g9 == 0)
-          {setAttrs({medical_g9_text: "No Effect / Healthy"});}
-          if (g9 >= 1 && g9 <= 15)
-          {setAttrs({medical_g9_text: "-2 Toughness, -2 Agility"});}
-          if (g9 >= 16 && g9 <= 25)
-          {setAttrs({medical_g9_text: "-4 Toughness, -4 Agility"});}
-          if (g9 >= 26 && g9 <= 30)
-          {setAttrs({medical_g9_text: "-6 Toughness, -6 Agility"});}
-          if (g9 >= 31 && g9 <= 40)
-          {setAttrs({medical_g9_text: "-10 Toughness, -10 Agility"});}
-          if (g9 >= 41 && g9 <= 59)
-          {setAttrs({medical_g9_text: "Body Location damaged, -15 Toughness, -15 Agility. +1 Fatigue"});}
-          if (g9 >= 60)
-          {setAttrs({medical_g9_text: "Body Location Destroyed, -20 Toughness, -20 Agility. +5 Fatigue"});}
-
-          //Knee / Ankle / Shoulder / Elbow
-          if (g10 == 0)
-          {setAttrs({medical_g10_text: "No Effect / Healthy"});}
-          if (g10 >= 1 && g10 <= 15)
-          {setAttrs({medical_g10_text: "-2 Strength, -2 Agility"});}
-          if (g10 >= 16 && g10 <= 25)
-          {setAttrs({medical_g10_text: "-4 Strength, -4 Agility"});}
-          if (g10 >= 26 && g10 <= 30)
-          {setAttrs({medical_g10_text: "-6 Strength, -6 Agility"});}
-          if (g10 >= 31 && g10 <= 40)
-          {setAttrs({medical_g10_text: "-10 Strength, -10 Agility"});}
-          if (g10 >= 41 && g10 <= 59)
-          {setAttrs({medical_g10_text: "Body Location damaged, -15 Strength, -15 Agility. +1 Fatigue"});}
-          if (g10 >= 60)
-          {setAttrs({medical_g10_text: "Body Location Destroyed, -20 Strength, -20 Agility. +5 Fatigue"});}
-
-          //Eye
-          if (g11 == 0)
-          {setAttrs({medical_g11_text: "No Effect / Healthy"});}
-          if (g11 >= 1 && g11 <= 15)
-          {setAttrs({medical_g11_text: "-2 eyesight-based Perception Tests and Warfare Tests"});}
-          if (g11 >= 16 && g11 <= 25)
-          {setAttrs({medical_g11_text: "-5 eyesight-based Perception Tests and Warfare Tests"});}
-          if (g11 >= 26 && g11 <= 30)
-          {setAttrs({medical_g11_text: "-10 eyesight-based Perception Tests and Warfare Tests"});}
-          if (g11 >= 31 && g11 <= 40)
-          {setAttrs({medical_g11_text: "-12 eyesight-based Perception Tests and Warfare Tests"});}
-          if (g11 >= 41 && g11 <= 59)
-          {setAttrs({medical_g11_text: "Body Location broken, -15 eyesight-based Perception Tests"});}
-          if (g11 >= 60)
-          {setAttrs({medical_g11_text: "Body Location Destroyed, Character is blinded for 1D5 Rounds. -20 eye-based Perception Tests"});}
-
-          //Mouth
-          if (g12 == 0)
-          {setAttrs({medical_g12_text: "No Effect / Healthy"});}
-          if (g12 >= 1 && g12 <= 20)
-          {setAttrs({medical_g12_text: "-1 Toughness, -5 to Speech-based Tests"});}
-          if (g12 >= 21 && g12 <= 25)
-          {setAttrs({medical_g12_text: "-3 Toughness, -5 to Speech-based Tests"});}
-          if (g12 >= 26 && g12 <= 30)
-          {setAttrs({medical_g12_text: "-5 Toughness, -10 to Speech-based Tests"});}
-          if (g12 >= 31 && g12 <= 40)
-          {setAttrs({medical_g12_text: "-8 Toughness, -10 to Speech-based Tests"});}
-          if (g12 >= 41 && g12 <= 59)
-          {setAttrs({medical_g12_text: "Body Location broken, damaged. -12 Toughness, +1 Fatigue, -15 to Speech-based Tests"});}
-          if (g12 >= 60)
-          {setAttrs({medical_g12_text: "Body Location Destroyed, -15 Toughness, +2 Fatigue, -15 to Speech-based Tests"});}
-
-          //Hand
-          if (g13 == 0)
-          {setAttrs({medical_g13_text: "No Effect / Healthy"});}
-          if (g13 >= 1 && g13 <= 20)
-          {setAttrs({medical_g13_text: "-3 to Warfare Melee and Warfare Range if the hand is used in the Attack"});}
-          if (g13 >= 21 && g13 <= 25)
-          {setAttrs({medical_g13_text: "-5 to Warfare Melee and Warfare Range if the hand is used in the Attack"});}
-          if (g13 >= 26 && g13 <= 30)
-          {setAttrs({medical_g13_text: "-10 to Warfare Melee and Warfare Range if the hand is used in the Attack"});}
-          if (g13 >= 31 && g13 <= 40)
-          {setAttrs({medical_g13_text: "-13 to Warfare Melee and Warfare Range if the hand is used in the Attack"});}
-          if (g13 >= 41 && g13 <= 59)
-          {setAttrs({medical_g13_text: "Body Location broken, -15 to Warfare Melee and Warfare Range if the hand is used in the Attack"});}
-          if (g13 >= 60)
-          {setAttrs({medical_g13_text: "Body Location Destroyed, Character cannot use the hand for any Actions"});}
-
-          //Chin / Jaw / Cheek
-          if (g14 == 0)
-          {setAttrs({medical_g14_text: "No Effect / Healthy"});}
-          if (g14 >= 1 && g14 <= 20)
-          {setAttrs({medical_g14_text: "-2 Toughness"});}
-          if (g14 >= 21 && g14 <= 25)
-          {setAttrs({medical_g14_text: "-4 Toughness, -5 to Speech-based Tests"});}
-          if (g14 >= 26 && g14 <= 30)
-          {setAttrs({medical_g14_text: "-6 Toughness, -10 to Speech-based Tests"});}
-          if (g14 >= 31 && g14 <= 40)
-          {setAttrs({medical_g14_text: "-10 Toughness, +1 Fatigue, -10 to Speech-based Tests"});}
-          if (g14 >= 41 && g14 <= 59)
-          {setAttrs({medical_g14_text: "Body Location broken, damaged. -15 Toughness, +2 Fatigue, -15 to Speech-based Tests"});}
-          if (g14 >= 60)
-          {setAttrs({medical_g14_text: "Body Location Destroyed, -20 Toughness, +3 Fatigue, -20 to Speech-based Tests"});}
-
-          //Foot
-          if (g15 == 0)
-          {setAttrs({medical_g15_text: "No Effect / Healthy"});}
-          if (g15 >= 1 && g15 <= 20)
-          {setAttrs({medical_g15_text: "-5 to Agility when figuring Movement Speed"});}
-          if (g15 >= 21 && g15 <= 25)
-          {setAttrs({medical_g15_text: "-10 to Agility when figuring Movement Speed"});}
-          if (g15 >= 26 && g15 <= 30)
-          {setAttrs({medical_g15_text: "-15 to Agility when figuring Movement Speed"});}
-          if (g15 >= 31 && g15 <= 40)
-          {setAttrs({medical_g15_text: "-20 to Agility when figuring Movement Speed"});}
-          if (g15 >= 41 && g15 <= 59)
-          {setAttrs({medical_g15_text: "Body Location broken, -25 to Agility when figuring Movement Speed"});}
-          if (g15 >= 60)
-          {setAttrs({medical_g15_text: "Body Location Destroyed, Character cannot use the Foot for any Actions. Half Move reduced to 1 Meter, Full Move reduced to 2 Meters, Charge and Run are impossible"});}
-
-          //Pelvis
-          if (g16 == 0)
-          {setAttrs({medical_g16_text: "No Effect / Healthy"});}
-          if (g16 >= 1 && g16 <= 20)
-          {setAttrs({medical_g16_text: "-1 Toughness, -4 Agility"});}
-          if (g16 >= 21 && g16 <= 25)
-          {setAttrs({medical_g16_text: "-3 Toughness, -6 Agility"});}
-          if (g16 >= 26 && g16 <= 30)
-          {setAttrs({medical_g16_text: "-6 Toughness, -8 Agility"});}
-          if (g16 >= 31 && g16 <= 40)
-          {setAttrs({medical_g16_text: "-8 Toughness, -12 Agility"});}
-          if (g16 >= 41 && g16 <= 59)
-          {setAttrs({medical_g16_text: "Body Location damaged, -20 Toughness, -20 Agility"});}
-          if (g16 >= 60)
-          {setAttrs({medical_g16_text: "Body Location damaged, -30 Toughness, -30 Agility"});}
-
-          //Chest
-          if (g17 == 0)
-          {setAttrs({medical_g17_text: "No Effect / Healthy"});}
-          if (g17 >= 1 && g17 <= 30)
-          {setAttrs({medical_g17_text: "-2 Toughness"});}
-          if (g17 >= 31 && g17 <= 50)
-          {setAttrs({medical_g17_text: "-4 Toughness"});}
-          if (g17 >= 51 && g17 <= 70)
-          {setAttrs({medical_g17_text: "-8 Toughness, Stunned for 1D5 Rounds"});}
-          if (g17 >= 71 && g17 <= 90)
-          {setAttrs({medical_g17_text: "-10 Toughness, Stunned for 2D5 Rounds"});}
-          if (g17 >= 91 && g17 <= 110)
-          {setAttrs({medical_g17_text: "Body Location broken, damaged. -15 Toughness, Stunned for 3D5 Rounds"});}
-          if (g17 >= 111)
-          {setAttrs({medical_g17_text: "Body Location Destroyed, instant death"});}
-        }
-
-
-        // --------------------------------------------------------------------------------------------------------------
-        // 5.0 standard -------------------------------------------------------------------------------------------------
-        // --------------------------------------------------------------------------------------------------------------
-        if(medical_override == 1){
-          //Finger / toe
-          if (g1 == 0)
-          {setAttrs({medical_g1_text: "No Effect / Healthy"});}
-          if (g1 >= 1 && g1 <= 30)
-          {setAttrs({medical_g1_text: "-5 WFM + WFR to Finger,-5 Agility to Toe"});}
-          if (g1 >= 31 && g1 <= 45)
-          {setAttrs({medical_g1_text: "-10 WFM and WFR to Finger, -10 Agility to Toe"});}
-          if (g1 >= 46 && g1 <= 60)
-          {setAttrs({medical_g1_text: "Body Location broken, damaged. No longer usable. -15 Strength to Finger, -15 Agility to Toe"});}
-          if (g1 >= 61)
-          {setAttrs({medical_g1_text: "Body Location Destroyed. -20 Strength to Finger, -20 Agility to Toe"});}
-
-          //Heart
-          if (g2 == 0)
-          {setAttrs({medical_g2_text: "No Effect / Healthy"});}
-          if (g2 >= 1 && g2 <= 25)
-          {setAttrs({medical_g2_text: "-10 Strength, Toughness, Agility"});}
-          if (g2 >= 26 && g2 <= 40)
-          {setAttrs({medical_g2_text: "-15 Strength, Toughness, Agility"});}
-          if (g2 >= 41 && g2 <= 55)
-          {setAttrs({medical_g2_text: "-20 Strength, Toughness, Agility"});}
-          if (g2 >= 56 && g2 <= 70)
-          {setAttrs({medical_g2_text: "-25 Strength, Toughness, Agility"});}
-          if (g2 >= 71 && g2 <= 95)
-          {setAttrs({medical_g2_text: "Body Location broken, damaged. +10 Fatigue, -30 Strength, Toughness, Agility"});}
-          if (g2 >= 96)
-          {setAttrs({medical_g2_text: "Body Location Destroyed, instant death"});}
-
-          //Neck
-          if (g3 == 0)
-          {setAttrs({medical_g3_text: "No Effect / Healthy"});}
-          if (g3 >= 1 && g3 <= 30)
-          {setAttrs({medical_g3_text: "-5 Toughness"});}
-          if (g3 >= 31 && g3 <= 50)
-          {setAttrs({medical_g3_text: "-10 Toughness"});}
-          if (g3 >= 51 && g3 <= 70)
-          {setAttrs({medical_g3_text: "-15 Toughness"});}
-          if (g3 >= 71 && g3 <= 90)
-          {setAttrs({medical_g3_text: "-20 Toughness"});}
-          if (g3 >= 91 && g3 <= 110)
-          {setAttrs({medical_g3_text: "Body Location broken, damaged. -25 Toughness, Paralyzed and Helpless"});}
-          if (g3 >= 111)
-          {setAttrs({medical_g3_text: "Body Location Destroyed, instant death"});}
-
-          //Skull / Brain
-          if (g4 == 0)
-          {setAttrs({medical_g4_text: "No Effect / Healthy"});}
-          if (g4 >= 1 && g4 <= 25)
-          {setAttrs({medical_g4_text: "-10 Perception, Intellect, Warfare Range, Warfare Melee"});}
-          if (g4 >= 26 && g4 <= 40)
-          {setAttrs({medical_g4_text: "-15 Perception, Intellect, Warfare Range, Warfare Melee"});}
-          if (g4 >= 41 && g4 <= 55)
-          {setAttrs({medical_g4_text: "-20 Perception, Intellect, Warfare Range, Warfare Melee"});}
-          if (g4 >= 56 && g4 <= 70)
-          {setAttrs({medical_g4_text: "-25 Perception, Intellect, Warfare Range, Warfare Melee"});}
-          if (g4 >= 71 && g4 <= 95)
-          {setAttrs({medical_g4_text: "Body Location broken, damaged. +10 Fatigue, -30 Perception, Intellect, Warfare Range, Warfare Melee"});}
-          if (g4 >= 96)
-          {setAttrs({medical_g4_text: "Body Location Destroyed, instant death"});}
-
-          //Nose / Ear
-          if (g5 == 0)
-          {setAttrs({medical_g5_text: "No Effect / Healthy"});}
-          if (g5 >= 1 && g5 <= 25)
-          {setAttrs({medical_g5_text: "-5 Perception to Smelling or Hearing Perception Tests"});}
-          if (g5 >= 25 && g5 <= 40)
-          {setAttrs({medical_g5_text: "-10 Perception to Smelling or Hearing Perception Tests"});}
-          if (g5 >= 41 && g5 <= 55)
-          {setAttrs({medical_g5_text: "-15 Perception to Smelling or Hearing Perception Tests"});}
-          if (g5 >= 56 && g5 <= 70)
-          {setAttrs({medical_g5_text: "-20 Perception to Smelling or Hearing Perception Tests"});}
-          if (g5 >= 71 && g5 <= 95)
-          {setAttrs({medical_g5_text: "Body Location broken, -25 Perception to Smelling or Hearing Perception Tests"});}
-          if (g5 >= 96)
-          {setAttrs({medical_g5_text: "Body Location Destroyed, cannot make Smelling Tests, or halves Perception for Hearing Tests"});}
-
-          //Limb (Arm / Leg)
-          if (g6 == 0)
-          {setAttrs({medical_g6_text: "No Effect / Healthy"});}
-          if (g6 >= 1 && g6 <= 30)
-          {setAttrs({medical_g6_text: "-5 Strength to Arm, or -5 Agility to Leg"});}
-          if (g6 >= 31 && g6 <= 50)
-          {setAttrs({medical_g6_text: "-10 Strength to Arm, or -10 Agility to Leg"});}
-          if (g6 >= 51 && g6 <= 70)
-          {setAttrs({medical_g6_text: "-10 Strength to Arm, or -10 Agility to Leg"});}
-          if (g6 >= 71 && g6 <= 90)
-          {setAttrs({medical_g6_text: "-20 Strength to Arm, or -20 Agility to Leg"});}
-          if (g6 >= 91 && g6 <= 110)
-          {setAttrs({medical_g6_text: "Body Location damaged, -25 Strength to Arm, or -25 Agility to Leg. -20 to any Action with this limb"});}
-          if (g6 >= 111)
-          {setAttrs({medical_g6_text: "Body Location Destroyed, limb cannot be used. +3 Fatigue. Halves Strength if Arm. Halves Agility and reduces Movement Speed by an extra 2 Meters if Leg"});}
-
-          //Small / Large Intestines
-          if (g7 == 0)
-          {setAttrs({medical_g7_text: "No Effect / Healthy"});}
-          if (g7 >= 1 && g7 <= 30)
-          {setAttrs({medical_g7_text: "-5 Toughness, -5 Agility"});}
-          if (g7 >= 31 && g7 <= 50)
-          {setAttrs({medical_g7_text: "-5 Toughness, -10 Agility"});}
-          if (g7 >= 51 && g7 <= 70)
-          {setAttrs({medical_g7_text: "-10 Toughness, -15 Agility"});}
-          if (g7 >= 71 && g7 <= 90)
-          {setAttrs({medical_g7_text: "-10 Toughness, -20 Agility"});}
-          if (g7 >= 91 && g7 <= 110)
-          {setAttrs({medical_g7_text: "Body Location damaged, -15 Toughness, -15 Agility. +2 Fatigue"});}
-          if (g7 >= 111)
-          {setAttrs({medical_g7_text: "Body Location Destroyed, -20 Toughness, -20 Agility. +10 Fatigue"});}
-
-          //Lungs
-          if (g8 == 0)
-          {setAttrs({medical_g8_text: "No Effect / Healthy"});}
-          if (g8 >= 1 && g8 <= 25)
-          {setAttrs({medical_g8_text: "-5 Toughness, Stunned for 1D5-Toughness Modifier in Rounds"});}
-          if (g8 >= 31 && g8 <= 40)
-          {setAttrs({medical_g8_text: "-10 Toughness, Stunned for 2D5-Toughness Modifier in Rounds"});}
-          if (g8 >= 46 && g8 <= 55)
-          {setAttrs({medical_g8_text: "-15 Toughness, Stunned for 3D5-Toughness Modifier in Rounds"});}
-          if (g8 >= 46 && g8 <= 70)
-          {setAttrs({medical_g8_text: "-20 Toughness, Stunned for 4D5-Toughness Modifier in Rounds"});}
-          if (g8 >= 46 && g8 <= 95)
-          {setAttrs({medical_g8_text: "Body Location damaged, -25 Toughness, Stunned for 5D5-Toughness Modifier in Rounds"});}
-          if (g8 >= 96)
-          {setAttrs({medical_g8_text: "Body Location Destroyed, -30 Toughness, Stunned for 6D5-Toughness Modifier in Rounds. Character will take 2 Wounds whenever they take a Movement Action quicker than 2 Meters per Turn"});}
-
-          //Kidney / Stomach / Liver
-          if (g9 == 0)
-          {setAttrs({medical_g9_text: "No Effect / Healthy"});}
-          if (g9 >= 1 && g9 <= 25)
-          {setAttrs({medical_g9_text: "-5 Toughness, -5 Agility"});}
-          if (g9 >= 26 && g9 <= 40)
-          {setAttrs({medical_g9_text: "-5 Toughness, -10 Agility"});}
-          if (g9 >= 41 && g9 <= 55)
-          {setAttrs({medical_g9_text: "-10 Toughness, -15 Agility"});}
-          if (g9 >= 55 && g9 <= 70)
-          {setAttrs({medical_g9_text: "-10 Toughness, -20 Agility"});}
-          if (g9 >= 71 && g9 <= 95)
-          {setAttrs({medical_g9_text: "Body Location damaged, -15 Toughness, -15 Agility. +1 Fatigue"});}
-          if (g9 >= 96)
-          {setAttrs({medical_g9_text: "Body Location Destroyed, -20 Toughness, -20 Agility. +5 Fatigue"});}
-
-          //Knee / Ankle / Shoulder / Elbow
-          if (g10 == 0)
-          {setAttrs({medical_g10_text: "No Effect / Healthy"});}
-          if (g10 >= 1 && g10 <= 30)
-          {setAttrs({medical_g10_text: "-5 Strength, -5 Agility"});}
-          if (g10 >= 31 && g10 <= 50)
-          {setAttrs({medical_g10_text: "-10 Strength, -5 Agility"});}
-          if (g10 >= 51 && g10 <= 70)
-          {setAttrs({medical_g10_text: "-10 Strength, -10 Agility"});}
-          if (g10 >= 71 && g10 <= 90)
-          {setAttrs({medical_g10_text: "-15 Strength, -10 Agility"});}
-          if (g10 >= 91 && g10 <= 110)
-          {setAttrs({medical_g10_text: "Body Location damaged, -15 Strength, -15 Agility. +1 Fatigue"});}
-          if (g10 >= 111)
-          {setAttrs({medical_g10_text: "Body Location Destroyed, -20 Strength, -20 Agility. +5 Fatigue"});}
-
-          //Eye
-          if (g11 == 0)
-          {setAttrs({medical_g11_text: "No Effect / Healthy"});}
-          if (g11 >= 1 && g11 <= 20)
-          {setAttrs({medical_g11_text: "-5 eyesight-based Perception Tests and Warfare Tests"});}
-          if (g11 >= 21 && g11 <= 30)
-          {setAttrs({medical_g11_text: "-10 eyesight-based Perception Tests and Warfare Tests"});}
-          if (g11 >= 31 && g11 <= 40)
-          {setAttrs({medical_g11_text: "-15 eyesight-based Perception Tests and Warfare Tests"});}
-          if (g11 >= 41 && g11 <= 50)
-          {setAttrs({medical_g11_text: "-20 eyesight-based Perception Tests and Warfare Tests"});}
-          if (g11 >= 51 && g11 <= 60)
-          {setAttrs({medical_g11_text: "Body Location broken, -20 eyesight-based Perception Tests and Warfare Tests. Blinded for 3D5 - Toughness Modifier in Rounds"});}
-          if (g11 >= 61)
-          {setAttrs({medical_g11_text: "Eye destroyed, cannot be used. -30 for eyesight-based Perception Tests and Warfare Tests"});}
-
-          //Mouth
-          if (g12 == 0)
-          {setAttrs({medical_g12_text: "No Effect / Healthy"});}
-          if (g12 >= 1 && g12 <= 30)
-          {setAttrs({medical_g12_text: "-5 Toughness, -5 to Speech-based Tests"});}
-          if (g12 >= 31 && g12 <= 50)
-          {setAttrs({medical_g12_text: "-5 Toughness, -10 to Speech-based Tests"});}
-          if (g12 >= 51 && g12 <= 70)
-          {setAttrs({medical_g12_text: "-10 Toughness, -15 to Speech-based Tests"});}
-          if (g12 >= 71 && g12 <= 90)
-          {setAttrs({medical_g12_text: "-10 Toughness, -20 to Speech-based Tests"});}
-          if (g12 >= 91 && g12 <= 110)
-          {setAttrs({medical_g12_text: "Body Location broken, damaged. -15 Toughness, +1 Fatigue, -25 to Speech-based Tests"});}
-          if (g12 >= 111)
-          {setAttrs({medical_g12_text: "Body Location Destroyed, -15 Toughness, +2 Fatigue, -Cannot speak"});}
-
-          //Hand
-          if (g13 == 0)
-          {setAttrs({medical_g13_text: "No Effect / Healthy"});}
-          if (g13 >= 1 && g13 <= 30)
-          {setAttrs({medical_g13_text: "-5 to Warfare Melee and Warfare Range if the hand is used in the Attack"});}
-          if (g13 >= 31 && g13 <= 50)
-          {setAttrs({medical_g13_text: "-10 to Warfare Melee and Warfare Range if the hand is used in the Attack"});}
-          if (g13 >= 46 && g13 <= 70)
-          {setAttrs({medical_g13_text: "-15 to Warfare Melee and Warfare Range if the hand is used in the Attack"});}
-          if (g13 >= 46 && g13 <= 90)
-          {setAttrs({medical_g13_text: "-20 to Warfare Melee and Warfare Range if the hand is used in the Attack"});}
-          if (g13 >= 46 && g13 <= 110)
-          {setAttrs({medical_g13_text: "Body Location broken, -25 to Warfare Melee and Warfare Range if the hand is used in the Attack"});}
-          if (g13 >= 111)
-          {setAttrs({medical_g13_text: "Body Location Destroyed, Character cannot use the hand for any Actions"});}
-
-          //Chin / Jaw / Cheek
-          if (g14 == 0)
-          {setAttrs({medical_g14_text: "No Effect / Healthy"});}
-          if (g14 >= 1 && g14 <= 30)
-          {setAttrs({medical_g14_text: "-5 Toughness"});}
-          if (g14 >= 31 && g14 <= 50)
-          {setAttrs({medical_g14_text: "-5 Toughness, -5 to Speech-based Tests"});}
-          if (g14 >= 51 && g14 <= 70)
-          {setAttrs({medical_g14_text: "-10 Toughness, -10 to Speech-based Tests"});}
-          if (g14 >= 71 && g14 <= 90)
-          {setAttrs({medical_g14_text: "-10 Toughness, +1 Fatigue, -10 to Speech-based Tests"});}
-          if (g14 >= 91 && g14 <= 110)
-          {setAttrs({medical_g14_text: "Body Location broken, damaged. -15 Toughness, +3 Fatigue, -15 to Speech-based Tests"});}
-          if (g14 >= 111)
-          {setAttrs({medical_g14_text: "Body Location Destroyed, -20 Toughness, +5 Fatigue, Cannot speak"});}
-
-          //Foot
-          if (g15 == 0)
-          {setAttrs({medical_g15_text: "No Effect / Healthy"});}
-          if (g15 >= 1 && g15 <= 30)
-          {setAttrs({medical_g15_text: "-5 to Agility when figuring Movement Speed"});}
-          if (g15 >= 31 && g15 <= 50)
-          {setAttrs({medical_g15_text: "-10 to Agility when figuring Movement Speed"});}
-          if (g15 >= 51 && g15 <= 70)
-          {setAttrs({medical_g15_text: "-15 to Agility when figuring Movement Speed"});}
-          if (g15 >= 71 && g15 <= 90)
-          {setAttrs({medical_g15_text: "-20 to Agility when figuring Movement Speed"});}
-          if (g15 >= 91 && g15 <= 110)
-          {setAttrs({medical_g15_text: "Body Location broken, -25 to Agility when figuring Movement Speed"});}
-          if (g15 >= 111)
-          {setAttrs({medical_g15_text: "Body Location Destroyed, Character cannot use the Foot for any Actions. Halves Agility"});}
-
-          //Pelvis
-          if (g16 == 0)
-          {setAttrs({medical_g16_text: "No Effect / Healthy"});}
-          if (g16 >= 1 && g16 <= 30)
-          {setAttrs({medical_g16_text: "-5 Toughness, -5 Agility"});}
-          if (g16 >= 31 && g16 <= 50)
-          {setAttrs({medical_g16_text: "-5 Toughness, -10 Agility"});}
-          if (g16 >= 51 && g16 <= 70)
-          {setAttrs({medical_g16_text: "-10 Toughness, -10 Agility"});}
-          if (g16 >= 71 && g16 <= 90)
-          {setAttrs({medical_g16_text: "-10 Toughness, -15 Agility"});}
-          if (g16 >= 91 && g16 <= 110)
-          {setAttrs({medical_g16_text: "Body Location damaged, -15 Toughness, -20 Agility"});}
-          if (g16 >= 111)
-          {setAttrs({medical_g16_text: "Body Location damaged, -20 Toughness, -30 Agility"});}
-
-          //Chest
-          if (g17 == 0)
-          {setAttrs({medical_g17_text: "No Effect / Healthy"});}
-          if (g17 >= 1 && g17 <= 30)
-          {setAttrs({medical_g17_text: "-5 Toughness"});}
-          if (g17 >= 31 && g17 <= 50)
-          {setAttrs({medical_g17_text: "-10 Toughness"});}
-          if (g17 >= 51 && g17 <= 70)
-          {setAttrs({medical_g17_text: "-15 Toughness, Stunned for 1D5 Rounds"});}
-          if (g17 >= 71 && g17 <= 90)
-          {setAttrs({medical_g17_text: "-20 Toughness, Stunned for 2D5 Rounds"});}
-          if (g17 >= 91 && g17 <= 110)
-          {setAttrs({medical_g17_text: "Body Location broken, damaged. -30 Toughness, Stunned for 3D5 Rounds"});}
-          if (g17 >= 111)
-          {setAttrs({medical_g17_text: "Chest collapsed or too heavily damaged for survival. Instant death"});}
-        }
 
 
 
-      });
-    });
-
-    // ___________________________________________________________________________
-    // ____________________Advancement XP sheet worker_______________________________
-    // ___________________________________________________________________________
-    on('change:xp_total change:advancement_costL change:advancement_costR change:repeating_advancements remove:repeating_advancements', () => {
-      // get section IDs because of operation both inside and outside of fieldset
-      getSectionIDs(`repeating_advancements`, idArray => {
-        const fieldnames = [];
-        idArray.forEach(id => fieldnames.push (
-        `repeating_advancements_${id}_advancement_costL_r`,
-        `repeating_advancements_${id}_advancement_costR_r`
-        ));
-        // spread operator to get every array value
-        getAttrs(['xp_total', 'advancement_costL', 'advancement_costR', ...fieldnames], v => {
-          const getValue = (id, field) => parseFloat(v[`repeating_advancements_${id}_${field}`]) || 0
-          const cost = parseFloat(v.gear_cost) || 0
-          const left = parseFloat(v.advancement_costL) || 0
-          const right = parseFloat(v.advancement_costR) || 0
-          const left_r = idArray.reduce((total, id) => total + getValue(id,'advancement_costL_r'),0)
-          const right_r = idArray.reduce((total, id) => total + getValue(id,'advancement_costR_r'),0)
-          const spent = left + right + left_r + right_r
-          const total = parseFloat(v.xp_total) || 0
-          setAttrs({
-            xp_spent: spent,
-            xp_current: total - spent
-          });
-        });
-      });
-    });
-
-    // ___________________________________________________________________________
-    // __________________________General sum sheet worker_________________________
-    // ___________________________________________________________________________
-    /* ===== PARAMETERS ==========
-    destination = the name of the attribute that stores the total quantity
-    section = name of repeating fieldset, without the repeating_
-    fields = the name of the attribute field to be summed
-    can be a single attribute: 'weight'
-    or an array of attributes: ['weight','number','equipped']
-    multiplier (optional) = a multiplier to the entire fieldset total. For instance, if summing coins of weight 0.02, might want to multiply the final total by 0.02.
-    */
-    const repeatingSum = (destination, section, fields, multiplier = 1) => {
-      if (!Array.isArray(fields)) fields = [fields];
-      getSectionIDs(`repeating_${section}`, idArray => {
-        const attrArray = idArray.reduce( (m,id) => [...m, ...(fields.map(field => `repeating_${section}_${id}_${field}`))],[]);
-        getAttrs(attrArray, v => {
-          console.log("===== values of v: "+ JSON.stringify(v) +" =====");
-          // getValue: if not a number, returns 1 if it is 'on' (checkbox), otherwise returns 0..
-          const getValue = (section, id,field) => parseFloat(v[`repeating_${section}_${id}_${field}`]) || (v[`repeating_${section}_${id}_${field}`] === 'on' ? 1 : 0);
-          const sumTotal = idArray.reduce((total, id) => total + fields.reduce((subtotal,field) => subtotal * getValue(section, id,field),1),0);
-          setAttrs({[destination]: sumTotal * multiplier});
-        });
-      });
-    };
 
 
     // ___________________________________________________________________________
     // __________________________Advancements stat sheet worker___________________
     // ___________________________________________________________________________
     on('change:characteristic_spending_lock', () => {
+
       getAttrs([
       'characteristic_spending_lock',
       'str',
@@ -4213,6 +3663,7 @@
       'characteristic_spending_cou_base', 'characteristic_spending_cou_spending', 'characteristic_spending_cou_extra',
       'characteristic_spending_cha_base', 'characteristic_spending_cha_spending', 'characteristic_spending_cha_extra',
       'characteristic_spending_ldr_base', 'characteristic_spending_ldr_spending', 'characteristic_spending_ldr_extra',
+
       ], function(values) {
         var str_base     = parseInt(values['characteristic_spending_str_base'], 10) || 0;
         var str_spending = parseInt(values['characteristic_spending_str_spending'], 10) || 0;
@@ -4254,6 +3705,8 @@
         var ldr_spending = parseInt(values['characteristic_spending_ldr_spending'], 10) || 0;
         var ldr_extra    = parseInt(values['characteristic_spending_ldr_extra'], 10) || 0;
 
+        var sum_test    = repeatingSumReturn('characteristics','characteristic_spending_str_extra')
+        console.log(sum_test);
         setAttrs({
           str: str_base + str_spending + str_extra,
           tou: tou_base + tou_spending + tou_extra,
@@ -4265,7 +3718,7 @@
           cou: cou_base + cou_spending + cou_extra,
           cha: cha_base + cha_spending + cha_extra,
           ldr: ldr_base + ldr_spending + ldr_extra,
-          characteristic_spending_lock: 0
+          characteristic_spending_lock : 0
         });
       });
     });
@@ -4364,12 +3817,12 @@
           updateAttrs["repeating_rangedweapons_" + UUID1 + "_weapon_special_rules"] = compcheck(comp_data_Parsed.COMP_special_rules)
           updateAttrs["repeating_rangedweapons_" + UUID1 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
 
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_name"] = compcheck(comp_name)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity"] = 1
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost"] = compcheck(comp_data_Parsed.COMP_price)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight"] = compcheck(comp_data_Parsed.COMP_weight)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp"] = compcheck(comp_data_Parsed.COMP_breakpoints)
-          updateAttrs["repeating_gear_" + UUID2 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_name_r"] = compcheck(comp_name)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity_r"] = 1
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost_r"] = compcheck(comp_data_Parsed.COMP_price)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight_r"] = compcheck(comp_data_Parsed.COMP_weight)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp_r"] = compcheck(comp_data_Parsed.COMP_breakpoints)
+          updateAttrs["repeating_gear_" + UUID2 + "_description_r"] = compcheck(comp_data_Parsed.COMP_description)
           setAttrs(updateAttrs);
         };
 
@@ -4395,27 +3848,27 @@
           updateAttrs["repeating_meleeweapons_" + UUID1 + "_weapon_special_rules"] = compcheck(comp_data_Parsed.COMP_special_rules)
           updateAttrs["repeating_meleeweapons_" + UUID1 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
 
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_name"] = compcheck(comp_name)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity"] = 1
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost"] = compcheck(comp_data_Parsed.COMP_price)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight"] = compcheck(comp_data_Parsed.COMP_weight)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp"] = compcheck(comp_data_Parsed.COMP_breakpoints)
-          updateAttrs["repeating_gear_" + UUID2 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_name_r"] = compcheck(comp_name)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity_r"] = 1
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost_r"] = compcheck(comp_data_Parsed.COMP_price)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight_r"] = compcheck(comp_data_Parsed.COMP_weight)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp_r"] = compcheck(comp_data_Parsed.COMP_breakpoints)
+          updateAttrs["repeating_gear_" + UUID2 + "_description_r"] = compcheck(comp_data_Parsed.COMP_description)
           setAttrs(updateAttrs);
         };
 
 
         // _________________Compendium Equipment sheet worker___________________
-        if (comp_data_Parsed.COMP_field == "Equipment") {
+        if (comp_data_Parsed.COMP_field == "Equipment" || comp_data_Parsed.COMP_field == "Wep_mod") {
           const UUID1 = generateRowID();
           const UUID2 = generateRowID();
           const updateAttrs = {};
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_name"] = compcheck(comp_name)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity"] = 1
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost"] = compcheck(comp_data_Parsed.COMP_price)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight"] = compcheck(comp_data_Parsed.COMP_weight)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp"] = compcheck(comp_data_Parsed.COMP_breakpoints)
-          updateAttrs["repeating_gear_" + UUID2 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_name_r"] = compcheck(comp_name)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity_r"] = 1
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost_r"] = compcheck(comp_data_Parsed.COMP_price)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight_r"] = compcheck(comp_data_Parsed.COMP_weight)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp_r"] = compcheck(comp_data_Parsed.COMP_breakpoints)
+          updateAttrs["repeating_gear_" + UUID2 + "_description_r"] = compcheck(comp_data_Parsed.COMP_description)
           setAttrs(updateAttrs);
         };
 
@@ -4435,24 +3888,24 @@
           updateAttrs["repeating_armor_" + UUID2 + "_shields_charge"] = compcheck(comp_data_Parsed.COMP_shield_recharge)
           updateAttrs["repeating_armor_" + UUID2 + "_description"] = compcheck(comp_name) + "\n" + compcheck(comp_data_Parsed.COMP_description)
 
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_name"] = compcheck(comp_name) + "   armor:[" + compcheck(comp_data_Parsed.COMP_armor_arms) +" "+ compcheck(comp_data_Parsed.COMP_armor_head) +" "+ compcheck(comp_data_Parsed.COMP_armor_legs) +" "+ compcheck(comp_data_Parsed.COMP_armor_chest) + "]" + " shields:[" + compcheck(comp_data_Parsed.COMP_shield_integrity) +" "+ compcheck(comp_data_Parsed.COMP_shield_delay) +" "+ compcheck(comp_data_Parsed.COMP_shield_recharge) + "]"
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity"] = 1
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost"] = compcheck(comp_data_Parsed.COMP_price)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight"] = compcheck(comp_data_Parsed.COMP_weight)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp"] = compcheck(comp_data_Parsed.COMP_breakpoints)
-          updateAttrs["repeating_gear_" + UUID2 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_name_r"] = compcheck(comp_name) + "   armor:[" + compcheck(comp_data_Parsed.COMP_armor_arms) +" "+ compcheck(comp_data_Parsed.COMP_armor_head) +" "+ compcheck(comp_data_Parsed.COMP_armor_legs) +" "+ compcheck(comp_data_Parsed.COMP_armor_chest) + "]" + " shields:[" + compcheck(comp_data_Parsed.COMP_shield_integrity) +" "+ compcheck(comp_data_Parsed.COMP_shield_delay) +" "+ compcheck(comp_data_Parsed.COMP_shield_recharge) + "]"
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity_r"] = 1
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost_r"] = compcheck(comp_data_Parsed.COMP_price)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight_r"] = compcheck(comp_data_Parsed.COMP_weight)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp_r"] = compcheck(comp_data_Parsed.COMP_breakpoints)
+          updateAttrs["repeating_gear_" + UUID2 + "_description_r"] = compcheck(comp_data_Parsed.COMP_description)
           setAttrs(updateAttrs);
         };
         if (comp_data_Parsed.COMP_field == "Armour" && comp_data_Parsed.COMP_variant == "1") {
           const UUID1 = generateRowID();
           const UUID2 = generateRowID();
           const updateAttrs = {};
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_name"] = comp_name + "   armor:[+" + compcheck(comp_data_Parsed.COMP_armor_arms) +" +"+ compcheck(comp_data_Parsed.COMP_armor_head) +" +"+ compcheck(comp_data_Parsed.COMP_armor_legs) +" +"+ compcheck(comp_data_Parsed.COMP_armor_chest) + "]" + " shields:[+" + compcheck(comp_data_Parsed.COMP_shield_integrity) +" +"+ compcheck(comp_data_Parsed.COMP_shield_delay) +" +"+ compcheck(comp_data_Parsed.COMP_shield_recharge) + "]"
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity"] = 1
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost"] = compcheck(comp_data_Parsed.COMP_price)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight"] = compcheck(comp_data_Parsed.COMP_weight)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp"] = compcheck(comp_data_Parsed.COMP_breakpoints)
-          updateAttrs["repeating_gear_" + UUID2 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_name_r"] = comp_name + "   armor:[+" + compcheck(comp_data_Parsed.COMP_armor_arms) +" +"+ compcheck(comp_data_Parsed.COMP_armor_head) +" +"+ compcheck(comp_data_Parsed.COMP_armor_legs) +" +"+ compcheck(comp_data_Parsed.COMP_armor_chest) + "]" + " shields:[+" + compcheck(comp_data_Parsed.COMP_shield_integrity) +" +"+ compcheck(comp_data_Parsed.COMP_shield_delay) +" +"+ compcheck(comp_data_Parsed.COMP_shield_recharge) + "]"
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity_r"] = 1
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost_r"] = compcheck(comp_data_Parsed.COMP_price)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight_r"] = compcheck(comp_data_Parsed.COMP_weight)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp_r"] = compcheck(comp_data_Parsed.COMP_breakpoints)
+          updateAttrs["repeating_gear_" + UUID2 + "_description_r"] = compcheck(comp_data_Parsed.COMP_description)
           setAttrs(updateAttrs);
         };
 
