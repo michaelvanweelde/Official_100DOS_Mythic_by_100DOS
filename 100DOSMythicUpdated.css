@@ -75,6 +75,7 @@ h2, h3 {
 	font-family: Orbitron;
 	letter-spacing: 1px;
 	text-align: center;
+	font-size: 16px;
 }
 
 /* Only type-2 headers receive the following CSS properties. */
@@ -219,6 +220,13 @@ the appropriate element is displayed on a 4 all elements are hidden */
 .sheet-description_rounded_margin {
 	margin-bottom: -4px;
 	border-radius: 0px 0px 8px 8px;
+}
+
+.sheet-border_full{
+	border-radius: 9px;
+	border: 3px solid #4a648c;
+	background: #4a648c;
+	overflow: hidden;
 }
 
 
@@ -678,32 +686,26 @@ ______________________________ start of equipment tab __________________________
 	'mw11 mw12 mw13 mw14';
 }
 
-.sheet-equipment_gear_dropdown {margin-left: 0px;}
-.sheet-equipment_gear_gs1 { grid-area: eg1; width: 100%; text-align: center; align-self: center; margin-bottom: 0px; font-size: 16px}
-.sheet-equipment_gear_gs2 { grid-area: eg2; width: 100%; text-align: center; align-self: center; }
-.sheet-equipment_gear_gs3 { grid-area: eg3; width: 100%; text-align: center; align-self: center; }
-.sheet-equipment_gear_gs4 { grid-area: eg4; width: 100%; text-align: center; align-self: center; }
-.sheet-equipment_gear_gs5 { grid-area: eg5; width: 100%; text-align: center; align-self: center; }
-.sheet-equipment_gear_gs6 { grid-area: eg6; width: 100%; text-align: center; align-self: center; }
-.sheet-equipment_gear_gs8 { margin-top: 5px !important; font-size: 16px}
-.sheet-equipment_gear {
-	display: grid;
-	padding-right: 2px;
-	grid-template-columns: 28px auto 60px 80px 80px 80px 25px;
-	grid-template-areas:
-	'eg1 eg2 eg3 eg4 eg5 eg6 eg7';
-}
 
 .sheet-equipment_header {
 	background: #394C6A;
-	border: 3px solid #4a648c;
-	border-bottom: none;
-	border-radius: 10px 10px 0px 0px;
 	font-family: Orbitron;
 	font-size: 14px;
 	height: 30px;
 	letter-spacing: 1px;
 }
+.sheet-equipment_gear {
+	display: grid;
+	grid-template-columns: 31px auto 80px 80px 80px 80px 27px;
+}
+.sheet-equipment_gear_textarea {margin-left: 0px;}
+.sheet-equipment_checkmark {width: 100%; text-align: center; align-self: center; margin-bottom: -0px; font-size: 17px}
+.sheet-equipment_default {width: 100%; text-align: center; align-self: center; }
+.sheet-equipment_hider {margin-top: 5px !important; font-size: 17px}
+
+
+
+
 .sheet-equipment_titles {
 	font-size: 14px;
 		text-align: center;
@@ -761,8 +763,9 @@ ______________________________ start of medical tab ____________________________
 	}
 
 .sheet-medical_h2 {
-	background: #394C6A;
+	background: black;
 	color: white;
+	height: 30px;
 }
 .sheet-medical_input {width: 100% !important;}
 .sheet-medical_effect 		 {width: 110%-10 !important; height: 100px !important; font-size: 12px; font-family: arial; background-color: transparent; border: none; line-height: 15px; pointer-events: none; }
@@ -810,8 +813,7 @@ ______________________________ start of advancements tab _______________________
 
 .sheet-characteristic_spending_number{width: 100%!important; text-align: center; text-indent: 18px;}
 .sheet-characteristic_spending_number_total{width: 100%!important; text-align: center; text-indent: 18px; background-color: black !important;}
-.sheet-characteristic_spending_text{border-right: 3px solid #4a648c}
-.sheet-characteristic_spending_text_total{border-right: 3px solid #4a648c; border-bottom: 3px solid #4a648c; border-bottom-right-radius: 10px}
+.sheet-characteristic_spending_text_input{width: 100%!important; text-align: center; font-weight: bold;	font-family: Orbitron; letter-spacing: 1px;}
 
 .sheet-characteristic_spending_window{
 	display: grid;
@@ -845,7 +847,7 @@ ______________________________ start of advancements tab _______________________
 	font-size: 16px;
 	margin: 2px -5px 0px 25px;
 	display: grid;
-	grid-template-columns: 20% 25% 30% 25%;
+	grid-template-columns: 22% 20% 15% 20% 20%;
 }
 
 

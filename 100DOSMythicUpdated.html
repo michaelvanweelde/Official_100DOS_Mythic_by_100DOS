@@ -1053,31 +1053,10 @@
             <p class='bold_text'>+10</p>
             <p class='bold_text'>Roll</p>
           </div>
-          <div class='education_grid'>
-            <input name='attr_education_name' type='text' class='full_width text_left' />
-            <select name='attr_education_mod1' class=' full_width full_height'>
-              <option value='@{STR} + @{STR_advancement} + @{fatigue_mod}' >STR</option>
-              <option value='@{TOU} + @{TOU_advancement} + @{fatigue_mod}' >TOU</option>
-              <option value='@{AGI} + @{AGI_advancement} + @{fatigue_mod}' >AGI</option>
-              <option value='@{WFR} + @{WFR_advancement} + @{fatigue_mod}' >WFR</option>
-              <option value='@{WFM} + @{WFM_advancement} + @{fatigue_mod}' >WFM</option>
-              <option value='@{INT} + @{INT_advancement} + @{fatigue_mod}' selected='selected'>INT</option>
-              <option value='@{PER} + @{PER_advancement} + @{fatigue_mod}' >PER</option>
-              <option value='@{COU} + @{COU_advancement} + @{fatigue_mod}' >COU</option>
-              <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
-              <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
-            </select>
-            <input name='attr_education_mod2' type='number' value='0' />
-            <div class='education4'><input name='attr_education_mod3' type='checkbox' value='5' class='skills_item ' /></div>
-            <div class='education5'><input name='attr_education_mod3' type='checkbox' value='10' class='skills_item' /></div>
-            <button name='education_roll' type='roll' class='clear'
-            value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=@{education_name} }} {{roll=[[@{settings_rounding}([[@{education_mod1}]]+@{education_mod2}+@{education_mod3}+@{inlinemod-toggle}-1d100)/10)]]}}'>
-            <input name='attr_education_total' value='@{education_mod1}+@{education_mod2}+@{education_mod3}' class='input_background' disabled /></button>
-          </div>
           <fieldset name='education' class='repeating_education'>
             <div class='education_grid'>
-              <input name='attr_education_name_r' type='text' class='full_width text_left' />
-              <select name='attr_education_mod1_r' class=' full_width full_height'>
+              <input name='attr_education_name' type='text' class='full_width text_left' />
+              <select name='attr_education_mod1' class=' full_width full_height'>
                 <option value='@{STR} + @{STR_advancement} + @{fatigue_mod}' >STR</option>
                 <option value='@{TOU} + @{TOU_advancement} + @{fatigue_mod}' >TOU</option>
                 <option value='@{AGI} + @{AGI_advancement} + @{fatigue_mod}' >AGI</option>
@@ -1089,12 +1068,12 @@
                 <option value='@{CHA} + @{CHA_advancement} + @{fatigue_mod}' >CHA</option>
                 <option value='@{LDR} + @{LDR_advancement} + @{fatigue_mod}' >LDR</option>
               </select>
-              <input name='attr_education_mod2_r' type='number' value='0' />
-              <div class='education4'><input name='attr_education_mod3_r' type='checkbox' value='5' class='skills_item ' /></div>
-              <div class='education5'><input name='attr_education_mod3_r' type='checkbox' value='10' class='skills_item' /></div>
-              <button name='education_roll' type='roll' class='clear'
-              value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=@{education_name_r} }} {{roll=[[@{settings_rounding}([[@{education_mod1_r}]]+@{education_mod2_r}+@{education_mod3_r}+@{inlinemod-toggle}-1d100)/10)]]}}'>
-              <input name='attr_education_total_r' value='@{education_mod1_r}+@{education_mod2_r}+@{education_mod3_r}' class='input_background' disabled /></button>
+              <input name='attr_education_mod2' type='number' value='0' />
+              <div class='education4'><input name='attr_education_mod3' type='checkbox' value='5' class='skills_item ' /></div>
+              <div class='education5'><input name='attr_education_mod3' type='checkbox' value='10' class='skills_item' /></div>
+              <button name='educationoll' type='roll' class='clear'
+              value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=@{education_name} }} {{roll=[[@{settingsounding}([[@{education_mod1}]]+@{education_mod2}+@{education_mod3}+@{inlinemod-toggle}-1d100)/10)]]}}'>
+              <input name='attr_education_total' value='@{education_mod1}+@{education_mod2}+@{education_mod3}' class='input_background' disabled /></button>
             </div>
           </fieldset>
         </div>
@@ -1107,28 +1086,21 @@
         </div>
 
       </div>
+
       <br>
 
-
-      <div class='equipment_header'>
-        <h3 style="text-indent: -50px" class="radius_border_top">Abilities</h3>
-      </div>
-      <div class='edge_padding ssc'>
-        <input name='attr_ability' type='text' placeholder='SQUAD UP' class='full_width_49px' />
-        <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
-        <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{ability} }} {{description=@{ability_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-        <input name='attr_collapse' type='checkbox'  value='2' class='hider hidden' />
-        <textarea name='attr_ability_desc' class=''
-        placeholder='Prerequisites: Race Human, Faction Type U.N.S.C. Military Branch&#10;&#10;Benefit: When with others from the Army, Marine, Air Force, Navy, ORION, ODST, Militiaman, and Spartan IV Soldier Types: these characters gain a +5 Bonus to Courage. The Characters also gain a +10 Bonus to Warfare Melee and Warfare Range Tests when taking Combined Actions.'></textarea>
+      <div class="border_full">
+        <div class='equipment_header'>
+          <h3 style="text-indent: -50px" class="radius_border_top">Abilities</h3>
+        </div>
         <fieldset name='abilities' class='repeating_abilities'>
-          <input name='attr_ability_r' type='text' placeholder='Name' class='full_width_49px' />
+          <input name='attr_ability' type='text' placeholder='Name' class='full_width_49px' />
           <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text '>▼</span></label>
-          <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{ability_r} }} {{description=@{ability_desc_r} }}' class='hidden'></button><span class='select_text'>❖</span></label>
+          <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{ability} }} {{description=@{ability_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
           <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
-          <textarea name='attr_ability_desc_r' class=''></textarea>
+          <textarea name='attr_ability_desc'></textarea>
         </fieldset>
       </div>
-
 
 
 
@@ -1297,39 +1269,30 @@
       </div>
       <br>
 
-      <div class='equipment_gear equipment_header'>
-        <div class='equipment_gear_gs2'>Gear / Item Name</div>
-        <div class='equipment_gear_gs3'>Amount</div>
-        <div class='equipment_gear_gs4'>Value</div>
-        <div class='equipment_gear_gs5'>Weight</div>
-        <div class='equipment_gear_gs6'>B Pts</div>
-      </div>
-
-      <div class='equipment_gear'>
-        <label class='equipment_gear_gs1'><input type='checkbox' checked name='attr_gear_carried' value='1' class='select_button hidden'/><span class='select_text'>&nbsp;✔&nbsp;</span></label>
-        <input name='attr_gear_name' type='text' placeholder='Gear / Item Name' class='equipment_gear_gs2' />
-        <input name='attr_gear_quantity' type='text' value='1' placeholder='Amount' class='equipment_gear_gs3' />
-        <input name='attr_gear_cost' type='text' value='0' class='equipment_gear_gs4' />
-        <input name='attr_gear_weight' type='text' value='0' class='equipment_gear_gs5' />
-        <input name='attr_gear_bp' type='text' placeholder='Break Points' class='equipment_gear_gs6' />
-        <label class='margin_adjust equipment_gear_gs8'><input type='checkbox' name='attr_collapse' value='7' class='hider select_button hidden'><span class='select_text'>▼</span></label>
-      </div>
-      <input name='attr_collapse' type='checkbox'  value='7' class='hider hidden' />
-      <textarea name='attr_gear_desc' placeholder='Different equipment will have special rules.' class=' equipment_gear_dropdown'></textarea>
-
-      <fieldset name='gear' class='repeating_gear'>
-        <div class='equipment_gear'>
-          <label class='equipment_gear_gs1'><input type='checkbox' checked name='attr_gear_carried_r' value='1' class='select_button hidden'/><span class='select_text'>&nbsp;✔&nbsp;</span></label>
-          <input name='attr_gear_name_r' type='text' placeholder='Gear / Item Name' class='equipment_gear_gs2' />
-          <input name='attr_gear_quantity_r' type='text' value='1' placeholder='Amount' class='equipment_gear_gs3' />
-          <input name='attr_gear_cost_r' type='text' value='0' class='equipment_gear_gs4' />
-          <input name='attr_gear_weight_r' type='text' value='0' class='equipment_gear_gs5' />
-          <input name='attr_gear_bp_r' type='text' placeholder='Break Points' class='equipment_gear_gs6' />
-          <label class='margin_adjust equipment_gear_gs8'><input type='checkbox' name='attr_collapse' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
+      <div class="border_full">
+        <div class='equipment_gear equipment_header'>
+          <div></div>
+          <h3>Gear / Item Name</h3>
+          <h3>Amount</h3>
+          <h3>Value</h3>
+          <h3>Weight</h3>
+          <h3>B Pts</h3>
         </div>
-        <input name='attr_collapse' type='checkbox'  value='2' class='hider hidden' />
-        <textarea name='attr_description_r' class=' equipment_gear_dropdown'></textarea>
-      </fieldset>
+
+        <fieldset name='gear' class='repeating_gear'>
+          <div class='equipment_gear'>
+            <label class='equipment_checkmark'><input type='checkbox' checked name='attr_gear_carried' value='1' class='select_button hidden'/><span class='select_text'>&nbsp;✔&nbsp;</span></label>
+            <input class='equipment_default'name='attr_gear_name' type='text' placeholder='Gear / Item Name'/>
+            <input class='equipment_default'name='attr_gear_quantity' type='text' value='1' placeholder='Amount'/>
+            <input class='equipment_default'name='attr_gear_cost' type='text' value='0'/>
+            <input class='equipment_default'name='attr_gear_weight' type='text' value='0'/>
+            <input class='equipment_default'name='attr_gear_bp' type='text' placeholder='Break Points'/>
+            <label class='margin_adjust equipment_hider'><input type='checkbox' name='attr_collapse' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
+          </div>
+          <input name='attr_collapse' type='checkbox'  value='2' class='hider hidden' />
+          <textarea name='attr_description' placeholder='Equipment special rules' class=' equipment_gear_textarea'></textarea>
+        </fieldset>
+      </div>
       <br>
 
       <div class='equipment_armor_grid'>
@@ -1359,43 +1322,31 @@
 
         <div class='equipment_armor_gs3 radius_border'>
           <h3 class='radius_border_top'>Armor Permutations</h3>
-          <div>
-            <div class="equipment_permutations_grid equipment_titles">
-              <p class='bold_text equipment_titles'>Name</p>
-              <p class='bold_text equipment_titles'>Location & Hardpts</p>
-            </div>
+          <div class="equipment_permutations_grid equipment_titles">
+            <p class='bold_text equipment_titles'>Name</p>
+            <p class='bold_text equipment_titles'>Location & Hardpts</p>
+          </div>
+
+          <fieldset name='permutations' class='repeating_permutations'>
             <div class='equipment_permutations_grid'>
               <input class='full_width' type='text' name='attr_permutation_name' placeholder='Name'>
               <input class='full_width' type='text' name='attr_permutation_location' placeholder='Location & Hardpoints'>
             </div>
-            <label class='margin_adjust'><input type='checkbox' name='attr_collapse3' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
+            <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
             <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{permutation_name} }} {{description=@{permutation_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-            <input name='attr_collapse3' type='checkbox'  value='2' class='hider hidden' />
-            <textarea name='attr_permutation_desc' placeholder='All Human BDUs and Armor are designed to take Permutations. Permutations are attachments that modify Armor and offer various forms of function. Each section of Armor can only fit so many Permutations, which are shown as Hardpoints.' class=''></textarea>
-          </div>
-          <fieldset name='permutations' class='repeating_permutations'>
-            <div>
-              <div class='equipment_permutations_grid'>
-                <input class='full_width' type='text' name='attr_permutation_name_r' placeholder='Name'>
-                <input class='full_width' type='text' name='attr_permutation_location_r' placeholder='Location'>
-              </div>
-              <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
-              <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{permutation_name_r} }} {{description=@{permutation_desc_r} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-              <input name='attr_collapse' type='checkbox'  value='2' class='hider hidden' />
-              <textarea name='attr_permutation_desc_r' class=''></textarea>
-            </div>
+            <input name='attr_collapse' type='checkbox'  value='2' class='hider hidden' />
+            <textarea name='attr_permutation_desc' placeholder='All Human BDUs and Armor are designed to take Permutations. Permutations are attachments that modify Armor and offer various forms of function. Each section of Armor can only fit so many Permutations, which are shown as Hardpoints.'></textarea>
           </fieldset>
 
           <br>
 
           <h3 class='radius_border_top'>Armor Description</h3>
-          <textarea name='attr_armor_desc' placeholder='Armor special rules, Damage, Exteriour features, etc.'></textarea>
           <fieldset name='armors' class='repeating_armors'>
-            <input class='full_width_49px' type='text' name='attr_armor_name_r' placeholder='Name'>
+            <input class='full_width_49px' type='text' name='attr_armor_name' placeholder='Name'>
             <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
-            <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{armor_name_r} }} {{description=@{armor_desc_r} }}' class='hidden'></button><span class='select_text'>❖</span></label>
+            <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{armor_name} }} {{description=@{armor_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
             <input name='attr_collapse' type='checkbox'  value='2' class='hider hidden' />
-            <textarea name='attr_armor_desc_r' placeholder='Armor special rules, Damage, Exteriour features, etc.'></textarea>
+            <textarea name='attr_armor_desc' placeholder='Armor special rules, Damage, Exteriour features, etc.'></textarea>
           </fieldset>
         </div>
       </div>
@@ -1643,7 +1594,7 @@
 
         <div class='medicalgT'>
           <div class='medical_background'>
-            <label class='medical_initial_label'><h2 class='medical_h2 medical_h2_rollable radius_border_top'>Hit Location</h2> <button type='roll' name='button' value='@{to-gm}&{template:mythic} {{loc=[[1d100]]}}' class='hidden'></button></label>
+            <label class='medical_initial_label'><h3 class='medical_h2 medical_h2_rollable radius_border_top'>Hit Location</h3> <button type='roll' name='button' value='@{to-gm}&{template:mythic} {{loc=[[1d100]]}}' class='hidden'></button></label>
             <h3> 01-10 HEAD</h3>
             <div class='medical_table'> 01-02 Neck</div>
             <div class='medical_table'> 03-05 Mouth</div>
@@ -1685,20 +1636,23 @@
             <div class='medical_table radius_border_bottom'>97-100 Ribcage, No Organ Struck</div>
           </div>
         </div>
+      </div>
 
-        <div class='medicalgR ssc'>
-          <div class='medical_h2_background'>
-            <h2 class='medical_h2 radius_border_top'>Medical Information</h2>
-          </div>
-          <!-- Every textarea element requires a closing tag; cannot be a void element. -->
-          <textarea name='attr_medical_textfield' class='radius_border_bottom' placeholder='Not all injuries in 100DOS are lethal. Exhaustion, combat trauma, or exchanging blows with bare fists can all leave a character tattered, but intact. Fatigue measures the amount of non-lethal injury a character can take. For every level of Fatigue a Character has, they take a -5 Penalty to all Tests made.&#10;&#10;Once a Character surpasses their Toughness Modifier, multiplied by 2, in Fatigue, they fall into a coma. The Character’s coma will last one hour for every level of Fatigue the Character has. Every hour that passes, the level of Fatigue is reduced by one. The Character may wake up once their level of Fatigue is their Toughness Modifier or lower.'></textarea>
-          <fieldset class='repeating_medical'>
-            <textarea name='attr_medical_textfield_r' class='radius_border'></textarea>
+      <br>
+
+      <div class='border_full'>
+          <h3 style="text-indent: -50px" class="radius_border_top">Medical Information</h3>
+          <fieldset name='medical' class='repeating_medical'>
+            <input name='attr_medical' type='text' placeholder='Name' class='full_width_49px' />
+            <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text '>▼</span></label>
+            <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{medical} }} {{description=@{medical_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
+            <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
+            <textarea name='attr_medical_desc' placeholder='Not all injuries in 100DOS are lethal. Exhaustion, combat trauma, or exchanging blows with bare fists can all leave a character tattered, but intact. Fatigue measures the amount of non-lethal injury a character can take. For every level of Fatigue a Character has, they take a -5 Penalty to all Tests made.&#10;&#10;Once a Character surpasses their Toughness Modifier, multiplied by 2, in Fatigue, they fall into a coma. The Character’s coma will last one hour for every level of Fatigue the Character has. Every hour that passes, the level of Fatigue is reduced by one. The Character may wake up once their level of Fatigue is their Toughness Modifier or lower.'></textarea>
           </fieldset>
         </div>
 
-      </div>
     </div>
+
 
 
 
@@ -1708,11 +1662,15 @@
 
       <h2>Experience Summary</h2>
       <div class='text_centered'>
-        Unspent XP: <input name='attr_xp_current' type='number' value='@{xp_total}-@{xp_spent}' class='numerical_field' readonly />
-        Spent XP: <input name='attr_xp_spent' type='number' value='@{xp_total}-(@{advancement_costL}+@{advancement_costR})' class='numerical_field' readonly />
+        Unspent XP: <input name='attr_xp_current' type='number' value="(@{xp_total}-@{xp_spent})" class='numerical_field' disabled="true"/>
+        Spent XP: <input name='attr_xp_spent' type='number' value="(@{xp_spentL}+@{xp_spentR})" class='numerical_field' disabled="true"/>
         XP Total: <input name='attr_xp_total' type='number' class='numerical_field end_field' />
+
+      <input name='attr_xp_spentL' type='number' hidden />
+      <input name='attr_xp_spentR' type='number' hidden />
       </div>
       <br>
+      <div class="border_full">
       <div class='advancements_grid equipment_header'>
         <div class='advancements_grid_gs1'>Name</div>
         <div class='advancements_grid_gs2'>XP Cost</div>
@@ -1721,24 +1679,17 @@
         <div class='advancements_grid_gs5'>XP Cost</div>
         <div class='advancements_grid_gs6'>Page #</div>
       </div>
-      <div class='advancements_grid'>
-        <input class='advancements_grid_gs1' name='attr_advancement_nameL' type='text' placeholder='Write XP-costing item name here' />
-        <input class='advancements_grid_gs2' name='attr_advancement_costL' type='number' placeholder='XP Cost' />
-        <input class='advancements_grid_gs3' name='attr_advancement_pg#L' type='number' placeholder='Page #'  />
-        <input class='advancements_grid_gs4' name='attr_advancement_nameR' type='text' placeholder='Write XP-costing item name here' />
-        <input class='advancements_grid_gs5' name='attr_advancement_costR' type='number' placeholder='XP Cost' />
-        <input class='advancements_grid_gs6' name='attr_advancement_pg#R' type='number' placeholder='Page #' />
-      </div>
       <fieldset name='advancements' class='repeating_advancements'>
         <div class='advancements_grid'>
-          <input class='advancements_grid_gs1' name='attr_advancement_nameL_r' type='text' placeholder='Write XP-costing item name here' />
-          <input class='advancements_grid_gs2' name='attr_advancement_costL_r' type='number' placeholder='XP Cost' />
-          <input class='advancements_grid_gs3' name='attr_advancement_pg#L_r' type='number' placeholder='Page #'  />
-          <input class='advancements_grid_gs4' name='attr_advancement_nameR_r' type='text' placeholder='Write XP-costing item name here' />
-          <input class='advancements_grid_gs5' name='attr_advancement_costR_r' type='number' placeholder='XP Cost' />
-          <input class='advancements_grid_gs6' name='attr_advancement_pg#R_r' type='number' placeholder='Page #' />
+          <input class='advancements_grid_gs1' name='attr_advancement_nameL' type='text' placeholder='Write XP-costing item name here' />
+          <input class='advancements_grid_gs2' name='attr_advancement_costL' type='number' placeholder='XP Cost' />
+          <input class='advancements_grid_gs3' name='attr_advancement_pgnrL' type='number' placeholder='Page #'  />
+          <input class='advancements_grid_gs4' name='attr_advancement_nameR' type='text' placeholder='Write XP-costing item name here' />
+          <input class='advancements_grid_gs5' name='attr_advancement_costR' type='number' placeholder='XP Cost' />
+          <input class='advancements_grid_gs6' name='attr_advancement_pgnrR' type='number' placeholder='Page #' />
         </div>
       </fieldset>
+            </div>
 
       <div class='training'>
         <div class='faction_training ssc auto_margin 90width radius_border'>
@@ -1754,17 +1705,21 @@
           <div class='weapon_training_grid'>
             <div><input name='attr_weapons_training_basic' type='checkbox' />Basic</div>
             <div><input name='attr_weapons_training_infantry' type='checkbox' />Infantry</div>
-            <div><input name='attr_weapons_training_vehicle' type='checkbox' />Vehicle</div>
-            <div><input name='attr_weapons_training_melee' type='checkbox' />Melee</div>
             <div><input name='attr_weapons_training_heavy' type='checkbox' />Heavy</div>
             <div><input name='attr_weapons_training_special' type='checkbox' />Advanced</div>
-            <div><input name='attr_weapons_training_long-range' type='checkbox' />Long-Range</div>
-            <div><input name='attr_weapons_training_explosives' type='checkbox' />Explosives</div>
+            <div><input name='attr_weapons_training_launcher' type='checkbox' />Launcher</div>
+            <div><input name='attr_weapons_training_longrange' type='checkbox' />Long Range</div>
+            <div><input name='attr_weapons_training_ordnance' type='checkbox' />Ordnance</div>
+            <div><input name='attr_weapons_training_cannon' type='checkbox' />Cannon</div>
+            <div><input name='attr_weapons_training_melee' type='checkbox' />Melee</div>
           </div>
         </div>
       </div>
 
       <br>
+
+<div class="border_full">
+
 
       <div class='characteristic_spending_window equipment_header'>
         <h3 style="border-top-left-radius: 10px">STR</h3>
@@ -1779,7 +1734,21 @@
         <h3>LDR</h3>
         <label class='text_centered bttn_top_padding'><input type='checkbox' name='attr_characteristic_spending_lock' class='hider select_button hidden' /><span class='select_text'>Apply</span></label>
       </div>
-<input class='characteristic_spending_number' name='attr_test' type='number' value='0' />
+
+      <div class="characteristic_spending_window">
+        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_str_total' value='@{characteristic_spending_str_base} + @{characteristic_spending_str_spending} + @{characteristic_spending_str_extra}' disabled="true" type='number'/>
+        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_tou_total' value='@{characteristic_spending_tou_base} + @{characteristic_spending_tou_spending} + @{characteristic_spending_tou_extra}' disabled="true" type='number'/>
+        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_agi_total' value='@{characteristic_spending_agi_base} + @{characteristic_spending_agi_spending} + @{characteristic_spending_agi_extra}' disabled="true" type='number'/>
+        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_wfr_total' value='@{characteristic_spending_wfr_base} + @{characteristic_spending_wfr_spending} + @{characteristic_spending_wfr_extra}' disabled="true" type='number'/>
+        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_wfm_total' value='@{characteristic_spending_wfm_base} + @{characteristic_spending_wfm_spending} + @{characteristic_spending_wfm_extra}' disabled="true" type='number'/>
+        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_int_total' value='@{characteristic_spending_int_base} + @{characteristic_spending_int_spending} + @{characteristic_spending_int_extra}' disabled="true" type='number'/>
+        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_per_total' value='@{characteristic_spending_per_base} + @{characteristic_spending_per_spending} + @{characteristic_spending_per_extra}' disabled="true" type='number'/>
+        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_cou_total'  value='@{characteristic_spending_cou_base}  + @{characteristic_spending_cou_spending}  + @{characteristic_spending_cou_extra}' disabled="true" type='number'/>
+        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_cha_total'  value='@{characteristic_spending_cha_base}  + @{characteristic_spending_cha_spending}  + @{characteristic_spending_cha_extra}' disabled="true" type='number'/>
+        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_ldr_total'  value='@{characteristic_spending_ldr_base}  + @{characteristic_spending_ldr_spending}  + @{characteristic_spending_ldr_extra}' disabled="true" type='number'/>
+        <h3>Total</h3>
+      </div>
+
       <div class="characteristic_spending_window">
         <input class='characteristic_spending_number' name='attr_characteristic_spending_str_base' type='number' value='0' />
         <input class='characteristic_spending_number' name='attr_characteristic_spending_tou_base' type='number' value='0' />
@@ -1791,7 +1760,7 @@
         <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_base'  type='number' value='0' />
         <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_base'  type='number' value='0' />
         <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_base'  type='number' value='0' />
-        <h3 class="characteristic_spending_text">Base</h3>
+        <h3>Base</h3>
       </div>
 
       <div class="characteristic_spending_window">
@@ -1805,72 +1774,49 @@
         <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_spending'  type='number' value='0' />
         <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_spending'  type='number' value='0' />
         <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_spending'  type='number' value='0' />
-        <h3 class="characteristic_spending_text">Spent</h3>
+        <h3>Spent</h3>
       </div>
 
       <div class="characteristic_spending_window">
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_str_extra' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_tou_extra' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_agi_extra' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_wfr_extra' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_extra' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_int_extra' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_per_extra' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_extra'  type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_extra'  type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_extra'  type='number' value='0' />
-        <h3 class="characteristic_spending_text">Extra</h3>
+        <input class='characteristic_spending_number' name='attr_characteristic_spending_str_extra' type='number' value='0' hidden/>
+        <input class='characteristic_spending_number' name='attr_characteristic_spending_tou_extra' type='number' value='0' hidden/>
+        <input class='characteristic_spending_number' name='attr_characteristic_spending_agi_extra' type='number' value='0' hidden/>
+        <input class='characteristic_spending_number' name='attr_characteristic_spending_wfr_extra' type='number' value='0' hidden/>
+        <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_extra' type='number' value='0' hidden/>
+        <input class='characteristic_spending_number' name='attr_characteristic_spending_int_extra' type='number' value='0' hidden/>
+        <input class='characteristic_spending_number' name='attr_characteristic_spending_per_extra' type='number' value='0' hidden/>
+        <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_extra'  type='number' value='0' hidden/>
+        <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_extra'  type='number' value='0' hidden/>
+        <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_extra'  type='number' value='0' hidden/>
       </div>
 
       <fieldset name='abilities' class='repeating_characteristics'>
         <div class="characteristic_spending_window">
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_str_extra' type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_tou_extra' type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_agi_extra' type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_wfr_extra' type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_extra' type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_int_extra' type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_per_extra' type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_extra'  type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_extra'  type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_extra'  type='number' value='0' />
-          <h3 class="characteristic_spending_text">Extra2</h3>
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_str_extra_r' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_tou_extra_r' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_agi_extra_r' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_wfr_extra_r' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_extra_r' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_int_extra_r' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_per_extra_r' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_extra_r'  type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_extra_r'  type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_extra_r'  type='number' value='0' />
+          <h3 class="characteristic_spending_text"><input class='characteristic_spending_text_input' name='attr_characteristic_spending_ldr_extra_name_r'  type='text' placeholder='extra' /></h3>
         </div>
-        </fieldset>
-
-      <div class="characteristic_spending_window">
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_str_total' value='@{characteristic_spending_str_base} + @{characteristic_spending_str_spending} + @{characteristic_spending_str_extra}' disabled="true" type='number'/>
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_tou_total' value='@{characteristic_spending_tou_base} + @{characteristic_spending_tou_spending} + @{characteristic_spending_tou_extra}' disabled="true" type='number'/>
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_agi_total' value='@{characteristic_spending_agi_base} + @{characteristic_spending_agi_spending} + @{characteristic_spending_agi_extra}' disabled="true" type='number'/>
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_wfr_total' value='@{characteristic_spending_wfr_base} + @{characteristic_spending_wfr_spending} + @{characteristic_spending_wfr_extra}' disabled="true" type='number'/>
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_wfm_total' value='@{characteristic_spending_wfm_base} + @{characteristic_spending_wfm_spending} + @{characteristic_spending_wfm_extra}' disabled="true" type='number'/>
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_int_total' value='@{characteristic_spending_int_base} + @{characteristic_spending_int_spending} + @{characteristic_spending_int_extra}' disabled="true" type='number'/>
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_per_total' value='@{characteristic_spending_per_base} + @{characteristic_spending_per_spending} + @{characteristic_spending_per_extra}' disabled="true" type='number'/>
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_cou_total'  value='@{characteristic_spending_cou_base}  + @{characteristic_spending_cou_spending}  + @{characteristic_spending_cou_extra}' disabled="true" type='number'/>
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_cha_total'  value='@{characteristic_spending_cha_base}  + @{characteristic_spending_cha_spending}  + @{characteristic_spending_cha_extra}' disabled="true" type='number'/>
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_ldr_total'  value='@{characteristic_spending_ldr_base}  + @{characteristic_spending_ldr_spending}  + @{characteristic_spending_ldr_extra}' disabled="true" type='number'/>
-        <h3 class="characteristic_spending_text_total">Total</h3>
-      </div>
-
+      </fieldset>
+</div>
 
       <br>
 
-      <div class='equipment_header'>
+    <div class='border_full'>
         <h3 style="text-indent: -50px" class="radius_border_top">Abilities</h3>
-      </div>
-      <div class='edge_padding ssc'>
-        <input name='attr_ability' type='text' placeholder='SQUAD UP' class='full_width_49px' />
-        <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
-        <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{ability} }} {{description=@{ability_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-        <input name='attr_collapse' type='checkbox'  value='2' class='hider hidden' />
-        <textarea name='attr_ability_desc' class=''
-        placeholder='Prerequisites: Race Human, Faction Type U.N.S.C. Military Branch&#10;&#10;Benefit: When with others from the Army, Marine, Air Force, Navy, ORION, ODST, Militiaman, and Spartan IV Soldier Types: these characters gain a +5 Bonus to Courage. The Characters also gain a +10 Bonus to Warfare Melee and Warfare Range Tests when taking Combined Actions.'></textarea>
         <fieldset name='abilities' class='repeating_abilities'>
-          <input name='attr_ability_r' type='text' placeholder='Name' class='full_width_49px' />
+          <input name='attr_ability' type='text' placeholder='Name' class='full_width_49px' />
           <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text '>▼</span></label>
-          <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{ability_r} }} {{description=@{ability_desc_r} }}' class='hidden'></button><span class='select_text'>❖</span></label>
+          <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{ability} }} {{description=@{ability_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
           <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
-          <textarea name='attr_ability_desc_r' class=''></textarea>
+          <textarea name='attr_ability_desc' class=''></textarea>
         </fieldset>
       </div>
 
@@ -2322,11 +2268,11 @@
           <h3 class="radius_border_top">Display selection</h3>
           <textarea class="tokenmoddisplay radius_border_bottom" name='attr_Tokenmod_text' placeholder='Type your custom text'></textarea>
           <div class="tokenmodbuttons_grid">
-          <label><input type='checkbox' name='attr_Tokenmod_armor' value='ARMR[@{armor_head}/@{armor_arms}/@{armor_chest}/@{armor_legs}]' class='select_button hidden' /><span class='select_text tokenmodbuttons'>Armor</span></label>
-          <label><input type='checkbox' name='attr_Tokenmod_shields' value='SLDS[@{shields}/@{shields|max}]' class='select_button hidden' /><span class='select_text tokenmodbuttons'>Shields</span></label>
-          <label><input type='checkbox' name='attr_Tokenmod_wounds' value='WNDS[@{wounds}/@{wounds|max}]' class='select_button hidden' /><span class='select_text tokenmodbuttons'>Wounds</span></label>
-          <label><input type='checkbox' name='attr_Tokenmod_camo' value='CAMO[?{Camo result in dos|0}]DOS' class='select_button hidden' /><span class='select_text tokenmodbuttons'>Camo</span></label>
-          <label><input type='checkbox' name='attr_Tokenmod_medical' value='-' class='select_button hidden' /><span class='select_text tokenmodbuttons'>Medical</span></label>
+            <label><input type='checkbox' name='attr_Tokenmod_armor' value='ARMR[@{armor_head}/@{armor_arms}/@{armor_chest}/@{armor_legs}]' class='select_button hidden' /><span class='select_text tokenmodbuttons'>Armor</span></label>
+            <label><input type='checkbox' name='attr_Tokenmod_shields' value='SLDS[@{shields}/@{shields|max}]' class='select_button hidden' /><span class='select_text tokenmodbuttons'>Shields</span></label>
+            <label><input type='checkbox' name='attr_Tokenmod_wounds' value='WNDS[@{wounds}/@{wounds|max}]' class='select_button hidden' /><span class='select_text tokenmodbuttons'>Wounds</span></label>
+            <label><input type='checkbox' name='attr_Tokenmod_camo' value='CAMO[?{Camo result in dos|0}]DOS' class='select_button hidden' /><span class='select_text tokenmodbuttons'>Camo</span></label>
+            <label><input type='checkbox' name='attr_Tokenmod_medical' value='-' class='select_button hidden' /><span class='select_text tokenmodbuttons'>Medical</span></label>
           </div>
           <h3 class="radius_border_top">Extra commands</h3>
           <textarea class="tokenmoddisplay radius_border_bottom" name='attr_Tokenmod_custom' placeholder='Type your custom commands here (They will be appended to the token mod command)'></textarea>
@@ -3203,20 +3149,17 @@
     </div>
 
     <br>
-    <h2 class='medical_h2 radius_border_top'>Additional info</h2>
-    <div class='edge_padding ssc'>
-      <input name='attr_medical_textfield_name' type='text' placeholder='Name' class='full_width_49px' />
-      <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
-      <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{medical_textfield_name} }} {{description=@{medical_textfield} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-      <input name='attr_collapse' type='checkbox'  value='2' class='hider hidden ' />
-      <textarea name='attr_medical_textfield' class=' NPC_textfield_override radius_border_bottom'></textarea>
 
-      <fieldset name='attr_medical_textfield' class='repeating_medical'>
-        <input name='attr_medical_textfield_name_r' type='text' placeholder='Name' class='full_width_49px' />
+    <div class="border_full">
+      <div class='equipment_header'>
+        <h3 style="text-indent: -50px" class="radius_border_top">Abilities</h3>
+      </div>
+      <fieldset name='abilities' class='repeating_abilities'>
+        <input name='attr_ability' type='text' placeholder='Name' class='full_width_49px' />
         <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text '>▼</span></label>
-        <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{medical_textfield_name} }} {{description=@{medical_textfield} }}' class='hidden'></button><span class='select_text'>❖</span></label>
+        <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{ability} }} {{description=@{ability_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
         <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
-        <textarea name='attr_medical_textfield_r' class=' NPC_textfield_override radius_border_bottom'></textarea>
+        <textarea name='attr_ability_desc'></textarea>
       </fieldset>
     </div>
 
@@ -3332,50 +3275,30 @@
     // ___________________________________________________________________________
     /* ===== PARAMETERS ==========
     destinations = the name of the attribute that stores the total quantity
-            can be a single attribute, or an array: ['total_cost', 'total_weight']
-            If more than one, the matching fields must be in the same order.
-        section = name of repeating fieldset, without the repeating_
-        fields = the name of the attribute field to be summed
-              destination and fields both can be a single attribute: 'weight'
-              or an array of attributes: ['weight','number','equipped']
+    can be a single attribute, or an array: ['total_cost', 'total_weight']
+    If more than one, the matching fields must be in the same order.
+    section = name of repeating fieldset, without the repeating_
+    fields = the name of the attribute field to be summed
+    destination and fields both can be a single attribute: 'weight'
+    or an array of attributes: ['weight','number','equipped']
     */
+
     const repeatingSum = (destinations, section, fields) => {
-        if (!Array.isArray(destinations)) destinations = [destinations.replace(/\s/g, '').split(',')];
-        if (!Array.isArray(fields)) fields = [fields.replace(/\s/g, '').split(',')];
-        getSectionIDs(`repeating_${section}`, idArray => {
-            const attrArray = idArray.reduce((m, id) => [...m, ...(fields.map(field => `repeating_${section}_${id}_${field}`))], []);
-            getAttrs([...attrArray], v => {
-                const getValue = (section, id, field) => v[`repeating_${section}_${id}_${field}`] === 'on' ? 1 : parseFloat(v[`repeating_${section}_${id}_${field}`]) || 0;
-                const commonMultipliers = (fields.length <= destinations.length) ? [] : fields.splice(destinations.length, fields.length - destinations.length);
-                const output = {};
-                destinations.forEach((destination, index) => {
-                    output[destination] = idArray.reduce((total, id) => total + getValue(section, id, fields[index]) * commonMultipliers.reduce((subtotal, mult) => subtotal * getValue(section, id, mult), 1), 0);
-                });
-                setAttrs(output);
-            });
-        });
-    };
-
-
-
-    const repeatingSumReturn = (section, fields, multiplier = 1) => {
-      sumTotal = 0;
-      if (!Array.isArray(fields)) fields = [fields];
+      if (!Array.isArray(destinations)) destinations = [destinations.replace(/\s/g, '').split(',')];
+      if (!Array.isArray(fields)) fields = [fields.replace(/\s/g, '').split(',')];
       getSectionIDs(`repeating_${section}`, idArray => {
-        const attrArray = idArray.reduce( (m,id) => [...m, ...(fields.map(field => `repeating_${section}_${id}_${field}`))],[]);
-        getAttrs(attrArray, v => {
-          // getValue: if not a number, returns 1 if it is 'on' (checkbox), otherwise returns 0..
-          getValue = (section, id,field) => parseFloat(v[`repeating_${section}_${id}_${field}`]) || (v[`repeating_${section}_${id}_${field}`] === 'on' ? 1 : 0);
-          sumTotal = idArray.reduce((total, id) => total + fields.reduce((subtotal,field) => subtotal * getValue(section, id,field),1),0);
-          console.log("Sum1= "+ sumTotal);
+        const attrArray = idArray.reduce((m, id) => [...m, ...(fields.map(field => `repeating_${section}_${id}_${field}`))], []);
+        getAttrs([...attrArray], v => {
+          const getValue = (section, id, field) => v[`repeating_${section}_${id}_${field}`] === 'on' ? 1 : parseFloat(v[`repeating_${section}_${id}_${field}`]) || 0;
+          const commonMultipliers = (fields.length <= destinations.length) ? [] : fields.splice(destinations.length, fields.length - destinations.length);
+          const output = {};
+          destinations.forEach((destination, index) => {
+            output[destination] = idArray.reduce((total, id) => total + getValue(section, id, fields[index]) * commonMultipliers.reduce((subtotal, mult) => subtotal * getValue(section, id, mult), 1), 0);
+          });
+          setAttrs(output);
         });
-
       });
-      console.log("Sum2= "+ sumTotal);
-      return sumTotal
-      // return 1 //This was a test and worked, somehow I need to grab the sum total value
     };
-
 
     // ___________________________________________________________________________
     // ____________________Movement and Weight sheet worker_______________________
@@ -3419,7 +3342,6 @@
         var str_mod = (str + str_advancement) / 10;
         var agi_mod = (agi + agi_advancement) / 10;
         var tou_mod = Math.floor((tou + tou_advancement) / 10);
-
 
 
 
@@ -3553,6 +3475,10 @@
         }
       });
     });
+
+
+
+
     // ___________________________________________________________________________
     // ____________________Tabs sheet worker______________________________________
     // ___________________________________________________________________________
@@ -3567,6 +3493,9 @@
 
 
 
+
+
+
     // ___________________________________________________________________________
     // ____________________gear cost/weight sheet worker__________________________
     // ___________________________________________________________________________
@@ -3578,15 +3507,14 @@
           const fieldset_carried = [];
           const fieldset_cost = [];
           const fieldset_quantity = [];
-          idArray.forEach(id => fieldset_carried.push (`repeating_gear_${id}_gear_carried_r`));
-          idArray.forEach(id => fieldset_cost.push (`repeating_gear_${id}_gear_cost_r`));
-          idArray.forEach(id => fieldset_quantity.push (`repeating_gear_${id}_gear_quantity_r`));
-          getAttrs(['gear_cost', 'gear_quantity', 'gear_carried', ...fieldset_cost, ...fieldset_quantity, ...fieldset_carried], v => {
+          idArray.forEach(id => fieldset_carried.push (`repeating_gear_${id}_gear_carried`));
+          idArray.forEach(id => fieldset_cost.push (`repeating_gear_${id}_gear_cost`));
+          idArray.forEach(id => fieldset_quantity.push (`repeating_gear_${id}_gear_quantity`));
+          getAttrs([...fieldset_cost, ...fieldset_quantity, ...fieldset_carried], v => {
             const getValue = (id, field) => parseFloat(v[`repeating_gear_${id}_${field}`]) || 0
-            const credit_base = parseFloat(v.gear_cost) * parseFloat(v.gear_quantity)
-            const credit_repeating = idArray.reduce((total, id) => total + (getValue(id, 'gear_cost_r') * getValue(id, 'gear_quantity_r') ), 0)
+            const credit_repeating = idArray.reduce((total, id) => total + (getValue(id, 'gear_cost') * getValue(id, 'gear_quantity') ), 0)
             setAttrs({
-              credit_tare: -credit_base - credit_repeating,
+              credit_tare: - credit_repeating,
               credit_total: 0,
             });
           });
@@ -3600,7 +3528,7 @@
       });
     });
 
-    on('change:gear_weight change:gear_cost change:gear_quantity change:gear_carried change:repeating_gear remove:repeating_gear clicked:reset' ,() => {
+    on('change:repeating_gear remove:repeating_gear clicked:reset' ,() => {
       getAttrs(['credit_tare'], function(values) {
         const credit_tare = parseInt(values['credit_tare'], 10) || 0;
         getSectionIDs(`repeating_gear`, idArray => {
@@ -3608,19 +3536,17 @@
           const fieldset_cost = [];
           const fieldset_weight = [];
           const fieldset_quantity = [];
-          idArray.forEach(id => fieldset_carried.push (`repeating_gear_${id}_gear_carried_r`));
-          idArray.forEach(id => fieldset_cost.push (`repeating_gear_${id}_gear_cost_r`));
-          idArray.forEach(id => fieldset_weight.push (`repeating_gear_${id}_gear_weight_r`));
-          idArray.forEach(id => fieldset_quantity.push (`repeating_gear_${id}_gear_quantity_r`));
-          getAttrs(['gear_weight', 'gear_cost', 'gear_quantity', 'gear_carried', ...fieldset_weight, ...fieldset_cost, ...fieldset_quantity, ...fieldset_carried], v => {
+          idArray.forEach(id => fieldset_carried.push (`repeating_gear_${id}_gear_carried`));
+          idArray.forEach(id => fieldset_cost.push (`repeating_gear_${id}_gear_cost`));
+          idArray.forEach(id => fieldset_weight.push (`repeating_gear_${id}_gear_weight`));
+          idArray.forEach(id => fieldset_quantity.push (`repeating_gear_${id}_gear_quantity`));
+          getAttrs([...fieldset_weight, ...fieldset_cost, ...fieldset_quantity, ...fieldset_carried], v => {
             const getValue = (id, field) => parseFloat(v[`repeating_gear_${id}_${field}`]) || 0
-            const credit_base = parseFloat(v.gear_cost) * parseFloat(v.gear_quantity)
-            const credit_repeating = idArray.reduce((total, id) => total + (getValue(id, 'gear_cost_r') * getValue(id, 'gear_quantity_r') ), 0)
-            const weight_base = parseFloat(v.gear_weight) * parseFloat(v.gear_quantity) * parseFloat(v.gear_carried)
-            const weight_repeating = idArray.reduce((total, id) => total + (getValue(id, 'gear_weight_r') * getValue(id, 'gear_quantity_r') * getValue(id, 'gear_carried_r')), 0)
+            const credit_repeating = idArray.reduce((total, id) => total + (getValue(id, 'gear_cost') * getValue(id, 'gear_quantity') ), 0)
+            const weight_repeating = idArray.reduce((total, id) => total + (getValue(id, 'gear_weight') * getValue(id, 'gear_quantity') * getValue(id, 'gear_carried')), 0)
             setAttrs({
-              credit_total: credit_base + credit_repeating + credit_tare,
-              weight_total: weight_base + weight_repeating
+              credit_total: credit_repeating + credit_tare,
+              weight_total: weight_repeating
             });
           });
         });
@@ -3636,11 +3562,26 @@
 
 
 
+
+    // ___________________________________________________________________________
+    // __________________________Advancements experience sheet worker___________________
+    // ___________________________________________________________________________
+    on('change:repeating_advancements remove:repeating_advancements', () => {
+      repeatingSum(['xp_spentL','xp_spentR'],'advancements',['advancement_costL','advancement_costR'])
+    });
+
+
+
+
     // ___________________________________________________________________________
     // __________________________Advancements stat sheet worker___________________
     // ___________________________________________________________________________
-    on('change:characteristic_spending_lock', () => {
 
+    on('change:repeating_characteristics remove:repeating_characteristics', () => {
+      repeatingSum([    'characteristic_spending_str_extra','characteristic_spending_tou_extra','characteristic_spending_agi_extra','characteristic_spending_wfr_extra','characteristic_spending_wfm_extra','characteristic_spending_int_extra','characteristic_spending_per_extra','characteristic_spending_cou_extra','characteristic_spending_cha_extra','characteristic_spending_ldr_extra'],'characteristics',['characteristic_spending_str_extra_r','characteristic_spending_tou_extra_r','characteristic_spending_agi_extra_r','characteristic_spending_wfr_extra_r','characteristic_spending_wfm_extra_r','characteristic_spending_int_extra_r','characteristic_spending_per_extra_r','characteristic_spending_cou_extra_r','characteristic_spending_cha_extra_r','characteristic_spending_ldr_extra_r'])
+    });
+
+    on('change:characteristic_spending_lock', () => {
       getAttrs([
       'characteristic_spending_lock',
       'str',
@@ -3705,8 +3646,6 @@
         var ldr_spending = parseInt(values['characteristic_spending_ldr_spending'], 10) || 0;
         var ldr_extra    = parseInt(values['characteristic_spending_ldr_extra'], 10) || 0;
 
-        var sum_test    = repeatingSumReturn('characteristics','characteristic_spending_str_extra')
-        console.log(sum_test);
         setAttrs({
           str: str_base + str_spending + str_extra,
           tou: tou_base + tou_spending + tou_extra,
@@ -3817,12 +3756,12 @@
           updateAttrs["repeating_rangedweapons_" + UUID1 + "_weapon_special_rules"] = compcheck(comp_data_Parsed.COMP_special_rules)
           updateAttrs["repeating_rangedweapons_" + UUID1 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
 
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_name_r"] = compcheck(comp_name)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity_r"] = 1
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost_r"] = compcheck(comp_data_Parsed.COMP_price)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight_r"] = compcheck(comp_data_Parsed.COMP_weight)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp_r"] = compcheck(comp_data_Parsed.COMP_breakpoints)
-          updateAttrs["repeating_gear_" + UUID2 + "_description_r"] = compcheck(comp_data_Parsed.COMP_description)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_name"] = compcheck(comp_name)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity"] = 1
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost"] = compcheck(comp_data_Parsed.COMP_price)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight"] = compcheck(comp_data_Parsed.COMP_weight)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp"] = compcheck(comp_data_Parsed.COMP_breakpoints)
+          updateAttrs["repeating_gear_" + UUID2 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
           setAttrs(updateAttrs);
         };
 
@@ -3848,12 +3787,12 @@
           updateAttrs["repeating_meleeweapons_" + UUID1 + "_weapon_special_rules"] = compcheck(comp_data_Parsed.COMP_special_rules)
           updateAttrs["repeating_meleeweapons_" + UUID1 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
 
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_name_r"] = compcheck(comp_name)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity_r"] = 1
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost_r"] = compcheck(comp_data_Parsed.COMP_price)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight_r"] = compcheck(comp_data_Parsed.COMP_weight)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp_r"] = compcheck(comp_data_Parsed.COMP_breakpoints)
-          updateAttrs["repeating_gear_" + UUID2 + "_description_r"] = compcheck(comp_data_Parsed.COMP_description)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_name"] = compcheck(comp_name)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity"] = 1
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost"] = compcheck(comp_data_Parsed.COMP_price)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight"] = compcheck(comp_data_Parsed.COMP_weight)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp"] = compcheck(comp_data_Parsed.COMP_breakpoints)
+          updateAttrs["repeating_gear_" + UUID2 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
           setAttrs(updateAttrs);
         };
 
@@ -3863,12 +3802,12 @@
           const UUID1 = generateRowID();
           const UUID2 = generateRowID();
           const updateAttrs = {};
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_name_r"] = compcheck(comp_name)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity_r"] = 1
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost_r"] = compcheck(comp_data_Parsed.COMP_price)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight_r"] = compcheck(comp_data_Parsed.COMP_weight)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp_r"] = compcheck(comp_data_Parsed.COMP_breakpoints)
-          updateAttrs["repeating_gear_" + UUID2 + "_description_r"] = compcheck(comp_data_Parsed.COMP_description)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_name"] = compcheck(comp_name)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity"] = 1
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost"] = compcheck(comp_data_Parsed.COMP_price)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight"] = compcheck(comp_data_Parsed.COMP_weight)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp"] = compcheck(comp_data_Parsed.COMP_breakpoints)
+          updateAttrs["repeating_gear_" + UUID2 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
           setAttrs(updateAttrs);
         };
 
@@ -3888,24 +3827,24 @@
           updateAttrs["repeating_armor_" + UUID2 + "_shields_charge"] = compcheck(comp_data_Parsed.COMP_shield_recharge)
           updateAttrs["repeating_armor_" + UUID2 + "_description"] = compcheck(comp_name) + "\n" + compcheck(comp_data_Parsed.COMP_description)
 
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_name_r"] = compcheck(comp_name) + "   armor:[" + compcheck(comp_data_Parsed.COMP_armor_arms) +" "+ compcheck(comp_data_Parsed.COMP_armor_head) +" "+ compcheck(comp_data_Parsed.COMP_armor_legs) +" "+ compcheck(comp_data_Parsed.COMP_armor_chest) + "]" + " shields:[" + compcheck(comp_data_Parsed.COMP_shield_integrity) +" "+ compcheck(comp_data_Parsed.COMP_shield_delay) +" "+ compcheck(comp_data_Parsed.COMP_shield_recharge) + "]"
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity_r"] = 1
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost_r"] = compcheck(comp_data_Parsed.COMP_price)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight_r"] = compcheck(comp_data_Parsed.COMP_weight)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp_r"] = compcheck(comp_data_Parsed.COMP_breakpoints)
-          updateAttrs["repeating_gear_" + UUID2 + "_description_r"] = compcheck(comp_data_Parsed.COMP_description)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_name"] = compcheck(comp_name) + "   armor:[" + compcheck(comp_data_Parsed.COMP_armor_arms) +" "+ compcheck(comp_data_Parsed.COMP_armor_head) +" "+ compcheck(comp_data_Parsed.COMP_armor_legs) +" "+ compcheck(comp_data_Parsed.COMP_armor_chest) + "]" + " shields:[" + compcheck(comp_data_Parsed.COMP_shield_integrity) +" "+ compcheck(comp_data_Parsed.COMP_shield_delay) +" "+ compcheck(comp_data_Parsed.COMP_shield_recharge) + "]"
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity"] = 1
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost"] = compcheck(comp_data_Parsed.COMP_price)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight"] = compcheck(comp_data_Parsed.COMP_weight)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp"] = compcheck(comp_data_Parsed.COMP_breakpoints)
+          updateAttrs["repeating_gear_" + UUID2 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
           setAttrs(updateAttrs);
         };
         if (comp_data_Parsed.COMP_field == "Armour" && comp_data_Parsed.COMP_variant == "1") {
           const UUID1 = generateRowID();
           const UUID2 = generateRowID();
           const updateAttrs = {};
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_name_r"] = comp_name + "   armor:[+" + compcheck(comp_data_Parsed.COMP_armor_arms) +" +"+ compcheck(comp_data_Parsed.COMP_armor_head) +" +"+ compcheck(comp_data_Parsed.COMP_armor_legs) +" +"+ compcheck(comp_data_Parsed.COMP_armor_chest) + "]" + " shields:[+" + compcheck(comp_data_Parsed.COMP_shield_integrity) +" +"+ compcheck(comp_data_Parsed.COMP_shield_delay) +" +"+ compcheck(comp_data_Parsed.COMP_shield_recharge) + "]"
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity_r"] = 1
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost_r"] = compcheck(comp_data_Parsed.COMP_price)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight_r"] = compcheck(comp_data_Parsed.COMP_weight)
-          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp_r"] = compcheck(comp_data_Parsed.COMP_breakpoints)
-          updateAttrs["repeating_gear_" + UUID2 + "_description_r"] = compcheck(comp_data_Parsed.COMP_description)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_name"] = comp_name + "   armor:[+" + compcheck(comp_data_Parsed.COMP_armor_arms) +" +"+ compcheck(comp_data_Parsed.COMP_armor_head) +" +"+ compcheck(comp_data_Parsed.COMP_armor_legs) +" +"+ compcheck(comp_data_Parsed.COMP_armor_chest) + "]" + " shields:[+" + compcheck(comp_data_Parsed.COMP_shield_integrity) +" +"+ compcheck(comp_data_Parsed.COMP_shield_delay) +" +"+ compcheck(comp_data_Parsed.COMP_shield_recharge) + "]"
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity"] = 1
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_cost"] = compcheck(comp_data_Parsed.COMP_price)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_weight"] = compcheck(comp_data_Parsed.COMP_weight)
+          updateAttrs["repeating_gear_" + UUID2 + "_gear_bp"] = compcheck(comp_data_Parsed.COMP_breakpoints)
+          updateAttrs["repeating_gear_" + UUID2 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
           setAttrs(updateAttrs);
         };
 
@@ -4046,63 +3985,58 @@
 
 
 
+
     {{#loc}}
     {{^attack}}<div class="sheet-template-content sheet-template-round">{{/attack}}
       {{#attack}} <div class="sheet-template-content">{{/attack}}
         <div class="sheet-template-row sheet-template-center sheet-template-break">Hit Location {{loc}}</div>
         <div class="sheet-template-row sheet-template-center">
-          {{#rollBetween() loc 1 10}}   HEAD:		{{/rollBetween() loc 1 10}}
-          {{#rollBetween() loc 1 1}}	01 Neck	  {{/rollBetween() loc 1 1}}
-          {{#rollBetween() loc 2 2}}	02 Chin	  {{/rollBetween() loc 2 2}}
-          {{#rollBetween() loc 3 3}}	03 Mouth	 {{/rollBetween() loc 3 3}}
-          {{#rollBetween() loc 4 5}}	04-05 Nose   {{/rollBetween() loc 4 5}}
-          {{#rollBetween() loc 6 7}}	06-07 Cheeks {{/rollBetween() loc 6 7}}
-          {{#rollBetween() loc 8 8}}	08 Eyes	  {{/rollBetween() loc 8 8}}
-          {{#rollBetween() loc 9 9}}	09 Forehead  {{/rollBetween() loc 9 9}}
-          {{#rollBetween() loc 10 10}}  10 Ear	   {{/rollBetween() loc 10 10}}
+          {{#rollBetween() loc 1 10}}  HEAD:    {{/rollBetween() loc 1 10}}
+          {{#rollBetween() loc 1 2}}   Neck     {{/rollBetween() loc 1 2}}
+          {{#rollBetween() loc 3 5}}   Mouth    {{/rollBetween() loc 3 5}}
+          {{#rollBetween() loc 6 7}}   Nose     {{/rollBetween() loc 6 7}}
+          {{#rollBetween() loc 8 8}}   Eyes     {{/rollBetween() loc 8 8}}
+          {{#rollBetween() loc 9 9}}   Ear      {{/rollBetween() loc 9 9}}
+          {{#rollBetween() loc 10 10}} Forehead {{/rollBetween() loc 10 10}}
 
-          {{#rollBetween() loc 11 20}}  LEFT ARM:	  {{/rollBetween() loc 11 20}}
-          {{#rollBetween() loc 11 11}}  11 Fingers	 {{/rollBetween() loc 11 11}}
-          {{#rollBetween() loc 12 12}}  12 Hands	   {{/rollBetween() loc 12 12}}
-          {{#rollBetween() loc 13 15}}  13-15 Forearm  {{/rollBetween() loc 13 15}}
-          {{#rollBetween() loc 16 16}}  16 Elbow	   {{/rollBetween() loc 16 16}}
-          {{#rollBetween() loc 17 19}}  17-19 Bicep	{{/rollBetween() loc 17 19}}
-          {{#rollBetween() loc 20 20}}  20 Shoulder	{{/rollBetween() loc 20 20}}
+          {{#rollBetween() loc 11 20}}  LEFT ARM: {{/rollBetween() loc 11 20}}
+          {{#rollBetween() loc 11 12}}  Hands     {{/rollBetween() loc 11 12}}
+          {{#rollBetween() loc 13 15}}  Forearm   {{/rollBetween() loc 13 15}}
+          {{#rollBetween() loc 16 16}}  Elbow     {{/rollBetween() loc 16 16}}
+          {{#rollBetween() loc 17 19}}  Bicep     {{/rollBetween() loc 17 19}}
+          {{#rollBetween() loc 20 20}}  Shoulder  {{/rollBetween() loc 20 20}}
 
-          {{#rollBetween() loc 21 30}}  RIGHT ARM:	  {{/rollBetween() loc 21 30}}
-          {{#rollBetween() loc 21 21}}  21 Finger	   {{/rollBetween() loc 21 21}}
-          {{#rollBetween() loc 22 22}}  22 Hands		{{/rollBetween() loc 22 22}}
-          {{#rollBetween() loc 23 25}}  23-25 Forearm   {{/rollBetween() loc 23 25}}
-          {{#rollBetween() loc 26 26}}  26 Elbow		{{/rollBetween() loc 26 26}}
-          {{#rollBetween() loc 27 29}}  27-29 Bicep	 {{/rollBetween() loc 27 29}}
-          {{#rollBetween() loc 30 30}}  30 Shoulder	 {{/rollBetween() loc 30 30}}
+          {{#rollBetween() loc 21 30}}  RIGHT ARM: {{/rollBetween() loc 21 30}}
+          {{#rollBetween() loc 21 22}}  Hands      {{/rollBetween() loc 21 22}}
+          {{#rollBetween() loc 23 25}}  Forearm	   {{/rollBetween() loc 23 25}}
+          {{#rollBetween() loc 26 26}}  Elbow      {{/rollBetween() loc 26 26}}
+          {{#rollBetween() loc 27 29}}  Bicep  	   {{/rollBetween() loc 27 29}}
+          {{#rollBetween() loc 30 30}}  Shoulder   {{/rollBetween() loc 30 30}}
 
-          {{#rollBetween() loc 31 45}}  LEFT LEG:	   {{/rollBetween() loc 31 45}}
-          {{#rollBetween() loc 31 31}}  31 Toes		 {{/rollBetween() loc 31 31}}
-          {{#rollBetween() loc 32 32}}  32 Foot		 {{/rollBetween() loc 32 32}}
-          {{#rollBetween() loc 33 33}}  33 Ankle		{{/rollBetween() loc 33 33}}
-          {{#rollBetween() loc 34 37}}  34-37 Shin	  {{/rollBetween() loc 34 37}}
-          {{#rollBetween() loc 38 38}}  38 Knee		  {{/rollBetween() loc 38 38}}
-          {{#rollBetween() loc 39 43}}  39-43 Thigh	 {{/rollBetween() loc 39 43}}
-          {{#rollBetween() loc 44 45}}  44-45 Pelvis	{{/rollBetween() loc 44 45}}
 
-          {{#rollBetween() loc 46 60}}  RIGHT LEG:	  {{/rollBetween() loc 46 60}}
-          {{#rollBetween() loc 46 46}}  46 Toes		 {{/rollBetween() loc 46 46}}
-          {{#rollBetween() loc 47 47}}  47 Foot		 {{/rollBetween() loc 47 47}}
-          {{#rollBetween() loc 48 48}}  48 Ankle		{{/rollBetween() loc 48 48}}
-          {{#rollBetween() loc 49 53}}  49-53 Shin	  {{/rollBetween() loc 49 53}}
-          {{#rollBetween() loc 54 54}}  54 Knee		 {{/rollBetween() loc 54 54}}
-          {{#rollBetween() loc 55 58}}  55-58 Thigh	 {{/rollBetween() loc 55 58}}
-          {{#rollBetween() loc 59 60}}  59-60 Pelvis	{{/rollBetween() loc 59 60}}
+          {{#rollBetween() loc 31 45}}  LEFT LEG:	{{/rollBetween() loc 31 45}}
+          {{#rollBetween() loc 31 32}}  Foot      {{/rollBetween() loc 31 32}}
+          {{#rollBetween() loc 33 37}}  Shin      {{/rollBetween() loc 33 37}}
+          {{#rollBetween() loc 38 38}}  Knee      {{/rollBetween() loc 38 38}}
+          {{#rollBetween() loc 39 43}}  Thigh     {{/rollBetween() loc 39 43}}
+          {{#rollBetween() loc 44 45}}  Hip       {{/rollBetween() loc 44 45}}
 
-          {{#rollBetween() loc 61 100}} CHEST:				  {{/rollBetween() loc 61 100}}
-          {{#rollBetween() loc 61 66}}  61-66 Small Intestines  {{/rollBetween() loc 61 66}}
-          {{#rollBetween() loc 67 72}}  67-72 Large Intestines  {{/rollBetween() loc 67 72}}
-          {{#rollBetween() loc 73 78}}  73-78 Kidney			{{/rollBetween() loc 73 78}}
-          {{#rollBetween() loc 79 84}}  79-84 Stomach / Liver   {{/rollBetween() loc 79 84}}
-          {{#rollBetween() loc 85 89}}  85-89 Heart			 {{/rollBetween() loc 85 89}}
-          {{#rollBetween() loc 90 96}}  90-96 Lungs			 {{/rollBetween() loc 90 96}}
-          {{#rollBetween() loc 97 100}} 97-100 No Organ Hit	 {{/rollBetween() loc 97 100}}
+
+          {{#rollBetween() loc 46 60}}  RIGHT LEG: {{/rollBetween() loc 46 60}}
+          {{#rollBetween() loc 46 47}}  Foot       {{/rollBetween() loc 46 47}}
+          {{#rollBetween() loc 48 53}}  Shin       {{/rollBetween() loc 48 53}}
+          {{#rollBetween() loc 54 54}}  Knee       {{/rollBetween() loc 54 54}}
+          {{#rollBetween() loc 55 58}}  Thigh      {{/rollBetween() loc 55 58}}
+          {{#rollBetween() loc 59 60}}  Hip        {{/rollBetween() loc 59 60}}
+
+          {{#rollBetween() loc 61 100}} CHEST:	                  {{/rollBetween() loc 61 100}}
+          {{#rollBetween() loc 61 65}}  Pelvis                    {{/rollBetween() loc 61 65}}
+          {{#rollBetween() loc 66 72}}  Intestines                {{/rollBetween() loc 66 72}}
+          {{#rollBetween() loc 73 78}}  Spine                     {{/rollBetween() loc 73 78}}
+          {{#rollBetween() loc 79 84}}  Stomach / Kidney / Liver  {{/rollBetween() loc 79 84}}
+          {{#rollBetween() loc 85 89}}  Heart                     {{/rollBetween() loc 85 89}}
+          {{#rollBetween() loc 90 96}}  Lungs                     {{/rollBetween() loc 90 96}}
+          {{#rollBetween() loc 97 100}} Ribcage / No Organ Struck {{/rollBetween() loc 97 100}}
         </div>
       </div>
       {{/loc}}
