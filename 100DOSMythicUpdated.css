@@ -24,6 +24,7 @@ input.sheet-background_override_switch_13:checked ~ div.sheet-background { backg
 input.sheet-background_override_switch_14:checked ~ div.sheet-background { background-image: linear-gradient(#a0e050, #800020); color: white }
 input.sheet-background_override_switch_15:checked ~ div.sheet-background { background-image: linear-gradient(#800020, #3a305b); color: white; }
 input.sheet-background_override_switch_16:checked ~ div.sheet-background { background-image: linear-gradient(#15f4ee, #ff08fc); color: darkgreen; }
+input.sheet-background_override_switch_16:checked ~ div.sheet-background { background-image: linear-gradient(#019339, #005193); color: white; }
 
 
 
@@ -1119,6 +1120,7 @@ ______________________________ start of rolltemplate ___________________________
 .sheet-rolltemplate-mythic .sheet-template-content {
 	background: #4a648c;
 	background-image: url(https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Assets/Mythic_rolltemplate_background.png?raw=true);
+	background-size: 100%;
 	border-radius: 0px 0px 10px 10px;
 	border-left: 2px solid grey;
 	border-right: 2px solid grey;
@@ -1138,6 +1140,11 @@ ______________________________ start of rolltemplate ___________________________
 .sheet-rolltemplate-mythic .sheet-template-2x2 {
 	display: grid;
 	grid-template-columns: auto auto
+}
+
+.sheet-rolltemplate-mythic .sheet-template-3x25 {
+	display: grid;
+	grid-template-columns: auto auto auto
 }
 
 .sheet-rolltemplate-mythic .sheet-template-right {

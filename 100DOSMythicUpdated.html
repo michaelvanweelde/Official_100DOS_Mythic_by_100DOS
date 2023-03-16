@@ -72,6 +72,7 @@
     <input name='attr_color_override' type='radio' value='14' class='background_override_switch_14' display=none hidden />
     <input name='attr_color_override' type='radio' value='15' class='background_override_switch_15' display=none hidden />
     <input name='attr_color_override' type='radio' value='16' class='background_override_switch_16' display=none hidden />
+    <input name='attr_color_override' type='radio' value='17' class='background_override_switch_16' display=none hidden />
     <div class='background radius_border_heading'>
 
 
@@ -359,7 +360,9 @@
             <option value='2'>GM sheet</option>
           </select>
           <button class='clear infographic_buttons' type='roll' name='autodamage' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{avrdam= [[0+[[([[(?{Amount of hits|1}*?{Amount of D10s|0})d10]] + [[?{Amount of hits|1}*?{Base|0}]] - [[?{Amount of hits|1}*(?{Armor|0} - ?{Pierce|0})d1]])d1]]]]}}'>Auto-Damage</button>
-          <button class='clear infographic_buttons' type='roll' name='multiroll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{multiroll= [[ ?{How many rolls?|1}d100<[[?{Using|Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} |Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} |Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} |Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod} } + ?{Modifier|0} ]] ]] }}'>Multi-Roll</button>
+          <button class='clear infographic_buttons' type='roll' name='multiroll' value='
+          @{to-gm}&{template:mythic} {{character= @{character_name}}}{{nrofrolls= [[?{How many rolls?|1}]]}}{{multiroll0=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*0]]-1d100)/10)]]}}{{multiroll1=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*1]]-1d100)/10)]]}}{{multiroll2=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*2]]-1d100)/10)]]}}{{multiroll3=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*3]]-1d100)/10)]]}}{{multiroll4=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*4]]-1d100)/10)]]}}{{multiroll5=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*5]]-1d100)/10)]]}}{{multiroll6=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*6]]-1d100)/10)]]}}{{multiroll7=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*7]]-1d100)/10)]]}}{{multiroll8=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*8]]-1d100)/10)]]}}{{multiroll9=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*9]]-1d100)/10)]]}}{{multiroll10=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*10]]-1d100)/10)]]}}{{multiroll11=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*11]]-1d100)/10)]]}}{{multiroll12=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*12]]-1d100)/10)]]}}{{multiroll13=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*13]]-1d100)/10)]]}}{{multiroll14=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*14]]-1d100)/10)]]}}{{multiroll15=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*15]]-1d100)/10)]]}}{{multiroll16=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*16]]-1d100)/10)]]}}{{multiroll17=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*17]]-1d100)/10)]]}}{{multiroll18=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*18]]-1d100)/10)]]}}{{multiroll19=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*19]]-1d100)/10)]]}}{{multiroll20=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*20]]-1d100)/10)]]}}{{multiroll21=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*21]]-1d100)/10)]]}}{{multiroll22=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*22]]-1d100)/10)]]}}{{multiroll23=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*23]]-1d100)/10)]]}}{{multiroll24=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*24]]-1d100)/10)]]}}{{multiroll25=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*25]]-1d100)/10)]]}}
+          '>Multi-Roll</button>
           <button class='clear infographic_buttons' type='roll' name='scatter' value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{scatter-range= [[[[(abs(?{Degrees of Failiure|0})+floor(?{range from target|0}/100))*?{Target at|Normal range,1|Max range,2|Extreme range,4})]]d10]]}} {{scatter-direction=[[1d10]]d1}}">Scatter</button>
           <button class='clear infographic_buttons' type='roll' name='tokenmod' value='!token-mod --set tooltip|"@{Tokenmod_text} @{Tokenmod_armor} @{Tokenmod_shields} @{Tokenmod_wounds} @{Tokenmod_camo} @{Tokenmod_medical}" @{Tokenmod_custom}'>Tokenmod</button>
         </div>
@@ -1641,15 +1644,15 @@
       <br>
 
       <div class='border_full'>
-          <h3 style="text-indent: -50px" class="radius_border_top">Medical Information</h3>
-          <fieldset name='medical' class='repeating_medical'>
-            <input name='attr_medical' type='text' placeholder='Name' class='full_width_49px' />
-            <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text '>▼</span></label>
-            <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{medical} }} {{description=@{medical_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-            <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
-            <textarea name='attr_medical_desc' placeholder='Not all injuries in 100DOS are lethal. Exhaustion, combat trauma, or exchanging blows with bare fists can all leave a character tattered, but intact. Fatigue measures the amount of non-lethal injury a character can take. For every level of Fatigue a Character has, they take a -5 Penalty to all Tests made.&#10;&#10;Once a Character surpasses their Toughness Modifier, multiplied by 2, in Fatigue, they fall into a coma. The Character’s coma will last one hour for every level of Fatigue the Character has. Every hour that passes, the level of Fatigue is reduced by one. The Character may wake up once their level of Fatigue is their Toughness Modifier or lower.'></textarea>
-          </fieldset>
-        </div>
+        <h3 style="text-indent: -50px" class="radius_border_top">Medical Information</h3>
+        <fieldset name='medical' class='repeating_medical'>
+          <input name='attr_medical' type='text' placeholder='Name' class='full_width_49px' />
+          <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text '>▼</span></label>
+          <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{medical} }} {{description=@{medical_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
+          <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
+          <textarea name='attr_medical_desc' placeholder='Not all injuries in 100DOS are lethal. Exhaustion, combat trauma, or exchanging blows with bare fists can all leave a character tattered, but intact. Fatigue measures the amount of non-lethal injury a character can take. For every level of Fatigue a Character has, they take a -5 Penalty to all Tests made.&#10;&#10;Once a Character surpasses their Toughness Modifier, multiplied by 2, in Fatigue, they fall into a coma. The Character’s coma will last one hour for every level of Fatigue the Character has. Every hour that passes, the level of Fatigue is reduced by one. The Character may wake up once their level of Fatigue is their Toughness Modifier or lower.'></textarea>
+        </fieldset>
+      </div>
 
     </div>
 
@@ -1666,30 +1669,30 @@
         Spent XP: <input name='attr_xp_spent' type='number' value="(@{xp_spentL}+@{xp_spentR})" class='numerical_field' disabled="true"/>
         XP Total: <input name='attr_xp_total' type='number' class='numerical_field end_field' />
 
-      <input name='attr_xp_spentL' type='number' hidden />
-      <input name='attr_xp_spentR' type='number' hidden />
+        <input name='attr_xp_spentL' type='number' hidden />
+        <input name='attr_xp_spentR' type='number' hidden />
       </div>
       <br>
       <div class="border_full">
-      <div class='advancements_grid equipment_header'>
-        <div class='advancements_grid_gs1'>Name</div>
-        <div class='advancements_grid_gs2'>XP Cost</div>
-        <div class='advancements_grid_gs3'>Page #</div>
-        <div class='advancements_grid_gs4'>Name</div>
-        <div class='advancements_grid_gs5'>XP Cost</div>
-        <div class='advancements_grid_gs6'>Page #</div>
-      </div>
-      <fieldset name='advancements' class='repeating_advancements'>
-        <div class='advancements_grid'>
-          <input class='advancements_grid_gs1' name='attr_advancement_nameL' type='text' placeholder='Write XP-costing item name here' />
-          <input class='advancements_grid_gs2' name='attr_advancement_costL' type='number' placeholder='XP Cost' />
-          <input class='advancements_grid_gs3' name='attr_advancement_pgnrL' type='number' placeholder='Page #'  />
-          <input class='advancements_grid_gs4' name='attr_advancement_nameR' type='text' placeholder='Write XP-costing item name here' />
-          <input class='advancements_grid_gs5' name='attr_advancement_costR' type='number' placeholder='XP Cost' />
-          <input class='advancements_grid_gs6' name='attr_advancement_pgnrR' type='number' placeholder='Page #' />
+        <div class='advancements_grid equipment_header'>
+          <div class='advancements_grid_gs1'>Name</div>
+          <div class='advancements_grid_gs2'>XP Cost</div>
+          <div class='advancements_grid_gs3'>Page #</div>
+          <div class='advancements_grid_gs4'>Name</div>
+          <div class='advancements_grid_gs5'>XP Cost</div>
+          <div class='advancements_grid_gs6'>Page #</div>
         </div>
-      </fieldset>
-            </div>
+        <fieldset name='advancements' class='repeating_advancements'>
+          <div class='advancements_grid'>
+            <input class='advancements_grid_gs1' name='attr_advancement_nameL' type='text' placeholder='Write XP-costing item name here' />
+            <input class='advancements_grid_gs2' name='attr_advancement_costL' type='number' placeholder='XP Cost' />
+            <input class='advancements_grid_gs3' name='attr_advancement_pgnrL' type='number' placeholder='Page #'  />
+            <input class='advancements_grid_gs4' name='attr_advancement_nameR' type='text' placeholder='Write XP-costing item name here' />
+            <input class='advancements_grid_gs5' name='attr_advancement_costR' type='number' placeholder='XP Cost' />
+            <input class='advancements_grid_gs6' name='attr_advancement_pgnrR' type='number' placeholder='Page #' />
+          </div>
+        </fieldset>
+      </div>
 
       <div class='training'>
         <div class='faction_training ssc auto_margin 90width radius_border'>
@@ -1718,98 +1721,98 @@
 
       <br>
 
-<div class="border_full">
+      <div class="border_full">
 
 
-      <div class='characteristic_spending_window equipment_header'>
-        <h3 style="border-top-left-radius: 10px">STR</h3>
-        <h3>TOU</h3>
-        <h3>AGI</h3>
-        <h3>WFR</h3>
-        <h3>WFM</h3>
-        <h3>INT</h3>
-        <h3>PER</h3>
-        <h3>COU</h3>
-        <h3>CHA</h3>
-        <h3>LDR</h3>
-        <label class='text_centered bttn_top_padding'><input type='checkbox' name='attr_characteristic_spending_lock' class='hider select_button hidden' /><span class='select_text'>Apply</span></label>
-      </div>
-
-      <div class="characteristic_spending_window">
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_str_total' value='@{characteristic_spending_str_base} + @{characteristic_spending_str_spending} + @{characteristic_spending_str_extra}' disabled="true" type='number'/>
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_tou_total' value='@{characteristic_spending_tou_base} + @{characteristic_spending_tou_spending} + @{characteristic_spending_tou_extra}' disabled="true" type='number'/>
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_agi_total' value='@{characteristic_spending_agi_base} + @{characteristic_spending_agi_spending} + @{characteristic_spending_agi_extra}' disabled="true" type='number'/>
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_wfr_total' value='@{characteristic_spending_wfr_base} + @{characteristic_spending_wfr_spending} + @{characteristic_spending_wfr_extra}' disabled="true" type='number'/>
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_wfm_total' value='@{characteristic_spending_wfm_base} + @{characteristic_spending_wfm_spending} + @{characteristic_spending_wfm_extra}' disabled="true" type='number'/>
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_int_total' value='@{characteristic_spending_int_base} + @{characteristic_spending_int_spending} + @{characteristic_spending_int_extra}' disabled="true" type='number'/>
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_per_total' value='@{characteristic_spending_per_base} + @{characteristic_spending_per_spending} + @{characteristic_spending_per_extra}' disabled="true" type='number'/>
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_cou_total'  value='@{characteristic_spending_cou_base}  + @{characteristic_spending_cou_spending}  + @{characteristic_spending_cou_extra}' disabled="true" type='number'/>
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_cha_total'  value='@{characteristic_spending_cha_base}  + @{characteristic_spending_cha_spending}  + @{characteristic_spending_cha_extra}' disabled="true" type='number'/>
-        <input class='characteristic_spending_number_total' name='attr_characteristic_spending_ldr_total'  value='@{characteristic_spending_ldr_base}  + @{characteristic_spending_ldr_spending}  + @{characteristic_spending_ldr_extra}' disabled="true" type='number'/>
-        <h3>Total</h3>
-      </div>
-
-      <div class="characteristic_spending_window">
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_str_base' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_tou_base' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_agi_base' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_wfr_base' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_base' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_int_base' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_per_base' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_base'  type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_base'  type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_base'  type='number' value='0' />
-        <h3>Base</h3>
-      </div>
-
-      <div class="characteristic_spending_window">
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_str_spending' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_tou_spending' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_agi_spending' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_wfr_spending' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_spending' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_int_spending' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_per_spending' type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_spending'  type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_spending'  type='number' value='0' />
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_spending'  type='number' value='0' />
-        <h3>Spent</h3>
-      </div>
-
-      <div class="characteristic_spending_window">
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_str_extra' type='number' value='0' hidden/>
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_tou_extra' type='number' value='0' hidden/>
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_agi_extra' type='number' value='0' hidden/>
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_wfr_extra' type='number' value='0' hidden/>
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_extra' type='number' value='0' hidden/>
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_int_extra' type='number' value='0' hidden/>
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_per_extra' type='number' value='0' hidden/>
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_extra'  type='number' value='0' hidden/>
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_extra'  type='number' value='0' hidden/>
-        <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_extra'  type='number' value='0' hidden/>
-      </div>
-
-      <fieldset name='abilities' class='repeating_characteristics'>
-        <div class="characteristic_spending_window">
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_str_extra_r' type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_tou_extra_r' type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_agi_extra_r' type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_wfr_extra_r' type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_extra_r' type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_int_extra_r' type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_per_extra_r' type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_extra_r'  type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_extra_r'  type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_extra_r'  type='number' value='0' />
-          <h3 class="characteristic_spending_text"><input class='characteristic_spending_text_input' name='attr_characteristic_spending_ldr_extra_name_r'  type='text' placeholder='extra' /></h3>
+        <div class='characteristic_spending_window equipment_header'>
+          <h3 style="border-top-left-radius: 10px">STR</h3>
+          <h3>TOU</h3>
+          <h3>AGI</h3>
+          <h3>WFR</h3>
+          <h3>WFM</h3>
+          <h3>INT</h3>
+          <h3>PER</h3>
+          <h3>COU</h3>
+          <h3>CHA</h3>
+          <h3>LDR</h3>
+          <label class='text_centered bttn_top_padding'><input type='checkbox' name='attr_characteristic_spending_lock' class='hider select_button hidden' /><span class='select_text'>Apply</span></label>
         </div>
-      </fieldset>
-</div>
+
+        <div class="characteristic_spending_window">
+          <input class='characteristic_spending_number_total' name='attr_characteristic_spending_str_total' value='@{characteristic_spending_str_base} + @{characteristic_spending_str_spending} + @{characteristic_spending_str_extra}' disabled="true" type='number'/>
+          <input class='characteristic_spending_number_total' name='attr_characteristic_spending_tou_total' value='@{characteristic_spending_tou_base} + @{characteristic_spending_tou_spending} + @{characteristic_spending_tou_extra}' disabled="true" type='number'/>
+          <input class='characteristic_spending_number_total' name='attr_characteristic_spending_agi_total' value='@{characteristic_spending_agi_base} + @{characteristic_spending_agi_spending} + @{characteristic_spending_agi_extra}' disabled="true" type='number'/>
+          <input class='characteristic_spending_number_total' name='attr_characteristic_spending_wfr_total' value='@{characteristic_spending_wfr_base} + @{characteristic_spending_wfr_spending} + @{characteristic_spending_wfr_extra}' disabled="true" type='number'/>
+          <input class='characteristic_spending_number_total' name='attr_characteristic_spending_wfm_total' value='@{characteristic_spending_wfm_base} + @{characteristic_spending_wfm_spending} + @{characteristic_spending_wfm_extra}' disabled="true" type='number'/>
+          <input class='characteristic_spending_number_total' name='attr_characteristic_spending_int_total' value='@{characteristic_spending_int_base} + @{characteristic_spending_int_spending} + @{characteristic_spending_int_extra}' disabled="true" type='number'/>
+          <input class='characteristic_spending_number_total' name='attr_characteristic_spending_per_total' value='@{characteristic_spending_per_base} + @{characteristic_spending_per_spending} + @{characteristic_spending_per_extra}' disabled="true" type='number'/>
+          <input class='characteristic_spending_number_total' name='attr_characteristic_spending_cou_total'  value='@{characteristic_spending_cou_base}  + @{characteristic_spending_cou_spending}  + @{characteristic_spending_cou_extra}' disabled="true" type='number'/>
+          <input class='characteristic_spending_number_total' name='attr_characteristic_spending_cha_total'  value='@{characteristic_spending_cha_base}  + @{characteristic_spending_cha_spending}  + @{characteristic_spending_cha_extra}' disabled="true" type='number'/>
+          <input class='characteristic_spending_number_total' name='attr_characteristic_spending_ldr_total'  value='@{characteristic_spending_ldr_base}  + @{characteristic_spending_ldr_spending}  + @{characteristic_spending_ldr_extra}' disabled="true" type='number'/>
+          <h3>Total</h3>
+        </div>
+
+        <div class="characteristic_spending_window">
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_str_base' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_tou_base' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_agi_base' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_wfr_base' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_base' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_int_base' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_per_base' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_base'  type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_base'  type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_base'  type='number' value='0' />
+          <h3>Base</h3>
+        </div>
+
+        <div class="characteristic_spending_window">
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_str_spending' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_tou_spending' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_agi_spending' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_wfr_spending' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_spending' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_int_spending' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_per_spending' type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_spending'  type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_spending'  type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_spending'  type='number' value='0' />
+          <h3>Spent</h3>
+        </div>
+
+        <div class="characteristic_spending_window">
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_str_extra' type='number' value='0' hidden/>
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_tou_extra' type='number' value='0' hidden/>
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_agi_extra' type='number' value='0' hidden/>
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_wfr_extra' type='number' value='0' hidden/>
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_extra' type='number' value='0' hidden/>
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_int_extra' type='number' value='0' hidden/>
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_per_extra' type='number' value='0' hidden/>
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_extra'  type='number' value='0' hidden/>
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_extra'  type='number' value='0' hidden/>
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_extra'  type='number' value='0' hidden/>
+        </div>
+
+        <fieldset name='abilities' class='repeating_characteristics'>
+          <div class="characteristic_spending_window">
+            <input class='characteristic_spending_number' name='attr_characteristic_spending_str_extra_r' type='number' value='0' />
+            <input class='characteristic_spending_number' name='attr_characteristic_spending_tou_extra_r' type='number' value='0' />
+            <input class='characteristic_spending_number' name='attr_characteristic_spending_agi_extra_r' type='number' value='0' />
+            <input class='characteristic_spending_number' name='attr_characteristic_spending_wfr_extra_r' type='number' value='0' />
+            <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_extra_r' type='number' value='0' />
+            <input class='characteristic_spending_number' name='attr_characteristic_spending_int_extra_r' type='number' value='0' />
+            <input class='characteristic_spending_number' name='attr_characteristic_spending_per_extra_r' type='number' value='0' />
+            <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_extra_r'  type='number' value='0' />
+            <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_extra_r'  type='number' value='0' />
+            <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_extra_r'  type='number' value='0' />
+            <h3 class="characteristic_spending_text"><input class='characteristic_spending_text_input' name='attr_characteristic_spending_ldr_extra_name_r'  type='text' placeholder='extra' /></h3>
+          </div>
+        </fieldset>
+      </div>
 
       <br>
 
-    <div class='border_full'>
+      <div class='border_full'>
         <h3 style="text-indent: -50px" class="radius_border_top">Abilities</h3>
         <fieldset name='abilities' class='repeating_abilities'>
           <input name='attr_ability' type='text' placeholder='Name' class='full_width_49px' />
@@ -2258,6 +2261,7 @@
             <option value='14'>Funky      Mango</option>
             <option value='15'>burgundy   Purple</option>
             <option value='16'>You will suffer as I have</option>
+            <option value='17'>19339 and 5193 characters</option>
           </select>
         </div>
 
@@ -3955,15 +3959,40 @@
 
 
 
-  {{#multiroll}}
+  {{#nrofrolls}}
   <div class="sheet-template-header">{{character}} rolls multiple times</div>
   <div class="sheet-template-content">
     <div class="sheet-template-2x2">
-      <div class="sheet-template-row sheet-template-right">Successes:</div>
-      <div class="sheet-template-row">{{multiroll}}</div>
+      {{#rollGreater() nrofrolls 0}} <div class="sheet-template-row sheet-template-right">Roll 0:</div> <div class="sheet-template-row"> {{multiroll0}} </div> {{/rollGreater() nrofrolls 0}}
+      {{#rollGreater() nrofrolls 1}} <div class="sheet-template-row sheet-template-right">Roll 1:</div> <div class="sheet-template-row"> {{multiroll1}} </div> {{/rollGreater() nrofrolls 1}}
+      {{#rollGreater() nrofrolls 2}} <div class="sheet-template-row sheet-template-right">Roll 2:</div> <div class="sheet-template-row"> {{multiroll2}} </div> {{/rollGreater() nrofrolls 2}}
+      {{#rollGreater() nrofrolls 3}} <div class="sheet-template-row sheet-template-right">Roll 3:</div> <div class="sheet-template-row"> {{multiroll3}} </div> {{/rollGreater() nrofrolls 3}}
+      {{#rollGreater() nrofrolls 4}} <div class="sheet-template-row sheet-template-right">Roll 4:</div> <div class="sheet-template-row"> {{multiroll4}} </div> {{/rollGreater() nrofrolls 4}}
+      {{#rollGreater() nrofrolls 5}} <div class="sheet-template-row sheet-template-right">Roll 5:</div> <div class="sheet-template-row"> {{multiroll5}} </div> {{/rollGreater() nrofrolls 5}}
+      {{#rollGreater() nrofrolls 6}} <div class="sheet-template-row sheet-template-right">Roll 6:</div> <div class="sheet-template-row"> {{multiroll6}} </div> {{/rollGreater() nrofrolls 6}}
+      {{#rollGreater() nrofrolls 7}} <div class="sheet-template-row sheet-template-right">Roll 7:</div> <div class="sheet-template-row"> {{multiroll7}} </div> {{/rollGreater() nrofrolls 7}}
+      {{#rollGreater() nrofrolls 8}} <div class="sheet-template-row sheet-template-right">Roll 8:</div> <div class="sheet-template-row"> {{multiroll8}} </div> {{/rollGreater() nrofrolls 8}}
+      {{#rollGreater() nrofrolls 9}} <div class="sheet-template-row sheet-template-right">Roll 9:</div> <div class="sheet-template-row"> {{multiroll9}} </div> {{/rollGreater() nrofrolls 9}}
+      {{#rollGreater() nrofrolls 10}} <div class="sheet-template-row sheet-template-right">Roll 10:</div> <div class="sheet-template-row"> {{multiroll10}} </div> {{/rollGreater() nrofrolls 10}}
+      {{#rollGreater() nrofrolls 11}} <div class="sheet-template-row sheet-template-right">Roll 11:</div> <div class="sheet-template-row"> {{multiroll11}} </div> {{/rollGreater() nrofrolls 11}}
+      {{#rollGreater() nrofrolls 12}} <div class="sheet-template-row sheet-template-right">Roll 12:</div> <div class="sheet-template-row"> {{multiroll12}} </div> {{/rollGreater() nrofrolls 12}}
+      {{#rollGreater() nrofrolls 13}} <div class="sheet-template-row sheet-template-right">Roll 13:</div> <div class="sheet-template-row"> {{multiroll13}} </div> {{/rollGreater() nrofrolls 13}}
+      {{#rollGreater() nrofrolls 14}} <div class="sheet-template-row sheet-template-right">Roll 14:</div> <div class="sheet-template-row"> {{multiroll14}} </div> {{/rollGreater() nrofrolls 14}}
+      {{#rollGreater() nrofrolls 15}} <div class="sheet-template-row sheet-template-right">Roll 15:</div> <div class="sheet-template-row"> {{multiroll15}} </div> {{/rollGreater() nrofrolls 15}}
+      {{#rollGreater() nrofrolls 16}} <div class="sheet-template-row sheet-template-right">Roll 16:</div> <div class="sheet-template-row"> {{multiroll16}} </div> {{/rollGreater() nrofrolls 16}}
+      {{#rollGreater() nrofrolls 17}} <div class="sheet-template-row sheet-template-right">Roll 17:</div> <div class="sheet-template-row"> {{multiroll17}} </div> {{/rollGreater() nrofrolls 17}}
+      {{#rollGreater() nrofrolls 18}} <div class="sheet-template-row sheet-template-right">Roll 18:</div> <div class="sheet-template-row"> {{multiroll18}} </div> {{/rollGreater() nrofrolls 18}}
+      {{#rollGreater() nrofrolls 19}} <div class="sheet-template-row sheet-template-right">Roll 19:</div> <div class="sheet-template-row"> {{multiroll19}} </div> {{/rollGreater() nrofrolls 19}}
+      {{#rollGreater() nrofrolls 20}} <div class="sheet-template-row sheet-template-right">Roll 20:</div> <div class="sheet-template-row"> {{multiroll20}} </div> {{/rollGreater() nrofrolls 20}}
+      {{#rollGreater() nrofrolls 21}} <div class="sheet-template-row sheet-template-right">Roll 21:</div> <div class="sheet-template-row"> {{multiroll21}} </div> {{/rollGreater() nrofrolls 21}}
+      {{#rollGreater() nrofrolls 22}} <div class="sheet-template-row sheet-template-right">Roll 22:</div> <div class="sheet-template-row"> {{multiroll22}} </div> {{/rollGreater() nrofrolls 22}}
+      {{#rollGreater() nrofrolls 23}} <div class="sheet-template-row sheet-template-right">Roll 23:</div> <div class="sheet-template-row"> {{multiroll23}} </div> {{/rollGreater() nrofrolls 23}}
+      {{#rollGreater() nrofrolls 24}} <div class="sheet-template-row sheet-template-right">Roll 24:</div> <div class="sheet-template-row"> {{multiroll24}} </div> {{/rollGreater() nrofrolls 24}}
+      {{#rollGreater() nrofrolls 25}} <div class="sheet-template-row sheet-template-right">Roll 25:</div> <div class="sheet-template-row"> {{multiroll25}} </div> {{/rollGreater() nrofrolls 25}}
+
     </div>
   </div>
-  {{/multiroll}}
+  {{/nrofrolls}}
 
 
 
