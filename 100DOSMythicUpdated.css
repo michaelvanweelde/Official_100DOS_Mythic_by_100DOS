@@ -24,7 +24,7 @@ input.sheet-background_override_switch_13:checked ~ div.sheet-background { backg
 input.sheet-background_override_switch_14:checked ~ div.sheet-background { background-image: linear-gradient(#a0e050, #800020); color: white }
 input.sheet-background_override_switch_15:checked ~ div.sheet-background { background-image: linear-gradient(#800020, #3a305b); color: white; }
 input.sheet-background_override_switch_16:checked ~ div.sheet-background { background-image: linear-gradient(#15f4ee, #ff08fc); color: darkgreen; }
-input.sheet-background_override_switch_16:checked ~ div.sheet-background { background-image: linear-gradient(#019339, #005193); color: white; }
+input.sheet-background_override_switch_17:checked ~ div.sheet-background { background-image: linear-gradient(#019339, #005193); color: white; }
 
 
 
@@ -120,10 +120,10 @@ ______________________________ start of multipurpose or special-use classes such
 .sheet-full_width_49px { width: calc(100% - 49px); }
 .sheet-full_width_30px { width: calc(100% - 30px); }
 
-.sheet-margin_adjust { 			margin-top: -23px; margin-bottom: 4px; text-align: right; font-size: 16px;}
-.sheet-margin_adjust2 { 		margin-top: -22px; margin-bottom: 4px; margin-left: -25px; 	text-align: right; font-size: 16px;}
-.sheet-margin_adjust_wep { 	margin-top: -20px; margin-bottom: 2px; margin-left: 3px; 		text-align: right; font-size: 16px;}
-.sheet-margin_adjust_wep2 { margin-top: -20px; margin-bottom: 2px; margin-left: -22px; 	text-align: right; font-size: 16px;}
+.sheet-margin_adjust { 			margin-top: -23px; margin-bottom: 4px; margin-left: -1px;text-align: right; font-size: 16px;}
+.sheet-margin_adjust2 { 		margin-top: -22px; margin-bottom: 4px; margin-left: -26px; 	text-align: right; font-size: 16px;}
+.sheet-margin_adjust_wep { 	margin-top: -20px; margin-bottom: 2px; margin-left: 2px; 		text-align: right; font-size: 16px;}
+.sheet-margin_adjust_wep2 { margin-top: -20px; margin-bottom: 2px; margin-left: -23px; 	text-align: right; font-size: 16px;}
 .sheet-radius_border_right { border-bottom-right-radius: 7px !important; }
 .sheet-radius_border_right_wep { border-bottom-right-radius: 10px !important; }
 .sheet-radius_border_left { border-bottom-left-radius: 10px !important; }
@@ -163,8 +163,11 @@ the appropriate element is displayed on a 4 all elements are hidden */
 
 .sheet-box {
 	background: #4d4d4d;
-	border-top: 2px black solid;
+	border-top: 3px black solid;
 	color: white;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+		overflow: hidden;
 }
 
 .sheet-table {
@@ -214,17 +217,14 @@ the appropriate element is displayed on a 4 all elements are hidden */
 	border-top-left-radius: 9px;
 	border-top-right-radius: 9px;
 }
-.sheet-radius_border_box {
-	border-bottom-left-radius: 8px;
-	border-bottom-right-radius: 8px;
-}
+
 .sheet-description_rounded_margin {
 	margin-bottom: -4px;
 	border-radius: 0px 0px 8px 8px;
 }
 
 .sheet-border_full{
-	border-radius: 9px;
+	border-radius: 10px;
 	border: 3px solid #4a648c;
 	background: #4a648c;
 	overflow: hidden;
@@ -446,7 +446,7 @@ ______________________________ start of minimisable infographic ________________
 .sheet-infographic_select{ margin-top: -4px!important; height: 26px; font-weight: bold; border-color: lightgrey; padding-top: 1px}
 .sheet-infographic_toggles {
 	display: grid;
-	grid-column-gap: 10px;
+	grid-column-gap: 5px;
 	grid-template-columns: 52px 80px 90px 113px 86px 66px 88px auto;
 }
 
@@ -456,15 +456,12 @@ ______________________________ start of minimisable infographic ________________
 	grid-template-columns: 99px 99px 99px 99px 203px 203px
 }
 
-.sheet-infographic_g1 { grid-area: mi1; background: #394C6A !important; border-radius: 9px 9px 0px 0px; border: 0px solid transparent; font-family: Orbitron !important; justify-self: center; width: calc(100% - 7px); }
+.sheet-infographic_g1 { grid-area: mi1; background: #394C6A !important;border: 0px solid transparent !important; font-family: Orbitron !important;justify-self: center; margin: -2px 0px 0px 0px!important;width: 100%; }
 .sheet-infographic_g2 { grid-area: mi2; color: white; justify-self: right; margin-top: 3px; margin-right: 3px; }
 .sheet-infographic_g3 { grid-area: mi3; }
 .sheet-infographic_g4 { grid-area: mi4; color: white; justify-self: right; margin-top: 3px; margin-right: 3px; }
-.sheet-infographic_g5 { grid-area: mi5; border-bottom-right-radius: 9px; }
+.sheet-infographic_g5 { grid-area: mi5; border-bottom-right-radius: 11px}
 .sheet-infographic_field2x3 {
-	border: 1px solid #4a648c;
-	border-bottom: 2px solid #4a648c;
-	border-radius: 10px;
 	background: #4a648c;
 	display: grid;
 	grid-template-columns: 50px 46px;
@@ -480,9 +477,6 @@ ______________________________ start of minimisable infographic ________________
 .sheet-infographic_g8 { grid-area: mi8; color: white; font-family: Saira Semi Condensed; justify-self: right; margin-top: 3px; margin-right: 3px; }
 .sheet-infographic_g9 { grid-area: mi9; }
 .sheet-infographic_field4x3 {
-	border: 1px solid #4a648c;
-	border-bottom: 2px solid #4a648c;
-	border-radius: 10px;
 	background: #4a648c;
 	display: grid;
 	grid-template-columns: 50px 50px 50px 50px;
@@ -573,15 +567,16 @@ ______________________________ start of equipment tab __________________________
 
 .sheet-equipment_divider {
 	display: grid;
-	grid-template-columns: 49.5% 1% 49.5%;
+	grid-column-gap: 10px;
+	grid-template-columns: 49% auto;
 	grid-template-areas:
-	'e1 e0 e2'
-	'e3 e3 e3';
+	'e1 e2'
+	'e3 e3';
 }
 
-.sheet-equipment_ranged_weapons { grid-area: e1; background:#4a648c; border-radius: 10px; padding: 2px; z-index: 1;}
-.sheet-equipment_melee_weapons { grid-area: e2; background:#4a648c; border-radius: 10px; padding: 2px; }
-.sheet-equipment_numerics { grid-area: e3; margin-top: 10px; }
+.sheet-equipment_ranged_weapons { grid-area: e1; background:#4a648c;}
+.sheet-equipment_melee_weapons { grid-area: e2; background:#4a648c;}
+.sheet-equipment_numerics { grid-area: e3; margin-top: 10px; margin-bottom: 10px;}
 .sheet-equipment_ranged_weapons_rep { background:#4a648c; border:1px solid white; border-radius: 10px; padding: 2px; }
 
 .sheet-equipment_ranged_weapons_gs1 { grid-area: rw1;		color: white; font-size: 12px; padding: 0px 2px }
@@ -648,7 +643,7 @@ ______________________________ start of equipment tab __________________________
 	padding-top: 1px;
 	border-top: 1px solid white;
 	align-items: center;
-	column-gap: 20px;
+	column-gap: 5px;
 	display: grid;
 	grid-template-columns: auto auto;
 	grid-template-areas:
@@ -714,9 +709,9 @@ ______________________________ start of equipment tab __________________________
 }
 
 .sheet-equipment_armor_input { width: 100%; height: 50px; }
-.sheet-equipment_armor_gs1 { background: #4a648c; padding: 2px; }
-.sheet-equipment_armor_gs2 { background: #4a648c; padding: 2px; }
-.sheet-equipment_armor_gs3 { background: #4a648c; padding: 2px; }
+.sheet-equipment_armor_gs1 { background: #4a648c;}
+.sheet-equipment_armor_gs2 { background: #4a648c;}
+.sheet-equipment_armor_gs3 { background: #4a648c;}
 .sheet-equipment_armor_grid {
 	width: 100%;
 	display: grid;
@@ -738,29 +733,16 @@ ______________________________ start of medical tab ____________________________
 
 .sheet-medicalHOV{
   border-radius: 9px;
-	border: 3px solid #4a648c;
+	margin-bottom: 3px;
 }
 .sheet-medicalHOV:not(:hover) + div{display: none;}
 
-
-.sheet-medicalgF {
-	grid-area: mF;
-	border-radius: 10px;
-	background: #4a648c;
-	display: grid;
-	column-gap: 5px;
-  grid-template-columns: auto;
-	grid-template-rows: repeat(100, fit-content(100%));
-}
-.sheet-medicalgT {  grid-area: mT; margin-left: 10px;}
-.sheet-medicalgR {  grid-area: mR; margin-top: 10px;}
 .sheet-medical-grid {
 	display: grid;
+	column-gap: 5px;
 	grid-template-columns: auto 215px;
-	grid-template-rows: auto auto;
 	grid-template-areas:
 	'mF mT'
-	'mR mR';
 	}
 
 .sheet-medical_h2 {
@@ -768,10 +750,12 @@ ______________________________ start of medical tab ____________________________
 	color: white;
 	height: 30px;
 }
+.sheet-medical_h2_rollable:hover { background-color: rgb(200, 0, 0); }
+
 .sheet-medical_input {width: 100% !important;}
 .sheet-medical_effect 		 {width: 110%-10 !important; height: 100px !important; font-size: 12px; font-family: arial; background-color: transparent; border: none; line-height: 15px; pointer-events: none; }
 .sheet-medical_effect_long {width: 110%-10 !important; height: 210px !important; font-size: 12px; font-family: arial; background-color: transparent; border: none; line-height: 15px; pointer-events: none; }
-.sheet-medical_h2_rollable:hover { background-color: rgb(200, 0, 0); }
+
 .sheet-medical_initial_label { margin-bottom: -5px; }
 .sheet-medical_table {
 	border-bottom: 1px dotted #A0A0A0;
@@ -782,9 +766,6 @@ ______________________________ start of medical tab ____________________________
 .sheet-medical_h2_background,
 .sheet-medical_background {
 	background: #4a648c;
-	margin-bottom: 10px;
-	border-radius: 10px;
-	padding: 2px;
 }
 .sheet-medical_h2_background {
 	border-radius: 10px 10px 0px 0px;
@@ -812,23 +793,11 @@ ______________________________ start of advancements tab _______________________
 	'e1 e2 e3 e0 e4 e5 e6';
 }
 
-.sheet-characteristic_spending_number{width: 100%!important; text-align: center; text-indent: 18px;}
-.sheet-characteristic_spending_number_total{width: 100%!important; text-align: center; text-indent: 18px; background-color: black !important;}
-.sheet-characteristic_spending_text_input{width: 100%!important; text-align: center; font-weight: bold;	font-family: Orbitron; letter-spacing: 1px;}
-
-.sheet-characteristic_spending_window{
-	display: grid;
-	grid-template-columns: 9% 9% 9% 9% 9% 9% 9% 9% 9% 9% auto;
-}
-
-.sheet-faction_training { grid-area: t1; padding: 2px; background: #4a648c; }
-.sheet-weapon_training {  grid-area: t2; padding: 2px; background: #4a648c; }
 .sheet-training {
-	margin: 10px 0px 10px 1.5%;
+	margin: 10px 0px 0px 0px;
 	display: grid;
-	grid-template-columns: 33% 67%;
-	grid-template-areas:
-	't1 t2';
+	grid-template-columns: 33% auto;
+	grid-column-gap: 5px
 }
 
 .sheet-faction_training_grid_g1{ grid-area: ft1; }
@@ -846,11 +815,25 @@ ______________________________ start of advancements tab _______________________
 
 .sheet-weapon_training_grid {
 	font-size: 16px;
-	margin: 2px -5px 0px 25px;
+	margin: 2px 0px 0px 20px;
 	display: grid;
 	grid-template-columns: 22% 20% 15% 20% 20%;
 }
 
+.sheet-characteristic_spending_number{width: 100%!important; text-align: center; text-indent: 18px;}
+.sheet-characteristic_spending_number_total{width: 100%!important; text-align: center; text-indent: 18px; background-color: black !important;}
+.sheet-characteristic_spending_text_input{width: 100%!important; text-align: center; font-weight: bold;	font-family: Orbitron; letter-spacing: 1px; }
+
+.sheet-characteristic_spending_window{
+	display: grid;
+	grid-template-columns: 9% 9% 9% 9% 9% 9% 9% 9% 9% 9% auto;
+}
+.sheet-characteristic_spending_window_button {
+	background: black;
+	height: 30px;
+  border-bottom-left-radius: 10px;
+}
+.sheet-characteristic_spending_window_button:hover { background-color: rgb(200, 0, 0); }
 
 
 /* ______________________________ end of advancements tab ______________________________
@@ -858,13 +841,14 @@ ______________________________ start of vehicles tab ___________________________
 
 
 
-.sheet-vehicles_grid1 { margin-right: 10px; background: #4a648c; border-top: 2px solid #4a648c; border-left: 2px solid #4a648c; border-right: 2px solid #4a648c; border-top-left-radius: 10px; border-top-right-radius: 10px; color: white; font-family: Saira Semi Condensed; }
-.sheet-vehicles_grid2 { margin-right: 10px; background: #4a648c; border-left: 2px solid #4a648c; border-right: 2px solid #4a648c; color: white; font-family: Saira Semi Condensed; }
-.sheet-vehicles_grid3 { margin-right: 10px; background: #4a648c; border-left: 2px solid #4a648c; border-right: 2px solid #4a648c; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; color: white; font-family: Saira Semi Condensed; }
+.sheet-vehicles_grid1 { background: #4a648c; color: white; font-family: Saira Semi Condensed; }
+.sheet-vehicles_grid2 { background: #4a648c; color: white; font-family: Saira Semi Condensed; }
+.sheet-vehicles_grid3 { background: #4a648c; color: white; font-family: Saira Semi Condensed; }
 .sheet-vehicle_weapons { grid-area: vgw; }
 .sheet-vehicles_divider {
 	display: grid;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 49% auto;
+	grid-column-gap: 10px;
 	grid-template-areas:
 	'vg1 vgw'
 	'vg2 vgw'
@@ -983,7 +967,7 @@ ______________________________ start of vehicles tab ___________________________
 .sheet-vehicles_G73 { grid-area: v73 }
 .sheet-vehicles_G74 { grid-area: v74 }
 .sheet-vehicles_G75 { grid-area: v75 }
-.sheet-vehicles_G76 { grid-area: v76; padding-bottom: 2px; }
+.sheet-vehicles_G76 { grid-area: v76; padding-bottom: 1px}
 .sheet-vehicles_grid3 {
 	display: grid;
 	grid-template-columns: 25% 25% 25% 25%;
@@ -995,9 +979,9 @@ ______________________________ start of vehicles tab ___________________________
 	'v72 v73 v74 v75'
 	'v76 v76 v76 v76';
 }
-
-.sheet-vehicles_descriptor { border-bottom-left-radius: 8px; }
-
+.sheet-vehicles_descriptor{
+	border-bottom-left-radius: 8px;
+}
 
 
 
