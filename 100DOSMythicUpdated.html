@@ -1121,7 +1121,7 @@
                 <div class='equipment_ranged_weapons_gs17'>/</div>
                 <input class='equipment_ranged_weapons_gs18 full_width' type='text' value='0' name='attr_weapon_mag_max' />
                 <button class='equipment_ranged_weapons_gs19 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{attack= }} {{roll=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]]}} @{settings_hitroll}"></button>' >Hit</button>
-                <button class='equipment_ranged_weapons_gs20 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base-mod}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce-mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
+                <button class='equipment_ranged_weapons_gs20 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
               </div>
               <div class='equipment_ranged_weapons_grid4'>
                 <div class='equipment_ranged_weapons_gs21'>RoF</div>
@@ -1136,12 +1136,12 @@
                 <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
                 <div>
                   <div class='equipment_ranged_weapons_grid5'>
-                    <select class='equipment_ranged_weapons_gs25 full_width' name='attr_weapon_base-mod'>
+                    <select class='equipment_ranged_weapons_gs25 full_width' name='attr_weapon_base_mod'>
                       <option selected='selected' value='0'>Normal damage rolling</option>
                       <option value='?{Damage modifier|0}'>Query damage mod</option>
                       <option value='?{DOS|0}d10'>Simplified combat macro</option>
                     </select>
-                    <select class='equipment_ranged_weapons_gs26 full_width' name='attr_weapon_pierce-mod'>
+                    <select class='equipment_ranged_weapons_gs26 full_width' name='attr_weapon_pierce_mod'>
                       <option selected='selected' value='0'>Normal pierce rolling</option>
                       <option value='?{Pierce modifier|0}'>Query pierce mod</option>
                     </select>
@@ -1196,22 +1196,26 @@
                 <div class='equipment_melee_weapons_gs7'>/</div>
                 <input class='equipment_melee_weapons_gs8 full_width' type='text' value='0' name='attr_weapon_breakpoints_max' />
                 <button class='equipment_melee_weapons_gs9 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{attack= }} {{roll=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]]}} @{settings_hitroll}'' >Hit</button>
-                <button class='equipment_melee_weapons_gs10 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base-mod}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce-mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
+                <button class='equipment_melee_weapons_gs10 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
               </div>
               <div class='equipment_melee_weapons_grid4'>
                 <div class='equipment_melee_weapons_gs11'>damage plus Strength</div>
-                <select class='equipment_melee_weapons_gs12 full_width' name='attr_weapon_base-mod'>
+                <select class='equipment_melee_weapons_gs12 full_width' name='attr_weapon_base_add'>
                   <option selected='selected' value='0'>None</option>
                   <option value='[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]'>Half</option>
                   <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]'>Full</option>
-                  <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>Double</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>2x STR</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>3x STR</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>4x STR</option>
                 </select>
                 <div class='equipment_melee_weapons_gs13'>pierce plus Strength</div>
-                <select class='equipment_melee_weapons_gs14 full_width' name='attr_weapon_pierce-mod'>
+                <select class='equipment_melee_weapons_gs14 full_width' name='attr_weapon_pierce_add'>
                   <option selected='selected' value='0'>None</option>
                   <option value='[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]'>Half</option>
                   <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]'>Full</option>
-                  <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>Double</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>2x STR</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>3x STR</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>4x STR</option>
                 </select>
               </div>
               <div>
@@ -1219,7 +1223,20 @@
                 <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
                 <label class='margin_adjust_wep2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{weapon_special_rules} }} {{description=@{description} }}' class='hidden'></button><span class='select_text'>❖</span></label>
                 <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
+                <div>
+                <div class='equipment_ranged_weapons_grid5'>
+                  <select class='equipment_ranged_weapons_gs25 full_width' name='attr_weapon_base_mod'>
+                    <option selected='selected' value='0'>Normal damage rolling</option>
+                    <option value='?{Damage modifier|0}'>Query damage mod</option>
+                    <option value='?{DOS|0}d10'>Simplified combat macro</option>
+                  </select>
+                  <select class='equipment_ranged_weapons_gs26 full_width' name='attr_weapon_pierce_mod'>
+                    <option selected='selected' value='0'>Normal pierce rolling</option>
+                    <option value='?{Pierce modifier|0}'>Query pierce mod</option>
+                  </select>
+                </div>
                 <textarea name='attr_description' class=' description_rounded_margin' placeholder='Weapon Modification e.g. Gravity Hammer Crushing thruster'></textarea>
+                </div>
               </div>
             </div>
             <br>
@@ -2046,7 +2063,7 @@
                   <div class='equipment_ranged_weapons_gs17'>/</div>
                   <input class='equipment_ranged_weapons_gs18 full_width' type='text' value='0' name='attr_weapon_mag_max' />
                   <button class='equipment_ranged_weapons_gs19 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{attack= }} {{roll=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]]}} @{settings_hitroll}"></button>' >Hit</button>
-                  <button class='equipment_ranged_weapons_gs20 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base-mod}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce-mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
+                  <button class='equipment_ranged_weapons_gs20 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
                 </div>
                 <div class='equipment_ranged_weapons_grid4'>
                   <div class='equipment_ranged_weapons_gs21'>RoF</div>
@@ -2061,12 +2078,12 @@
                   <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
                   <div>
                     <div class='equipment_ranged_weapons_grid5'>
-                      <select class='equipment_ranged_weapons_gs25 full_width' name='attr_weapon_base-mod'>
+                      <select class='equipment_ranged_weapons_gs25 full_width' name='attr_weapon_base_mod'>
                         <option selected='selected' value='0'>Normal damage rolling</option>
                         <option value='?{Damage modifier|0}'>Query damage mod</option>
                         <option value='?{DOS|0}d10'>Simplified combat macro</option>
                       </select>
-                      <select class='equipment_ranged_weapons_gs26 full_width' name='attr_weapon_pierce-mod'>
+                      <select class='equipment_ranged_weapons_gs26 full_width' name='attr_weapon_pierce_mod'>
                         <option selected='selected' value='0'>Normal pierce rolling</option>
                         <option value='?{Pierce modifier|0}'>Query pierce mod</option>
                       </select>
@@ -2121,22 +2138,26 @@
                   <div class='equipment_melee_weapons_gs7'>/</div>
                   <input class='equipment_melee_weapons_gs8 full_width' type='text' value='0' name='attr_weapon_breakpoints_max' />
                   <button class='equipment_melee_weapons_gs9 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{attack= }} {{roll=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]]}} @{settings_hitroll}'' >Hit</button>
-                  <button class='equipment_melee_weapons_gs10 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base-mod}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce-mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
+                  <button class='equipment_melee_weapons_gs10 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
                 </div>
                 <div class='equipment_melee_weapons_grid4'>
                   <div class='equipment_melee_weapons_gs11'>damage plus Strength</div>
-                  <select class='equipment_melee_weapons_gs12 full_width' name='attr_weapon_base-mod'>
+                  <select class='equipment_melee_weapons_gs12 full_width' name='attr_weapon_base_add'>
                     <option selected='selected' value='0'>None</option>
                     <option value='[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]'>Half</option>
                     <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]'>Full</option>
-                    <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>Double</option>
+  <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>2x STR</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>3x STR</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>4x STR</option>
                   </select>
                   <div class='equipment_melee_weapons_gs13'>pierce plus Strength</div>
-                  <select class='equipment_melee_weapons_gs14 full_width' name='attr_weapon_pierce-mod'>
+                  <select class='equipment_melee_weapons_gs14 full_width' name='attr_weapon_pierce_add'>
                     <option selected='selected' value='0'>None</option>
                     <option value='[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]'>Half</option>
                     <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]'>Full</option>
-                    <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>Double</option>
+  <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>2x STR</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>3x STR</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>4x STR</option>
                   </select>
                 </div>
                 <div>
@@ -2144,7 +2165,20 @@
                   <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
                   <label class='margin_adjust_wep2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{weapon_special_rules} }} {{description=@{description} }}' class='hidden'></button><span class='select_text'>❖</span></label>
                   <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
+                  <div>
+                  <div class='equipment_ranged_weapons_grid5'>
+                    <select class='equipment_ranged_weapons_gs25 full_width' name='attr_weapon_base_mod'>
+                      <option selected='selected' value='0'>Normal damage rolling</option>
+                      <option value='?{Damage modifier|0}'>Query damage mod</option>
+                      <option value='?{DOS|0}d10'>Simplified combat macro</option>
+                    </select>
+                    <select class='equipment_ranged_weapons_gs26 full_width' name='attr_weapon_pierce_mod'>
+                      <option selected='selected' value='0'>Normal pierce rolling</option>
+                      <option value='?{Pierce modifier|0}'>Query pierce mod</option>
+                    </select>
+                  </div>
                   <textarea name='attr_description' class=' description_rounded_margin' placeholder='Weapon Modification e.g. Gravity Hammer Crushing thruster'></textarea>
+                  </div>
                 </div>
               </div>
               <br>
@@ -2336,8 +2370,8 @@
 
     <div class='infographic_grid'>
 
-      <div class='infographic_field2x3 radius_border'>
-        <button name='wounds_roll' type='roll' class='infographic_g1 clear radius_border_top'
+      <div class='infographic_field2x3 border_full'>
+        <button name='wounds_roll' type='roll' class='infographic_g1 clear'
         value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Wounds}} {{2x2-name=Current}} {{2x2=@{wounds}}} {{2x2-name-max=Max}} {{2x2-max=@{wounds|max}}}'>Wounds</button>
         <p class='infographic_g2'>Current</p>
         <input class='infographic_g3 full_width' type='text' name='attr_wounds' value='0' />
@@ -2345,8 +2379,8 @@
         <input class='infographic_g5 full_width' type='text' name='attr_wounds_max' value='0' />
       </div>
 
-      <div class='infographic_field2x3 radius_border'>
-        <button name='fatigue_roll' type='roll' class='infographic_g1 clear radius_border_top'
+      <div class='infographic_field2x3 border_full'>
+        <button name='fatigue_roll' type='roll' class='infographic_g1 clear'
         value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Fatigue}} {{2x2-name=Current}} {{2x2=@{fatigue}}} {{2x2-name-max=Max}} {{2x2-max=@{fatigue|max}}}'>Fatigue</button>
         <p class='infographic_g2'>Current</p>
         <input class='infographic_g3 full_width' type='text' name='attr_fatigue' value='0' />
@@ -2354,8 +2388,8 @@
         <input class='infographic_g5 full_width' type='text' name='attr_fatigue_max' value='0' />
       </div>
 
-      <div class='infographic_field2x3 radius_border'>
-        <button name='luck_roll' type='roll' class='infographic_g1 clear radius_border_top'
+      <div class='infographic_field2x3 border_full'>
+        <button name='luck_roll' type='roll' class='infographic_g1 clear'
         value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Luck}} {{2x2-name=Current}} {{2x2=@{luck}}} {{2x2-name-max=Max}} {{2x2-max=@{luck|max}}}'>Luck</button>
         <p class='infographic_g2'>Current</p>
         <input class='infographic_g3 full_width' type='text' name='attr_luck' value='0' />
@@ -2363,8 +2397,8 @@
         <input class='infographic_g5 full_width' type='text' name='attr_luck_max' value='0' />
       </div>
 
-      <div class='infographic_field2x3 radius_border'>
-        <button name='support_roll' type='roll' class='infographic_g1 clear radius_border_top'
+      <div class='infographic_field2x3 border_full'>
+        <button name='support_roll' type='roll' class='infographic_g1 clear'
         value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=SP}} {{2x2-name=Current}} {{2x2=@{support}}} {{2x2-name-max=Max}} {{2x2-max=@{support|max}}}'>S Pts</button>
         <p class='infographic_g2'>Current</p>
         <input class='infographic_g3 full_width' type='text' name='attr_support' value='0' />
@@ -2372,21 +2406,8 @@
         <input class='infographic_g5 full_width' type='text' name='attr_support_max' value='0' />
       </div>
 
-      <div class='infographic_field4x3 radius_border'>
-        <button name='shield_roll' type='roll' class='infographic_g1 clear radius_border_top'
-        value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Shields}} {{4x2-1-name=Current}} {{4x2-1=@{shields}}} {{4x2-1-name-max=Max}} {{4x2-1-max=@{shields|max}}} {{4x2-2-name=Charge}} {{4x2-2=@{shields_charge}}} {{4x2-2-name-max=Delay}} {{4x2-2-max=@{shields_delay}}}'>Shields</button>
-        <p class='infographic_g6'>Current</p>
-        <input class='infographic_g7 full_width' type='text' name='attr_shields' value='0' />
-        <p class='infographic_g8'>Max</p>
-        <input class='infographic_g9 full_width' type='text' name='attr_shields_max' value='0' />
-        <p class='infographic_g2'>Delay</p>
-        <input class='infographic_g3 full_width' type='text' name='attr_shields_delay' value='0' />
-        <p class='infographic_g4'>Charge</p>
-        <input class='infographic_g5 full_width' type='text' name='attr_shields_charge' value='0' />
-      </div>
-
-      <div class='infographic_field4x3 radius_border'>
-        <button name='armor_roll' type='roll' class='infographic_g1 clear radius_border_top'
+      <div class='infographic_field4x3 border_full'>
+        <button name='armor_roll' type='roll' class='infographic_g1 clear'
         value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Armor}} {{4x2-1-name=Head}} {{4x2-1=@{armor_head}}} {{4x2-1-name-max=Arms}} {{4x2-1-max=@{armor_arms}}} {{4x2-2-name=Chest}} {{4x2-2=@{armor_chest}}} {{4x2-2-name-max=Legs}} {{4x2-2-max=@{armor_legs}}}'>Armor</button>
         <p class='infographic_g6'>Head</p>
         <input class='infographic_g7 full_width' type='text' name='attr_armor_head' value='0' />
@@ -2398,11 +2419,25 @@
         <input class='infographic_g5 full_width' type='text' name='attr_armor_legs' value='0' />
       </div>
 
+      <div class='infographic_field4x3 border_full'>
+        <button name='shield_roll' type='roll' class='infographic_g1 clear'
+        value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Shields}} {{4x2-1-name=Current}} {{4x2-1=@{shields}}} {{4x2-1-name-max=Max}} {{4x2-1-max=@{shields|max}}} {{4x2-2-name=Charge}} {{4x2-2=@{shields_charge}}} {{4x2-2-name-max=Delay}} {{4x2-2-max=@{shields_delay}}}'>Shields</button>
+        <p class='infographic_g6'>Current</p>
+        <input class='infographic_g7 full_width' type='text' name='attr_shields' value='0' />
+        <p class='infographic_g8'>Max</p>
+        <input class='infographic_g9 full_width' type='text' name='attr_shields_max' value='0' />
+        <p class='infographic_g2'>Delay</p>
+        <input class='infographic_g3 full_width' type='text' name='attr_shields_delay' value='0' />
+        <p class='infographic_g4'>Charge</p>
+        <input class='infographic_g5 full_width' type='text' name='attr_shields_charge' value='0' />
+      </div>
+
     </div>
+
     <fieldset name='repeating_armor' class='repeating_armor'>
       <div class='armorgrid'>
 
-        <div class='infographic_field4x3 radius_border'>
+        <div class='infographic_field4x3 border_full'>
           <button name='armor_roll' type='roll' class='infographic_g1 clear'
           value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Armor}} {{4x2-1-name=Head}} {{4x2-1=@{armor_head}}} {{4x2-1-name-max=Arms}} {{4x2-1-max=@{armor_arms}}} {{4x2-2-name=Chest}} {{4x2-2=@{armor_chest}}} {{4x2-2-name-max=Legs}} {{4x2-2-max=@{armor_legs}}}'>Armor</button>
           <p class='infographic_g6'>Head</p>
@@ -2415,7 +2450,7 @@
           <input class='infographic_g5 full_width' type='text' name='attr_armor_legs' value='0' />
         </div>
 
-        <div class='infographic_field4x3 radius_border'>
+        <div class='infographic_field4x3 border_full'>
           <button name='shield_roll' type='roll' class='infographic_g1 clear'
           value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Shields}} {{4x2-1-name=Current}} {{4x2-1=@{shields}}} {{4x2-1-name-max=Max}} {{4x2-1-max=@{shields|max}}} {{4x2-2-name=Charge}} {{4x2-2=@{shields_charge}}} {{4x2-2-name-max=Delay}} {{4x2-2-max=@{shields_delay}}}'>Shields</button>
           <p class='infographic_g6'>Current</p>
@@ -2431,16 +2466,15 @@
         <div class='armorgrid_description_container'><textarea class="armorgrid_description" name='attr_description' placeholder='Armor special rules, Damage, Exteriour features, etc.'></textarea></div>
 
       </div>
-
     </fieldset>
 
     <br>
 
     <div class="NPC_core_grid">
 
-      <div class='edge_padding table radius_border'>
+      <div class='table border_full'>
         <h3 class='radius_border_heading'><b>Stats</b></h3>
-        <div class='NPC_characteristics edge_padding bttn_top_padding'>
+        <div class='NPC_characteristics'>
           <div>
             <p class='bold_text'>Characteristics</p>
             <button name='STR' type='roll' class='clear full_width NPC_characteristics_roll'value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Strength}} {{roll=[[@{settings_rounding}([[@{STR} + @{STR_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}'>STR</button>
@@ -2508,8 +2542,8 @@
 
       <div> </div>
 
-      <div class='edge_padding table radius_border'>
-        <h3 class='radius_border_heading'><b>Skillset</b></h3>
+      <div class='table border_full'>
+        <h3 class=''><b>Skillset</b></h3>
         <div class='skill_header'>
           <p class='bold_text'>Name</p>
           <p class='bold_text'></p>
@@ -2749,7 +2783,7 @@
 
         <div>
           <input name='attr_npc_tab' type='checkbox'  value='medical' class='hider hidden' />
-          <div class="">
+          <div>
 
             <div class='NPC_medical radius_border_top NPC_medical_header'>
               <label class='medical_initial_label'><h2 class='medical_h2 medical_h2_rollable radius_border_top'>Hit Location</h2> <button type='roll' name='button' value='@{to-gm}&{template:mythic} {{loc=[[1d100]]}}' class='hidden'></button></label>
@@ -2861,10 +2895,10 @@
 
         <div>
           <input name='attr_npc_tab' type='checkbox'  value='vehicleweps' class='hider hidden' />
-          <div class="">
+          <div>
             <div class='vehicle_weapons NPC_margin'>
-              <div class='equipment_ranged_weapons'>
-                <h3 class='radius_border_top'>Vehicle Ranged Weapons</h3>
+              <div class='equipment_ranged_weapons border_full'>
+                <h3>Vehicle Ranged Weapons</h3>
                 <fieldset name='vehiclerangedweapons' class='repeating_vrangedweapons'>
                   <div class='equipment_ranged_weapons_rep'>
                     <div class='equipment_ranged_weapons_grid1'>
@@ -2903,7 +2937,7 @@
                       <div class='equipment_ranged_weapons_gs17'>/</div>
                       <input class='equipment_ranged_weapons_gs18 full_width' type='text' value='0' name='attr_weapon_mag_max' />
                       <button class='equipment_ranged_weapons_gs19 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{attack= }} {{roll=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]]}} @{settings_hitroll}"></button>' >Hit</button>
-                      <button class='equipment_ranged_weapons_gs20 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base-mod}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce-mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
+                      <button class='equipment_ranged_weapons_gs20 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
                     </div>
                     <div class='equipment_ranged_weapons_grid4'>
                       <div class='equipment_ranged_weapons_gs21'>RoF</div>
@@ -2918,12 +2952,12 @@
                       <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
                       <div>
                         <div class='equipment_ranged_weapons_grid5'>
-                          <select class='equipment_ranged_weapons_gs25 full_width' name='attr_weapon_base-mod'>
+                          <select class='equipment_ranged_weapons_gs25 full_width' name='attr_weapon_base_mod'>
                             <option selected='selected' value='0'>Normal damage rolling</option>
                             <option value='?{Damage modifier|0}'>Query damage mod</option>
                             <option value='?{DOS|0}d10'>Simplified combat macro</option>
                           </select>
-                          <select class='equipment_ranged_weapons_gs26 full_width' name='attr_weapon_pierce-mod'>
+                          <select class='equipment_ranged_weapons_gs26 full_width' name='attr_weapon_pierce_mod'>
                             <option selected='selected' value='0'>Normal pierce rolling</option>
                             <option value='?{Pierce modifier|0}'>Query pierce mod</option>
                           </select>
@@ -2935,8 +2969,8 @@
                 </fieldset>
               </div>
 
-              <div class='equipment_melee_weapons'>
-                <h3 class='radius_border_top'>Vehicle Melee Weaponry</h3>
+              <div class='equipment_melee_weapons border_full'>
+                <h3>Vehicle Melee Weaponry</h3>
                 <fieldset name='vehiclemeleeweapons' class='repeating_vmeleeweapons'>
                   <div class='equipment_ranged_weapons_rep'>
                     <div class='equipment_ranged_weapons_grid1'>
@@ -2977,22 +3011,26 @@
                       <div class='equipment_melee_weapons_gs7'>/</div>
                       <input class='equipment_melee_weapons_gs8 full_width' type='text' value='0' name='attr_weapon_breakpoints_max' />
                       <button class='equipment_melee_weapons_gs9 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{attack= }} {{roll=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]]}} @{settings_hitroll}'' >Hit</button>
-                      <button class='equipment_melee_weapons_gs10 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base-mod}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce-mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
+                      <button class='equipment_melee_weapons_gs10 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
                     </div>
                     <div class='equipment_melee_weapons_grid4'>
                       <div class='equipment_melee_weapons_gs11'>damage plus Strength</div>
-                      <select class='equipment_melee_weapons_gs12 full_width' name='attr_weapon_base-mod'>
+                      <select class='equipment_melee_weapons_gs12 full_width' name='attr_weapon_base_add'>
                         <option selected='selected' value='0'>None</option>
                         <option value='[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]'>Half</option>
                         <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]'>Full</option>
-                        <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>Double</option>
+      <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>2x STR</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>3x STR</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>4x STR</option>
                       </select>
                       <div class='equipment_melee_weapons_gs13'>pierce plus Strength</div>
-                      <select class='equipment_melee_weapons_gs14 full_width' name='attr_weapon_pierce-mod'>
+                      <select class='equipment_melee_weapons_gs14 full_width' name='attr_weapon_pierce_add'>
                         <option selected='selected' value='0'>None</option>
                         <option value='[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]'>Half</option>
                         <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]'>Full</option>
-                        <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>Double</option>
+      <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>2x STR</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>3x STR</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>4x STR</option>
                       </select>
                     </div>
                     <div>
@@ -3000,7 +3038,20 @@
                       <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
                       <label class='margin_adjust_wep2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{weapon_special_rules} }} {{description=@{description} }}' class='hidden'></button><span class='select_text'>❖</span></label>
                       <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
+                      <div>
+                      <div class='equipment_ranged_weapons_grid5'>
+                        <select class='equipment_ranged_weapons_gs25 full_width' name='attr_weapon_base_mod'>
+                          <option selected='selected' value='0'>Normal damage rolling</option>
+                          <option value='?{Damage modifier|0}'>Query damage mod</option>
+                          <option value='?{DOS|0}d10'>Simplified combat macro</option>
+                        </select>
+                        <select class='equipment_ranged_weapons_gs26 full_width' name='attr_weapon_pierce_mod'>
+                          <option selected='selected' value='0'>Normal pierce rolling</option>
+                          <option value='?{Pierce modifier|0}'>Query pierce mod</option>
+                        </select>
+                      </div>
                       <textarea name='attr_description' class=' description_rounded_margin' placeholder='Weapon Modification e.g. Gravity Hammer Crushing thruster'></textarea>
+                      </div>
                     </div>
                   </div>
                 </fieldset>
@@ -3012,8 +3063,8 @@
       </div>
 
       <div class='vehicle_weapons'>
-        <div class='equipment_ranged_weapons'>
-          <h3 class='radius_border_top'>Ranged Weapons</h3>
+        <div class='equipment_ranged_weapons border_full'>
+          <h3>Ranged Weapons</h3>
           <fieldset name='rangedweapons' class='repeating_rangedweapons'>
             <div class='equipment_ranged_weapons_rep'>
               <div class='equipment_ranged_weapons_grid1'>
@@ -3052,7 +3103,7 @@
                 <div class='equipment_ranged_weapons_gs17'>/</div>
                 <input class='equipment_ranged_weapons_gs18 full_width' type='text' value='0' name='attr_weapon_mag_max' />
                 <button class='equipment_ranged_weapons_gs19 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{attack= }} {{roll=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]]}} @{settings_hitroll}"></button>' >Hit</button>
-                <button class='equipment_ranged_weapons_gs20 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base-mod}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce-mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
+                <button class='equipment_ranged_weapons_gs20 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
               </div>
               <div class='equipment_ranged_weapons_grid4'>
                 <div class='equipment_ranged_weapons_gs21'>RoF</div>
@@ -3067,12 +3118,12 @@
                 <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
                 <div>
                   <div class='equipment_ranged_weapons_grid5'>
-                    <select class='equipment_ranged_weapons_gs25 full_width' name='attr_weapon_base-mod'>
+                    <select class='equipment_ranged_weapons_gs25 full_width' name='attr_weapon_base_mod'>
                       <option selected='selected' value='0'>Normal damage rolling</option>
                       <option value='?{Damage modifier|0}'>Query damage mod</option>
                       <option value='?{DOS|0}d10'>Simplified combat macro</option>
                     </select>
-                    <select class='equipment_ranged_weapons_gs26 full_width' name='attr_weapon_pierce-mod'>
+                    <select class='equipment_ranged_weapons_gs26 full_width' name='attr_weapon_pierce_mod'>
                       <option selected='selected' value='0'>Normal pierce rolling</option>
                       <option value='?{Pierce modifier|0}'>Query pierce mod</option>
                     </select>
@@ -3084,8 +3135,8 @@
           </fieldset>
         </div>
 
-        <div class='equipment_melee_weapons'>
-          <h3 class='radius_border_top'>Melee Weapons</h3>
+        <div class='equipment_melee_weapons border_full'>
+          <h3>Melee Weapons</h3>
           <fieldset name='meleeweapons' class='repeating_meleeweapons'>
             <div class='equipment_ranged_weapons_rep'>
               <div class='equipment_ranged_weapons_grid1'>
@@ -3126,22 +3177,26 @@
                 <div class='equipment_melee_weapons_gs7'>/</div>
                 <input class='equipment_melee_weapons_gs8 full_width' type='text' value='0' name='attr_weapon_breakpoints_max' />
                 <button class='equipment_melee_weapons_gs9 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{attack= }} {{roll=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]]}} @{settings_hitroll}'' >Hit</button>
-                <button class='equipment_melee_weapons_gs10 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base-mod}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce-mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
+                <button class='equipment_melee_weapons_gs10 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
               </div>
               <div class='equipment_melee_weapons_grid4'>
                 <div class='equipment_melee_weapons_gs11'>damage plus Strength</div>
-                <select class='equipment_melee_weapons_gs12 full_width' name='attr_weapon_base-mod'>
+                <select class='equipment_melee_weapons_gs12 full_width' name='attr_weapon_base_add'>
                   <option selected='selected' value='0'>None</option>
                   <option value='[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]'>Half</option>
                   <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]'>Full</option>
-                  <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>Double</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>2x STR</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>3x STR</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>4x STR</option>
                 </select>
                 <div class='equipment_melee_weapons_gs13'>pierce plus Strength</div>
-                <select class='equipment_melee_weapons_gs14 full_width' name='attr_weapon_pierce-mod'>
+                <select class='equipment_melee_weapons_gs14 full_width' name='attr_weapon_pierce_add'>
                   <option selected='selected' value='0'>None</option>
                   <option value='[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]'>Half</option>
                   <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]'>Full</option>
-                  <option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>Double</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>2x STR</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>3x STR</option>
+<option value='[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]'>4x STR</option>
                 </select>
               </div>
               <div>
@@ -3149,7 +3204,20 @@
                 <label class='margin_adjust_wep'><input type='checkbox' name='attr_collapse' value='3' class='hider select_button hidden' /><span class='select_text radius_border_right_wep'>▼</span></label>
                 <label class='margin_adjust_wep2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{weapon_special_rules} }} {{description=@{description} }}' class='hidden'></button><span class='select_text'>❖</span></label>
                 <input name='attr_collapse' type='checkbox'  value='3' class='hider hidden' />
+                <div>
+                <div class='equipment_ranged_weapons_grid5'>
+                  <select class='equipment_ranged_weapons_gs25 full_width' name='attr_weapon_base_mod'>
+                    <option selected='selected' value='0'>Normal damage rolling</option>
+                    <option value='?{Damage modifier|0}'>Query damage mod</option>
+                    <option value='?{DOS|0}d10'>Simplified combat macro</option>
+                  </select>
+                  <select class='equipment_ranged_weapons_gs26 full_width' name='attr_weapon_pierce_mod'>
+                    <option selected='selected' value='0'>Normal pierce rolling</option>
+                    <option value='?{Pierce modifier|0}'>Query pierce mod</option>
+                  </select>
+                </div>
                 <textarea name='attr_description' class=' description_rounded_margin' placeholder='Weapon Modification e.g. Gravity Hammer Crushing thruster'></textarea>
+                </div>
               </div>
             </div>
           </fieldset>
@@ -3742,13 +3810,13 @@
         if (comp_data_Parsed.COMP_atribute == "CHA") {comp_data_Parsed.COMP_atribute = "@{CHA} + @{CHA_advancement} + @{fatigue_mod}"}
         if (comp_data_Parsed.COMP_atribute == "LDR") {comp_data_Parsed.COMP_atribute = "@{LDR} + @{LDR_advancement} + @{fatigue_mod}"}
 
-        if (comp_data_Parsed.COMP_base_mod   == "N/A") {comp_data_Parsed.COMP_atribute = "0"}
-        if (comp_data_Parsed.COMP_base_mod   == "Half") {comp_data_Parsed.COMP_atribute = "[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]"}
-        if (comp_data_Parsed.COMP_base_mod   == "Full") {comp_data_Parsed.COMP_atribute = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]"}
+        if (comp_data_Parsed.COMP_base_add   == "N/A") {comp_data_Parsed.COMP_base_add = "0"}
+        if (comp_data_Parsed.COMP_base_add   == "Half") {comp_data_Parsed.COMP_base_add = "[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]"}
+        if (comp_data_Parsed.COMP_base_add   == "Full") {comp_data_Parsed.COMP_base_add = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]"}
 
-        if (comp_data_Parsed.COMP_pierce_mod   == "N/A") {comp_data_Parsed.COMP_atribute = "0"}
-        if (comp_data_Parsed.COMP_pierce_mod   == "Half") {comp_data_Parsed.COMP_atribute = "[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]"}
-        if (comp_data_Parsed.COMP_pierce_mod   == "Full") {comp_data_Parsed.COMP_atribute = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]"}
+        if (comp_data_Parsed.COMP_pierce_add   == "N/A") {comp_data_Parsed.COMP_pierce_add = "0"}
+        if (comp_data_Parsed.COMP_pierce_add   == "Half") {comp_data_Parsed.COMP_pierce_add = "[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]"}
+        if (comp_data_Parsed.COMP_pierce_add   == "Full") {comp_data_Parsed.COMP_pierce_add = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]"}
 
 
 
@@ -3820,8 +3888,8 @@
           updateAttrs[loc + UUID1 + "_weapon_attacks"] = Math.min( wfm_total , compcheck(comp_data_Parsed.COMP_rof))
           updateAttrs[loc + UUID1 + "_weapon_breakpoints"] = compcheck(comp_data_Parsed.COMP_breakpoints)
           updateAttrs[loc + UUID1 + "_weapon_breakpoints_max"] = compcheck(comp_data_Parsed.COMP_breakpoints)
-          updateAttrs[loc + UUID1 + "_weapon_base-mod"] = compcheck(comp_data_Parsed.COMP_base_mod)
-          updateAttrs[loc + UUID1 + "_weapon_pierce-mod"] = compcheck(comp_data_Parsed.COMP_pierce_mod)
+          updateAttrs[loc + UUID1 + "_weapon_base_add"] = compcheck(comp_data_Parsed.COMP_base_add)
+          updateAttrs[loc + UUID1 + "_weapon_pierce_add"] = compcheck(comp_data_Parsed.COMP_pierce_add)
           updateAttrs[loc + UUID1 + "_weapon_special_rules"] = compcheck(comp_data_Parsed.COMP_special_rules)
           updateAttrs[loc + UUID1 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
 

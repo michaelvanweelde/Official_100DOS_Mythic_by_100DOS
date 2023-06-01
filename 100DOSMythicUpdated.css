@@ -952,7 +952,6 @@ ______________________________ start of NPC sheet overrides ____________________
 
 .sheet-NPC_medical {
 	background: #4a648c;
-	margin-right: 10px;
 	padding: 2px 2px 2px 2px;
 	color: white;
 	font-family: Saira Semi Condensed;
@@ -962,7 +961,7 @@ ______________________________ start of NPC sheet overrides ____________________
 	height: 50px;
 }
 
-.sheet-NPC_margin{ margin-right: 10px; }
+
 
 .sheet-NPC_textfield_override { height:300px }
 
