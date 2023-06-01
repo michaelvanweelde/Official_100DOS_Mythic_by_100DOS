@@ -1,37 +1,8 @@
 <div class="compendium-drop-target">
-  <input name="attr_comp_Name" accept="Name" type="text" />
-  <input name="attr_comp_field" accept="COMP_field" type="text" />
-  <input name="attr_comp_type" accept="COMP_type" type="text" />
-  <input name="attr_comp_atribute" accept="COMP_atribute" type="text" />
-  <input name="attr_comp_range" accept="COMP_range" type="text" />
-  <input name="attr_comp_damage_roll" accept="COMP_damage_roll" type="text" />
-  <input name="attr_comp_damage_base" accept="COMP_damage_base" type="text" />
-  <input name="attr_comp_pierce" accept="COMP_pierce" type="text" />
-  <input name="attr_comp_hitmod" accept="COMP_hitmod" type="text" />
-  <input name="attr_comp_magazine" accept="COMP_magazine" type="text" />
-  <input name="attr_comp_rof" accept="COMP_rof" type="text" />
-  <input name="attr_comp_reload" accept="COMP_reload" type="text" />
-  <input name="attr_comp_weight" accept="COMP_weight" type="text" />
-  <input name="attr_comp_special_rules" accept="COMP_special_rules" type="text" />
-  <input name="attr_comp_description" accept="COMP_description" type="text" />
-  <input name="attr_comp_price" accept="COMP_price" type="text" />
-  <input name="attr_comp_breakpoints" accept="COMP_breakpoints" type="text" />
-  <input name="attr_comp_base-mod" accept="COMP_base-mod" type="text" />
-  <input name="attr_comp_pierce-mod" accept="COMP_pierce-mod" type="text" />
-  <input name="attr_comp_armor_head" accept="COMP_armor_head" type="text" />
-  <input name="attr_comp_armor_arms" accept="COMP_armor_arms" type="text" />
-  <input name="attr_comp_armor_chest" accept="COMP_armor_chest" type="text" />
-  <input name="attr_comp_armor_legs" accept="COMP_armor_legs" type="text" />
-  <input name="attr_comp_shield_integrity" accept="COMP_shield_integrity" type="text" />
-  <input name="attr_comp_shield_delay" accept="COMP_shield_delay" type="text" />
-  <input name="attr_comp_shield_recharge" accept="COMP_shield_recharge" type="text" />
-  <input name="attr_comp_variant" accept="COMP_variant" type="text" />
-  <hr>
   <input name="attr_comp_category" accept="Category" type="text" />
   <input name="attr_comp_Name" accept="Name" type="text" />
   <input name="attr_comp_data" accept="data" type="text" />
   <hr>
-  <hr>
 
 
 
@@ -39,8 +10,7 @@
 
 
 
-
-  <input type='checkbox' name='attr_sheet_select' value='0' class='hider hidden' checked />
+  <input type='checkbox' name='attr_sheet_select' value='PC' class='hider hidden' checked />
   <div class='background_radius'>
     <input name='attr_faction' type='radio' value='1' class='background_switch_1' display=none hidden checked />
     <input name='attr_faction' type='radio' value='2' class='background_switch_2' display=none hidden />
@@ -323,19 +293,19 @@
           </select>
         </div>
         <div class='sheet_tabs'>
-          <input name='attr_sheetTab' type='checkbox' value='core' class='hidden core_bttn' checked />
+          <input name='attr_sheet_tab' type='checkbox' value='core' class='hidden core_bttn' checked />
           <button name='act_core' type='action' class='bold_text'>Core</button>
-          <input name='attr_sheetTab' type='checkbox' value='equipment' class='hidden core_bttn' />
+          <input name='attr_sheet_tab' type='checkbox' value='equipment' class='hidden core_bttn' />
           <button name='act_equipment' type='action' class='bold_text'>Equipment</button>
-          <input name='attr_sheetTab' type='checkbox' value='medical' class='hidden core_bttn' />
+          <input name='attr_sheet_tab' type='checkbox' value='medical' class='hidden core_bttn' />
           <button name='act_medical' type='action' class='bold_text'>Medical</button>
-          <input name='attr_sheetTab' type='checkbox' value='advancements' class='hidden core_bttn' />
+          <input name='attr_sheet_tab' type='checkbox' value='advancements' class='hidden core_bttn' />
           <button name='act_advancements' type='action' class='bold_text'>Advancements</button>
-          <input name='attr_sheetTab' type='checkbox' value='journal' class='hidden core_bttn' />
+          <input name='attr_sheet_tab' type='checkbox' value='journal' class='hidden core_bttn' />
           <button name='act_journal' type='action' class='bold_text'>Journal</button>
-          <input name='attr_sheetTab' type='checkbox' value='vehicles' class='hidden core_bttn' />
+          <input name='attr_sheet_tab' type='checkbox' value='vehicles' class='hidden core_bttn' />
           <button name='act_vehicles' type='action' class='bold_text'>Vehicles</button>
-          <input name='attr_sheetTab' type='checkbox' value='settings' class='hidden core_bttn' />
+          <input name='attr_sheet_tab' type='checkbox' value='settings' class='hidden core_bttn' />
           <button name='act_settings' type='action' class='huge_text'>⚙</button>
         </div>
 
@@ -352,9 +322,9 @@
           <label><input type='checkbox' name='attr_to-gm' value='/w gm' class='select_button hidden' /><span class='select_text'>To GM</span></label>
           <label><input type='checkbox' name='attr_inlinemod-toggle' value='?{Modifier|0}' class='select_button hidden' checked/><span class='select_text'>Inline Mod</span></label>
           <select name='attr_sheet_select' class='full_width infographic_select'>
-            <option value='0' selected='selected'>PC sheet</option>
-            <option value='1'>NPC sheet</option>
-            <option value='2'>GM sheet</option>
+            <option value='PC' selected='selected'>PC sheet</option>
+            <option value='NPC'>NPC sheet</option>
+            <option value='GM'>GM sheet</option>
           </select>
           <button class='clear infographic_buttons' type='roll' name='autodamage' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{avrdam= [[0+[[([[(?{Amount of hits|1}*?{Amount of D10s|0})d10]] + [[?{Amount of hits|1}*?{Base|0}]] - [[?{Amount of hits|1}*(?{Armor|0} - ?{Pierce|0})d1]])d1]]]]}}'>Auto-Damage</button>
           <button class='clear infographic_buttons' type='roll' name='multiroll' value='
@@ -473,7 +443,7 @@
 
     <!-- ______________________________ sheet tabs _________________________________ -->
     <!-- ______________________________ start of tab Core ______________________________ -->
-    <input name='attr_sheetTab' type='checkbox'  value='core' class='hider hidden' />
+    <input name='attr_sheet_tab' type='checkbox'  value='core' class='hider hidden' />
     <div class='box'>
       <!-- Core Data Standard -->
       <div class='core_lists '>
@@ -1107,7 +1077,7 @@
     </div>
 
     <!-- ______________________________ start of tab Equipment ______________________________ -->
-    <input name='attr_sheetTab' type='checkbox'  value='equipment' class='hider hidden' />
+    <input name='attr_sheet_tab' type='checkbox'  value='equipment' class='hider hidden' />
     <div class='box ssc'>
       <div class='equipment_divider'>
 
@@ -1356,7 +1326,7 @@
 
 
     <!-- ______________________________ start of tab Medical ______________________________ -->
-    <input name='attr_sheetTab' type='checkbox'  value='medical' class='hider hidden' />
+    <input name='attr_sheet_tab' type='checkbox'  value='medical' class='hider hidden' />
     <div class='box'>
       <!-- Medical -->
       <div class='medical-grid'>
@@ -1655,7 +1625,7 @@
 
 
     <!-- ______________________________ start of tab Advancements ______________________________ -->
-    <input name='attr_sheetTab' type='checkbox'  value='advancements' class='hider hidden' />
+    <input name='attr_sheet_tab' type='checkbox'  value='advancements' class='hider hidden' />
     <div class='box ssc'>
 
       <h2>Experience Summary</h2>
@@ -1823,7 +1793,7 @@
 
 
     <!-- ______________________________ start of tab Journal ______________________________ -->
-    <input name='attr_sheetTab' type='checkbox'  value='journal' class='hider hidden' />
+    <input name='attr_sheet_tab' type='checkbox'  value='journal' class='hider hidden' />
     <div class='box'>
       <!-- Journal -->
       <h2>Journal: Objectives</h2>
@@ -1851,7 +1821,7 @@
 
 
     <!-- ______________________________ start of tab Vehicles ______________________________ -->
-    <input name='attr_sheetTab' type='checkbox'  value='vehicles' class='hider hidden' />
+    <input name='attr_sheet_tab' type='checkbox'  value='vehicles' class='hider hidden' />
     <div class='box ssc'>
       <!-- Vehicles -->
       <div class='vehicles_divider'>
@@ -2192,7 +2162,7 @@
 
 
     <!-- ______________________________ start of tab Settings ______________________________ -->
-    <input name='attr_sheetTab' type='checkbox'  value='settings' class='hider hidden' />
+    <input name='attr_sheet_tab' type='checkbox'  value='settings' class='hider hidden' />
     <div class='box'>
 
       <div class="settings_grid">
@@ -2319,7 +2289,7 @@
 
   <!-- ______________________________ start of Npc sheet ______________________________ -->
 
-  <input type='checkbox' name='attr_sheet_select' value='1' class='hider hidden' />
+  <input type='checkbox' name='attr_sheet_select' value='NPC' class='hider hidden' />
   <div class='box background_radius'>
     <div class='tabs_main'>
 
@@ -2356,9 +2326,9 @@
       <label><input type='checkbox' name='attr_to-gm' value='/w gm' class='select_button hidden' /><span class='select_text'>To GM</span></label>
       <label><input type='checkbox' name='attr_inlinemod-toggle' value='?{Modifier|0}' class='select_button hidden' checked/><span class='select_text'>Inline Mod</span></label>
       <select name='attr_sheet_select' class='full_width infographic_select'>
-        <option value='0' selected='selected'>PC sheet</option>
-        <option value='1'>NPC sheet</option>
-        <option value='2'>GM sheet</option>
+        <option value='PC' selected='selected'>PC sheet</option>
+        <option value='NPC'>NPC sheet</option>
+        <option value='GM'>GM sheet</option>
       </select>
       <button class='clear infographic_buttons' type='roll' name='autodamage' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{avrdam= [[0+[[([[(?{Amount of hits|1}*?{Amount of D10s|0})d10]] + [[?{Amount of hits|1}*?{Base|0}]] - [[?{Amount of hits|1}*(?{Armor|0} - ?{Pierce|0})d1]])d1]]]]}}'>Auto-Damage</button>
       <button class='clear infographic_buttons' type='roll' name='multiroll' value='
@@ -2586,9 +2556,9 @@
     <br>
 
     <div class="NPC_pageselect">
-      <label><input type='checkbox' name='attr_NPC_tabs' class='select_button hidden' value='1'/><span class='select_text'>Vehicles</span></label>
-      <label><input type='checkbox' name='attr_NPC_tabs' class='select_button hidden' value='2'/><span class='select_text'>Medical</span></label>
-      <label><input type='checkbox' name='attr_NPC_tabs' class='select_button hidden' value='3'/><span class='select_text'>Vehicle weapons</span></label>
+      <label><input type='checkbox' name='attr_npc_tab' class='select_button hidden' value='vehicles'/><span class='select_text'>Vehicles</span></label>
+      <label><input type='checkbox' name='attr_npc_tab' class='select_button hidden' value='medical'/><span class='select_text'>Medical</span></label>
+      <label><input type='checkbox' name='attr_npc_tab' class='select_button hidden' value='vehicleweps'/><span class='select_text'>Vehicle weapons</span></label>
     </div>
 
 
@@ -2596,175 +2566,193 @@
       <div>
 
         <div>
-          <input name='attr_NPC_tabs' type='checkbox'  value='1' class='hider hidden' />
-          <div class="">
+          <input name='attr_npc_tab' type='checkbox'  value='vehicles' class='hider hidden' />
+          <div>
             <fieldset name='vehicles-R' class='repeating_vehicles'>
-              <div class='vehicles_grid1'>
-                <input name='attr_vehicle-name' type='text' class='vehicles_Gn full_width' placeholder='Name' />
+              <div class="border_full">
 
-                <select name='attr_vehicle-shield' class='vehicles_Gs full_width'>
-                  <option value='0' selected='selected'>Unshielded</option>
-                  <option value='1'>Shielded</option>
-                </select>
 
-                <select name='attr_vehicle-type' class='vehicles_Gt full_width'>
-                  <option value='0' selected='selected'>Ground</option>
-                  <option value='1'>Air</option>
-                  <option value='2'>Walker</option>
-                  <option value='3'>Stationary</option>
-                </select>
-                <div class='vehicles_G1'><h3>DIMENSIONS</h3></div>
-                <div class='vehicles_G2'>Length</div>
-                <div class='vehicles_G3'>Width</div>
-                <div class='vehicles_G4'>Height</div>
-                <div class='vehicles_G5'>Weight</div>
-                <input name='attr_vehicle-length' type='text' class='vehicles_G6 full_width' placeholder='# Meters' />
-                <input name='attr_vehicle-width' type='text' class='vehicles_G7 full_width' placeholder='# Meters' />
-                <input name='attr_vehicle-height' type='text' class='vehicles_G8 full_width' placeholder='# Meters' />
-                <input name='attr_vehicle-weight' type='text' class='vehicles_G9 full_width' placeholder='KG / Metric Tons' />
+                <div class='vehicles_grid_header'>
+                  <input name='attr_vehicle-name' type='text' class='vehicles_Gn full_width' placeholder='Name' />
+
+                  <select name='attr_vehicle-shield' class='vehicles_Gs full_width'>
+                    <option value='0' selected='selected'>Unshielded</option>
+                    <option value='1'>Shielded</option>
+                  </select>
+
+                  <select name='attr_vehicle-type' class='vehicles_Gt full_width'>
+                    <option value='0' selected='selected'>Ground/Air</option>
+                    <option value='1'>Walker</option>
+                    <option value='2'>Stationary</option>
+                  </select>
+
+                  <div class='vehicles_G1'><h3>DIMENSIONS</h3></div>
+                </div>
+
+                <div class='vehicles_grid_4x'>
+                  <div>Length</div>
+                  <div>Width</div>
+                  <div>Height</div>
+                  <div>Weight</div>
+                  <input name='attr_vehicle-length' type='text' class='full_width' placeholder='# Meters' />
+                  <input name='attr_vehicle-width' type='text' class='full_width' placeholder='# Meters' />
+                  <input name='attr_vehicle-height' type='text' class='full_width' placeholder='# Meters' />
+                  <input name='attr_vehicle-weight' type='text' class='full_width' placeholder='KG / Metric Tons' />
+                </div>
 
                 <input name='attr_vehicle-type' type='checkbox' value='0' class='hidden hider' checked />
-                <div class='vehicles_G10'><h3>SPEED AND MANEUVERABILITY</h3></div>
-                <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-                <div class='vehicles_G10'><h3>SPEED AND MANEUVERABILITY</h3></div>
-                <input name='attr_vehicle-type' type='checkbox' value='2' class='hidden hider' />
-                <div class='vehicles_G10'><h3>CHARACTERISTICS</h3></div>
+                <div>
+                  <div><h3>SPEED AND MANEUVERABILITY</h3></div>
+                  <div class="vehicles_grid_4x">
 
-                <input name='attr_vehicle-type' type='checkbox' value='3' class='hidden hidernot' />
-                <div class='vehicles_G11'>Accelerate</div>
-                <input name='attr_vehicle-type' type='checkbox' value='3' class='hidden hidernot' />
-                <div class='vehicles_G12'>Brake</div>
-                <input name='attr_vehicle-type' type='checkbox' value='3' class='hidden hidernot' />
-                <div class='vehicles_G13'>Top Speed</div>
-                <input name='attr_vehicle-type' type='checkbox' value='3' class='hidden hidernot' />
-                <div class='vehicles_G14'>Maneuver</div>
-                <input name='attr_vehicle-type' type='checkbox' value='3' class='hidden hidernot' />
-                <input name='attr_vehicle-accelerate' type='text' class='vehicles_G15 full_width' placeholder='Meters per Turn' />
-                <input name='attr_vehicle-type' type='checkbox' value='3' class='hidden hidernot' />
-                <input name='attr_vehicle-brake' type='text' class='vehicles_G16 full_width' placeholder='Meters per Turn' />
-                <input name='attr_vehicle-type' type='checkbox' value='3' class='hidden hidernot' />
-                <input name='attr_vehicle-top_speed' type='text' class='vehicles_G17 full_width' placeholder='MpT/(# km/h)' />
-                <input name='attr_vehicle-type' type='checkbox' value='3' class='hidden hidernot' />
-                <input name='attr_vehicle-maneuver' type='text' class='vehicles_G18 full_width' placeholder="Pilot's Evasion" />
+                    <div>Accelerate</div>
+                    <div>Brake</div>
+                    <div>Top Speed</div>
+                    <div>Maneuver</div>
 
-                <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-                <div class='vehicles_G19'>Vertical</div>
-                <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-                <div class='vehicles_G20'>Takeoff</div>
-                <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-                <div class='vehicles_G21'>Target Range</div>
-                <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-                <div class='vehicles_G22'>Targeting</div>
-                <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-                <input name='attr_vehicle-vertical' type='text' class='vehicles_G23 full_width' placeholder='MpT' />
-                <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-                <input name='attr_vehicle-takeoff' type='text' class='vehicles_G24 full_width' placeholder='Min Half-Actions' />
-                <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-                <input name='attr_vehicle-target_range' type='text' class='vehicles_G25 full_width' placeholder='Meters' />
-                <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-                <input name='attr_vehicle-targeting' type='text' class='vehicles_G26 full_width' placeholder='Min Half-Actions' />
-
-                <input name='attr_vehicle-type' type='checkbox' value='2' class='hidden hider' />
-                <div class='vehicles_G27'>Strength</div>
-                <input name='attr_vehicle-type' type='checkbox' value='2' class='hidden hider full_width' />
-                <div class='vehicles_G28'>Melee</div>
-                <input name='attr_vehicle-type' type='checkbox' value='2' class='hidden hider' />
-                <input type='text' name='attr_vehicle-strength' class='vehicles_G29 full_width'/>
-                <input name='attr_vehicle-type' type='checkbox' value='2' class='hidden hider' />
-                <input name='attr_vehicle-melee' type='text' class='vehicles_G30 full_width' />
-
-                <input name='attr_vehicle-type' type='checkbox' value='2' class='hidden hider' />
-                <input name='attr_vehicle-strength-mythic' class='vehicles_G31 full_width' type='text' />
-                <input name='attr_vehicle-type' type='checkbox' value='2' class='hidden hider' />
-                <div class='vehicles_G32'>Mythic</div>
-
-                <input name='attr_vehicle-type' type='checkbox' value='3' class='hidden hidernot' />
-                <div class='vehicles_G33'><h3>CREW AND COMPLEMENT</h3></div>
-                <input name='attr_vehicle-type' type='checkbox' value='3' class='hidden hidernot' />
-                <div class='vehicles_G34'>Crew</div>
-                <input name='attr_vehicle-type' type='checkbox' value='3' class='hidden hidernot' />
-                <div class='vehicles_G35'>Complement</div>
-                <input name='attr_vehicle-type' type='checkbox' value='3' class='hidden hidernot' />
-                <input name='attr_vehicle-crew' type='text' class='vehicles_G36 full_width' placeholder='Minimum Crew Prerequisite' />
-                <input name='attr_vehicle-type' type='checkbox' value='3' class='hidden hidernot' />
-                <input name='attr_vehicle-compliment' type='text' class='vehicles_G37 full_width' placeholder='Maximum Crew Space' />
-                <div class='vehicles_G38'><h3>HULL</h3></div>
-                <div class='vehicles_G39'>Hull Material</div>
-                <input name='attr_vehicle-hull' type='text' class='vehicles_G40 full_width' placeholder='Alloy Composition & Plating' />
-              </div>
-              <div class='vehicles_grid2'>
-                <div class='vehicles_G41'><h3>BREAKPOINTS</h3></div>
-                <div class='vehicles_G42'>1-20 Wep</div>
-                <div class='vehicles_G43'>21-40 Mob</div>
-                <div class='vehicles_G44'>41-60 Eng</div>
-                <div class='vehicles_G45'>61-80 Optic</div>
-                <div class='vehicles_G46'>81-100 Crew</div>
-                <input name='attr_vehicle-bp-wep' type='text' class='vehicles_G47 full_width' placeholder='Weapon' />
-                <input name='attr_vehicle-bp-mod' type='text' class='vehicles_G48 full_width' placeholder='Mobility' />
-                <input name='attr_vehicle-bp-eng'type='text' class='vehicles_G49 full_width' placeholder='Engine' />
-                <input name='attr_vehicle-bp-op'type='text' class='vehicles_G50 full_width' placeholder='Optic' />
-                <input name='attr_vehicle-bp-crew'type='text' class='vehicles_G51 full_width' placeholder='Compartment' />
-                <div class='vehicles_G52'><h3>Armor</h3></div>
-                <div class='vehicles_G53'>Front</div>
-                <div class='vehicles_G54'>Back</div>
-                <div class='vehicles_G55'>Side</div>
-                <div class='vehicles_G56'>Top</div>
-                <div class='vehicles_G57'>Bottom</div>
-                <input name='attr_vehicle-armor-front' type='text' class='vehicles_G58 full_width' />
-                <input name='attr_vehicle-armor-back' type='text' class='vehicles_G59 full_width' />
-                <input name='attr_vehicle-armor-side' type='text' class='vehicles_G60 full_width' />
-                <input name='attr_vehicle-armor-top' type='text' class='vehicles_G61 full_width' />
-                <input name='attr_vehicle-armor-bottom' type='text' class='vehicles_G62 full_width' />
-              </div>
-              <div class='vehicles_grid3'>
-                <div class='vehicles_G63'><h3>Miscellaneous</h3></div>
-                <div class='vehicles_G64'>Size Points</div>
-                <div class='vehicles_G65'>Weapon Points</div>
-                <input name='attr_vehicle-size-points' type='text' class='vehicles_G66 full_width' placeholder='Warthog = 2' />
-                <input name='attr_vehicle-weapon-points' type='text' class='vehicles_G67 full_width' placeholder='Warthog = 2' />
-
-                <input name='attr_vehicle-shield' type='checkbox' value='1' class='hidden hider' />
-                <div class='vehicles_G68'>Shield Rating</div>
-                <input name='attr_vehicle-shield' type='checkbox' value='1' class='hidden hider' />
-                <div class='vehicles_G69'>Shield Current</div>
-                <input name='attr_vehicle-shield' type='checkbox' value='1' class='hidden hider' />
-                <div class='vehicles_G70'>Recharge Delay</div>
-                <input name='attr_vehicle-shield' type='checkbox' value='1' class='hidden hider' />
-                <div class='vehicles_G71'>Recharge Rate</div>
-                <input name='attr_vehicle-shield' type='checkbox' value='1' class='hidden hider' />
-                <input name='attr_vehicle-shield-rating' type='text' class='vehicles_G72 full_width' />
-                <input name='attr_vehicle-shield' type='checkbox' value='1' class='hidden hider' />
-                <input name='attr_vehicle-shield-current' type='text' class='vehicles_G73 full_width' />
-                <input name='attr_vehicle-shield' type='checkbox' value='1' class='hidden hider' />
-                <input name='attr_vehicle-recharge-delay' type='text' class='vehicles_G74 full_width' />
-                <input name='attr_vehicle-shield' type='checkbox' value='1' class='hidden hider' />
-                <input name='attr_vehicle-recharge-rate' type='text' class='vehicles_G75 full_width' />
-
-                <div class='vehicles_G76 '>
-                  <div>
-                    <input name='attr_aditional_info' type='text' placeholder='Additional Info' class='full_width_49px' />
-                    <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='5' class='hider select_button hidden' /><span class='select_text '>▼</span></label>
-                    <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{aditional_info} }} {{description=@{aditional_info_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-                    <input name='attr_collapse' type='checkbox'  value='5' class='hider hidden' />
-                    <textarea name='attr_aditional_info_desc' class='' placeholder='Enter any vehicle-specific rules or other unique information here.'></textarea>
-                  </div>
-                  <div>
-                    <input name='attr_modifications' type='text' placeholder='Modifications' class='full_width_49px vehicles_descriptor' />
-                    <label class='margin_adjust'><input type='checkbox' name='attr_collapse2' value='6' class='hider select_button hidden' /><span class='select_text radius_border_right'>▼</span></label>
-                    <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{modifications} }} {{description=@{modifications_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-                    <input name='attr_collapse2' type='checkbox'  value='6' class='hider hidden' />
-                    <textarea name='attr_modifications_desc' class=' description_rounded_margin' placeholder='Vehicles in Mythic can be modified in many ways.  These use a Vehicle’s Weapon Points and Size Points, which are specialized Hardpoints on a Vehicle.  Each Modification takes a specified amount of Weapon and Size Points.
-                    &#10;Vehicle modifications are classified into five categories; Body, Propulsion, Electronic, Combat, and Miscellaneous.'></textarea>
+                    <input name='attr_vehicle-accelerate' type='text' class='full_width' placeholder='Meters per Turn' />
+                    <input name='attr_vehicle-brake' type='text' class='full_width' placeholder='Meters per Turn' />
+                    <input name='attr_vehicle-top_speed' type='text' class='full_width' placeholder='MpT/(# km/h)' />
+                    <input name='attr_vehicle-maneuver' type='text' class='full_width' placeholder="Max Evasion" />
                   </div>
                 </div>
+
+                <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
+                <div>
+                  <div><h3>CHARACTERISTICS AND SPEED</h3></div>
+                  <div class="vehicles_grid_4x">
+                    <div>STR</div>
+                    <div>MYTHIC STR</div>
+                    <div>AGI</div>
+                    <div>MYTHIC AGI</div>
+
+                    <input name='attr_vehicle-STR' type='text' class='full_width' value='0' />
+                    <input name='attr_vehicle-STR_mythic' type='text' class='full_width' value='0' />
+                    <input name='attr_vehicle-AGI' type='text' class='full_width' value='0' />
+                    <input name='attr_vehicle-AGI_mythic' type='text' class='full_width' value='0' />
+
+                    <div>Half move</div>
+                    <div>Full move</div>
+                    <div>Run</div>
+                    <div>Charge</div>
+
+                    <input name='attr_vehicle-half_move' type="text" class='full_width ' value="floor(@{vehicle-AGI}/10 + @{vehicle-AGI_mythic})*1" disabled/>
+                    <input name='attr_vehicle-full_move' type="text" class='full_width ' value="floor(@{vehicle-AGI}/10 + @{vehicle-AGI_mythic})*2" disabled/>
+                    <input name='attr_vehicle-run_move' type="text" class='full_width ' value="floor(@{vehicle-AGI}/10 + @{vehicle-AGI_mythic})*3" disabled/>
+                    <input name='attr_vehicle-charge_move' type="text" class='full_width ' value="floor(@{vehicle-AGI}/10 + @{vehicle-AGI_mythic})*6" disabled/>
+
+                    <div>Jump</div>
+                    <input name='attr_vehicle-jump' type='text' class='full_width' value="@{vehicle-STR_mythic}/2" disabled />
+
+                    <div>Leap</div>
+                    <input name='attr_vehicle-leap' type='text' class='full_width' value="@{vehicle-STR_mythic}" disabled />
+                  </div>
+                </div>
+
+                <div><h3>CREW AND COMPLEMENT</h3></div>
+                <div class="vehicles_grid_2x">
+                  <div>Crew</div>
+                  <div>Complement</div>
+                  <input name='attr_vehicle-crew' type='text' class='full_width' placeholder='Minimum Crew Prerequisite' />
+                  <input name='attr_vehicle-compliment' type='text' class='full_width' placeholder='Maximum Crew Space' />
+                </div>
+
+                <div><h3>BREAKPOINTS</h3></div>
+                <div class="vehicles_grid_5x">
+                  <div>1-20 Wep</div>
+                  <div>21-40 Mob</div>
+                  <div>41-60 Eng</div>
+                  <div>61-80 Optic</div>
+                  <div>81-100 Hull</div>
+                  <input name='attr_vehicle-bp-wep' type='text' class='full_width' placeholder='Weapon' />
+                  <input name='attr_vehicle-bp-mod' type='text' class='full_width' placeholder='Mobility' />
+                  <input name='attr_vehicle-bp-eng'type='text' class='full_width' placeholder='Engine' />
+                  <input name='attr_vehicle-bp-op'type='text' class='full_width' placeholder='Optic' />
+                  <input name='attr_vehicle-bp-crew'type='text' class='full_width' placeholder='Hull Points' />
+                </div>
+
+
+                <div><h3>Armor</h3></div>
+                <div class="vehicles_grid_5x">
+                  <div>Front</div>
+                  <div>Back</div>
+                  <div>Side</div>
+                  <div>Top</div>
+                  <div>Bottom</div>
+                  <input name='attr_vehicle-armor-front' type='text' class='full_width' />
+                  <input name='attr_vehicle-armor-back' type='text' class='full_width' />
+                  <input name='attr_vehicle-armor-side' type='text' class='full_width' />
+                  <input name='attr_vehicle-armor-top' type='text' class='full_width' />
+                  <input name='attr_vehicle-armor-bottom' type='text' class='full_width' />
+                </div>
+
+                <input name='attr_vehicle-type' type='checkbox' value='0' class='hidden hider' />
+                <div>
+                  <div><h3>Miscellaneous</h3></div>
+                  <div class="vehicles_grid_2x">
+                    <div>Size Points</div>
+                    <div>Weapon Points</div>
+
+                    <input name='attr_vehicle-size-points' type='text' class='full_width'/>
+                    <input name='attr_vehicle-weapon-points' type='text' class='full_width'/>
+                  </div>
+                </div>
+
+                <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
+                <div>
+                  <div><h3>Miscellaneous</h3></div>
+                  <div class="vehicles_grid_4x">
+                    <div>Size Points</div>
+                    <div>Weapon Points</div>
+                    <div>Size category</div>
+                    <div>Reach</div>
+
+                    <input name='attr_vehicle-size-points' type='text' class='full_width'/>
+                    <input name='attr_vehicle-weapon-points' type='text' class='full_width'/>
+                    <input name='attr_vehicle-size-category' type='text' class='full_width'/>
+                    <input name='attr_vehicle-Reach' type='text' class='full_width'/>
+                  </div>
+                </div>
+
+                <input name='attr_vehicle-shield' type='checkbox' value='1' class='hidden hider' />
+                <div>
+                  <div><h3>Energy shield</h3></div>
+                  <div class="vehicles_grid_4x">
+                    <div>Shield Rating</div>
+                    <div>Shield Current</div>
+                    <div>Recharge Delay</div>
+                    <div>Recharge Rate</div>
+
+                    <input name='attr_vehicle-shield-rating' type='text' class='full_width' />
+                    <input name='attr_vehicle-shield-current' type='text' class='full_width' />
+                    <input name='attr_vehicle-recharge-delay' type='text' class='full_width' />
+                    <input name='attr_vehicle-recharge-rate' type='text' class='full_width' />
+                  </div>
+                </div>
+
+                <div>
+                  <input name='attr_aditional_info' type='text' placeholder='Additional Info' class='full_width_49px' />
+                  <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='5' class='hider select_button hidden' /><span class='select_text '>▼</span></label>
+                  <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{aditional_info} }} {{description=@{aditional_info_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
+                  <input name='attr_collapse' type='checkbox'  value='5' class='hider hidden' />
+                  <textarea name='attr_aditional_info_desc' class='description_rounded_margin' placeholder='Enter any vehicle-specific rules or other unique information here.'></textarea>
+                </div>
+                <div>
+                  <input name='attr_modifications' type='text' placeholder='Modifications' class='full_width_49px vehicles_descriptor' />
+                  <label class='margin_adjust'><input type='checkbox' name='attr_collapse2' value='6' class='hider select_button hidden' /><span class='select_text radius_border_right'>▼</span></label>
+                  <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{modifications} }} {{description=@{modifications_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
+                  <input name='attr_collapse2' type='checkbox'  value='6' class='hider hidden' />
+                  <textarea name='attr_modifications_desc' class=' description_rounded_margin' placeholder='Vehicles in Mythic can be modified in many ways.  These use a Vehicle’s Weapon Points and Size Points, which are specialized Hardpoints on a Vehicle.  Each Modification takes a specified amount of Weapon and Size Points.
+                  &#10;Vehicle modifications are classified into five categories; Body, Propulsion, Electronic, Combat, and Miscellaneous.'></textarea>
+                </div>
               </div>
-              &nbsp;
+              <br>
             </fieldset>
           </div>
         </div>
 
         <div>
-          <input name='attr_NPC_tabs' type='checkbox'  value='2' class='hider hidden' />
+          <input name='attr_npc_tab' type='checkbox'  value='medical' class='hider hidden' />
           <div class="">
 
             <div class='NPC_medical radius_border_top NPC_medical_header'>
@@ -2876,7 +2864,7 @@
         </div>
 
         <div>
-          <input name='attr_NPC_tabs' type='checkbox'  value='3' class='hider hidden' />
+          <input name='attr_npc_tab' type='checkbox'  value='vehicleweps' class='hider hidden' />
           <div class="">
             <div class='vehicle_weapons NPC_margin'>
               <div class='equipment_ranged_weapons'>
@@ -3205,16 +3193,16 @@
 
   <!-- GM manager sheet -->
 
-  <input type='checkbox' name='attr_sheet_select' value='2' class='hider hidden' />
+  <input type='checkbox' name='attr_sheet_select' value='GM' class='hider hidden' />
   <div class='box background_radius'>
     <br>
     <div class='infographic_toggles'>
       <label><input type='checkbox' name='attr_to-gm' value='/w gm' class='select_button hidden' /><span class='select_text'>To GM</span></label>
       <label><input type='checkbox' name='attr_inlinemod-toggle' value='?{Modifier|0}' class='select_button hidden' checked/><span class='select_text'>Inline Mod</span></label>
       <select name='attr_sheet_select' class='full_width infographic_select'>
-        <option value='0' selected='selected'>PC sheet</option>
-        <option value='1'>NPC sheet</option>
-        <option value='2'>GM manager sheet</option>
+        <option value='PC' selected='selected'>PC sheet</option>
+        <option value='NPC'>NPC sheet</option>
+        <option value='GM'>GM manager sheet</option>
       </select>
       <button class='clear infographic_buttons' type='roll' name='autodamage' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{avrdam= [[0+[[([[(?{Amount of hits|1}*?{Amount of D10s|0})d10]] + [[?{Amount of hits|1}*?{Base|0}]] - [[?{Amount of hits|1}*(?{Armor|0} - ?{Pierce|0})d1]])d1]]]]}}'>Auto-Damage</button>
       <button class='clear infographic_buttons' type='roll' name='multiroll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{multiroll= [[ ?{How many rolls?|1}d100<[[?{Using|Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} |Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} |Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} |Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{COU} + @{COU_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod} } + ?{Modifier|0} ]] ]] }}'>Multi-Roll</button>
@@ -3511,7 +3499,7 @@
     buttonlist.forEach(button => {
       on(`clicked:${button}`, function() {
         setAttrs({
-          sheetTab: button
+          sheet_tab: button
         });
       });
     });
@@ -3729,6 +3717,9 @@
       getAttrs([
       "comp_name",
       "comp_data",
+      "sheet_tab",
+      "sheet_select",
+      "npc_tab",
       "WFM", "WFM_advancement",
       "TOU", "TOU_advancement"
 
@@ -3736,6 +3727,10 @@
       ], values => {
         const wfm_total = Math.floor(((parseInt(values['WFM'], 10) || 0) + (parseInt(values['WFM_advancement'], 10) || 0 ))/10);
         const tou_total = Math.floor(((parseInt(values['TOU'], 10) || 0) + (parseInt(values['TOU_advancement'], 10) || 0 ))/10);
+
+        const sheet_tab = values['sheet_tab']
+        const sheet_select = values['sheet_select']
+        const npc_tab = values['npc_tab']
 
         const {comp_name, comp_data} = values;
         const comp_data_Parsed = JSON.parse(comp_data)
@@ -3763,23 +3758,34 @@
 
         // _________________Compendium Ranged weapon sheet worker___________________
         if (comp_data_Parsed.COMP_field == "Ran_Wep") {
+
+          if (sheet_select == "PC" && sheet_tab == "vehicles") {
+            loc="repeating_vrangedweapons_"
+          }
+          else if (sheet_select == "NPC" && npc_tab == "vehicleweps") {
+            loc="repeating_vrangedweapons_"
+          }
+          else {
+            loc = "repeating_rangedweapons_"
+          }
+
           const UUID1 = generateRowID();
           const UUID2 = generateRowID();
           const updateAttrs = {};
-          updateAttrs["repeating_rangedweapons_" + UUID1 + "_weapon_name"] = compcheck(comp_name)
-          updateAttrs["repeating_rangedweapons_" + UUID1 + "_weapon_type"] = compcheck(comp_data_Parsed.COMP_type)
-          updateAttrs["repeating_rangedweapons_" + UUID1 + "_Weapon_attr"] = compcheck(comp_data_Parsed.COMP_atribute)
-          updateAttrs["repeating_rangedweapons_" + UUID1 + "_weapon_range"] = compcheck(comp_data_Parsed.COMP_range)
-          updateAttrs["repeating_rangedweapons_" + UUID1 + "_weapon_dam-roll"] = compcheck(comp_data_Parsed.COMP_damage_roll)
-          updateAttrs["repeating_rangedweapons_" + UUID1 + "_weapon_base"] = compcheck(comp_data_Parsed.COMP_damage_base)
-          updateAttrs["repeating_rangedweapons_" + UUID1 + "_weapon_pierce"] = compcheck(comp_data_Parsed.COMP_pierce)
-          updateAttrs["repeating_rangedweapons_" + UUID1 + "_weapon_hitmod"] = compcheck(comp_data_Parsed.COMP_hitmod)
-          updateAttrs["repeating_rangedweapons_" + UUID1 + "_weapon_mag"] = compcheck(comp_data_Parsed.COMP_magazine)
-          updateAttrs["repeating_rangedweapons_" + UUID1 + "_weapon_mag_max"] = compcheck(comp_data_Parsed.COMP_magazine)
-          updateAttrs["repeating_rangedweapons_" + UUID1 + "_weapon_rof"] = compcheck(comp_data_Parsed.COMP_rof)
-          updateAttrs["repeating_rangedweapons_" + UUID1 + "_weapon_reload"] = compcheck(comp_data_Parsed.COMP_reload)
-          updateAttrs["repeating_rangedweapons_" + UUID1 + "_weapon_special_rules"] = compcheck(comp_data_Parsed.COMP_special_rules)
-          updateAttrs["repeating_rangedweapons_" + UUID1 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
+          updateAttrs[loc + UUID1 + "_weapon_name"] = compcheck(comp_name)
+          updateAttrs[loc + UUID1 + "_weapon_type"] = compcheck(comp_data_Parsed.COMP_type)
+          updateAttrs[loc + UUID1 + "_Weapon_attr"] = compcheck(comp_data_Parsed.COMP_atribute)
+          updateAttrs[loc + UUID1 + "_weapon_range"] = compcheck(comp_data_Parsed.COMP_range)
+          updateAttrs[loc + UUID1 + "_weapon_dam-roll"] = compcheck(comp_data_Parsed.COMP_damage_roll)
+          updateAttrs[loc + UUID1 + "_weapon_base"] = compcheck(comp_data_Parsed.COMP_damage_base)
+          updateAttrs[loc + UUID1 + "_weapon_pierce"] = compcheck(comp_data_Parsed.COMP_pierce)
+          updateAttrs[loc + UUID1 + "_weapon_hitmod"] = compcheck(comp_data_Parsed.COMP_hitmod)
+          updateAttrs[loc + UUID1 + "_weapon_mag"] = compcheck(comp_data_Parsed.COMP_magazine)
+          updateAttrs[loc + UUID1 + "_weapon_mag_max"] = compcheck(comp_data_Parsed.COMP_magazine)
+          updateAttrs[loc + UUID1 + "_weapon_rof"] = compcheck(comp_data_Parsed.COMP_rof)
+          updateAttrs[loc + UUID1 + "_weapon_reload"] = compcheck(comp_data_Parsed.COMP_reload)
+          updateAttrs[loc + UUID1 + "_weapon_special_rules"] = compcheck(comp_data_Parsed.COMP_special_rules)
+          updateAttrs[loc + UUID1 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
 
           updateAttrs["repeating_gear_" + UUID2 + "_gear_name"] = compcheck(comp_name)
           updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity"] = 1
@@ -3793,24 +3799,35 @@
 
         // _________________Compendium Melee weapon sheet worker___________________
         if (comp_data_Parsed.COMP_field == "Mel_Wep") {
+
+          if (sheet_select == "PC" && sheet_tab == "vehicles") {
+            loc="repeating_vmeleeweapons_"
+          }
+          else if (sheet_select == "NPC" && npc_tab == "vehicleweps") {
+            loc="repeating_vmeleeweapons_"
+          }
+          else {
+            loc = "repeating_meleeweapons_"
+          }
+
           const UUID1 = generateRowID();
           const UUID2 = generateRowID();
           const updateAttrs = {};
-          updateAttrs["repeating_meleeweapons_" + UUID1 + "_weapon_name"] = compcheck(comp_name)
-          updateAttrs["repeating_meleeweapons_" + UUID1 + "_weapon_type"] = compcheck(comp_data_Parsed.COMP_type)
-          updateAttrs["repeating_meleeweapons_" + UUID1 + "_Weapon_attr"] = compcheck(comp_data_Parsed.COMP_atribute)
-          updateAttrs["repeating_meleeweapons_" + UUID1 + "_weapon_range"] = compcheck(comp_data_Parsed.COMP_range)
-          updateAttrs["repeating_meleeweapons_" + UUID1 + "_weapon_dam-roll"] = compcheck(comp_data_Parsed.COMP_damage_roll)
-          updateAttrs["repeating_meleeweapons_" + UUID1 + "_weapon_base"] = compcheck(comp_data_Parsed.COMP_damage_base)
-          updateAttrs["repeating_meleeweapons_" + UUID1 + "_weapon_pierce"] = compcheck(comp_data_Parsed.COMP_pierce)
-          updateAttrs["repeating_meleeweapons_" + UUID1 + "_weapon_hitmod"] = compcheck(comp_data_Parsed.COMP_hitmod)
-          updateAttrs["repeating_meleeweapons_" + UUID1 + "_weapon_attacks"] = Math.min( wfm_total , compcheck(comp_data_Parsed.COMP_rof))
-          updateAttrs["repeating_meleeweapons_" + UUID1 + "_weapon_breakpoints"] = compcheck(comp_data_Parsed.COMP_breakpoints)
-          updateAttrs["repeating_meleeweapons_" + UUID1 + "_weapon_breakpoints_max"] = compcheck(comp_data_Parsed.COMP_breakpoints)
-          updateAttrs["repeating_meleeweapons_" + UUID1 + "_weapon_base-mod"] = compcheck(comp_data_Parsed.COMP_base_mod)
-          updateAttrs["repeating_meleeweapons_" + UUID1 + "_weapon_pierce-mod"] = compcheck(comp_data_Parsed.COMP_pierce_mod)
-          updateAttrs["repeating_meleeweapons_" + UUID1 + "_weapon_special_rules"] = compcheck(comp_data_Parsed.COMP_special_rules)
-          updateAttrs["repeating_meleeweapons_" + UUID1 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
+          updateAttrs[loc + UUID1 + "_weapon_name"] = compcheck(comp_name)
+          updateAttrs[loc + UUID1 + "_weapon_type"] = compcheck(comp_data_Parsed.COMP_type)
+          updateAttrs[loc + UUID1 + "_Weapon_attr"] = compcheck(comp_data_Parsed.COMP_atribute)
+          updateAttrs[loc + UUID1 + "_weapon_range"] = compcheck(comp_data_Parsed.COMP_range)
+          updateAttrs[loc + UUID1 + "_weapon_dam-roll"] = compcheck(comp_data_Parsed.COMP_damage_roll)
+          updateAttrs[loc + UUID1 + "_weapon_base"] = compcheck(comp_data_Parsed.COMP_damage_base)
+          updateAttrs[loc + UUID1 + "_weapon_pierce"] = compcheck(comp_data_Parsed.COMP_pierce)
+          updateAttrs[loc + UUID1 + "_weapon_hitmod"] = compcheck(comp_data_Parsed.COMP_hitmod)
+          updateAttrs[loc + UUID1 + "_weapon_attacks"] = Math.min( wfm_total , compcheck(comp_data_Parsed.COMP_rof))
+          updateAttrs[loc + UUID1 + "_weapon_breakpoints"] = compcheck(comp_data_Parsed.COMP_breakpoints)
+          updateAttrs[loc + UUID1 + "_weapon_breakpoints_max"] = compcheck(comp_data_Parsed.COMP_breakpoints)
+          updateAttrs[loc + UUID1 + "_weapon_base-mod"] = compcheck(comp_data_Parsed.COMP_base_mod)
+          updateAttrs[loc + UUID1 + "_weapon_pierce-mod"] = compcheck(comp_data_Parsed.COMP_pierce_mod)
+          updateAttrs[loc + UUID1 + "_weapon_special_rules"] = compcheck(comp_data_Parsed.COMP_special_rules)
+          updateAttrs[loc + UUID1 + "_description"] = compcheck(comp_data_Parsed.COMP_description)
 
           updateAttrs["repeating_gear_" + UUID2 + "_gear_name"] = compcheck(comp_name)
           updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity"] = 1
