@@ -700,8 +700,6 @@ ______________________________ start of equipment tab __________________________
 .sheet-equipment_hider {margin-top: 5px !important; font-size: 17px}
 
 
-
-
 .sheet-equipment_titles {
 	font-size: 14px;
 		text-align: center;
@@ -709,22 +707,23 @@ ______________________________ start of equipment tab __________________________
 }
 
 .sheet-equipment_armor_input { width: 100%; height: 50px; }
-.sheet-equipment_armor_gs1 { background: #4a648c;}
-.sheet-equipment_armor_gs2 { background: #4a648c;}
-.sheet-equipment_armor_gs3 { background: #4a648c;}
-.sheet-equipment_armor_grid {
-	width: 100%;
-	display: grid;
-	grid-gap: 10px;
-	grid-template-columns: 90px auto;
-}
+
 
 .sheet-equipment_permutations_grid {
 	margin: 0px 50.5px 0.6px 0px;
 	display: grid;
-	grid-template-columns: auto 150px;
+	grid-template-columns: auto 250px;
 }
 
+
+.sheet-equipment_armor_grid {
+	display: grid;
+	grid-template-columns: 12% 12% 12% 12% 4% 12% 12% 12% 12%;
+}
+.sheet-equipment_armor_headers {
+	background: #4a648c;
+
+}
 
 
 /* ______________________________ end of equipment tab ______________________________

@@ -1282,62 +1282,56 @@
       </div>
       <br>
 
-      <div class='equipment_armor_grid'>
-        <div class='equipment_armor_gs2 border_full'>
-          <h3>Armor</h3>
-          <div>
-            <br>
-            <h3 class='radius_border_top'>Head</h3>
-            <input class='equipment_armor_input' type='text' name='attr_armor_head' value='0'>
-          </div>
-          <div>
-            <br>
-            <h3 class='radius_border_top'>Arms</h3>
-            <input class='equipment_armor_input' type='text' name='attr_armor_arms' value='0'>
-          </div>
-          <div>
-            <br>
-            <h3 class='radius_border_top'>Chest</h3>
-            <input class='equipment_armor_input' type='text' name='attr_armor_chest' value='0'>
-          </div>
-          <div>
-            <br>
-            <h3 class='radius_border_top'>Legs</h3>
-            <input class='equipment_armor_input' type='text' name='attr_armor_legs' value='0'>
-          </div>
+      <div class='border_full'>
+        <h3>Armor Permutations</h3>
+        <div class="equipment_permutations_grid equipment_titles">
+          <p class='bold_text equipment_titles'>Name</p>
+          <p class='bold_text equipment_titles'>Location & Hardpts</p>
         </div>
 
-        <div class='equipment_armor_gs3 border_full'>
-          <h3>Armor Permutations</h3>
-          <div class="equipment_permutations_grid equipment_titles">
-            <p class='bold_text equipment_titles'>Name</p>
-            <p class='bold_text equipment_titles'>Location & Hardpts</p>
+        <fieldset name='permutations' class='repeating_permutations'>
+          <div class='equipment_permutations_grid'>
+            <input class='full_width' type='text' name='attr_permutation_name' placeholder='Name'>
+            <input class='full_width' type='text' name='attr_permutation_location' placeholder='Location & Hardpoints'>
           </div>
-
-          <fieldset name='permutations' class='repeating_permutations'>
-            <div class='equipment_permutations_grid'>
-              <input class='full_width' type='text' name='attr_permutation_name' placeholder='Name'>
-              <input class='full_width' type='text' name='attr_permutation_location' placeholder='Location & Hardpoints'>
-            </div>
-            <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
-            <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{permutation_name} }} {{description=@{permutation_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-            <input name='attr_collapse' type='checkbox'  value='2' class='hider hidden' />
-            <textarea name='attr_permutation_desc' placeholder='All Human BDUs and Armor are designed to take Permutations. Permutations are attachments that modify Armor and offer various forms of function. Each section of Armor can only fit so many Permutations, which are shown as Hardpoints.'></textarea>
-          </fieldset>
-
-          <br>
-
-          <h3 class='radius_border_top'>Armor Description</h3>
-          <fieldset name='armors' class='repeating_armors'>
-            <input class='full_width_49px' type='text' name='attr_armor_name' placeholder='Name'>
-            <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
-            <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{armor_name} }} {{description=@{armor_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
-            <input name='attr_collapse' type='checkbox'  value='2' class='hider hidden' />
-            <textarea name='attr_armor_desc' placeholder='Armor special rules, Damage, Exteriour features, etc.'></textarea>
-          </fieldset>
-        </div>
+          <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='2' class='hider select_button hidden' /><span class='select_text'>▼</span></label>
+          <label class='margin_adjust2'><button type='roll' value='@{to-gm}&{template:mythic} {{name=@{permutation_name} }} {{description=@{permutation_desc} }}' class='hidden'></button><span class='select_text'>❖</span></label>
+          <input name='attr_collapse' type='checkbox'  value='2' class='hider hidden' />
+          <textarea name="attr_permutation_desc" class='radius_border_bottom' placeholder='All Human BDUs and Armor are designed to take Permutations. Permutations are attachments that modify Armor and offer various forms of function. Each section of Armor can only fit so many Permutations, which are shown as Hardpoints.'></textarea>
+        </fieldset>
       </div>
 
+      <br>
+      <div class="border_full">
+        <h3 class='radius_border_top'>Armor Description</h3>
+        <fieldset name='repeating_armor' class='repeating_armor'>
+          <input class='radius_border_top full_width' type='text' name='attr_name' placeholder='Name'>
+          <div class='equipment_armor_grid'>
+
+            <h3 style="	border-left: 1px solid #cccccc" class='bold_text equipment_armor_headers'>Head</h3>
+            <h3 class='bold_text equipment_armor_headers'>Arms</h3>
+            <h3 class='bold_text equipment_armor_headers'>Chest</h3>
+            <h3 class='bold_text equipment_armor_headers'>Legs</h3>
+            <div></div>
+            <h3 class='bold_text equipment_armor_headers'>Current</h3>
+            <h3 class='bold_text equipment_armor_headers'>Max</h3>
+            <h3 class='bold_text equipment_armor_headers'>Delay</h3>
+            <h3 style="	border-right: 1px solid #cccccc"class='bold_text equipment_armor_headers'>Charge</h3>
+
+            <input class='full_width' type='text' name='attr_armor_chest' value='0' />
+            <input class='full_width' type='text' name='attr_armor_arms' value='0' />
+            <input class='full_width' type='text' name='attr_armor_head' value='0' />
+            <input class='full_width' type='text' name='attr_armor_legs' value='0' />
+            <div></div>
+            <input class='full_width' type='text' name='attr_shields' value='0' />
+            <input class='full_width' type='text' name='attr_shields_max' value='0' />
+            <input class='full_width' type='text' name='attr_shields_delay' value='0' />
+            <input class='full_width' type='text' name='attr_shields_charge' value='0' />
+          </div>
+          <textarea class="radius_border_bottom" name='attr_description' placeholder='Armor special rules, Damage, Exteriour features, etc.'></textarea>
+          <br>
+        </fieldset>
+      </div>
     </div>
 
 
@@ -3743,28 +3737,9 @@
 
 
 
-    /*
 
 
-    "COMP_rof": "Semi 3",
-    "Category": "Ranged weapons",
-    "COMP_type": "Rocket Launcher",
-    "COMP_field": "Ran_Wep",
-    "COMP_price": "88",
-    "COMP_range": "20m-300m",
-    "COMP_hitmod": "0",
-    "COMP_pierce": "9",
-    "COMP_reload": "13 half actions",
-    "COMP_weight": "20.9",
-    "COMP_atribute": "WFR",
-    "COMP_magazine": "5",
-    "COMP_damage_base": "8",
-    "COMP_damage_roll": "3D10",
-    "COMP_description": "If the weapon impacts or detonates under a 20 Meter Range, the Fuel Rod’s RadEXP shot will not explode, and will only gain Blast (1). If impacting further than 20 Meters, the shot gains Blast (5), Kill (2). Shots will detonate once they reach the 300 Meters.",
-    "COMP_special_rules": "[TH] [HW] Blast (5), Kill (2) Special Rule.",
-    "blobs": {}
 
-    */
 
 
 
@@ -3923,6 +3898,7 @@
           const UUID1 = generateRowID();
           const UUID2 = generateRowID();
           const updateAttrs = {};
+          updateAttrs["repeating_armor_" + UUID2 + "_name"] = compcheck(comp_name)
           updateAttrs["repeating_armor_" + UUID2 + "_armor_head"] = (parseInt(compcheck(comp_data_Parsed.COMP_armor_head))+tou_total) +"-"+ parseInt(compcheck(comp_data_Parsed.COMP_armor_head))
           updateAttrs["repeating_armor_" + UUID2 + "_armor_arms"] = (parseInt(compcheck(comp_data_Parsed.COMP_armor_arms))+tou_total) +"-"+ parseInt(compcheck(comp_data_Parsed.COMP_armor_arms))
           updateAttrs["repeating_armor_" + UUID2 + "_armor_chest"] = (parseInt(compcheck(comp_data_Parsed.COMP_armor_chest))+tou_total) +"-"+ parseInt(compcheck(comp_data_Parsed.COMP_armor_chest))
