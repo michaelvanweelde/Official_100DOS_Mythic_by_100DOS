@@ -1596,46 +1596,46 @@
         </div>
 
         <div class='border_full'>
-            <label class='medical_initial_label'><h3 class='medical_h2 medical_h2_rollable radius_border_top'>Hit Location</h3> <button type='roll' name='button' value='@{to-gm}&{template:mythic} {{loc=[[1d100]]}}' class='hidden'></button></label>
-            <h3> 01-10 HEAD</h3>
-            <div class='medical_table'> 01-02 Neck</div>
-            <div class='medical_table'> 03-05 Mouth</div>
-            <div class='medical_table'> 06-07 Nose</div>
-            <div class='medical_table'> 08 Eyes</div>
-            <div class='medical_table'> 09 Ear</div>
-            <div class='medical_table'> 10 Forehead</div>
-            <h3>11-20 LEFT ARM</h3>
-            <div class='medical_table'>11-12 Hands</div>
-            <div class='medical_table'>13-15 Forearm</div>
-            <div class='medical_table'>16 Elbow</div>
-            <div class='medical_table'>17-19 Bicep</div>
-            <div class='medical_table'>20 Shoulder</div>
-            <h3>21-30 RIGHT ARM</h3>
-            <div class='medical_table'>21-22 Hands</div>
-            <div class='medical_table'>23-25 Forearm</div>
-            <div class='medical_table'>26 Elbow</div>
-            <div class='medical_table'>27-29 Bicep</div>
-            <div class='medical_table'>30 Shoulder</div>
-            <h3>31-45 LEFT LEG</h3>
-            <div class='medical_table'>31-32 Foot</div>
-            <div class='medical_table'>33-37 Shin</div>
-            <div class='medical_table'>38 Knee</div>
-            <div class='medical_table'>39-43 Thigh</div>
-            <div class='medical_table'>44-45 hip</div>
-            <h3>46-60 RIGHT LEG</h3>
-            <div class='medical_table'>46-47 Foot</div>
-            <div class='medical_table'>48-53 Shin</div>
-            <div class='medical_table'>54 Knee</div>
-            <div class='medical_table'>55-58 Thigh</div>
-            <div class='medical_table'>59-60 hip</div>
-            <h3>62-100 CHEST</h3>
-            <div class='medical_table'>61-65 Pelvis</div>
-            <div class='medical_table'>66-72 Intestines</div>
-            <div class='medical_table'>73-78 Kidney</div>
-            <div class='medical_table'>79-84 Stomach / Kidney / Liver</div>
-            <div class='medical_table'>85-89 Heart</div>
-            <div class='medical_table'>90-96 Lungs</div>
-            <div class='medical_table radius_border_bottom'>97-100 Ribcage, No Organ Struck</div>
+          <label class='medical_initial_label'><h3 class='medical_h2 medical_h2_rollable radius_border_top'>Hit Location</h3> <button type='roll' name='button' value='@{to-gm}&{template:mythic} {{loc=[[1d100]]}}' class='hidden'></button></label>
+          <h3> 01-10 HEAD</h3>
+          <div class='medical_table'> 01-02 Neck</div>
+          <div class='medical_table'> 03-05 Mouth</div>
+          <div class='medical_table'> 06-07 Nose</div>
+          <div class='medical_table'> 08 Eyes</div>
+          <div class='medical_table'> 09 Ear</div>
+          <div class='medical_table'> 10 Forehead</div>
+          <h3>11-20 LEFT ARM</h3>
+          <div class='medical_table'>11-12 Hands</div>
+          <div class='medical_table'>13-15 Forearm</div>
+          <div class='medical_table'>16 Elbow</div>
+          <div class='medical_table'>17-19 Bicep</div>
+          <div class='medical_table'>20 Shoulder</div>
+          <h3>21-30 RIGHT ARM</h3>
+          <div class='medical_table'>21-22 Hands</div>
+          <div class='medical_table'>23-25 Forearm</div>
+          <div class='medical_table'>26 Elbow</div>
+          <div class='medical_table'>27-29 Bicep</div>
+          <div class='medical_table'>30 Shoulder</div>
+          <h3>31-45 LEFT LEG</h3>
+          <div class='medical_table'>31-32 Foot</div>
+          <div class='medical_table'>33-37 Shin</div>
+          <div class='medical_table'>38 Knee</div>
+          <div class='medical_table'>39-43 Thigh</div>
+          <div class='medical_table'>44-45 hip</div>
+          <h3>46-60 RIGHT LEG</h3>
+          <div class='medical_table'>46-47 Foot</div>
+          <div class='medical_table'>48-53 Shin</div>
+          <div class='medical_table'>54 Knee</div>
+          <div class='medical_table'>55-58 Thigh</div>
+          <div class='medical_table'>59-60 hip</div>
+          <h3>62-100 CHEST</h3>
+          <div class='medical_table'>61-65 Pelvis</div>
+          <div class='medical_table'>66-72 Intestines</div>
+          <div class='medical_table'>73-78 Kidney</div>
+          <div class='medical_table'>79-84 Stomach / Kidney / Liver</div>
+          <div class='medical_table'>85-89 Heart</div>
+          <div class='medical_table'>90-96 Lungs</div>
+          <div class='medical_table radius_border_bottom'>97-100 Ribcage, No Organ Struck</div>
         </div>
       </div>
 
@@ -1858,150 +1858,170 @@
     <div class='box ssc'>
       <!-- Vehicles -->
       <div class='vehicles_divider'>
-        <fieldset name='vehicles-R' class='repeating_vehicles'>
-          <div class="border_full">
+
+        <div>
+          <fieldset name='vehicles-R' class='repeating_vehicles'>
+            <div class="border_full">
 
 
-          <div class='vehicles_grid1'>
-            <input name='attr_vehicle-name' type='text' class='vehicles_Gn full_width' placeholder='Name' />
+              <div class='vehicles_grid_header'>
+                <input name='attr_vehicle-name' type='text' class='vehicles_Gn full_width' placeholder='Name' />
 
-            <select name='attr_vehicle-shield' class='vehicles_Gs full_width'>
-              <option value='0' selected='selected'>Unshielded</option>
-              <option value='1'>Shielded</option>
-            </select>
+                <select name='attr_vehicle-shield' class='vehicles_Gs full_width'>
+                  <option value='0' selected='selected'>Unshielded</option>
+                  <option value='1'>Shielded</option>
+                </select>
 
-            <select name='attr_vehicle-type' class='vehicles_Gt full_width'>
-              <option value='0' selected='selected'>Ground/Air</option>
-              <option value='1'>Walker</option>
-              <option value='2'>Stationary</option>
-            </select>
-            <div class='vehicles_G1'><h3>DIMENSIONS</h3></div>
-            <div class='vehicles_G2'>Length</div>
-            <div class='vehicles_G3'>Width</div>
-            <div class='vehicles_G4'>Height</div>
-            <div class='vehicles_G5'>Weight</div>
-            <input name='attr_vehicle-length' type='text' class='vehicles_G6 full_width' placeholder='# Meters' />
-            <input name='attr_vehicle-width' type='text' class='vehicles_G7 full_width' placeholder='# Meters' />
-            <input name='attr_vehicle-height' type='text' class='vehicles_G8 full_width' placeholder='# Meters' />
-            <input name='attr_vehicle-weight' type='text' class='vehicles_G9 full_width' placeholder='KG / Metric Tons' />
+                <select name='attr_vehicle-type' class='vehicles_Gt full_width'>
+                  <option value='0' selected='selected'>Ground/Air</option>
+                  <option value='1'>Walker</option>
+                  <option value='2'>Stationary</option>
+                </select>
 
-            <input name='attr_vehicle-type' type='checkbox' value='0' class='hidden hider' checked />
-            <div class='vehicles_G10'><h3>SPEED AND MANEUVERABILITY</h3></div>
-            <input name='attr_vehicle-type' type='checkbox' value='0' class='hidden hider' />
-            <div class='vehicles_G11'>Accelerate</div>
-            <input name='attr_vehicle-type' type='checkbox' value='0' class='hidden hider' />
-            <div class='vehicles_G12'>Brake</div>
-            <input name='attr_vehicle-type' type='checkbox' value='0' class='hidden hider' />
-            <div class='vehicles_G13'>Top Speed</div>
-            <input name='attr_vehicle-type' type='checkbox' value='0' class='hidden hider' />
-            <div class='vehicles_G14'>Maneuver</div>
-            <input name='attr_vehicle-type' type='checkbox' value='0' class='hidden hider' />
-            <input name='attr_vehicle-accelerate' type='text' class='vehicles_G15 full_width' placeholder='Meters per Turn' />
-            <input name='attr_vehicle-type' type='checkbox' value='0' class='hidden hider' />
-            <input name='attr_vehicle-brake' type='text' class='vehicles_G16 full_width' placeholder='Meters per Turn' />
-            <input name='attr_vehicle-type' type='checkbox' value='0' class='hidden hider' />
-            <input name='attr_vehicle-top_speed' type='text' class='vehicles_G17 full_width' placeholder='MpT/(# km/h)' />
-            <input name='attr_vehicle-type' type='checkbox' value='0' class='hidden hider' />
-            <input name='attr_vehicle-maneuver' type='text' class='vehicles_G18 full_width' placeholder="Pilot's Evasion" />
+                <div class='vehicles_G1'><h3>DIMENSIONS</h3></div>
+              </div>
 
-            <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-            <div class='vehicles_G10'><h3>CHARACTERISTICS AND SPEED</h3></div>
-            <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-            <div class='vehicles_G11'>STR</div>
-            <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-            <div class='vehicles_G12'>MYTHIC STR</div>
-            <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-            <div class='vehicles_G13'>AGI</div>
-            <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-            <div class='vehicles_G14'>MYTHIC AGI</div>
-            <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-            <input name='attr_vehicle-STR' type='text' class='vehicles_G15 full_width' value='0' />
-            <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-            <input name='attr_vehicle-STR_mythic' type='text' class='vehicles_G16 full_width' value='0' />
-            <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-            <input name='attr_vehicle-AGI' type='text' class='vehicles_G17 full_width' value='0' />
-            <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-            <input name='attr_vehicle-AGI_mythic' type='text' class='vehicles_G18 full_width' value='0' />
+              <div class='vehicles_grid_4x'>
+                <div>Length</div>
+                <div>Width</div>
+                <div>Height</div>
+                <div>Weight</div>
+                <input name='attr_vehicle-length' type='text' class='full_width' placeholder='# Meters' />
+                <input name='attr_vehicle-width' type='text' class='full_width' placeholder='# Meters' />
+                <input name='attr_vehicle-height' type='text' class='full_width' placeholder='# Meters' />
+                <input name='attr_vehicle-weight' type='text' class='full_width' placeholder='KG / Metric Tons' />
+              </div>
 
-            <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-            <div class='vehicles_G19'>Half</div>
-            <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-            <div class='vehicles_G20'>Full</div>
-            <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-            <div class='vehicles_G21'>Run</div>
-            <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-            <div class='vehicles_G22'>Charge</div>
-            <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-            <input name='attr_vehicle-half_move' type="text" class='vehicles_G23 full_width ' value="floor(@{vehicle-AGI}/10 + @{vehicle-AGI_mythic})*1" disabled/>
-            <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-            <input name='attr_vehicle-full_move' type="text" class='vehicles_G24 full_width ' value="floor(@{vehicle-AGI}/10 + @{vehicle-AGI_mythic})*2" disabled/>
-            <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-            <input name='attr_vehicle-run_move' type="text" class='vehicles_G25 full_width ' value="floor(@{vehicle-AGI}/10 + @{vehicle-AGI_mythic})*3" disabled/>
-            <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
-            <input name='attr_vehicle-charge_move' type="text" class='vehicles_G26 full_width ' value="floor(@{vehicle-AGI}/10 + @{vehicle-AGI_mythic})*6" disabled/>
+              <input name='attr_vehicle-type' type='checkbox' value='0' class='hidden hider' checked />
+              <div>
+                <div><h3>SPEED AND MANEUVERABILITY</h3></div>
+                <div class="vehicles_grid_4x">
+
+                  <div>Accelerate</div>
+                  <div>Brake</div>
+                  <div>Top Speed</div>
+                  <div>Maneuver</div>
+
+                  <input name='attr_vehicle-accelerate' type='text' class='full_width' placeholder='Meters per Turn' />
+                  <input name='attr_vehicle-brake' type='text' class='full_width' placeholder='Meters per Turn' />
+                  <input name='attr_vehicle-top_speed' type='text' class='full_width' placeholder='MpT/(# km/h)' />
+                  <input name='attr_vehicle-maneuver' type='text' class='full_width' placeholder="Max Evasion" />
+                </div>
+              </div>
+
+              <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
+              <div>
+                <div><h3>CHARACTERISTICS AND SPEED</h3></div>
+                <div class="vehicles_grid_4x">
+                  <div>STR</div>
+                  <div>MYTHIC STR</div>
+                  <div>AGI</div>
+                  <div>MYTHIC AGI</div>
+
+                  <input name='attr_vehicle-STR' type='text' class='full_width' value='0' />
+                  <input name='attr_vehicle-STR_mythic' type='text' class='full_width' value='0' />
+                  <input name='attr_vehicle-AGI' type='text' class='full_width' value='0' />
+                  <input name='attr_vehicle-AGI_mythic' type='text' class='full_width' value='0' />
+
+                  <div>Half move</div>
+                  <div>Full move</div>
+                  <div>Run</div>
+                  <div>Charge</div>
+
+                  <input name='attr_vehicle-half_move' type="text" class='full_width ' value="floor(@{vehicle-AGI}/10 + @{vehicle-AGI_mythic})*1" disabled/>
+                  <input name='attr_vehicle-full_move' type="text" class='full_width ' value="floor(@{vehicle-AGI}/10 + @{vehicle-AGI_mythic})*2" disabled/>
+                  <input name='attr_vehicle-run_move' type="text" class='full_width ' value="floor(@{vehicle-AGI}/10 + @{vehicle-AGI_mythic})*3" disabled/>
+                  <input name='attr_vehicle-charge_move' type="text" class='full_width ' value="floor(@{vehicle-AGI}/10 + @{vehicle-AGI_mythic})*6" disabled/>
+
+                  <div>Jump</div>
+                  <input name='attr_vehicle-jump' type='text' class='full_width' value="@{vehicle-STR_mythic}/2" disabled />
+
+                  <div>Leap</div>
+                  <input name='attr_vehicle-leap' type='text' class='full_width' value="@{vehicle-STR_mythic}" disabled />
+                </div>
+              </div>
+
+              <div><h3>CREW AND COMPLEMENT</h3></div>
+              <div class="vehicles_grid_2x">
+                <div>Crew</div>
+                <div>Complement</div>
+                <input name='attr_vehicle-crew' type='text' class='full_width' placeholder='Minimum Crew Prerequisite' />
+                <input name='attr_vehicle-compliment' type='text' class='full_width' placeholder='Maximum Crew Space' />
+              </div>
+
+              <div><h3>BREAKPOINTS</h3></div>
+              <div class="vehicles_grid_5x">
+                <div>1-20 Wep</div>
+                <div>21-40 Mob</div>
+                <div>41-60 Eng</div>
+                <div>61-80 Optic</div>
+                <div>81-100 Hull</div>
+                <input name='attr_vehicle-bp-wep' type='text' class='full_width' placeholder='Weapon' />
+                <input name='attr_vehicle-bp-mod' type='text' class='full_width' placeholder='Mobility' />
+                <input name='attr_vehicle-bp-eng'type='text' class='full_width' placeholder='Engine' />
+                <input name='attr_vehicle-bp-op'type='text' class='full_width' placeholder='Optic' />
+                <input name='attr_vehicle-bp-crew'type='text' class='full_width' placeholder='Hull Points' />
+              </div>
 
 
+              <div><h3>Armor</h3></div>
+              <div class="vehicles_grid_5x">
+                <div>Front</div>
+                <div>Back</div>
+                <div>Side</div>
+                <div>Top</div>
+                <div>Bottom</div>
+                <input name='attr_vehicle-armor-front' type='text' class='full_width' />
+                <input name='attr_vehicle-armor-back' type='text' class='full_width' />
+                <input name='attr_vehicle-armor-side' type='text' class='full_width' />
+                <input name='attr_vehicle-armor-top' type='text' class='full_width' />
+                <input name='attr_vehicle-armor-bottom' type='text' class='full_width' />
+              </div>
 
+              <input name='attr_vehicle-type' type='checkbox' value='0' class='hidden hider' />
+              <div>
+                <div><h3>Miscellaneous</h3></div>
+                <div class="vehicles_grid_2x">
+                  <div>Size Points</div>
+                  <div>Weapon Points</div>
 
-            <input name='attr_vehicle-type' type='checkbox' value='3' class='hidden hider' />
-            <div class='vehicles_G33'><h3>CREW AND COMPLEMENT</h3></div>
-            <input name='attr_vehicle-type' type='checkbox' value='3' class='hidden hider' />
-            <div class='vehicles_G34'>Crew</div>
-            <input name='attr_vehicle-type' type='checkbox' value='3' class='hidden hider' />
-            <div class='vehicles_G35'>Complement</div>
-            <input name='attr_vehicle-type' type='checkbox' value='3' class='hidden hider' />
-            <input name='attr_vehicle-crew' type='text' class='vehicles_G36 full_width' placeholder='Minimum Crew Prerequisite' />
-            <input name='attr_vehicle-type' type='checkbox' value='3' class='hidden hider' />
-            <input name='attr_vehicle-compliment' type='text' class='vehicles_G37 full_width' placeholder='Maximum Crew Space' />
-          </div>
-          <div class='vehicles_grid2'>
-            <div class='vehicles_G41'><h3>BREAKPOINTS</h3></div>
-            <div class='vehicles_G42'>1-20 Wep</div>
-            <div class='vehicles_G43'>21-40 Mob</div>
-            <div class='vehicles_G44'>41-60 Eng</div>
-            <div class='vehicles_G45'>61-80 Optic</div>
-            <div class='vehicles_G46'>81-100 Hull</div>
-            <input name='attr_vehicle-bp-wep' type='text' class='vehicles_G47 full_width' placeholder='Weapon' />
-            <input name='attr_vehicle-bp-mod' type='text' class='vehicles_G48 full_width' placeholder='Mobility' />
-            <input name='attr_vehicle-bp-eng'type='text' class='vehicles_G49 full_width' placeholder='Engine' />
-            <input name='attr_vehicle-bp-op'type='text' class='vehicles_G50 full_width' placeholder='Optic' />
-            <input name='attr_vehicle-bp-crew'type='text' class='vehicles_G51 full_width' placeholder='Hull points' />
-            <div class='vehicles_G52'><h3>Armor</h3></div>
-            <div class='vehicles_G53'>Front</div>
-            <div class='vehicles_G54'>Back</div>
-            <div class='vehicles_G55'>Side</div>
-            <div class='vehicles_G56'>Top</div>
-            <div class='vehicles_G57'>Bottom</div>
-            <input name='attr_vehicle-armor-front' type='text' class='vehicles_G58 full_width' />
-            <input name='attr_vehicle-armor-back' type='text' class='vehicles_G59 full_width' />
-            <input name='attr_vehicle-armor-side' type='text' class='vehicles_G60 full_width' />
-            <input name='attr_vehicle-armor-top' type='text' class='vehicles_G61 full_width' />
-            <input name='attr_vehicle-armor-bottom' type='text' class='vehicles_G62 full_width' />
-          </div>
-          <div class='vehicles_grid3'>
-            <div class='vehicles_G63'><h3>Miscellaneous</h3></div>
-            <div class='vehicles_G64'>Size Points</div>
-            <div class='vehicles_G65'>Weapon Points</div>
-            <input name='attr_vehicle-size-points' type='text' class='vehicles_G66 full_width' placeholder='Warthog = 2' />
-            <input name='attr_vehicle-weapon-points' type='text' class='vehicles_G67 full_width' placeholder='Warthog = 2' />
-            <input name='attr_vehicle-shield' type='checkbox' value='1' class='hidden hider' />
-            <div class='vehicles_G68'>Shield Rating</div>
-            <input name='attr_vehicle-shield' type='checkbox' value='1' class='hidden hider' />
-            <div class='vehicles_G69'>Shield Current</div>
-            <input name='attr_vehicle-shield' type='checkbox' value='1' class='hidden hider' />
-            <div class='vehicles_G70'>Recharge Delay</div>
-            <input name='attr_vehicle-shield' type='checkbox' value='1' class='hidden hider' />
-            <div class='vehicles_G71'>Recharge Rate</div>
-            <input name='attr_vehicle-shield' type='checkbox' value='1' class='hidden hider' />
-            <input name='attr_vehicle-shield-rating' type='text' class='vehicles_G72 full_width' />
-            <input name='attr_vehicle-shield' type='checkbox' value='1' class='hidden hider' />
-            <input name='attr_vehicle-shield-current' type='text' class='vehicles_G73 full_width' />
-            <input name='attr_vehicle-shield' type='checkbox' value='1' class='hidden hider' />
-            <input name='attr_vehicle-recharge-delay' type='text' class='vehicles_G74 full_width' />
-            <input name='attr_vehicle-shield' type='checkbox' value='1' class='hidden hider' />
-            <input name='attr_vehicle-recharge-rate' type='text' class='vehicles_G75 full_width' />
+                  <input name='attr_vehicle-size-points' type='text' class='full_width'/>
+                  <input name='attr_vehicle-weapon-points' type='text' class='full_width'/>
+                </div>
+              </div>
 
-            <div class='vehicles_G76 '>
+              <input name='attr_vehicle-type' type='checkbox' value='1' class='hidden hider' />
+              <div>
+                <div><h3>Miscellaneous</h3></div>
+                <div class="vehicles_grid_4x">
+                  <div>Size Points</div>
+                  <div>Weapon Points</div>
+                  <div>Size category</div>
+                  <div>Reach</div>
+
+                  <input name='attr_vehicle-size-points' type='text' class='full_width'/>
+                  <input name='attr_vehicle-weapon-points' type='text' class='full_width'/>
+                  <input name='attr_vehicle-size-category' type='text' class='full_width'/>
+                  <input name='attr_vehicle-Reach' type='text' class='full_width'/>
+                </div>
+              </div>
+
+              <input name='attr_vehicle-shield' type='checkbox' value='1' class='hidden hider' />
+              <div>
+                <div><h3>Energy shield</h3></div>
+                <div class="vehicles_grid_4x">
+                  <div>Shield Rating</div>
+                  <div>Shield Current</div>
+                  <div>Recharge Delay</div>
+                  <div>Recharge Rate</div>
+
+                  <input name='attr_vehicle-shield-rating' type='text' class='full_width' />
+                  <input name='attr_vehicle-shield-current' type='text' class='full_width' />
+                  <input name='attr_vehicle-recharge-delay' type='text' class='full_width' />
+                  <input name='attr_vehicle-recharge-rate' type='text' class='full_width' />
+                </div>
+              </div>
+
               <div>
                 <input name='attr_aditional_info' type='text' placeholder='Additional Info' class='full_width_49px' />
                 <label class='margin_adjust'><input type='checkbox' name='attr_collapse' value='5' class='hider select_button hidden' /><span class='select_text '>▼</span></label>
@@ -2018,12 +2038,11 @@
                 &#10;Vehicle modifications are classified into five categories; Body, Propulsion, Electronic, Combat, and Miscellaneous.'></textarea>
               </div>
             </div>
-          </div>
-                    </div>
-          <br>
-        </fieldset>
+            <br>
+          </fieldset>
+        </div>
 
-        <div class='vehicle_weapons'>
+        <div>
           <div class='equipment_ranged_weapons border_full'>
             <h3>Vehicle Ranged Weapons</h3>
             <fieldset name='vehiclerangedweapons' class='repeating_vrangedweapons'>
@@ -2169,6 +2188,7 @@
             </fieldset>
           </div>
         </div>
+
       </div>
     </div>
 
@@ -3866,7 +3886,7 @@
     });
 
     //end
-</script>
+  </script>
 
 
 
@@ -3880,240 +3900,240 @@
 
 
 
-<rolltemplate class="sheet-rolltemplate-mythic">
+  <rolltemplate class="sheet-rolltemplate-mythic">
 
-  {{#initiative}}
-  <div class="sheet-template-header">{{character}} rolls for Initiative</div>
-  <div class="sheet-template-content">
-    <div class="sheet-template-row sheet-template-center mythic_crit">{{initiative}} Degrees of success</div>
+    {{#initiative}}
+    <div class="sheet-template-header">{{character}} rolls for Initiative</div>
+    <div class="sheet-template-content">
+      <div class="sheet-template-row sheet-template-center mythic_crit">{{initiative}} Degrees of success</div>
 
-  </div>
-  {{/initiative}}
-
-
-
-  {{#roll-name}}
-  <div class="sheet-template-header">{{character}} rolls for {{roll-name}}</div>
-  <div class="sheet-template-content">
-    <div class="sheet-template-2x2">
-      <div class="sheet-template-row sheet-template-right">
-        {{roll}}
-      </div>
-      <div class="sheet-template-row">
-        {{#^rollLess() roll 0 }}Degrees of success{{/^rollLess() roll 0 }}
-        {{#rollLess() roll 0 }}Degrees of failure{{/rollLess() roll 0 }}
-      </div>
     </div>
-
-  </div>
-  {{/roll-name}}
+    {{/initiative}}
 
 
 
-  {{#avrdam}}
-  <div class="sheet-template-header">{{character}} damage with autoroller</div>
-  <div class="sheet-template-content">
-    <div class="sheet-template-2x2">
-      <div class="sheet-template-row sheet-template-right">Damage dealt:</div>
-      <div class="sheet-template-row">{{avrdam}}</div>
-    </div>
-
-  </div>
-  {{/avrdam}}
-
-
-
-  {{#nrofrolls}}
-  <div class="sheet-template-header">{{character}} rolls multiple times</div>
-  <div class="sheet-template-content">
-    <div class="sheet-template-2x2">
-      {{#rollGreater() nrofrolls 0}} <div class="sheet-template-row sheet-template-right">Roll 0:</div> <div class="sheet-template-row"> {{multiroll0}} </div> {{/rollGreater() nrofrolls 0}}
-      {{#rollGreater() nrofrolls 1}} <div class="sheet-template-row sheet-template-right">Roll 1:</div> <div class="sheet-template-row"> {{multiroll1}} </div> {{/rollGreater() nrofrolls 1}}
-      {{#rollGreater() nrofrolls 2}} <div class="sheet-template-row sheet-template-right">Roll 2:</div> <div class="sheet-template-row"> {{multiroll2}} </div> {{/rollGreater() nrofrolls 2}}
-      {{#rollGreater() nrofrolls 3}} <div class="sheet-template-row sheet-template-right">Roll 3:</div> <div class="sheet-template-row"> {{multiroll3}} </div> {{/rollGreater() nrofrolls 3}}
-      {{#rollGreater() nrofrolls 4}} <div class="sheet-template-row sheet-template-right">Roll 4:</div> <div class="sheet-template-row"> {{multiroll4}} </div> {{/rollGreater() nrofrolls 4}}
-      {{#rollGreater() nrofrolls 5}} <div class="sheet-template-row sheet-template-right">Roll 5:</div> <div class="sheet-template-row"> {{multiroll5}} </div> {{/rollGreater() nrofrolls 5}}
-      {{#rollGreater() nrofrolls 6}} <div class="sheet-template-row sheet-template-right">Roll 6:</div> <div class="sheet-template-row"> {{multiroll6}} </div> {{/rollGreater() nrofrolls 6}}
-      {{#rollGreater() nrofrolls 7}} <div class="sheet-template-row sheet-template-right">Roll 7:</div> <div class="sheet-template-row"> {{multiroll7}} </div> {{/rollGreater() nrofrolls 7}}
-      {{#rollGreater() nrofrolls 8}} <div class="sheet-template-row sheet-template-right">Roll 8:</div> <div class="sheet-template-row"> {{multiroll8}} </div> {{/rollGreater() nrofrolls 8}}
-      {{#rollGreater() nrofrolls 9}} <div class="sheet-template-row sheet-template-right">Roll 9:</div> <div class="sheet-template-row"> {{multiroll9}} </div> {{/rollGreater() nrofrolls 9}}
-      {{#rollGreater() nrofrolls 10}} <div class="sheet-template-row sheet-template-right">Roll 10:</div> <div class="sheet-template-row"> {{multiroll10}} </div> {{/rollGreater() nrofrolls 10}}
-      {{#rollGreater() nrofrolls 11}} <div class="sheet-template-row sheet-template-right">Roll 11:</div> <div class="sheet-template-row"> {{multiroll11}} </div> {{/rollGreater() nrofrolls 11}}
-      {{#rollGreater() nrofrolls 12}} <div class="sheet-template-row sheet-template-right">Roll 12:</div> <div class="sheet-template-row"> {{multiroll12}} </div> {{/rollGreater() nrofrolls 12}}
-      {{#rollGreater() nrofrolls 13}} <div class="sheet-template-row sheet-template-right">Roll 13:</div> <div class="sheet-template-row"> {{multiroll13}} </div> {{/rollGreater() nrofrolls 13}}
-      {{#rollGreater() nrofrolls 14}} <div class="sheet-template-row sheet-template-right">Roll 14:</div> <div class="sheet-template-row"> {{multiroll14}} </div> {{/rollGreater() nrofrolls 14}}
-      {{#rollGreater() nrofrolls 15}} <div class="sheet-template-row sheet-template-right">Roll 15:</div> <div class="sheet-template-row"> {{multiroll15}} </div> {{/rollGreater() nrofrolls 15}}
-      {{#rollGreater() nrofrolls 16}} <div class="sheet-template-row sheet-template-right">Roll 16:</div> <div class="sheet-template-row"> {{multiroll16}} </div> {{/rollGreater() nrofrolls 16}}
-      {{#rollGreater() nrofrolls 17}} <div class="sheet-template-row sheet-template-right">Roll 17:</div> <div class="sheet-template-row"> {{multiroll17}} </div> {{/rollGreater() nrofrolls 17}}
-      {{#rollGreater() nrofrolls 18}} <div class="sheet-template-row sheet-template-right">Roll 18:</div> <div class="sheet-template-row"> {{multiroll18}} </div> {{/rollGreater() nrofrolls 18}}
-      {{#rollGreater() nrofrolls 19}} <div class="sheet-template-row sheet-template-right">Roll 19:</div> <div class="sheet-template-row"> {{multiroll19}} </div> {{/rollGreater() nrofrolls 19}}
-      {{#rollGreater() nrofrolls 20}} <div class="sheet-template-row sheet-template-right">Roll 20:</div> <div class="sheet-template-row"> {{multiroll20}} </div> {{/rollGreater() nrofrolls 20}}
-      {{#rollGreater() nrofrolls 21}} <div class="sheet-template-row sheet-template-right">Roll 21:</div> <div class="sheet-template-row"> {{multiroll21}} </div> {{/rollGreater() nrofrolls 21}}
-      {{#rollGreater() nrofrolls 22}} <div class="sheet-template-row sheet-template-right">Roll 22:</div> <div class="sheet-template-row"> {{multiroll22}} </div> {{/rollGreater() nrofrolls 22}}
-      {{#rollGreater() nrofrolls 23}} <div class="sheet-template-row sheet-template-right">Roll 23:</div> <div class="sheet-template-row"> {{multiroll23}} </div> {{/rollGreater() nrofrolls 23}}
-      {{#rollGreater() nrofrolls 24}} <div class="sheet-template-row sheet-template-right">Roll 24:</div> <div class="sheet-template-row"> {{multiroll24}} </div> {{/rollGreater() nrofrolls 24}}
-      {{#rollGreater() nrofrolls 25}} <div class="sheet-template-row sheet-template-right">Roll 25:</div> <div class="sheet-template-row"> {{multiroll25}} </div> {{/rollGreater() nrofrolls 25}}
-    </div>
-  </div>
-  {{/nrofrolls}}
-
-
-
-  {{#attack}}
-  <div class="sheet-template-header">{{character}} rolls to attack with {{weapon}}</div>
-  {{#loc}}<div class="sheet-template-content template-content_top">{{/loc}}
-    {{^loc}}<div class="sheet-template-content">{{/loc}}
-
-      <div class="sheet-template-2x2 sheet-template-row">
-        <div class="sheet-template-right">{{roll}}</div>
-        {{#^rollLess() roll 0 }}<div style="float: right">Degrees of success</div>{{/^rollLess() roll 0 }}
-        {{#rollLess() roll 0 }}<div style="float: right">Degrees of failure</div>{{/rollLess() roll 0 }}
-      </div>
-
-      {{#rollWasCrit() roll }}<div class="sheet-template-row template-center">A CRITICAL FAIL!</div>{{/rollWasCrit() roll }}
-      {{#rollWasFumble() roll }}<div class="sheet-template-row template-center">A CRITICAL HIT!</div>{{/rollWasFumble() roll }}
-    </div>
-    {{/attack}}
-
-
-
-
-    {{#loc}}
-    {{^attack}}<div class="sheet-template-content sheet-template-round">{{/attack}}
-      {{#attack}} <div class="sheet-template-content">{{/attack}}
-        <div class="sheet-template-row sheet-template-center sheet-template-break">Hit Location {{loc}}</div>
-        <div class="sheet-template-row sheet-template-center">
-          {{#rollBetween() loc 1 10}}  HEAD:    {{/rollBetween() loc 1 10}}
-          {{#rollBetween() loc 1 2}}   Neck     {{/rollBetween() loc 1 2}}
-          {{#rollBetween() loc 3 5}}   Mouth    {{/rollBetween() loc 3 5}}
-          {{#rollBetween() loc 6 7}}   Nose     {{/rollBetween() loc 6 7}}
-          {{#rollBetween() loc 8 8}}   Eyes     {{/rollBetween() loc 8 8}}
-          {{#rollBetween() loc 9 9}}   Ear      {{/rollBetween() loc 9 9}}
-          {{#rollBetween() loc 10 10}} Forehead {{/rollBetween() loc 10 10}}
-
-          {{#rollBetween() loc 11 20}}  LEFT ARM: {{/rollBetween() loc 11 20}}
-          {{#rollBetween() loc 11 12}}  Hands     {{/rollBetween() loc 11 12}}
-          {{#rollBetween() loc 13 15}}  Forearm   {{/rollBetween() loc 13 15}}
-          {{#rollBetween() loc 16 16}}  Elbow     {{/rollBetween() loc 16 16}}
-          {{#rollBetween() loc 17 19}}  Bicep     {{/rollBetween() loc 17 19}}
-          {{#rollBetween() loc 20 20}}  Shoulder  {{/rollBetween() loc 20 20}}
-
-          {{#rollBetween() loc 21 30}}  RIGHT ARM: {{/rollBetween() loc 21 30}}
-          {{#rollBetween() loc 21 22}}  Hands      {{/rollBetween() loc 21 22}}
-          {{#rollBetween() loc 23 25}}  Forearm	   {{/rollBetween() loc 23 25}}
-          {{#rollBetween() loc 26 26}}  Elbow      {{/rollBetween() loc 26 26}}
-          {{#rollBetween() loc 27 29}}  Bicep  	   {{/rollBetween() loc 27 29}}
-          {{#rollBetween() loc 30 30}}  Shoulder   {{/rollBetween() loc 30 30}}
-
-          {{#rollBetween() loc 31 45}}  LEFT LEG:	{{/rollBetween() loc 31 45}}
-          {{#rollBetween() loc 31 32}}  Foot      {{/rollBetween() loc 31 32}}
-          {{#rollBetween() loc 33 37}}  Shin      {{/rollBetween() loc 33 37}}
-          {{#rollBetween() loc 38 38}}  Knee      {{/rollBetween() loc 38 38}}
-          {{#rollBetween() loc 39 43}}  Thigh     {{/rollBetween() loc 39 43}}
-          {{#rollBetween() loc 44 45}}  Hip       {{/rollBetween() loc 44 45}}
-
-          {{#rollBetween() loc 46 60}}  RIGHT LEG: {{/rollBetween() loc 46 60}}
-          {{#rollBetween() loc 46 47}}  Foot       {{/rollBetween() loc 46 47}}
-          {{#rollBetween() loc 48 53}}  Shin       {{/rollBetween() loc 48 53}}
-          {{#rollBetween() loc 54 54}}  Knee       {{/rollBetween() loc 54 54}}
-          {{#rollBetween() loc 55 58}}  Thigh      {{/rollBetween() loc 55 58}}
-          {{#rollBetween() loc 59 60}}  Hip        {{/rollBetween() loc 59 60}}
-
-          {{#rollBetween() loc 61 100}} CHEST:	                  {{/rollBetween() loc 61 100}}
-          {{#rollBetween() loc 61 65}}  Pelvis                    {{/rollBetween() loc 61 65}}
-          {{#rollBetween() loc 66 72}}  Intestines                {{/rollBetween() loc 66 72}}
-          {{#rollBetween() loc 73 78}}  Spine                     {{/rollBetween() loc 73 78}}
-          {{#rollBetween() loc 79 84}}  Stomach / Kidney / Liver  {{/rollBetween() loc 79 84}}
-          {{#rollBetween() loc 85 89}}  Heart                     {{/rollBetween() loc 85 89}}
-          {{#rollBetween() loc 90 96}}  Lungs                     {{/rollBetween() loc 90 96}}
-          {{#rollBetween() loc 97 100}} Ribcage / No Organ Struck {{/rollBetween() loc 97 100}}
+    {{#roll-name}}
+    <div class="sheet-template-header">{{character}} rolls for {{roll-name}}</div>
+    <div class="sheet-template-content">
+      <div class="sheet-template-2x2">
+        <div class="sheet-template-row sheet-template-right">
+          {{roll}}
+        </div>
+        <div class="sheet-template-row">
+          {{#^rollLess() roll 0 }}Degrees of success{{/^rollLess() roll 0 }}
+          {{#rollLess() roll 0 }}Degrees of failure{{/rollLess() roll 0 }}
         </div>
       </div>
-      {{/loc}}
+
+    </div>
+    {{/roll-name}}
 
 
 
-      {{#damage}}
-      <div class="sheet-template-header">{{character}} rolls for damage with {{weapon}} </div>
-      {{#description}}<div class="sheet-template-content template-content_top">{{/description}}
-        {{^description}}<div class="sheet-template-content">  {{/description}}
-          <div class="sheet-template-2x2">
+    {{#avrdam}}
+    <div class="sheet-template-header">{{character}} damage with autoroller</div>
+    <div class="sheet-template-content">
+      <div class="sheet-template-2x2">
+        <div class="sheet-template-row sheet-template-right">Damage dealt:</div>
+        <div class="sheet-template-row">{{avrdam}}</div>
+      </div>
 
-            <div class="sheet-template-2x2">
-              <div class="sheet-template-row sheet-template-right">Damage</div>
-              <div class="sheet-template-row mythic_crit">{{damage}}</div>
-            </div>
+    </div>
+    {{/avrdam}}
 
-            <div class="sheet-template-2x2">
-              <div class="sheet-template-row sheet-template-right">Pierce</div>
-              <div class="sheet-template-row mythic_crit">{{pierce}}</div>
-            </div>
+
+
+    {{#nrofrolls}}
+    <div class="sheet-template-header">{{character}} rolls multiple times</div>
+    <div class="sheet-template-content">
+      <div class="sheet-template-2x2">
+        {{#rollGreater() nrofrolls 0}} <div class="sheet-template-row sheet-template-right">Roll 0:</div> <div class="sheet-template-row"> {{multiroll0}} </div> {{/rollGreater() nrofrolls 0}}
+        {{#rollGreater() nrofrolls 1}} <div class="sheet-template-row sheet-template-right">Roll 1:</div> <div class="sheet-template-row"> {{multiroll1}} </div> {{/rollGreater() nrofrolls 1}}
+        {{#rollGreater() nrofrolls 2}} <div class="sheet-template-row sheet-template-right">Roll 2:</div> <div class="sheet-template-row"> {{multiroll2}} </div> {{/rollGreater() nrofrolls 2}}
+        {{#rollGreater() nrofrolls 3}} <div class="sheet-template-row sheet-template-right">Roll 3:</div> <div class="sheet-template-row"> {{multiroll3}} </div> {{/rollGreater() nrofrolls 3}}
+        {{#rollGreater() nrofrolls 4}} <div class="sheet-template-row sheet-template-right">Roll 4:</div> <div class="sheet-template-row"> {{multiroll4}} </div> {{/rollGreater() nrofrolls 4}}
+        {{#rollGreater() nrofrolls 5}} <div class="sheet-template-row sheet-template-right">Roll 5:</div> <div class="sheet-template-row"> {{multiroll5}} </div> {{/rollGreater() nrofrolls 5}}
+        {{#rollGreater() nrofrolls 6}} <div class="sheet-template-row sheet-template-right">Roll 6:</div> <div class="sheet-template-row"> {{multiroll6}} </div> {{/rollGreater() nrofrolls 6}}
+        {{#rollGreater() nrofrolls 7}} <div class="sheet-template-row sheet-template-right">Roll 7:</div> <div class="sheet-template-row"> {{multiroll7}} </div> {{/rollGreater() nrofrolls 7}}
+        {{#rollGreater() nrofrolls 8}} <div class="sheet-template-row sheet-template-right">Roll 8:</div> <div class="sheet-template-row"> {{multiroll8}} </div> {{/rollGreater() nrofrolls 8}}
+        {{#rollGreater() nrofrolls 9}} <div class="sheet-template-row sheet-template-right">Roll 9:</div> <div class="sheet-template-row"> {{multiroll9}} </div> {{/rollGreater() nrofrolls 9}}
+        {{#rollGreater() nrofrolls 10}} <div class="sheet-template-row sheet-template-right">Roll 10:</div> <div class="sheet-template-row"> {{multiroll10}} </div> {{/rollGreater() nrofrolls 10}}
+        {{#rollGreater() nrofrolls 11}} <div class="sheet-template-row sheet-template-right">Roll 11:</div> <div class="sheet-template-row"> {{multiroll11}} </div> {{/rollGreater() nrofrolls 11}}
+        {{#rollGreater() nrofrolls 12}} <div class="sheet-template-row sheet-template-right">Roll 12:</div> <div class="sheet-template-row"> {{multiroll12}} </div> {{/rollGreater() nrofrolls 12}}
+        {{#rollGreater() nrofrolls 13}} <div class="sheet-template-row sheet-template-right">Roll 13:</div> <div class="sheet-template-row"> {{multiroll13}} </div> {{/rollGreater() nrofrolls 13}}
+        {{#rollGreater() nrofrolls 14}} <div class="sheet-template-row sheet-template-right">Roll 14:</div> <div class="sheet-template-row"> {{multiroll14}} </div> {{/rollGreater() nrofrolls 14}}
+        {{#rollGreater() nrofrolls 15}} <div class="sheet-template-row sheet-template-right">Roll 15:</div> <div class="sheet-template-row"> {{multiroll15}} </div> {{/rollGreater() nrofrolls 15}}
+        {{#rollGreater() nrofrolls 16}} <div class="sheet-template-row sheet-template-right">Roll 16:</div> <div class="sheet-template-row"> {{multiroll16}} </div> {{/rollGreater() nrofrolls 16}}
+        {{#rollGreater() nrofrolls 17}} <div class="sheet-template-row sheet-template-right">Roll 17:</div> <div class="sheet-template-row"> {{multiroll17}} </div> {{/rollGreater() nrofrolls 17}}
+        {{#rollGreater() nrofrolls 18}} <div class="sheet-template-row sheet-template-right">Roll 18:</div> <div class="sheet-template-row"> {{multiroll18}} </div> {{/rollGreater() nrofrolls 18}}
+        {{#rollGreater() nrofrolls 19}} <div class="sheet-template-row sheet-template-right">Roll 19:</div> <div class="sheet-template-row"> {{multiroll19}} </div> {{/rollGreater() nrofrolls 19}}
+        {{#rollGreater() nrofrolls 20}} <div class="sheet-template-row sheet-template-right">Roll 20:</div> <div class="sheet-template-row"> {{multiroll20}} </div> {{/rollGreater() nrofrolls 20}}
+        {{#rollGreater() nrofrolls 21}} <div class="sheet-template-row sheet-template-right">Roll 21:</div> <div class="sheet-template-row"> {{multiroll21}} </div> {{/rollGreater() nrofrolls 21}}
+        {{#rollGreater() nrofrolls 22}} <div class="sheet-template-row sheet-template-right">Roll 22:</div> <div class="sheet-template-row"> {{multiroll22}} </div> {{/rollGreater() nrofrolls 22}}
+        {{#rollGreater() nrofrolls 23}} <div class="sheet-template-row sheet-template-right">Roll 23:</div> <div class="sheet-template-row"> {{multiroll23}} </div> {{/rollGreater() nrofrolls 23}}
+        {{#rollGreater() nrofrolls 24}} <div class="sheet-template-row sheet-template-right">Roll 24:</div> <div class="sheet-template-row"> {{multiroll24}} </div> {{/rollGreater() nrofrolls 24}}
+        {{#rollGreater() nrofrolls 25}} <div class="sheet-template-row sheet-template-right">Roll 25:</div> <div class="sheet-template-row"> {{multiroll25}} </div> {{/rollGreater() nrofrolls 25}}
+      </div>
+    </div>
+    {{/nrofrolls}}
+
+
+
+    {{#attack}}
+    <div class="sheet-template-header">{{character}} rolls to attack with {{weapon}}</div>
+    {{#loc}}<div class="sheet-template-content template-content_top">{{/loc}}
+      {{^loc}}<div class="sheet-template-content">{{/loc}}
+
+        <div class="sheet-template-2x2 sheet-template-row">
+          <div class="sheet-template-right">{{roll}}</div>
+          {{#^rollLess() roll 0 }}<div style="float: right">Degrees of success</div>{{/^rollLess() roll 0 }}
+          {{#rollLess() roll 0 }}<div style="float: right">Degrees of failure</div>{{/rollLess() roll 0 }}
+        </div>
+
+        {{#rollWasCrit() roll }}<div class="sheet-template-row template-center">A CRITICAL FAIL!</div>{{/rollWasCrit() roll }}
+        {{#rollWasFumble() roll }}<div class="sheet-template-row template-center">A CRITICAL HIT!</div>{{/rollWasFumble() roll }}
+      </div>
+      {{/attack}}
+
+
+
+
+      {{#loc}}
+      {{^attack}}<div class="sheet-template-content sheet-template-round">{{/attack}}
+        {{#attack}} <div class="sheet-template-content">{{/attack}}
+          <div class="sheet-template-row sheet-template-center sheet-template-break">Hit Location {{loc}}</div>
+          <div class="sheet-template-row sheet-template-center">
+            {{#rollBetween() loc 1 10}}  HEAD:    {{/rollBetween() loc 1 10}}
+            {{#rollBetween() loc 1 2}}   Neck     {{/rollBetween() loc 1 2}}
+            {{#rollBetween() loc 3 5}}   Mouth    {{/rollBetween() loc 3 5}}
+            {{#rollBetween() loc 6 7}}   Nose     {{/rollBetween() loc 6 7}}
+            {{#rollBetween() loc 8 8}}   Eyes     {{/rollBetween() loc 8 8}}
+            {{#rollBetween() loc 9 9}}   Ear      {{/rollBetween() loc 9 9}}
+            {{#rollBetween() loc 10 10}} Forehead {{/rollBetween() loc 10 10}}
+
+            {{#rollBetween() loc 11 20}}  LEFT ARM: {{/rollBetween() loc 11 20}}
+            {{#rollBetween() loc 11 12}}  Hands     {{/rollBetween() loc 11 12}}
+            {{#rollBetween() loc 13 15}}  Forearm   {{/rollBetween() loc 13 15}}
+            {{#rollBetween() loc 16 16}}  Elbow     {{/rollBetween() loc 16 16}}
+            {{#rollBetween() loc 17 19}}  Bicep     {{/rollBetween() loc 17 19}}
+            {{#rollBetween() loc 20 20}}  Shoulder  {{/rollBetween() loc 20 20}}
+
+            {{#rollBetween() loc 21 30}}  RIGHT ARM: {{/rollBetween() loc 21 30}}
+            {{#rollBetween() loc 21 22}}  Hands      {{/rollBetween() loc 21 22}}
+            {{#rollBetween() loc 23 25}}  Forearm	   {{/rollBetween() loc 23 25}}
+            {{#rollBetween() loc 26 26}}  Elbow      {{/rollBetween() loc 26 26}}
+            {{#rollBetween() loc 27 29}}  Bicep  	   {{/rollBetween() loc 27 29}}
+            {{#rollBetween() loc 30 30}}  Shoulder   {{/rollBetween() loc 30 30}}
+
+            {{#rollBetween() loc 31 45}}  LEFT LEG:	{{/rollBetween() loc 31 45}}
+            {{#rollBetween() loc 31 32}}  Foot      {{/rollBetween() loc 31 32}}
+            {{#rollBetween() loc 33 37}}  Shin      {{/rollBetween() loc 33 37}}
+            {{#rollBetween() loc 38 38}}  Knee      {{/rollBetween() loc 38 38}}
+            {{#rollBetween() loc 39 43}}  Thigh     {{/rollBetween() loc 39 43}}
+            {{#rollBetween() loc 44 45}}  Hip       {{/rollBetween() loc 44 45}}
+
+            {{#rollBetween() loc 46 60}}  RIGHT LEG: {{/rollBetween() loc 46 60}}
+            {{#rollBetween() loc 46 47}}  Foot       {{/rollBetween() loc 46 47}}
+            {{#rollBetween() loc 48 53}}  Shin       {{/rollBetween() loc 48 53}}
+            {{#rollBetween() loc 54 54}}  Knee       {{/rollBetween() loc 54 54}}
+            {{#rollBetween() loc 55 58}}  Thigh      {{/rollBetween() loc 55 58}}
+            {{#rollBetween() loc 59 60}}  Hip        {{/rollBetween() loc 59 60}}
+
+            {{#rollBetween() loc 61 100}} CHEST:	                  {{/rollBetween() loc 61 100}}
+            {{#rollBetween() loc 61 65}}  Pelvis                    {{/rollBetween() loc 61 65}}
+            {{#rollBetween() loc 66 72}}  Intestines                {{/rollBetween() loc 66 72}}
+            {{#rollBetween() loc 73 78}}  Spine                     {{/rollBetween() loc 73 78}}
+            {{#rollBetween() loc 79 84}}  Stomach / Kidney / Liver  {{/rollBetween() loc 79 84}}
+            {{#rollBetween() loc 85 89}}  Heart                     {{/rollBetween() loc 85 89}}
+            {{#rollBetween() loc 90 96}}  Lungs                     {{/rollBetween() loc 90 96}}
+            {{#rollBetween() loc 97 100}} Ribcage / No Organ Struck {{/rollBetween() loc 97 100}}
           </div>
-
         </div>
-        {{/damage}}
-        {{#description}}
-        {{#name}}<div class="sheet-template-header">{{name}}</div>{{/name}}
-        <div class="sheet-template-content">
-          <div class="sheet-template-row ">{{description}}</div>
-        </div>
-        {{/description}}
+        {{/loc}}
 
 
 
-        {{#scatter-range}}
-        <div class="sheet-template-header">{{character}} scatters </div>
-        <div class="sheet-template-content">
-          <div class="sheet-template-row template-center">Range: {{scatter-range}} meters</div>
-          {{#rollBetween() scatter-direction 1 2}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/1-2-scatter-N.png?raw=true">{{/rollBetween() scatter-direction 1 2}}
-          {{#rollBetween() scatter-direction 3 3}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/3-scatter-NE.png?raw=true">{{/rollBetween() scatter-direction 3 3}}
-          {{#rollBetween() scatter-direction 4 4}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/4-scatter-E.png?raw=true">{{/rollBetween() scatter-direction 4 4}}
-          {{#rollBetween() scatter-direction 5 5}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/5-scatter-SE.png?raw=true">{{/rollBetween() scatter-direction 5 5}}
-          {{#rollBetween() scatter-direction 6 7}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/6-7-scatter-S.png?raw=true">{{/rollBetween() scatter-direction 6 7}}
-          {{#rollBetween() scatter-direction 8 8}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/8-scatter-SW.png?raw=true">{{/rollBetween() scatter-direction 8 8}}
-          {{#rollBetween() scatter-direction 9 9}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/9-scatter-W.png?raw=true">{{/rollBetween() scatter-direction 9 9}}
-          {{#rollBetween() scatter-direction 10 10}} <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/10-scatter-NW.png?raw=true">{{/rollBetween() scatter-direction 10 10}}
-
-        </div>
-        {{/scatter-range}}
-
-
-
-        {{#2x2}}
-        <div class="sheet-template-header">{{character}}: {{name}}</div>
-        <div class="sheet-template-content">
-
-          <div class="sheet-template-2x2">
-            <div class="sheet-template-row sheet-template-right">{{2x2-name}}</div>
-            <div><div class="sheet-inlineresult">{{2x2}}</div></div>
-            <div class="sheet-template-row sheet-template-right">{{2x2-name-max}}</div>
-            <div><div class="sheet-inlineresult">{{2x2-max}}</div></div>
-          </div>
-
-        </div>
-        {{/2x2}}
-
-        {{#4x2-1}}
-        <div class="sheet-template-header">{{character}}: {{name}}</div>
-        <div class="sheet-template-content">
-          <div class="sheet-template-2x2">
-
+        {{#damage}}
+        <div class="sheet-template-header">{{character}} rolls for damage with {{weapon}} </div>
+        {{#description}}<div class="sheet-template-content template-content_top">{{/description}}
+          {{^description}}<div class="sheet-template-content">  {{/description}}
             <div class="sheet-template-2x2">
-              <div class="sheet-template-row sheet-template-right">{{4x2-1-name}}</div>
-              <div><div class="sheet-inlineresult">{{4x2-1}}</div></div>
-              <div class="sheet-template-row sheet-template-right">{{4x2-1-name-max}}</div>
-              <div><div class="sheet-inlineresult">{{4x2-1-max}}</div></div>
-            </div>
 
-            <div class="sheet-template-2x2">
-              <div class="sheet-template-row sheet-template-right">{{4x2-2-name}}</div>
-              <div><div class="sheet-inlineresult">{{4x2-2}}</div></div>
-              <div class="sheet-template-row sheet-template-right">{{4x2-2-name-max}}</div>
-              <div><div class="sheet-inlineresult">{{4x2-2-max}}</div></div>
+              <div class="sheet-template-2x2">
+                <div class="sheet-template-row sheet-template-right">Damage</div>
+                <div class="sheet-template-row mythic_crit">{{damage}}</div>
+              </div>
+
+              <div class="sheet-template-2x2">
+                <div class="sheet-template-row sheet-template-right">Pierce</div>
+                <div class="sheet-template-row mythic_crit">{{pierce}}</div>
+              </div>
             </div>
 
           </div>
-          {{/4x2-1}}
+          {{/damage}}
+          {{#description}}
+          {{#name}}<div class="sheet-template-header">{{name}}</div>{{/name}}
+          <div class="sheet-template-content">
+            <div class="sheet-template-row ">{{description}}</div>
+          </div>
+          {{/description}}
 
-        </div>
-      </rolltemplate>
+
+
+          {{#scatter-range}}
+          <div class="sheet-template-header">{{character}} scatters </div>
+          <div class="sheet-template-content">
+            <div class="sheet-template-row template-center">Range: {{scatter-range}} meters</div>
+            {{#rollBetween() scatter-direction 1 2}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/1-2-scatter-N.png?raw=true">{{/rollBetween() scatter-direction 1 2}}
+            {{#rollBetween() scatter-direction 3 3}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/3-scatter-NE.png?raw=true">{{/rollBetween() scatter-direction 3 3}}
+            {{#rollBetween() scatter-direction 4 4}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/4-scatter-E.png?raw=true">{{/rollBetween() scatter-direction 4 4}}
+            {{#rollBetween() scatter-direction 5 5}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/5-scatter-SE.png?raw=true">{{/rollBetween() scatter-direction 5 5}}
+            {{#rollBetween() scatter-direction 6 7}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/6-7-scatter-S.png?raw=true">{{/rollBetween() scatter-direction 6 7}}
+            {{#rollBetween() scatter-direction 8 8}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/8-scatter-SW.png?raw=true">{{/rollBetween() scatter-direction 8 8}}
+            {{#rollBetween() scatter-direction 9 9}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/9-scatter-W.png?raw=true">{{/rollBetween() scatter-direction 9 9}}
+            {{#rollBetween() scatter-direction 10 10}} <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/10-scatter-NW.png?raw=true">{{/rollBetween() scatter-direction 10 10}}
+
+          </div>
+          {{/scatter-range}}
+
+
+
+          {{#2x2}}
+          <div class="sheet-template-header">{{character}}: {{name}}</div>
+          <div class="sheet-template-content">
+
+            <div class="sheet-template-2x2">
+              <div class="sheet-template-row sheet-template-right">{{2x2-name}}</div>
+              <div><div class="sheet-inlineresult">{{2x2}}</div></div>
+              <div class="sheet-template-row sheet-template-right">{{2x2-name-max}}</div>
+              <div><div class="sheet-inlineresult">{{2x2-max}}</div></div>
+            </div>
+
+          </div>
+          {{/2x2}}
+
+          {{#4x2-1}}
+          <div class="sheet-template-header">{{character}}: {{name}}</div>
+          <div class="sheet-template-content">
+            <div class="sheet-template-2x2">
+
+              <div class="sheet-template-2x2">
+                <div class="sheet-template-row sheet-template-right">{{4x2-1-name}}</div>
+                <div><div class="sheet-inlineresult">{{4x2-1}}</div></div>
+                <div class="sheet-template-row sheet-template-right">{{4x2-1-name-max}}</div>
+                <div><div class="sheet-inlineresult">{{4x2-1-max}}</div></div>
+              </div>
+
+              <div class="sheet-template-2x2">
+                <div class="sheet-template-row sheet-template-right">{{4x2-2-name}}</div>
+                <div><div class="sheet-inlineresult">{{4x2-2}}</div></div>
+                <div class="sheet-template-row sheet-template-right">{{4x2-2-name-max}}</div>
+                <div><div class="sheet-inlineresult">{{4x2-2-max}}</div></div>
+              </div>
+
+            </div>
+            {{/4x2-1}}
+
+          </div>
+        </rolltemplate>
