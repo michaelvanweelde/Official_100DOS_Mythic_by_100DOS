@@ -340,9 +340,9 @@ ______________________________ start of grid structure for the mythic characteri
 .sheet-movementgs6 { grid-area: amm6; }
 .sheet-movementgs7 { grid-area: amm7; }
 .sheet-movementgs8 { grid-area: amm8; }
-.sheet-movementgs9 { grid-area: amm9;	3px; font-size: 14px; font-family: Saira Semi Condensed; }
-.sheet-movementgs10 { grid-area: amm10; 5px; font-size: 14px; font-family: Saira Semi Condensed; }
-.sheet-movementgs11 { grid-area: amm11; 5px; font-size: 14px; font-family: Saira Semi Condensed; }
+.sheet-movementgs9 { grid-area: amm9; font-size: 14px; font-family: Saira Semi Condensed; }
+.sheet-movementgs10 { grid-area: amm10; font-size: 14px; font-family: Saira Semi Condensed; }
+.sheet-movementgs11 { grid-area: amm11; font-size: 14px; font-family: Saira Semi Condensed; }
 .sheet-movementgs12 { grid-area: amm12; font-size: 14px; font-family: Saira Semi Condensed; }
 .sheet-movementgs13 { grid-area: amm13; font-size: 14px; font-family: Saira Semi Condensed; }
 .sheet-movementgs14 { grid-area: amm14; font-size: 14px; font-family: Saira Semi Condensed; }
