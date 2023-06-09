@@ -276,8 +276,8 @@
 
         <div class='initiative_container'>
           <button name='initiative' type='roll' class='clear bttn_top_padding'
-          value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{initiative=@{initmod0}(@{initmod1}+@{initmod2}+@{initmod3}+[[((((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) + @{AGI_mythic}) - abs((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) - @{AGI_mythic})) / 2)*@{initmod4}]])&{tracker}]]}}'>
-          Initiative|<input name='attr_init_total' value='floor(@{initmod2}+@{initmod3}+ ((((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) + @{AGI_mythic}) - abs((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) - @{AGI_mythic})) / 2)*@{initmod4} )' class='input_background input_init_background' disabled /></button>
+          value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{initiative=@{initmod0}(@{initmod1}+@{initmod2}+@{initmod3}+[[((((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) + @{AGI_mythic}) - abs((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) - @{AGI_mythic})) / 2)]])&{tracker}]]}}'>
+          Initiative|<input name='attr_init_total' value='floor(@{initmod2}+@{initmod3}+ ((((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) + @{AGI_mythic}) - abs((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) - @{AGI_mythic})) / 2) )' class='input_background input_init_background' disabled /></button>
           <select name='attr_initmod1' class='init_field'>
             <option value='1d10' selected='selected'>Standard</option>
             <option value='2d10k1'>Fast Foot</option>
@@ -287,8 +287,8 @@
           <input name='attr_initmod2' type='number' value='0' />
           <p class='init_plus'>+</p>
           <select name='attr_initmod3' class='init_field'>
-            <option value='(@{AGI}+@{AGI_advancement} + @{fatigue_mod})/10' selected='selected'>Agility</option>
-            <option value='(@{INT}+@{INT_advancement} + @{fatigue_mod})/10'>Intellect</option>
+            <option value='[[(@{AGI}+@{AGI_advancement} + @{fatigue_mod})/10]]' selected='selected'>Agility</option>
+            <option value='[[(@{INT}+@{INT_advancement} + @{fatigue_mod})/10]]'>Intellect</option>
             <option value='0'>N/A</option>
           </select>
         </div>
@@ -2198,20 +2198,88 @@
 
           <h3 class="radius_border_top">Species Overrides</h3>
           <select name='attr_settings_race' class='full_width edge_padding radius_border_bottom'>
+            <option value='dont calc'>Dont Auto Calculate Speed And Weight</option>
             <option selected='selected' value='0'>Racial Features: N/A </option>
-            <option value='1'>Spartan 2 / Spartan 3 / Spartan 4 </option>
-            <option value='2'>Sangheili / Elite </option>
-            <option value='3'>Jiralhanae / Brutes </option>
-            <option value='4'>Kig-yar Ruutian / Trilogy Jackals </option>
-            <option value='5'>Kig-yar T'vaoan / Reach Jackals / Skirmishers </option>
-            <option value='6'>Kig-yar Ibie'shan / 4/5 Jackals </option>
-            <option value='7'>Prelate </option>
-            <option value='8'>Mgalekgolo / Hunters </option>
-            <option value='9'>Promethean Knight </option>
-            <option value='10'>Huragok / Engineer</option>
-            <option value='11'>Dont Auto Calculate Speed And Weight</option>
+            <option value='spartans'>Spartan 2 / Spartan 3 / Spartan 4 </option>
+            <option value='Elite'>Sangheili / Elite </option>
+            <option value='Brutes'>Jiralhanae / Brutes </option>
+            <option value='Ruutian'>Kig-yar Ruutian / Trilogy Jackals </option>
+            <option value='Tvaoan'>Kig-yar T'vaoan / Reach Jackals / Skirmishers </option>
+            <option value='Ibieshan'>Kig-yar Ibie'shan / 4/5 Jackals </option>
+            <option value='Prelate'>Prelate </option>
+            <option value='Hunters'>Mgalekgolo / Hunters </option>
+            <option value='Promethean Knight'>Promethean Knight </option>
+            <option value='Engineer'>Huragok / Engineer</option>
           </select>
+
+          <select name='attr_settings_fatigue' class='full_width edge_padding radius_border'>
+            <option value='dont calc'>Dont calculate Fatigue effects</option>
+            <option value='auto'selected='selected'>Calculate Fatigue effects</option>
+            <option value='Enduring +1'>calculate Fatigue effects + Enduring 1</option>
+            <option value='Enduring +2'>calculate Fatigue effects + Enduring 2</option>
+          </select>
+
           <br>
+          <div class="settings_speciesgrid">
+            <h2>Trait</h2>
+            <h2>Mult</h2>
+            <h2>Add</h2>
+
+            <h2>Trait</h2>
+            <h2>Mult</h2>
+            <h2>Add</h2>
+
+            <p>Half</p>
+            <input class='settings_speciesinputwidth' type='text' value='1' name='attr_settings_half_mult' />
+            <input class='settings_speciesinputwidth' type='text' value='0' name='attr_settings_half_addi' />
+
+            <p>Full</p>
+            <input class='settings_speciesinputwidth' type='text' value='1' name='attr_settings_full_mult' />
+            <input class='settings_speciesinputwidth' type='text' value='0' name='attr_settings_full_addi' />
+
+            <p>Charge</p>
+            <input class='settings_speciesinputwidth' type='text' value='1' name='attr_settings_charge_mult' />
+            <input class='settings_speciesinputwidth' type='text' value='0' name='attr_settings_charge_addi' />
+
+            <p>Run</p>
+            <input class='settings_speciesinputwidth' type='text' value='1' name='attr_settings_run_mult' />
+            <input class='settings_speciesinputwidth' type='text' value='0' name='attr_settings_run_addi' />
+
+            <p>Blur</p>
+            <input class='settings_speciesinputwidth' type='text' value='1' name='attr_settings_blur_mult' />
+            <input class='settings_speciesinputwidth' type='text' value='0' name='attr_settings_blur_addi' />
+          </div>
+
+          <div class="settings_speciesgrid">
+            <p>Jump</p>
+            <input class='settings_speciesinputwidth' type='text' value='1' name='attr_settings_jump_mult' />
+            <input class='settings_speciesinputwidth' type='text' value='0' name='attr_settings_jump_addi' />
+
+            <p>Leap</p>
+            <input class='settings_speciesinputwidth' type='text' value='1' name='attr_settings_leap_mult' />
+            <input class='settings_speciesinputwidth' type='text' value='0' name='attr_settings_leap_addi' />
+          </div>
+          <div class="settings_speciesgrid">
+            <p>Carry</p>
+            <input class='settings_speciesinputwidth' type='text' value='1' name='attr_settings_carry_mult' />
+            <input class='settings_speciesinputwidth' type='text' value='0' name='attr_settings_carry_addi' />
+
+            <p>Lift</p>
+            <input class='settings_speciesinputwidth' type='text' value='1' name='attr_settings_lift_mult' />
+            <input class='settings_speciesinputwidth' type='text' value='0' name='attr_settings_lift_addi' />
+
+            <p>Push</p>
+            <input class='settings_speciesinputwidth' type='text' value='1' name='attr_settings_push_mult' />
+            <input class='settings_speciesinputwidth' type='text' value='0' name='attr_settings_push_addi' />
+          </div>
+          <div class="settings_speciesgrid">
+            <p>Fatigue</p>
+            <input class='settings_speciesinputwidth' type='text' value='1' name='attr_settings_fatigue_mult' />
+            <input class='settings_speciesinputwidth' type='text' value='0' name='attr_settings_fatigue_addi' />
+          </div>
+
+          <br>
+
 
           <h3 class="radius_border_top">Initiative Overrides</h3>
           <select name='attr_initmod0' class='full_width edge_padding radius_border_bottom'>
@@ -2219,43 +2287,34 @@
             <option value='[[floor' selected='selected'>Decimal tiebreaker</option>
             <option value='tiebreaker [[@{AGI_total}]] roll [[floor'>AGI tiebreaker</option>
           </select>
-          <br>
+          <br><br>
 
-          <h3 class="radius_border_top">Auto Roll Hit Locations</h3>
-          <select name='attr_settings_hitroll' class='full_width edge_padding radius_border_bottom'>
+
+
+          <h3 class="radius_border_top">Weapon rolling selectors</h3>
+          <select name='attr_autorolldamage' class='full_width edge_padding radius_border_bottom'>
+            <option value='{{hit= }} {{damage= }}' selected='selected'>autoroll damage</option>
+            <option value='{{hit= }} '>Dont autoroll damage</option>
+          </select>
+
+          <select name='attr_settings_hitroll' class='full_width edge_padding radius_border'>
             <option value='{{loc=[[1d100]]}}'selected='selected'>Automatically roll hit locations</option>
             <option value=' '>Don't automatically roll hit locations</option>
           </select>
-          <br>
 
-          <h3 class="radius_border_top">Weapon Description in Damage Roll</h3>
-          <select name='attr_settings_weapondescription' class='full_width edge_padding radius_border_bottom'>
+          <select name='attr_settings_weapondescription' class='full_width edge_padding radius_border'>
             <option value='description'selected='selected'>Include weapon description</option>
             <option value=' '>Exclude weapon description</option>
           </select>
-          <br>
+          <br><br>
 
           <h3 class="radius_border_top">Display DOS as decimals</h3>
           <select name='attr_settings_rounding' class='full_width edge_padding radius_border_bottom'>
             <option value='floor('>Rounded down</option>
             <option value='('selected='selected'>not rounded</option>
           </select>
-          <br>
 
-          <h3 class="radius_border_top">Auto Calculate Impact Of Fatigue</h3>
-          <select name='attr_settings_fatigue' class='full_width edge_padding radius_border_bottom'>
-            <option value='0'selected='selected'>Auto calculate Fatigue</option>
-            <option value='1'>auto calculate Fatigue Enduring</option>
-            <option value='2'>Dont auto calculate Fatigue</option>
-          </select>
-          <br>
-
-          <h3 class="radius_border_top">Add half mythic agility to initiative</h3>
-          <select name='attr_initmod4' class='full_width edge_padding radius_border_bottom'>
-            <option value='1'selected='selected'>Half mythic agility</option>
-            <option value='0'>No mythic agility</option>
-          </select>
-          <br>
+          <br><br>
 
           <h3 class="radius_border_top">Sheet color override</h3>
           <select name='attr_color_override' class='full_width edge_padding radius_border_bottom'>
@@ -2278,16 +2337,8 @@
             <option value='16'>You will suffer as I have</option>
             <option value='17'>19339 and 5193 characters</option>
           </select>
-
-          <br>
-
-          <h3 class="radius_border_top">Auto roll damage when hit is pressed</h3>
-          <select name='attr_autorolldamage' class='full_width edge_padding radius_border_bottom'>
-            <option value='{{hit= }} {{damage= }}' selected='selected'>autoroll damage</option>
-            <option value='{{hit= }} '>Dont autoroll damage</option>
-          </select>
-
         </div>
+
 
         <div class="bordered_container">
           <h3 class="radius_border_top">Token mod settings</h3>
@@ -2328,8 +2379,8 @@
 
       <div class='initiative_container bttn_top_padding'>
         <button name='initiative' type='roll' class='clear bttn_top_padding'
-        value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{initiative=@{initmod0}(@{initmod1}+@{initmod2}+@{initmod3}+[[((((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) + @{AGI_mythic}) - abs((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) - @{AGI_mythic})) / 2)]]*@{initmod4})&{tracker}]]}}'>
-        Initiative|<input name='attr_init_total' value='floor(@{initmod2}+@{initmod3}+ ((((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) + @{AGI_mythic}) - abs((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) - @{AGI_mythic})) / 2)*@{initmod4} )' class='input_background input_init_background' disabled /></button>
+        value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{initiative=@{initmod0}(@{initmod1}+@{initmod2}+@{initmod3}+[[((((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) + @{AGI_mythic}) - abs((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) - @{AGI_mythic})) / 2)]])&{tracker}]]}}'>
+        Initiative|<input name='attr_init_total' value='floor(@{initmod2}+@{initmod3}+ ((((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) + @{AGI_mythic}) - abs((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) - @{AGI_mythic})) / 2))' class='input_background input_init_background' disabled /></button>
         <select name='attr_initmod1' class='init_field'>
           <option value='1d10' selected='selected'>Standard</option>
           <option value='2d10k1'>Fast Foot</option>
@@ -2339,8 +2390,8 @@
         <input name='attr_initmod2' type='number' value='0' />
         <p class='init_plus'>+</p>
         <select name='attr_initmod3' class='init_field'>
-          <option value='(@{AGI}+@{AGI_advancement} + @{fatigue_mod})/10' selected='selected'>Agility</option>
-          <option value='(@{INT}+@{INT_advancement} + @{fatigue_mod})/10'>Intellect</option>
+          <option value='[[(@{AGI}+@{AGI_advancement} + @{fatigue_mod})/10]]' selected='selected'>Agility</option>
+          <option value='[[(@{INT}+@{INT_advancement} + @{fatigue_mod})/10]]'>Intellect</option>
           <option value='0'>N/A</option>
         </select>
       </div>
@@ -3380,12 +3431,175 @@
       });
     };
 
+
+
+
+
+
+
     // ___________________________________________________________________________
     // ____________________Movement and Weight sheet worker_______________________
     // ___________________________________________________________________________
-    on('change:settings_race change:fatigue change:settings_fatigue change:agi change:agi_mythic change:agi_advancement change:str change:str_mythic change:str_advancement change:tou change:tou_mythic change:tou_advancement', function() {
+
+    on('change:settings_race change:settings_fatigue', function() {
+
       getAttrs([
       'settings_race',
+      'settings_fatigue',
+
+      'settings_half_mult',
+      'settings_half_addi',
+      'settings_full_mult',
+      'settings_full_addi',
+      'settings_charge_mult',
+      'settings_charge_addi',
+      'settings_run_mult',
+      'settings_run_addi',
+      'settings_blur_mult',
+      'settings_blur_addi',
+      'settings_jump_mult',
+      'settings_jump_addi',
+      'settings_leap_mult',
+      'settings_leap_addi',
+      'settings_carry_mult',
+      'settings_carry_addi',
+      'settings_lift_mult',
+      'settings_lift_addi',
+      'settings_push_mult',
+      'settings_push_addi',
+      'settings_fatigue_mult',
+      'settings_fatigue_addi',
+
+      ], function(values) {
+
+        var settings_fatigue = values['settings_fatigue']
+        const settings_race = values['settings_race']
+        // normal no modifiers ___________________________________________________
+        setAttrs({
+          settings_half_mult: (1),
+          settings_half_addi: (0),
+          settings_full_mult: (1),
+          settings_full_addi: (0),
+          settings_charge_mult: (1),
+          settings_charge_addi: (0),
+          settings_run_mult: (1),
+          settings_run_addi: (0),
+          settings_blur_mult: (1),
+          settings_blur_addi: (0),
+          settings_jump_mult: (1),
+          settings_jump_addi: (0),
+          settings_leap_mult: (1),
+          settings_leap_addi: (0),
+          settings_carry_mult: (1),
+          settings_carry_addi: (0),
+          settings_lift_mult: (1),
+          settings_lift_addi: (0),
+          settings_push_mult: (1),
+          settings_push_addi: (0),
+          settings_fatigue_mult: (1),
+          settings_fatigue_addi: (0)
+        });
+
+        if(settings_fatigue == 'Enduring +1') {
+          setAttrs({
+            settings_fatigue_addi: (1)
+          });
+        }
+        if(settings_fatigue == 'Enduring +2') {
+          setAttrs({
+            settings_fatigue_addi: (2)
+          });
+        }
+
+        // Spartan + Jiralhanae + Promethean Knight + Prelate (carry weight * 2) ___________
+        if(settings_race == 'spartans' || settings_race == 'Brutes' || settings_race == 'Promethean Knight' || settings_race == 'Prelate') {
+          setAttrs({
+            settings_carry_mult: (2),
+            settings_lift_mult: (2),
+            settings_push_mult: (2)
+          });
+        }
+
+        // Sangheili (+2 agi leap, carry weight * 2) _____________________________
+        if(settings_race == 'Elite') {
+          setAttrs({
+            settings_carry_mult: (2),
+            settings_lift_mult: (2),
+            settings_push_mult: (2),
+            settings_leap_addi: (2)
+          });
+        }
+
+        // Ruutian & Ibie'shan (double agi to jump) ______________________________
+        if(settings_race == 'Ruutian' || settings_race == 'Ibieshan') {
+          setAttrs({
+            settings_jump_mult: (2),
+          });
+        }
+
+        // Jackal T'vaoan (mod to jump * 3) ______________________________________
+        if(settings_race == 'Tvaoan') {
+          setAttrs({
+            settings_jump_mult: (3),
+          });
+        }
+
+        // Mgalekgolo (Hunter) (carry = 5000, +3 agi to charge/run) _________
+        if(settings_race == 'Hunters') {
+          setAttrs({
+            settings_carry_mult: (0),
+            settings_carry_addi: (5000),
+            settings_lift_mult: (0),
+            settings_lift_addi: (10000),
+            settings_push_mult: (0),
+            settings_push_addi: (20000),
+            settings_charge_addi: (3),
+            settings_run_addi: (3),
+          });
+        }
+        // engineer (carry = 1000) _________
+        if(settings_race == 'Engineer') {
+          setAttrs({
+            settings_carry_mult: (0),
+            settings_carry_addi: (1000),
+            settings_lift_mult: (0),
+            settings_lift_addi: (2000),
+            settings_push_mult: (0),
+            settings_push_addi: (4000),
+          });
+        }
+      });
+    });
+
+
+    on('change:settings_half_mult change:settings_half_addi change:settings_full_mult change:settings_full_addi change:settings_charge_mult change:settings_charge_addi change:settings_run_mult change:settings_run_addi change:settings_blur_mult change:settings_blur_addi change:settings_jump_mult change:settings_jump_addi change:settings_leap_mult change:settings_leap_addi change:settings_carry_mult change:settings_carry_addi change:settings_lift_mult change:settings_lift_addi change:settings_push_mult change:settings_push_addi change:settings_fatigue_mult change:settings_fatigue_addi change:fatigue change:agi change:agi_mythic change:agi_advancement change:str change:str_mythic change:str_advancement change:tou change:tou_mythic change:tou_advancement', function() {
+      getAttrs([
+      'settings_race',
+      'settings_fatigue',
+
+      'settings_half_mult',
+      'settings_half_addi',
+      'settings_full_mult',
+      'settings_full_addi',
+      'settings_charge_mult',
+      'settings_charge_addi',
+      'settings_run_mult',
+      'settings_run_addi',
+      'settings_blur_mult',
+      'settings_blur_addi',
+      'settings_jump_mult',
+      'settings_jump_addi',
+      'settings_leap_mult',
+      'settings_leap_addi',
+      'settings_carry_mult',
+      'settings_carry_addi',
+      'settings_lift_mult',
+      'settings_lift_addi',
+      'settings_push_mult',
+      'settings_push_addi',
+      'settings_fatigue_mult',
+      'settings_fatigue_addi',
+
       'agi',
       'agi_mythic',
       'agi_advancement',
@@ -3395,163 +3609,81 @@
       'tou',
       'tou_mythic',
       'tou_advancement',
+
       'fatigue',
-      'settings_fatigue'
+
+
       ], function(values) {
+        const settings_fatigue = values['settings_fatigue']
+        const settings_race = values['settings_race']
+
+        const settings_half_mult = parseFloat(values['settings_half_mult']) || 0;
+        const settings_half_addi = parseFloat(values['settings_half_addi']) || 0;
+        const settings_full_mult = parseFloat(values['settings_full_mult']) || 0;
+        const settings_full_addi = parseFloat(values['settings_full_addi']) || 0;
+        const settings_charge_mult = parseFloat(values['settings_charge_mult']) || 0;
+        const settings_charge_addi = parseFloat(values['settings_charge_addi']) || 0;
+        const settings_run_mult = parseFloat(values['settings_run_mult']) || 0;
+        const settings_run_addi = parseFloat(values['settings_run_addi']) || 0;
+        const settings_blur_mult = parseFloat(values['settings_blur_mult']) || 0;
+        const settings_blur_addi = parseFloat(values['settings_blur_addi']) || 0;
+        const settings_jump_mult = parseFloat(values['settings_jump_mult']) || 0;
+        const settings_jump_addi = parseFloat(values['settings_jump_addi']) || 0;
+        const settings_leap_mult = parseFloat(values['settings_leap_mult']) || 0;
+        const settings_leap_addi = parseFloat(values['settings_leap_addi']) || 0;
+        const settings_carry_mult = parseFloat(values['settings_carry_mult']) || 0;
+        const settings_carry_addi = parseFloat(values['settings_carry_addi']) || 0;
+        const settings_lift_mult = parseFloat(values['settings_lift_mult']) || 0;
+        const settings_lift_addi = parseFloat(values['settings_lift_addi']) || 0;
+        const settings_push_mult = parseFloat(values['settings_push_mult']) || 0;
+        const settings_push_addi = parseFloat(values['settings_push_addi']) || 0;
+        const settings_fatigue_mult = parseFloat(values['settings_fatigue_mult']) || 0;
+        const settings_fatigue_addi = parseFloat(values['settings_fatigue_addi']) || 0;
+
+        const agi = parseInt(values['agi'], 10) || 0;
+        const agi_mythic = parseInt(values['agi_mythic'], 10) || 0;
+        const agi_advancement = parseInt(values['agi_advancement'], 10) || 0;
+        const str = parseInt(values['str'], 10) || 0;
+        const str_mythic = parseInt(values['str_mythic'], 10) || 0;
+        const str_advancement = parseInt(values['str_advancement'], 10) || 0;
+        const tou = parseInt(values['tou'], 10) || 0;
+        const tou_mythic = parseInt(values['tou_mythic'], 10) || 0;
+        const tou_advancement = parseInt(values['tou_advancement'], 10) || 0;
+
         var fatigue = parseInt(values['fatigue'], 10) || 0;
-        var settings_fatigue = parseInt(values['settings_fatigue'], 10) || 0;
-        var fatigue_mod = 0;
-        if (settings_fatigue == 0) {
-          fatigue_mod = (fatigue * 5);
-        };
-        if (settings_fatigue == 1) {
-          fatigue_mod = (Math.max(0, (fatigue)-1) * 5);
-        };
-        var settings_race = parseInt(values['settings_race'], 10) || 0;
-        var agi = parseInt(values['agi'], 10) || 0;
-        var agi_mythic = parseInt(values['agi_mythic'], 10) || 0;
-        var agi_advancement = parseInt(values['agi_advancement'], 10) || 0;
-        var str = parseInt(values['str'], 10) || 0;
-        var str_mythic = parseInt(values['str_mythic'], 10) || 0;
-        var str_advancement = parseInt(values['str_advancement'], 10) || 0;
-        var tou = parseInt(values['tou'], 10) || 0;
-        var tou_mythic = parseInt(values['tou_mythic'], 10) || 0;
-        var tou_advancement = parseInt(values['tou_advancement'], 10) || 0;
-        var weight_mod = (str + str_advancement + tou + tou_advancement + (str_mythic + tou_mythic) * 10);
-        var move_mod = Math.floor((agi + agi_advancement) / 10 + agi_mythic);
-        var str_mod = (str + str_advancement) / 10;
-        var agi_mod = (agi + agi_advancement) / 10;
+
+        var str_mod = Math.floor((str + str_advancement) / 10);
+        var agi_mod = Math.floor((agi + agi_advancement) / 10);
+        if (agi_mod + agi_mythic == 0) {agi_mod=0.5}
+
         var tou_mod = Math.floor((tou + tou_advancement) / 10);
 
 
 
         // normal no modifiers ___________________________________________________
-        if(settings_race != 11) {
+        if(settings_race != 'dont calc') {
           setAttrs({
-            half_move: (move_mod),
-            full_move: (move_mod * 2),
-            charge_move: (move_mod * 3),
-            run_move: (move_mod * 6),
-            blur_move: (move_mod * 8),
-            jump_move:(str_mod / 4),
-            leap_move:(agi_mod / 2),
-            carry: (weight_mod),
-            lift: (weight_mod * 2),
-            push: (weight_mod * 4),
-            fatigue_max: (tou_mod * 2)
-          });
+            half_move:  ((agi_mod+agi_mythic+settings_half_addi)  * 1 * settings_half_mult),
+            full_move:  ((agi_mod+agi_mythic+settings_full_addi)  * 2 * settings_full_mult),
+            charge_move:((agi_mod+settings_charge_addi)* 3 * settings_charge_mult),
+            run_move:   ((agi_mod+settings_run_addi)   * 6 * settings_run_mult),
+            blur_move:  ((agi_mod+settings_blur_addi)  * 8 * settings_blur_mult),
 
-          if (str_mod >= agi_mod) {
-            setAttrs({
-              leap_move:(str_mod / 2)
-            });
-          }
+            jump_move:  ((str_mod+settings_jump_addi) * 0.25 * settings_jump_mult),
+            leap_move:  ((Math.floor(Math.max(agi_mod , str_mod))+settings_leap_addi) * 0.5 * settings_leap_mult),
+
+            carry: ((str + str_advancement + tou + tou_advancement + (str_mythic + tou_mythic) * 10) * 1 * settings_carry_mult + settings_carry_addi),
+            lift:  ((str + str_advancement + tou + tou_advancement + (str_mythic + tou_mythic) * 10) * 2 * settings_lift_mult + settings_lift_addi),
+            push:  ((str + str_advancement + tou + tou_advancement + (str_mythic + tou_mythic) * 10) * 3 * settings_push_mult + settings_fatigue_addi),
 
 
-          // Spartan + Jiralhanae + Promethean Knight + Prelate (carry weight * 2) ___________
-          if(settings_race == 1 || settings_race == 3 || settings_race == 9 || settings_race == 7) {
-            setAttrs({
-              carry: (weight_mod * 2),
-              lift: (weight_mod * 2 * 2),
-              push: (weight_mod * 4 * 2)
-            });
-          }
-
-          // Sangheili (+2 agi leap, carry weight * 2) _____________________________
-          if(settings_race == 2) {
-            setAttrs({
-              carry: (weight_mod * 2),
-              lift: (weight_mod * 2 * 2),
-              push: (weight_mod * 4 * 2),
-              leap_move: ((agi_mod + 2) / 2) // modifier plus 4, sum halved
-            });
-            if(str_mod >= agi_mod) {
-              setAttrs({
-                leap_move: ((str_mod + 2) / 2)
-              });
-            }
-          }
-
-          // Ruutian & Ibie'shan (double agi to jump) ______________________________
-          if(settings_race == 4 || settings_race == 6) {
-            setAttrs({
-              jump_move:(str_mod / 4 * 2)
-            });
-          }
-
-          // Jackal T'vaoan (mod to jump * 4) ______________________________________
-          if(settings_race == 5) {
-            setAttrs({
-              jump_move:(str_mod / 4 * 3),
-              leap_move: (agi_mod / 2 * 3) // modifier plus 4, sum halved
-            });
-            if(str_mod >= agi_mod) {
-              setAttrs({
-                leap_move: (str_mod / 2 * 3)
-              });
-            }
-          }
-
-          // Mgalekgolo (Hunter) (weight = 4000, double agi to charge/run) _________
-          if(settings_race == 8) {
-            setAttrs({
-              carry: (5000),
-              lift: (5000 * 2),
-              push: (5000 * 4),
-              charge_move: ((move_mod+3) * 3),
-              run_move: ((move_mod+3) * 6)
-            });
-          }
-
-          if(settings_race == 10) {
-            setAttrs({
-              carry: (1000),
-              lift: (1000 * 2),
-              push: (1000 * 4)
-            });
-          }
-
-          // 0 mod movement override _______________________________________________
-          if (move_mod <= 0) {
-            setAttrs({
-              half_move: (0.5),
-              full_move: (1),
-              charge_move: (2),
-              run_move: (3),
-              blur_move: (4)
-            });
-          }
-
-          // 0 mod movement override Mgalekgolo (Hunter)____________________________
-          if ((move_mod <= 0) && (settings_race == 8)) {
-            setAttrs({
-              half_move: (0.5),
-              full_move: (1),
-              charge_move: (4),
-              run_move: (6),
-              blur_move: (4)
-            });
-          }
-        }
-      });
-    });
-
-    on('change:fatigue change:settings_fatigue', function() {
-      getAttrs([
-      'fatigue',
-      'settings_fatigue'
-      ], function(values) {
-        var fatigue = parseInt(values['fatigue'], 10) || 0;
-        var settings_fatigue = parseInt(values['settings_fatigue'], 10) || 0;
-        if (settings_fatigue == 0) {
-          setAttrs({
-            fatigue_mod: (-fatigue * 5)
+            fatigue_max: (tou_mod * 2 * settings_fatigue_mult),
+            fatigue_mod: (- Math.max(0, (fatigue)-settings_fatigue_addi) * 5)
           });
         }
-        if (settings_fatigue == 1) {
-          setAttrs({
-            fatigue_mod: (- Math.max(0, (fatigue)-1) * 5)
-          });
+
+        if (settings_fatigue != 'dont calc'){
+          fatigue_mod: 0
         }
       });
     });
@@ -3963,222 +4095,222 @@
 
 
 
-        <rolltemplate class="sheet-rolltemplate-mythic">
-          <div class="sheet-template-content">
+  <rolltemplate class="sheet-rolltemplate-mythic">
+    <div class="sheet-template-content">
 
-            {{#initiative}}
-            <div class="sheet-template-header">{{character}} rolls for Initiative</div>
-            <div class=" sheet-template-center mythic_crit">{{initiative}} Degrees of success</div>
-            {{/initiative}}
-
-
-
-            {{#roll-name}}
-            <div class="sheet-template-header">{{character}} rolls for {{roll-name}}</div>
-            <div class="sheet-template-2xn">
-
-              <div class=" sheet-template-right">{{roll}}</div>
-
-              <div class="">
-                {{#^rollLess() roll 0 }}Degrees of success{{/^rollLess() roll 0 }}
-                {{#rollLess() roll 0 }}Degrees of failure{{/rollLess() roll 0 }}
-              </div>
-
-            </div>
-            {{/roll-name}}
+      {{#initiative}}
+      <div class="sheet-template-header">{{character}} rolls for Initiative</div>
+      <div class=" sheet-template-center mythic_crit">{{initiative}} Degrees of success</div>
+      {{/initiative}}
 
 
 
-            {{#avrdam}}
-            <div class="sheet-template-header">{{character}} rolls damage with autoroller</div>
+      {{#roll-name}}
+      <div class="sheet-template-header">{{character}} rolls for {{roll-name}}</div>
+      <div class="sheet-template-2xn">
 
-            <div class="sheet-template-2xn">
-              <div class=" sheet-template-right">Damage dealt:</div>
-              <div class="">{{avrdam}}</div>
-            </div>
-            {{/avrdam}}
+        <div class=" sheet-template-right">{{roll}}</div>
 
+        <div class="">
+          {{#^rollLess() roll 0 }}Degrees of success{{/^rollLess() roll 0 }}
+          {{#rollLess() roll 0 }}Degrees of failure{{/rollLess() roll 0 }}
+        </div>
 
-
-            {{#nrofrolls}}
-            <div class="sheet-template-header">{{character}} rolls multiple times</div>
-
-            <div class="sheet-template-2xn">
-              {{#rollGreater() nrofrolls 0}} <div class=" sheet-template-right">Roll 1:</div> <div> {{multiroll0}} </div> {{/rollGreater() nrofrolls 0}}
-              {{#rollGreater() nrofrolls 1}} <div class=" sheet-template-right">Roll 2:</div> <div> {{multiroll1}} </div> {{/rollGreater() nrofrolls 1}}
-              {{#rollGreater() nrofrolls 2}} <div class=" sheet-template-right">Roll 3:</div> <div> {{multiroll2}} </div> {{/rollGreater() nrofrolls 2}}
-              {{#rollGreater() nrofrolls 3}} <div class=" sheet-template-right">Roll 4:</div> <div> {{multiroll3}} </div> {{/rollGreater() nrofrolls 3}}
-              {{#rollGreater() nrofrolls 4}} <div class=" sheet-template-right">Roll 5:</div> <div> {{multiroll4}} </div> {{/rollGreater() nrofrolls 4}}
-              {{#rollGreater() nrofrolls 5}} <div class=" sheet-template-right">Roll 6:</div> <div> {{multiroll5}} </div> {{/rollGreater() nrofrolls 5}}
-              {{#rollGreater() nrofrolls 6}} <div class=" sheet-template-right">Roll 7:</div> <div> {{multiroll6}} </div> {{/rollGreater() nrofrolls 6}}
-              {{#rollGreater() nrofrolls 7}} <div class=" sheet-template-right">Roll 8:</div> <div> {{multiroll7}} </div> {{/rollGreater() nrofrolls 7}}
-              {{#rollGreater() nrofrolls 8}} <div class=" sheet-template-right">Roll 9:</div> <div> {{multiroll8}} </div> {{/rollGreater() nrofrolls 8}}
-              {{#rollGreater() nrofrolls 9}} <div class=" sheet-template-right">Roll 10:</div> <div> {{multiroll9}} </div> {{/rollGreater() nrofrolls 9}}
-              {{#rollGreater() nrofrolls 10}} <div class=" sheet-template-right">Roll 11:</div> <div> {{multiroll10}} </div> {{/rollGreater() nrofrolls 10}}
-              {{#rollGreater() nrofrolls 11}} <div class=" sheet-template-right">Roll 12:</div> <div> {{multiroll11}} </div> {{/rollGreater() nrofrolls 11}}
-              {{#rollGreater() nrofrolls 12}} <div class=" sheet-template-right">Roll 13:</div> <div> {{multiroll12}} </div> {{/rollGreater() nrofrolls 12}}
-              {{#rollGreater() nrofrolls 13}} <div class=" sheet-template-right">Roll 14:</div> <div> {{multiroll13}} </div> {{/rollGreater() nrofrolls 13}}
-              {{#rollGreater() nrofrolls 14}} <div class=" sheet-template-right">Roll 15:</div> <div> {{multiroll14}} </div> {{/rollGreater() nrofrolls 14}}
-              {{#rollGreater() nrofrolls 15}} <div class=" sheet-template-right">Roll 16:</div> <div> {{multiroll15}} </div> {{/rollGreater() nrofrolls 15}}
-              {{#rollGreater() nrofrolls 16}} <div class=" sheet-template-right">Roll 17:</div> <div> {{multiroll16}} </div> {{/rollGreater() nrofrolls 16}}
-              {{#rollGreater() nrofrolls 17}} <div class=" sheet-template-right">Roll 18:</div> <div> {{multiroll17}} </div> {{/rollGreater() nrofrolls 17}}
-              {{#rollGreater() nrofrolls 18}} <div class=" sheet-template-right">Roll 19:</div> <div> {{multiroll18}} </div> {{/rollGreater() nrofrolls 18}}
-              {{#rollGreater() nrofrolls 19}} <div class=" sheet-template-right">Roll 20:</div> <div> {{multiroll19}} </div> {{/rollGreater() nrofrolls 19}}
-              {{#rollGreater() nrofrolls 20}} <div class=" sheet-template-right">Roll 21:</div> <div> {{multiroll20}} </div> {{/rollGreater() nrofrolls 20}}
-              {{#rollGreater() nrofrolls 21}} <div class=" sheet-template-right">Roll 22:</div> <div> {{multiroll21}} </div> {{/rollGreater() nrofrolls 21}}
-              {{#rollGreater() nrofrolls 22}} <div class=" sheet-template-right">Roll 23:</div> <div> {{multiroll22}} </div> {{/rollGreater() nrofrolls 22}}
-              {{#rollGreater() nrofrolls 23}} <div class=" sheet-template-right">Roll 24:</div> <div> {{multiroll23}} </div> {{/rollGreater() nrofrolls 23}}
-              {{#rollGreater() nrofrolls 24}} <div class=" sheet-template-right">Roll 25:</div> <div> {{multiroll24}} </div> {{/rollGreater() nrofrolls 24}}
-              {{#rollGreater() nrofrolls 25}} <div class=" sheet-template-right">Roll 26:</div> <div> {{multiroll25}} </div> {{/rollGreater() nrofrolls 25}}
-            </div>
-            {{/nrofrolls}}
+      </div>
+      {{/roll-name}}
 
 
 
-            {{#hit}}
-            <div class="sheet-template-header">{{character}} attacks with {{weapon}}</div>
+      {{#avrdam}}
+      <div class="sheet-template-header">{{character}} rolls damage with autoroller</div>
 
-            <div class="sheet-template-2xn ">
-              <div class="sheet-template-right">{{rollhit}}</div>
-              {{#^rollLess() rollhit 0 }}<div style="float: right">Degrees of success</div>{{/^rollLess() rollhit 0 }}
-              {{#rollLess() rollhit 0 }}<div style="float: right">Degrees of failure</div>{{/rollLess() rollhit 0 }}
-            </div>
-
-            {{#rollWasCrit() rollhit }}<div class=" template-center">A CRITICAL FAIL!</div>{{/rollWasCrit() rollhit }}
-            {{#rollWasFumble() rollhit }}<div class=" template-center">A CRITICAL HIT!</div>{{/rollWasFumble() rollhit }}
-            {{/hit}}
-
-            {{#loc}}
-            <div class=" sheet-template-center sheet-template-break">Hit Location {{loc}}</div>
-            <div class=" sheet-template-center">
-              {{#rollBetween() loc 1 10}}  HEAD:    {{/rollBetween() loc 1 10}}
-              {{#rollBetween() loc 1 2}}   Neck     {{/rollBetween() loc 1 2}}
-              {{#rollBetween() loc 3 5}}   Mouth    {{/rollBetween() loc 3 5}}
-              {{#rollBetween() loc 6 7}}   Nose     {{/rollBetween() loc 6 7}}
-              {{#rollBetween() loc 8 8}}   Eyes     {{/rollBetween() loc 8 8}}
-              {{#rollBetween() loc 9 9}}   Ear      {{/rollBetween() loc 9 9}}
-              {{#rollBetween() loc 10 10}} Forehead {{/rollBetween() loc 10 10}}
-
-              {{#rollBetween() loc 11 20}}  LEFT ARM: {{/rollBetween() loc 11 20}}
-              {{#rollBetween() loc 11 12}}  Hands     {{/rollBetween() loc 11 12}}
-              {{#rollBetween() loc 13 15}}  Forearm   {{/rollBetween() loc 13 15}}
-              {{#rollBetween() loc 16 16}}  Elbow     {{/rollBetween() loc 16 16}}
-              {{#rollBetween() loc 17 19}}  Bicep     {{/rollBetween() loc 17 19}}
-              {{#rollBetween() loc 20 20}}  Shoulder  {{/rollBetween() loc 20 20}}
-
-              {{#rollBetween() loc 21 30}}  RIGHT ARM: {{/rollBetween() loc 21 30}}
-              {{#rollBetween() loc 21 22}}  Hands      {{/rollBetween() loc 21 22}}
-              {{#rollBetween() loc 23 25}}  Forearm	   {{/rollBetween() loc 23 25}}
-              {{#rollBetween() loc 26 26}}  Elbow      {{/rollBetween() loc 26 26}}
-              {{#rollBetween() loc 27 29}}  Bicep  	   {{/rollBetween() loc 27 29}}
-              {{#rollBetween() loc 30 30}}  Shoulder   {{/rollBetween() loc 30 30}}
-
-              {{#rollBetween() loc 31 45}}  LEFT LEG:	{{/rollBetween() loc 31 45}}
-              {{#rollBetween() loc 31 32}}  Foot      {{/rollBetween() loc 31 32}}
-              {{#rollBetween() loc 33 37}}  Shin      {{/rollBetween() loc 33 37}}
-              {{#rollBetween() loc 38 38}}  Knee      {{/rollBetween() loc 38 38}}
-              {{#rollBetween() loc 39 43}}  Thigh     {{/rollBetween() loc 39 43}}
-              {{#rollBetween() loc 44 45}}  Hip       {{/rollBetween() loc 44 45}}
-
-              {{#rollBetween() loc 46 60}}  RIGHT LEG: {{/rollBetween() loc 46 60}}
-              {{#rollBetween() loc 46 47}}  Foot       {{/rollBetween() loc 46 47}}
-              {{#rollBetween() loc 48 53}}  Shin       {{/rollBetween() loc 48 53}}
-              {{#rollBetween() loc 54 54}}  Knee       {{/rollBetween() loc 54 54}}
-              {{#rollBetween() loc 55 58}}  Thigh      {{/rollBetween() loc 55 58}}
-              {{#rollBetween() loc 59 60}}  Hip        {{/rollBetween() loc 59 60}}
-
-              {{#rollBetween() loc 61 100}} CHEST:	                  {{/rollBetween() loc 61 100}}
-              {{#rollBetween() loc 61 65}}  Pelvis                    {{/rollBetween() loc 61 65}}
-              {{#rollBetween() loc 66 72}}  Intestines                {{/rollBetween() loc 66 72}}
-              {{#rollBetween() loc 73 78}}  Spine                     {{/rollBetween() loc 73 78}}
-              {{#rollBetween() loc 79 84}}  Stomach / Kidney / Liver  {{/rollBetween() loc 79 84}}
-              {{#rollBetween() loc 85 89}}  Heart                     {{/rollBetween() loc 85 89}}
-              {{#rollBetween() loc 90 96}}  Lungs                     {{/rollBetween() loc 90 96}}
-              {{#rollBetween() loc 97 100}} Ribcage / No Organ Struck {{/rollBetween() loc 97 100}}
-            </div>
-            {{/loc}}
+      <div class="sheet-template-2xn">
+        <div class=" sheet-template-right">Damage dealt:</div>
+        <div class="">{{avrdam}}</div>
+      </div>
+      {{/avrdam}}
 
 
 
-            {{#damage}}
-            <div class="sheet-template-header">{{weapon}} damage</div>
+      {{#nrofrolls}}
+      <div class="sheet-template-header">{{character}} rolls multiple times</div>
 
-            <div class="sheet-template-2xn">
-              <div class="sheet-template-2xn">
-                <div class=" sheet-template-right">Damage</div>
-                <div class=" mythic_crit">{{rolldamage}}</div>
-              </div>
-              <div class="sheet-template-2xn">
-                <div class=" sheet-template-right">Pierce</div>
-                <div class=" mythic_crit">{{rollpierce}}</div>
-              </div>
-            </div>
-            {{/damage}}
+      <div class="sheet-template-2xn">
+        {{#rollGreater() nrofrolls 0}} <div class=" sheet-template-right">Roll 1:</div> <div> {{multiroll0}} </div> {{/rollGreater() nrofrolls 0}}
+        {{#rollGreater() nrofrolls 1}} <div class=" sheet-template-right">Roll 2:</div> <div> {{multiroll1}} </div> {{/rollGreater() nrofrolls 1}}
+        {{#rollGreater() nrofrolls 2}} <div class=" sheet-template-right">Roll 3:</div> <div> {{multiroll2}} </div> {{/rollGreater() nrofrolls 2}}
+        {{#rollGreater() nrofrolls 3}} <div class=" sheet-template-right">Roll 4:</div> <div> {{multiroll3}} </div> {{/rollGreater() nrofrolls 3}}
+        {{#rollGreater() nrofrolls 4}} <div class=" sheet-template-right">Roll 5:</div> <div> {{multiroll4}} </div> {{/rollGreater() nrofrolls 4}}
+        {{#rollGreater() nrofrolls 5}} <div class=" sheet-template-right">Roll 6:</div> <div> {{multiroll5}} </div> {{/rollGreater() nrofrolls 5}}
+        {{#rollGreater() nrofrolls 6}} <div class=" sheet-template-right">Roll 7:</div> <div> {{multiroll6}} </div> {{/rollGreater() nrofrolls 6}}
+        {{#rollGreater() nrofrolls 7}} <div class=" sheet-template-right">Roll 8:</div> <div> {{multiroll7}} </div> {{/rollGreater() nrofrolls 7}}
+        {{#rollGreater() nrofrolls 8}} <div class=" sheet-template-right">Roll 9:</div> <div> {{multiroll8}} </div> {{/rollGreater() nrofrolls 8}}
+        {{#rollGreater() nrofrolls 9}} <div class=" sheet-template-right">Roll 10:</div> <div> {{multiroll9}} </div> {{/rollGreater() nrofrolls 9}}
+        {{#rollGreater() nrofrolls 10}} <div class=" sheet-template-right">Roll 11:</div> <div> {{multiroll10}} </div> {{/rollGreater() nrofrolls 10}}
+        {{#rollGreater() nrofrolls 11}} <div class=" sheet-template-right">Roll 12:</div> <div> {{multiroll11}} </div> {{/rollGreater() nrofrolls 11}}
+        {{#rollGreater() nrofrolls 12}} <div class=" sheet-template-right">Roll 13:</div> <div> {{multiroll12}} </div> {{/rollGreater() nrofrolls 12}}
+        {{#rollGreater() nrofrolls 13}} <div class=" sheet-template-right">Roll 14:</div> <div> {{multiroll13}} </div> {{/rollGreater() nrofrolls 13}}
+        {{#rollGreater() nrofrolls 14}} <div class=" sheet-template-right">Roll 15:</div> <div> {{multiroll14}} </div> {{/rollGreater() nrofrolls 14}}
+        {{#rollGreater() nrofrolls 15}} <div class=" sheet-template-right">Roll 16:</div> <div> {{multiroll15}} </div> {{/rollGreater() nrofrolls 15}}
+        {{#rollGreater() nrofrolls 16}} <div class=" sheet-template-right">Roll 17:</div> <div> {{multiroll16}} </div> {{/rollGreater() nrofrolls 16}}
+        {{#rollGreater() nrofrolls 17}} <div class=" sheet-template-right">Roll 18:</div> <div> {{multiroll17}} </div> {{/rollGreater() nrofrolls 17}}
+        {{#rollGreater() nrofrolls 18}} <div class=" sheet-template-right">Roll 19:</div> <div> {{multiroll18}} </div> {{/rollGreater() nrofrolls 18}}
+        {{#rollGreater() nrofrolls 19}} <div class=" sheet-template-right">Roll 20:</div> <div> {{multiroll19}} </div> {{/rollGreater() nrofrolls 19}}
+        {{#rollGreater() nrofrolls 20}} <div class=" sheet-template-right">Roll 21:</div> <div> {{multiroll20}} </div> {{/rollGreater() nrofrolls 20}}
+        {{#rollGreater() nrofrolls 21}} <div class=" sheet-template-right">Roll 22:</div> <div> {{multiroll21}} </div> {{/rollGreater() nrofrolls 21}}
+        {{#rollGreater() nrofrolls 22}} <div class=" sheet-template-right">Roll 23:</div> <div> {{multiroll22}} </div> {{/rollGreater() nrofrolls 22}}
+        {{#rollGreater() nrofrolls 23}} <div class=" sheet-template-right">Roll 24:</div> <div> {{multiroll23}} </div> {{/rollGreater() nrofrolls 23}}
+        {{#rollGreater() nrofrolls 24}} <div class=" sheet-template-right">Roll 25:</div> <div> {{multiroll24}} </div> {{/rollGreater() nrofrolls 24}}
+        {{#rollGreater() nrofrolls 25}} <div class=" sheet-template-right">Roll 26:</div> <div> {{multiroll25}} </div> {{/rollGreater() nrofrolls 25}}
+      </div>
+      {{/nrofrolls}}
 
 
 
-            {{#description}}
-            <div class="sheet-template-header">{{name}}</div>
-            <div class="sheet-template-paddedtext">{{description}}</div>
-            {{/description}}
+      {{#hit}}
+      <div class="sheet-template-header">{{character}} attacks with {{weapon}}</div>
+
+      <div class="sheet-template-2xn ">
+        <div class="sheet-template-right">{{rollhit}}</div>
+        {{#^rollLess() rollhit 0 }}<div style="float: right">Degrees of success</div>{{/^rollLess() rollhit 0 }}
+        {{#rollLess() rollhit 0 }}<div style="float: right">Degrees of failure</div>{{/rollLess() rollhit 0 }}
+      </div>
+
+      {{#rollWasCrit() rollhit }}<div class=" template-center">A CRITICAL FAIL!</div>{{/rollWasCrit() rollhit }}
+      {{#rollWasFumble() rollhit }}<div class=" template-center">A CRITICAL HIT!</div>{{/rollWasFumble() rollhit }}
+      {{/hit}}
+
+      {{#loc}}
+      <div class=" sheet-template-center sheet-template-break">Hit Location {{loc}}</div>
+      <div class=" sheet-template-center">
+        {{#rollBetween() loc 1 10}}  HEAD:    {{/rollBetween() loc 1 10}}
+        {{#rollBetween() loc 1 2}}   Neck     {{/rollBetween() loc 1 2}}
+        {{#rollBetween() loc 3 5}}   Mouth    {{/rollBetween() loc 3 5}}
+        {{#rollBetween() loc 6 7}}   Nose     {{/rollBetween() loc 6 7}}
+        {{#rollBetween() loc 8 8}}   Eyes     {{/rollBetween() loc 8 8}}
+        {{#rollBetween() loc 9 9}}   Ear      {{/rollBetween() loc 9 9}}
+        {{#rollBetween() loc 10 10}} Forehead {{/rollBetween() loc 10 10}}
+
+        {{#rollBetween() loc 11 20}}  LEFT ARM: {{/rollBetween() loc 11 20}}
+        {{#rollBetween() loc 11 12}}  Hands     {{/rollBetween() loc 11 12}}
+        {{#rollBetween() loc 13 15}}  Forearm   {{/rollBetween() loc 13 15}}
+        {{#rollBetween() loc 16 16}}  Elbow     {{/rollBetween() loc 16 16}}
+        {{#rollBetween() loc 17 19}}  Bicep     {{/rollBetween() loc 17 19}}
+        {{#rollBetween() loc 20 20}}  Shoulder  {{/rollBetween() loc 20 20}}
+
+        {{#rollBetween() loc 21 30}}  RIGHT ARM: {{/rollBetween() loc 21 30}}
+        {{#rollBetween() loc 21 22}}  Hands      {{/rollBetween() loc 21 22}}
+        {{#rollBetween() loc 23 25}}  Forearm	   {{/rollBetween() loc 23 25}}
+        {{#rollBetween() loc 26 26}}  Elbow      {{/rollBetween() loc 26 26}}
+        {{#rollBetween() loc 27 29}}  Bicep  	   {{/rollBetween() loc 27 29}}
+        {{#rollBetween() loc 30 30}}  Shoulder   {{/rollBetween() loc 30 30}}
+
+        {{#rollBetween() loc 31 45}}  LEFT LEG:	{{/rollBetween() loc 31 45}}
+        {{#rollBetween() loc 31 32}}  Foot      {{/rollBetween() loc 31 32}}
+        {{#rollBetween() loc 33 37}}  Shin      {{/rollBetween() loc 33 37}}
+        {{#rollBetween() loc 38 38}}  Knee      {{/rollBetween() loc 38 38}}
+        {{#rollBetween() loc 39 43}}  Thigh     {{/rollBetween() loc 39 43}}
+        {{#rollBetween() loc 44 45}}  Hip       {{/rollBetween() loc 44 45}}
+
+        {{#rollBetween() loc 46 60}}  RIGHT LEG: {{/rollBetween() loc 46 60}}
+        {{#rollBetween() loc 46 47}}  Foot       {{/rollBetween() loc 46 47}}
+        {{#rollBetween() loc 48 53}}  Shin       {{/rollBetween() loc 48 53}}
+        {{#rollBetween() loc 54 54}}  Knee       {{/rollBetween() loc 54 54}}
+        {{#rollBetween() loc 55 58}}  Thigh      {{/rollBetween() loc 55 58}}
+        {{#rollBetween() loc 59 60}}  Hip        {{/rollBetween() loc 59 60}}
+
+        {{#rollBetween() loc 61 100}} CHEST:	                  {{/rollBetween() loc 61 100}}
+        {{#rollBetween() loc 61 65}}  Pelvis                    {{/rollBetween() loc 61 65}}
+        {{#rollBetween() loc 66 72}}  Intestines                {{/rollBetween() loc 66 72}}
+        {{#rollBetween() loc 73 78}}  Spine                     {{/rollBetween() loc 73 78}}
+        {{#rollBetween() loc 79 84}}  Stomach / Kidney / Liver  {{/rollBetween() loc 79 84}}
+        {{#rollBetween() loc 85 89}}  Heart                     {{/rollBetween() loc 85 89}}
+        {{#rollBetween() loc 90 96}}  Lungs                     {{/rollBetween() loc 90 96}}
+        {{#rollBetween() loc 97 100}} Ribcage / No Organ Struck {{/rollBetween() loc 97 100}}
+      </div>
+      {{/loc}}
 
 
+
+      {{#damage}}
+      <div class="sheet-template-header">{{weapon}} damage</div>
+
+      <div class="sheet-template-2xn">
+        <div class="sheet-template-2xn">
+          <div class=" sheet-template-right">Damage</div>
+          <div class=" mythic_crit">{{rolldamage}}</div>
+        </div>
+        <div class="sheet-template-2xn">
+          <div class=" sheet-template-right">Pierce</div>
+          <div class=" mythic_crit">{{rollpierce}}</div>
+        </div>
+      </div>
+      {{/damage}}
+
+
+
+      {{#description}}
+      <div class="sheet-template-header">{{name}}</div>
+      <div class="sheet-template-paddedtext">{{description}}</div>
+      {{/description}}
 
 
 
 
 
 
-            {{#scatter-range}}
-            <div class="sheet-template-header">{{character}} scatters </div>
-            <div class=" template-center">Range: {{scatter-range}} meters</div>
-            <br>
-            {{#rollBetween() scatter-direction 1 2}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/1-2-scatter-N.png?raw=true">{{/rollBetween() scatter-direction 1 2}}
-            {{#rollBetween() scatter-direction 3 3}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/3-scatter-NE.png?raw=true">{{/rollBetween() scatter-direction 3 3}}
-            {{#rollBetween() scatter-direction 4 4}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/4-scatter-E.png?raw=true">{{/rollBetween() scatter-direction 4 4}}
-            {{#rollBetween() scatter-direction 5 5}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/5-scatter-SE.png?raw=true">{{/rollBetween() scatter-direction 5 5}}
-            {{#rollBetween() scatter-direction 6 7}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/6-7-scatter-S.png?raw=true">{{/rollBetween() scatter-direction 6 7}}
-            {{#rollBetween() scatter-direction 8 8}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/8-scatter-SW.png?raw=true">{{/rollBetween() scatter-direction 8 8}}
-            {{#rollBetween() scatter-direction 9 9}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/9-scatter-W.png?raw=true">{{/rollBetween() scatter-direction 9 9}}
-            {{#rollBetween() scatter-direction 10 10}} <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/10-scatter-NW.png?raw=true">{{/rollBetween() scatter-direction 10 10}}
-            {{/scatter-range}}
+
+
+      {{#scatter-range}}
+      <div class="sheet-template-header">{{character}} scatters </div>
+      <div class=" template-center">Range: {{scatter-range}} meters</div>
+      <br>
+      {{#rollBetween() scatter-direction 1 2}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/1-2-scatter-N.png?raw=true">{{/rollBetween() scatter-direction 1 2}}
+      {{#rollBetween() scatter-direction 3 3}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/3-scatter-NE.png?raw=true">{{/rollBetween() scatter-direction 3 3}}
+      {{#rollBetween() scatter-direction 4 4}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/4-scatter-E.png?raw=true">{{/rollBetween() scatter-direction 4 4}}
+      {{#rollBetween() scatter-direction 5 5}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/5-scatter-SE.png?raw=true">{{/rollBetween() scatter-direction 5 5}}
+      {{#rollBetween() scatter-direction 6 7}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/6-7-scatter-S.png?raw=true">{{/rollBetween() scatter-direction 6 7}}
+      {{#rollBetween() scatter-direction 8 8}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/8-scatter-SW.png?raw=true">{{/rollBetween() scatter-direction 8 8}}
+      {{#rollBetween() scatter-direction 9 9}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/9-scatter-W.png?raw=true">{{/rollBetween() scatter-direction 9 9}}
+      {{#rollBetween() scatter-direction 10 10}} <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/10-scatter-NW.png?raw=true">{{/rollBetween() scatter-direction 10 10}}
+      {{/scatter-range}}
 
 
 
-            {{#2x2}}
-            <div class="sheet-template-header">{{character}}: {{name}}</div>
+      {{#2x2}}
+      <div class="sheet-template-header">{{character}}: {{name}}</div>
 
-            <div class="sheet-template-2xn">
-              <div class=" sheet-template-right">{{2x2-name}}</div>
-              <div><div class="sheet-inlineresult">{{2x2}}</div></div>
-              <div class=" sheet-template-right">{{2x2-name-max}}</div>
-              <div><div class="sheet-inlineresult">{{2x2-max}}</div></div>
-            </div>
+      <div class="sheet-template-2xn">
+        <div class=" sheet-template-right">{{2x2-name}}</div>
+        <div><div class="sheet-inlineresult">{{2x2}}</div></div>
+        <div class=" sheet-template-right">{{2x2-name-max}}</div>
+        <div><div class="sheet-inlineresult">{{2x2-max}}</div></div>
+      </div>
 
-            {{/2x2}}
+      {{/2x2}}
 
-            {{#4x2-1}}
-            <div class="sheet-template-header">{{character}}: {{name}}</div>
+      {{#4x2-1}}
+      <div class="sheet-template-header">{{character}}: {{name}}</div>
 
-            <div class="sheet-template-2xn">
+      <div class="sheet-template-2xn">
 
-              <div class="sheet-template-2xn">
-                <div class=" sheet-template-right">{{4x2-1-name}}</div>
-                <div><div class="sheet-inlineresult">{{4x2-1}}</div></div>
-                <div class=" sheet-template-right">{{4x2-1-name-max}}</div>
-                <div><div class="sheet-inlineresult">{{4x2-1-max}}</div></div>
-              </div>
+        <div class="sheet-template-2xn">
+          <div class=" sheet-template-right">{{4x2-1-name}}</div>
+          <div><div class="sheet-inlineresult">{{4x2-1}}</div></div>
+          <div class=" sheet-template-right">{{4x2-1-name-max}}</div>
+          <div><div class="sheet-inlineresult">{{4x2-1-max}}</div></div>
+        </div>
 
-              <div class="sheet-template-2xn">
-                <div class=" sheet-template-right">{{4x2-2-name}}</div>
-                <div><div class="sheet-inlineresult">{{4x2-2}}</div></div>
-                <div class=" sheet-template-right">{{4x2-2-name-max}}</div>
-                <div><div class="sheet-inlineresult">{{4x2-2-max}}</div></div>
-              </div>
+        <div class="sheet-template-2xn">
+          <div class=" sheet-template-right">{{4x2-2-name}}</div>
+          <div><div class="sheet-inlineresult">{{4x2-2}}</div></div>
+          <div class=" sheet-template-right">{{4x2-2-name-max}}</div>
+          <div><div class="sheet-inlineresult">{{4x2-2-max}}</div></div>
+        </div>
 
-            </div>
-            {{/4x2-1}}
+      </div>
+      {{/4x2-1}}
 
 
-          </div>
-        </rolltemplate>
+    </div>
+  </rolltemplate>
