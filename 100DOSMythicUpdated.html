@@ -1120,8 +1120,8 @@
                 <input class='equipment_ranged_weapons_gs16 full_width' type='text' value='0' name='attr_weapon_mag' />
                 <div class='equipment_ranged_weapons_gs17'>/</div>
                 <input class='equipment_ranged_weapons_gs18 full_width' type='text' value='0' name='attr_weapon_mag_max' />
-                <button class='equipment_ranged_weapons_gs19 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{attack= }} {{roll=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]]}} @{settings_hitroll}"></button>' >Hit</button>
-                <button class='equipment_ranged_weapons_gs20 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
+                <button class='equipment_ranged_weapons_gs19 full_width clear' type='roll' value='@{to-gm}&{template:mythic} @{autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}"></button>' >Hit</button>
+                <button class='equipment_ranged_weapons_gs20 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
               </div>
               <div class='equipment_ranged_weapons_grid4'>
                 <div class='equipment_ranged_weapons_gs21'>RoF</div>
@@ -1195,8 +1195,8 @@
                 <input class='equipment_melee_weapons_gs6 full_width' type='text' value='0' name='attr_weapon_breakpoints' />
                 <div class='equipment_melee_weapons_gs7'>/</div>
                 <input class='equipment_melee_weapons_gs8 full_width' type='text' value='0' name='attr_weapon_breakpoints_max' />
-                <button class='equipment_melee_weapons_gs9 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{attack= }} {{roll=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]]}} @{settings_hitroll}'' >Hit</button>
-                <button class='equipment_melee_weapons_gs10 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
+                <button class='equipment_melee_weapons_gs9 full_width clear' type='roll' value='@{to-gm}&{template:mythic} @{autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}'' >Hit</button>
+                <button class='equipment_melee_weapons_gs10 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
               </div>
               <div class='equipment_melee_weapons_grid4'>
                 <div class='equipment_melee_weapons_gs11'>damage plus Strength</div>
@@ -1718,7 +1718,7 @@
           <input class='characteristic_spending_number_total' name='attr_characteristic_spending_wfm_total' value='@{characteristic_spending_wfm_base} + @{characteristic_spending_wfm_spending} + @{characteristic_spending_wfm_extra}' disabled="true" type='number'/>
           <input class='characteristic_spending_number_total' name='attr_characteristic_spending_int_total' value='@{characteristic_spending_int_base} + @{characteristic_spending_int_spending} + @{characteristic_spending_int_extra}' disabled="true" type='number'/>
           <input class='characteristic_spending_number_total' name='attr_characteristic_spending_per_total' value='@{characteristic_spending_per_base} + @{characteristic_spending_per_spending} + @{characteristic_spending_per_extra}' disabled="true" type='number'/>
-          <input class='characteristic_spending_number_total' name='attr_characteristic_spending_cou_total'  value='@{characteristic_spending_cou_base}  + @{characteristic_spending_cou_spending}  + @{characteristic_spending_cou_extra}' disabled="true" type='number'/>
+          <input class='characteristic_spending_number_total' name='attr_characteristic_spending_crg_total'  value='@{characteristic_spending_crg_base}  + @{characteristic_spending_crg_spending}  + @{characteristic_spending_crg_extra}' disabled="true" type='number'/>
           <input class='characteristic_spending_number_total' name='attr_characteristic_spending_cha_total'  value='@{characteristic_spending_cha_base}  + @{characteristic_spending_cha_spending}  + @{characteristic_spending_cha_extra}' disabled="true" type='number'/>
           <input class='characteristic_spending_number_total' name='attr_characteristic_spending_ldr_total'  value='@{characteristic_spending_ldr_base}  + @{characteristic_spending_ldr_spending}  + @{characteristic_spending_ldr_extra}' disabled="true" type='number'/>
           <h3>Total</h3>
@@ -1732,7 +1732,7 @@
           <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_base' type='number' value='0' />
           <input class='characteristic_spending_number' name='attr_characteristic_spending_int_base' type='number' value='0' />
           <input class='characteristic_spending_number' name='attr_characteristic_spending_per_base' type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_base'  type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_crg_base'  type='number' value='0' />
           <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_base'  type='number' value='0' />
           <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_base'  type='number' value='0' />
           <h3>Base</h3>
@@ -1746,7 +1746,7 @@
           <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_spending' type='number' value='0' />
           <input class='characteristic_spending_number' name='attr_characteristic_spending_int_spending' type='number' value='0' />
           <input class='characteristic_spending_number' name='attr_characteristic_spending_per_spending' type='number' value='0' />
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_spending'  type='number' value='0' />
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_crg_spending'  type='number' value='0' />
           <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_spending'  type='number' value='0' />
           <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_spending'  type='number' value='0' />
           <h3>Spent</h3>
@@ -1760,7 +1760,7 @@
           <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_extra' type='number' value='0' hidden/>
           <input class='characteristic_spending_number' name='attr_characteristic_spending_int_extra' type='number' value='0' hidden/>
           <input class='characteristic_spending_number' name='attr_characteristic_spending_per_extra' type='number' value='0' hidden/>
-          <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_extra'  type='number' value='0' hidden/>
+          <input class='characteristic_spending_number' name='attr_characteristic_spending_crg_extra'  type='number' value='0' hidden/>
           <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_extra'  type='number' value='0' hidden/>
           <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_extra'  type='number' value='0' hidden/>
         </div>
@@ -1774,7 +1774,7 @@
             <input class='characteristic_spending_number' name='attr_characteristic_spending_wfm_extra_r' type='number' value='0' />
             <input class='characteristic_spending_number' name='attr_characteristic_spending_int_extra_r' type='number' value='0' />
             <input class='characteristic_spending_number' name='attr_characteristic_spending_per_extra_r' type='number' value='0' />
-            <input class='characteristic_spending_number' name='attr_characteristic_spending_cou_extra_r'  type='number' value='0' />
+            <input class='characteristic_spending_number' name='attr_characteristic_spending_crg_extra_r'  type='number' value='0' />
             <input class='characteristic_spending_number' name='attr_characteristic_spending_cha_extra_r'  type='number' value='0' />
             <input class='characteristic_spending_number' name='attr_characteristic_spending_ldr_extra_r'  type='number' value='0' />
             <input class='characteristic_spending_text_input' name='attr_characteristic_spending_ldr_extra_name_r'  type='text' placeholder='extra' />
@@ -2056,8 +2056,8 @@
                   <input class='equipment_ranged_weapons_gs16 full_width' type='text' value='0' name='attr_weapon_mag' />
                   <div class='equipment_ranged_weapons_gs17'>/</div>
                   <input class='equipment_ranged_weapons_gs18 full_width' type='text' value='0' name='attr_weapon_mag_max' />
-                  <button class='equipment_ranged_weapons_gs19 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{attack= }} {{roll=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]]}} @{settings_hitroll}"></button>' >Hit</button>
-                  <button class='equipment_ranged_weapons_gs20 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
+                  <button class='equipment_ranged_weapons_gs19 full_width clear' type='roll' value='@{to-gm}&{template:mythic} @{autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}"></button>' >Hit</button>
+                  <button class='equipment_ranged_weapons_gs20 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
                 </div>
                 <div class='equipment_ranged_weapons_grid4'>
                   <div class='equipment_ranged_weapons_gs21'>RoF</div>
@@ -2131,8 +2131,8 @@
                   <input class='equipment_melee_weapons_gs6 full_width' type='text' value='0' name='attr_weapon_breakpoints' />
                   <div class='equipment_melee_weapons_gs7'>/</div>
                   <input class='equipment_melee_weapons_gs8 full_width' type='text' value='0' name='attr_weapon_breakpoints_max' />
-                  <button class='equipment_melee_weapons_gs9 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{attack= }} {{roll=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]]}} @{settings_hitroll}'' >Hit</button>
-                  <button class='equipment_melee_weapons_gs10 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
+                  <button class='equipment_melee_weapons_gs9 full_width clear' type='roll' value='@{to-gm}&{template:mythic} @{autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}'' >Hit</button>
+                  <button class='equipment_melee_weapons_gs10 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
                 </div>
                 <div class='equipment_melee_weapons_grid4'>
                   <div class='equipment_melee_weapons_gs11'>damage plus Strength</div>
@@ -2278,6 +2278,15 @@
             <option value='16'>You will suffer as I have</option>
             <option value='17'>19339 and 5193 characters</option>
           </select>
+
+          <br>
+
+          <h3 class="radius_border_top">Auto roll damage when hit is pressed</h3>
+          <select name='attr_autorolldamage' class='full_width edge_padding radius_border_bottom'>
+            <option value='{{hit= }} {{damage= }}' selected='selected'>autoroll damage</option>
+            <option value='{{hit= }} '>Dont autoroll damage</option>
+          </select>
+
         </div>
 
         <div class="bordered_container">
@@ -2930,8 +2939,8 @@
                       <input class='equipment_ranged_weapons_gs16 full_width' type='text' value='0' name='attr_weapon_mag' />
                       <div class='equipment_ranged_weapons_gs17'>/</div>
                       <input class='equipment_ranged_weapons_gs18 full_width' type='text' value='0' name='attr_weapon_mag_max' />
-                      <button class='equipment_ranged_weapons_gs19 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{attack= }} {{roll=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]]}} @{settings_hitroll}"></button>' >Hit</button>
-                      <button class='equipment_ranged_weapons_gs20 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
+                      <button class='equipment_ranged_weapons_gs19 full_width clear' type='roll' value='@{to-gm}&{template:mythic} @{autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}"></button>' >Hit</button>
+                      <button class='equipment_ranged_weapons_gs20 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
                     </div>
                     <div class='equipment_ranged_weapons_grid4'>
                       <div class='equipment_ranged_weapons_gs21'>RoF</div>
@@ -3004,8 +3013,8 @@
                       <input class='equipment_melee_weapons_gs6 full_width' type='text' value='0' name='attr_weapon_breakpoints' />
                       <div class='equipment_melee_weapons_gs7'>/</div>
                       <input class='equipment_melee_weapons_gs8 full_width' type='text' value='0' name='attr_weapon_breakpoints_max' />
-                      <button class='equipment_melee_weapons_gs9 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{attack= }} {{roll=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]]}} @{settings_hitroll}'' >Hit</button>
-                      <button class='equipment_melee_weapons_gs10 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
+                      <button class='equipment_melee_weapons_gs9 full_width clear' type='roll' value='@{to-gm}&{template:mythic} @{autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}'' >Hit</button>
+                      <button class='equipment_melee_weapons_gs10 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
                     </div>
                     <div class='equipment_melee_weapons_grid4'>
                       <div class='equipment_melee_weapons_gs11'>damage plus Strength</div>
@@ -3096,8 +3105,8 @@
                 <input class='equipment_ranged_weapons_gs16 full_width' type='text' value='0' name='attr_weapon_mag' />
                 <div class='equipment_ranged_weapons_gs17'>/</div>
                 <input class='equipment_ranged_weapons_gs18 full_width' type='text' value='0' name='attr_weapon_mag_max' />
-                <button class='equipment_ranged_weapons_gs19 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{attack= }} {{roll=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]]}} @{settings_hitroll}"></button>' >Hit</button>
-                <button class='equipment_ranged_weapons_gs20 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
+                <button class='equipment_ranged_weapons_gs19 full_width clear' type='roll' value='@{to-gm}&{template:mythic} @{autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}"></button>' >Hit</button>
+                <button class='equipment_ranged_weapons_gs20 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
               </div>
               <div class='equipment_ranged_weapons_grid4'>
                 <div class='equipment_ranged_weapons_gs21'>RoF</div>
@@ -3170,8 +3179,8 @@
                 <input class='equipment_melee_weapons_gs6 full_width' type='text' value='0' name='attr_weapon_breakpoints' />
                 <div class='equipment_melee_weapons_gs7'>/</div>
                 <input class='equipment_melee_weapons_gs8 full_width' type='text' value='0' name='attr_weapon_breakpoints_max' />
-                <button class='equipment_melee_weapons_gs9 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{attack= }} {{roll=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]]}} @{settings_hitroll}'' >Hit</button>
-                <button class='equipment_melee_weapons_gs10 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{damage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{pierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
+                <button class='equipment_melee_weapons_gs9 full_width clear' type='roll' value='@{to-gm}&{template:mythic} @{autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}'' >Hit</button>
+                <button class='equipment_melee_weapons_gs10 full_width clear' type='roll' value='@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}' >DMG</button>
               </div>
               <div class='equipment_melee_weapons_grid4'>
                 <div class='equipment_melee_weapons_gs11'>damage plus Strength</div>
@@ -3649,7 +3658,7 @@
     // ___________________________________________________________________________
 
     on('change:repeating_characteristics remove:repeating_characteristics', () => {
-      repeatingSum([    'characteristic_spending_str_extra','characteristic_spending_tou_extra','characteristic_spending_agi_extra','characteristic_spending_wfr_extra','characteristic_spending_wfm_extra','characteristic_spending_int_extra','characteristic_spending_per_extra','characteristic_spending_cou_extra','characteristic_spending_cha_extra','characteristic_spending_ldr_extra'],'characteristics',['characteristic_spending_str_extra_r','characteristic_spending_tou_extra_r','characteristic_spending_agi_extra_r','characteristic_spending_wfr_extra_r','characteristic_spending_wfm_extra_r','characteristic_spending_int_extra_r','characteristic_spending_per_extra_r','characteristic_spending_cou_extra_r','characteristic_spending_cha_extra_r','characteristic_spending_ldr_extra_r'])
+      repeatingSum([    'characteristic_spending_str_extra','characteristic_spending_tou_extra','characteristic_spending_agi_extra','characteristic_spending_wfr_extra','characteristic_spending_wfm_extra','characteristic_spending_int_extra','characteristic_spending_per_extra','characteristic_spending_crg_extra','characteristic_spending_cha_extra','characteristic_spending_ldr_extra'],'characteristics',['characteristic_spending_str_extra_r','characteristic_spending_tou_extra_r','characteristic_spending_agi_extra_r','characteristic_spending_wfr_extra_r','characteristic_spending_wfm_extra_r','characteristic_spending_int_extra_r','characteristic_spending_per_extra_r','characteristic_spending_crg_extra_r','characteristic_spending_cha_extra_r','characteristic_spending_ldr_extra_r'])
     });
 
     on('change:characteristic_spending_lock', () => {
@@ -3662,7 +3671,7 @@
       'wfm',
       'int',
       'per',
-      'cou',
+      'crg',
       'cha',
       'ldr',
       'characteristic_spending_str_base', 'characteristic_spending_str_spending', 'characteristic_spending_str_extra',
@@ -3672,7 +3681,7 @@
       'characteristic_spending_wfm_base', 'characteristic_spending_wfm_spending', 'characteristic_spending_wfm_extra',
       'characteristic_spending_int_base', 'characteristic_spending_int_spending', 'characteristic_spending_int_extra',
       'characteristic_spending_per_base', 'characteristic_spending_per_spending', 'characteristic_spending_per_extra',
-      'characteristic_spending_cou_base', 'characteristic_spending_cou_spending', 'characteristic_spending_cou_extra',
+      'characteristic_spending_crg_base', 'characteristic_spending_crg_spending', 'characteristic_spending_crg_extra',
       'characteristic_spending_cha_base', 'characteristic_spending_cha_spending', 'characteristic_spending_cha_extra',
       'characteristic_spending_ldr_base', 'characteristic_spending_ldr_spending', 'characteristic_spending_ldr_extra',
 
@@ -3705,9 +3714,9 @@
         var per_spending = parseInt(values['characteristic_spending_per_spending'], 10) || 0;
         var per_extra    = parseInt(values['characteristic_spending_per_extra'], 10) || 0;
 
-        var cou_base     = parseInt(values['characteristic_spending_cou_base'], 10) || 0;
-        var cou_spending = parseInt(values['characteristic_spending_cou_spending'], 10) || 0;
-        var cou_extra    = parseInt(values['characteristic_spending_cou_extra'], 10) || 0;
+        var crg_base     = parseInt(values['characteristic_spending_crg_base'], 10) || 0;
+        var crg_spending = parseInt(values['characteristic_spending_crg_spending'], 10) || 0;
+        var crg_extra    = parseInt(values['characteristic_spending_crg_extra'], 10) || 0;
 
         var cha_base     = parseInt(values['characteristic_spending_cha_base'], 10) || 0;
         var cha_spending = parseInt(values['characteristic_spending_cha_spending'], 10) || 0;
@@ -3725,7 +3734,7 @@
           wfm: wfm_base + wfm_spending + wfm_extra,
           int: int_base + int_spending + int_extra,
           per: per_base + per_spending + per_extra,
-          cou: cou_base + cou_spending + cou_extra,
+          crg: crg_base + crg_spending + crg_extra,
           cha: cha_base + cha_spending + cha_extra,
           ldr: ldr_base + ldr_spending + ldr_extra,
           characteristic_spending_lock : 0
@@ -3954,191 +3963,176 @@
 
 
 
-  <rolltemplate class="sheet-rolltemplate-mythic">
+        <rolltemplate class="sheet-rolltemplate-mythic">
+          <div class="sheet-template-content">
 
-    {{#initiative}}
-    <div class="sheet-template-header">{{character}} rolls for Initiative</div>
-    <div class="sheet-template-content">
-      <div class="sheet-template-row sheet-template-center mythic_crit">{{initiative}} Degrees of success</div>
-
-    </div>
-    {{/initiative}}
+            {{#initiative}}
+            <div class="sheet-template-header">{{character}} rolls for Initiative</div>
+            <div class=" sheet-template-center mythic_crit">{{initiative}} Degrees of success</div>
+            {{/initiative}}
 
 
 
-    {{#roll-name}}
-    <div class="sheet-template-header">{{character}} rolls for {{roll-name}}</div>
-    <div class="sheet-template-content">
-      <div class="sheet-template-2x2">
-        <div class="sheet-template-row sheet-template-right">
-          {{roll}}
-        </div>
-        <div class="sheet-template-row">
-          {{#^rollLess() roll 0 }}Degrees of success{{/^rollLess() roll 0 }}
-          {{#rollLess() roll 0 }}Degrees of failure{{/rollLess() roll 0 }}
-        </div>
-      </div>
+            {{#roll-name}}
+            <div class="sheet-template-header">{{character}} rolls for {{roll-name}}</div>
+            <div class="sheet-template-2xn">
 
-    </div>
-    {{/roll-name}}
+              <div class=" sheet-template-right">{{roll}}</div>
 
-
-
-    {{#avrdam}}
-    <div class="sheet-template-header">{{character}} damage with autoroller</div>
-    <div class="sheet-template-content">
-      <div class="sheet-template-2x2">
-        <div class="sheet-template-row sheet-template-right">Damage dealt:</div>
-        <div class="sheet-template-row">{{avrdam}}</div>
-      </div>
-
-    </div>
-    {{/avrdam}}
-
-
-
-    {{#nrofrolls}}
-    <div class="sheet-template-header">{{character}} rolls multiple times</div>
-    <div class="sheet-template-content">
-      <div class="sheet-template-2x2">
-        {{#rollGreater() nrofrolls 0}} <div class="sheet-template-row sheet-template-right">Roll 0:</div> <div class="sheet-template-row"> {{multiroll0}} </div> {{/rollGreater() nrofrolls 0}}
-        {{#rollGreater() nrofrolls 1}} <div class="sheet-template-row sheet-template-right">Roll 1:</div> <div class="sheet-template-row"> {{multiroll1}} </div> {{/rollGreater() nrofrolls 1}}
-        {{#rollGreater() nrofrolls 2}} <div class="sheet-template-row sheet-template-right">Roll 2:</div> <div class="sheet-template-row"> {{multiroll2}} </div> {{/rollGreater() nrofrolls 2}}
-        {{#rollGreater() nrofrolls 3}} <div class="sheet-template-row sheet-template-right">Roll 3:</div> <div class="sheet-template-row"> {{multiroll3}} </div> {{/rollGreater() nrofrolls 3}}
-        {{#rollGreater() nrofrolls 4}} <div class="sheet-template-row sheet-template-right">Roll 4:</div> <div class="sheet-template-row"> {{multiroll4}} </div> {{/rollGreater() nrofrolls 4}}
-        {{#rollGreater() nrofrolls 5}} <div class="sheet-template-row sheet-template-right">Roll 5:</div> <div class="sheet-template-row"> {{multiroll5}} </div> {{/rollGreater() nrofrolls 5}}
-        {{#rollGreater() nrofrolls 6}} <div class="sheet-template-row sheet-template-right">Roll 6:</div> <div class="sheet-template-row"> {{multiroll6}} </div> {{/rollGreater() nrofrolls 6}}
-        {{#rollGreater() nrofrolls 7}} <div class="sheet-template-row sheet-template-right">Roll 7:</div> <div class="sheet-template-row"> {{multiroll7}} </div> {{/rollGreater() nrofrolls 7}}
-        {{#rollGreater() nrofrolls 8}} <div class="sheet-template-row sheet-template-right">Roll 8:</div> <div class="sheet-template-row"> {{multiroll8}} </div> {{/rollGreater() nrofrolls 8}}
-        {{#rollGreater() nrofrolls 9}} <div class="sheet-template-row sheet-template-right">Roll 9:</div> <div class="sheet-template-row"> {{multiroll9}} </div> {{/rollGreater() nrofrolls 9}}
-        {{#rollGreater() nrofrolls 10}} <div class="sheet-template-row sheet-template-right">Roll 10:</div> <div class="sheet-template-row"> {{multiroll10}} </div> {{/rollGreater() nrofrolls 10}}
-        {{#rollGreater() nrofrolls 11}} <div class="sheet-template-row sheet-template-right">Roll 11:</div> <div class="sheet-template-row"> {{multiroll11}} </div> {{/rollGreater() nrofrolls 11}}
-        {{#rollGreater() nrofrolls 12}} <div class="sheet-template-row sheet-template-right">Roll 12:</div> <div class="sheet-template-row"> {{multiroll12}} </div> {{/rollGreater() nrofrolls 12}}
-        {{#rollGreater() nrofrolls 13}} <div class="sheet-template-row sheet-template-right">Roll 13:</div> <div class="sheet-template-row"> {{multiroll13}} </div> {{/rollGreater() nrofrolls 13}}
-        {{#rollGreater() nrofrolls 14}} <div class="sheet-template-row sheet-template-right">Roll 14:</div> <div class="sheet-template-row"> {{multiroll14}} </div> {{/rollGreater() nrofrolls 14}}
-        {{#rollGreater() nrofrolls 15}} <div class="sheet-template-row sheet-template-right">Roll 15:</div> <div class="sheet-template-row"> {{multiroll15}} </div> {{/rollGreater() nrofrolls 15}}
-        {{#rollGreater() nrofrolls 16}} <div class="sheet-template-row sheet-template-right">Roll 16:</div> <div class="sheet-template-row"> {{multiroll16}} </div> {{/rollGreater() nrofrolls 16}}
-        {{#rollGreater() nrofrolls 17}} <div class="sheet-template-row sheet-template-right">Roll 17:</div> <div class="sheet-template-row"> {{multiroll17}} </div> {{/rollGreater() nrofrolls 17}}
-        {{#rollGreater() nrofrolls 18}} <div class="sheet-template-row sheet-template-right">Roll 18:</div> <div class="sheet-template-row"> {{multiroll18}} </div> {{/rollGreater() nrofrolls 18}}
-        {{#rollGreater() nrofrolls 19}} <div class="sheet-template-row sheet-template-right">Roll 19:</div> <div class="sheet-template-row"> {{multiroll19}} </div> {{/rollGreater() nrofrolls 19}}
-        {{#rollGreater() nrofrolls 20}} <div class="sheet-template-row sheet-template-right">Roll 20:</div> <div class="sheet-template-row"> {{multiroll20}} </div> {{/rollGreater() nrofrolls 20}}
-        {{#rollGreater() nrofrolls 21}} <div class="sheet-template-row sheet-template-right">Roll 21:</div> <div class="sheet-template-row"> {{multiroll21}} </div> {{/rollGreater() nrofrolls 21}}
-        {{#rollGreater() nrofrolls 22}} <div class="sheet-template-row sheet-template-right">Roll 22:</div> <div class="sheet-template-row"> {{multiroll22}} </div> {{/rollGreater() nrofrolls 22}}
-        {{#rollGreater() nrofrolls 23}} <div class="sheet-template-row sheet-template-right">Roll 23:</div> <div class="sheet-template-row"> {{multiroll23}} </div> {{/rollGreater() nrofrolls 23}}
-        {{#rollGreater() nrofrolls 24}} <div class="sheet-template-row sheet-template-right">Roll 24:</div> <div class="sheet-template-row"> {{multiroll24}} </div> {{/rollGreater() nrofrolls 24}}
-        {{#rollGreater() nrofrolls 25}} <div class="sheet-template-row sheet-template-right">Roll 25:</div> <div class="sheet-template-row"> {{multiroll25}} </div> {{/rollGreater() nrofrolls 25}}
-      </div>
-    </div>
-    {{/nrofrolls}}
-
-
-
-    {{#attack}}
-    <div class="sheet-template-header">{{character}} rolls to attack with {{weapon}}</div>
-    {{#loc}}<div class="sheet-template-content template-content_top">{{/loc}}
-      {{^loc}}<div class="sheet-template-content">{{/loc}}
-
-        <div class="sheet-template-2x2 sheet-template-row">
-          <div class="sheet-template-right">{{roll}}</div>
-          {{#^rollLess() roll 0 }}<div style="float: right">Degrees of success</div>{{/^rollLess() roll 0 }}
-          {{#rollLess() roll 0 }}<div style="float: right">Degrees of failure</div>{{/rollLess() roll 0 }}
-        </div>
-
-        {{#rollWasCrit() roll }}<div class="sheet-template-row template-center">A CRITICAL FAIL!</div>{{/rollWasCrit() roll }}
-        {{#rollWasFumble() roll }}<div class="sheet-template-row template-center">A CRITICAL HIT!</div>{{/rollWasFumble() roll }}
-      </div>
-      {{/attack}}
-
-
-
-
-      {{#loc}}
-      {{^attack}}<div class="sheet-template-content sheet-template-round">{{/attack}}
-        {{#attack}} <div class="sheet-template-content">{{/attack}}
-          <div class="sheet-template-row sheet-template-center sheet-template-break">Hit Location {{loc}}</div>
-          <div class="sheet-template-row sheet-template-center">
-            {{#rollBetween() loc 1 10}}  HEAD:    {{/rollBetween() loc 1 10}}
-            {{#rollBetween() loc 1 2}}   Neck     {{/rollBetween() loc 1 2}}
-            {{#rollBetween() loc 3 5}}   Mouth    {{/rollBetween() loc 3 5}}
-            {{#rollBetween() loc 6 7}}   Nose     {{/rollBetween() loc 6 7}}
-            {{#rollBetween() loc 8 8}}   Eyes     {{/rollBetween() loc 8 8}}
-            {{#rollBetween() loc 9 9}}   Ear      {{/rollBetween() loc 9 9}}
-            {{#rollBetween() loc 10 10}} Forehead {{/rollBetween() loc 10 10}}
-
-            {{#rollBetween() loc 11 20}}  LEFT ARM: {{/rollBetween() loc 11 20}}
-            {{#rollBetween() loc 11 12}}  Hands     {{/rollBetween() loc 11 12}}
-            {{#rollBetween() loc 13 15}}  Forearm   {{/rollBetween() loc 13 15}}
-            {{#rollBetween() loc 16 16}}  Elbow     {{/rollBetween() loc 16 16}}
-            {{#rollBetween() loc 17 19}}  Bicep     {{/rollBetween() loc 17 19}}
-            {{#rollBetween() loc 20 20}}  Shoulder  {{/rollBetween() loc 20 20}}
-
-            {{#rollBetween() loc 21 30}}  RIGHT ARM: {{/rollBetween() loc 21 30}}
-            {{#rollBetween() loc 21 22}}  Hands      {{/rollBetween() loc 21 22}}
-            {{#rollBetween() loc 23 25}}  Forearm	   {{/rollBetween() loc 23 25}}
-            {{#rollBetween() loc 26 26}}  Elbow      {{/rollBetween() loc 26 26}}
-            {{#rollBetween() loc 27 29}}  Bicep  	   {{/rollBetween() loc 27 29}}
-            {{#rollBetween() loc 30 30}}  Shoulder   {{/rollBetween() loc 30 30}}
-
-            {{#rollBetween() loc 31 45}}  LEFT LEG:	{{/rollBetween() loc 31 45}}
-            {{#rollBetween() loc 31 32}}  Foot      {{/rollBetween() loc 31 32}}
-            {{#rollBetween() loc 33 37}}  Shin      {{/rollBetween() loc 33 37}}
-            {{#rollBetween() loc 38 38}}  Knee      {{/rollBetween() loc 38 38}}
-            {{#rollBetween() loc 39 43}}  Thigh     {{/rollBetween() loc 39 43}}
-            {{#rollBetween() loc 44 45}}  Hip       {{/rollBetween() loc 44 45}}
-
-            {{#rollBetween() loc 46 60}}  RIGHT LEG: {{/rollBetween() loc 46 60}}
-            {{#rollBetween() loc 46 47}}  Foot       {{/rollBetween() loc 46 47}}
-            {{#rollBetween() loc 48 53}}  Shin       {{/rollBetween() loc 48 53}}
-            {{#rollBetween() loc 54 54}}  Knee       {{/rollBetween() loc 54 54}}
-            {{#rollBetween() loc 55 58}}  Thigh      {{/rollBetween() loc 55 58}}
-            {{#rollBetween() loc 59 60}}  Hip        {{/rollBetween() loc 59 60}}
-
-            {{#rollBetween() loc 61 100}} CHEST:	                  {{/rollBetween() loc 61 100}}
-            {{#rollBetween() loc 61 65}}  Pelvis                    {{/rollBetween() loc 61 65}}
-            {{#rollBetween() loc 66 72}}  Intestines                {{/rollBetween() loc 66 72}}
-            {{#rollBetween() loc 73 78}}  Spine                     {{/rollBetween() loc 73 78}}
-            {{#rollBetween() loc 79 84}}  Stomach / Kidney / Liver  {{/rollBetween() loc 79 84}}
-            {{#rollBetween() loc 85 89}}  Heart                     {{/rollBetween() loc 85 89}}
-            {{#rollBetween() loc 90 96}}  Lungs                     {{/rollBetween() loc 90 96}}
-            {{#rollBetween() loc 97 100}} Ribcage / No Organ Struck {{/rollBetween() loc 97 100}}
-          </div>
-        </div>
-        {{/loc}}
-
-
-
-        {{#damage}}
-        <div class="sheet-template-header">{{character}} rolls for damage with {{weapon}} </div>
-        {{#description}}<div class="sheet-template-content template-content_top">{{/description}}
-          {{^description}}<div class="sheet-template-content">  {{/description}}
-            <div class="sheet-template-2x2">
-
-              <div class="sheet-template-2x2">
-                <div class="sheet-template-row sheet-template-right">Damage</div>
-                <div class="sheet-template-row mythic_crit">{{damage}}</div>
+              <div class="">
+                {{#^rollLess() roll 0 }}Degrees of success{{/^rollLess() roll 0 }}
+                {{#rollLess() roll 0 }}Degrees of failure{{/rollLess() roll 0 }}
               </div>
 
-              <div class="sheet-template-2x2">
-                <div class="sheet-template-row sheet-template-right">Pierce</div>
-                <div class="sheet-template-row mythic_crit">{{pierce}}</div>
-              </div>
+            </div>
+            {{/roll-name}}
+
+
+
+            {{#avrdam}}
+            <div class="sheet-template-header">{{character}} rolls damage with autoroller</div>
+
+            <div class="sheet-template-2xn">
+              <div class=" sheet-template-right">Damage dealt:</div>
+              <div class="">{{avrdam}}</div>
+            </div>
+            {{/avrdam}}
+
+
+
+            {{#nrofrolls}}
+            <div class="sheet-template-header">{{character}} rolls multiple times</div>
+
+            <div class="sheet-template-2xn">
+              {{#rollGreater() nrofrolls 0}} <div class=" sheet-template-right">Roll 1:</div> <div> {{multiroll0}} </div> {{/rollGreater() nrofrolls 0}}
+              {{#rollGreater() nrofrolls 1}} <div class=" sheet-template-right">Roll 2:</div> <div> {{multiroll1}} </div> {{/rollGreater() nrofrolls 1}}
+              {{#rollGreater() nrofrolls 2}} <div class=" sheet-template-right">Roll 3:</div> <div> {{multiroll2}} </div> {{/rollGreater() nrofrolls 2}}
+              {{#rollGreater() nrofrolls 3}} <div class=" sheet-template-right">Roll 4:</div> <div> {{multiroll3}} </div> {{/rollGreater() nrofrolls 3}}
+              {{#rollGreater() nrofrolls 4}} <div class=" sheet-template-right">Roll 5:</div> <div> {{multiroll4}} </div> {{/rollGreater() nrofrolls 4}}
+              {{#rollGreater() nrofrolls 5}} <div class=" sheet-template-right">Roll 6:</div> <div> {{multiroll5}} </div> {{/rollGreater() nrofrolls 5}}
+              {{#rollGreater() nrofrolls 6}} <div class=" sheet-template-right">Roll 7:</div> <div> {{multiroll6}} </div> {{/rollGreater() nrofrolls 6}}
+              {{#rollGreater() nrofrolls 7}} <div class=" sheet-template-right">Roll 8:</div> <div> {{multiroll7}} </div> {{/rollGreater() nrofrolls 7}}
+              {{#rollGreater() nrofrolls 8}} <div class=" sheet-template-right">Roll 9:</div> <div> {{multiroll8}} </div> {{/rollGreater() nrofrolls 8}}
+              {{#rollGreater() nrofrolls 9}} <div class=" sheet-template-right">Roll 10:</div> <div> {{multiroll9}} </div> {{/rollGreater() nrofrolls 9}}
+              {{#rollGreater() nrofrolls 10}} <div class=" sheet-template-right">Roll 11:</div> <div> {{multiroll10}} </div> {{/rollGreater() nrofrolls 10}}
+              {{#rollGreater() nrofrolls 11}} <div class=" sheet-template-right">Roll 12:</div> <div> {{multiroll11}} </div> {{/rollGreater() nrofrolls 11}}
+              {{#rollGreater() nrofrolls 12}} <div class=" sheet-template-right">Roll 13:</div> <div> {{multiroll12}} </div> {{/rollGreater() nrofrolls 12}}
+              {{#rollGreater() nrofrolls 13}} <div class=" sheet-template-right">Roll 14:</div> <div> {{multiroll13}} </div> {{/rollGreater() nrofrolls 13}}
+              {{#rollGreater() nrofrolls 14}} <div class=" sheet-template-right">Roll 15:</div> <div> {{multiroll14}} </div> {{/rollGreater() nrofrolls 14}}
+              {{#rollGreater() nrofrolls 15}} <div class=" sheet-template-right">Roll 16:</div> <div> {{multiroll15}} </div> {{/rollGreater() nrofrolls 15}}
+              {{#rollGreater() nrofrolls 16}} <div class=" sheet-template-right">Roll 17:</div> <div> {{multiroll16}} </div> {{/rollGreater() nrofrolls 16}}
+              {{#rollGreater() nrofrolls 17}} <div class=" sheet-template-right">Roll 18:</div> <div> {{multiroll17}} </div> {{/rollGreater() nrofrolls 17}}
+              {{#rollGreater() nrofrolls 18}} <div class=" sheet-template-right">Roll 19:</div> <div> {{multiroll18}} </div> {{/rollGreater() nrofrolls 18}}
+              {{#rollGreater() nrofrolls 19}} <div class=" sheet-template-right">Roll 20:</div> <div> {{multiroll19}} </div> {{/rollGreater() nrofrolls 19}}
+              {{#rollGreater() nrofrolls 20}} <div class=" sheet-template-right">Roll 21:</div> <div> {{multiroll20}} </div> {{/rollGreater() nrofrolls 20}}
+              {{#rollGreater() nrofrolls 21}} <div class=" sheet-template-right">Roll 22:</div> <div> {{multiroll21}} </div> {{/rollGreater() nrofrolls 21}}
+              {{#rollGreater() nrofrolls 22}} <div class=" sheet-template-right">Roll 23:</div> <div> {{multiroll22}} </div> {{/rollGreater() nrofrolls 22}}
+              {{#rollGreater() nrofrolls 23}} <div class=" sheet-template-right">Roll 24:</div> <div> {{multiroll23}} </div> {{/rollGreater() nrofrolls 23}}
+              {{#rollGreater() nrofrolls 24}} <div class=" sheet-template-right">Roll 25:</div> <div> {{multiroll24}} </div> {{/rollGreater() nrofrolls 24}}
+              {{#rollGreater() nrofrolls 25}} <div class=" sheet-template-right">Roll 26:</div> <div> {{multiroll25}} </div> {{/rollGreater() nrofrolls 25}}
+            </div>
+            {{/nrofrolls}}
+
+
+
+            {{#hit}}
+            <div class="sheet-template-header">{{character}} attacks with {{weapon}}</div>
+
+            <div class="sheet-template-2xn ">
+              <div class="sheet-template-right">{{rollhit}}</div>
+              {{#^rollLess() rollhit 0 }}<div style="float: right">Degrees of success</div>{{/^rollLess() rollhit 0 }}
+              {{#rollLess() rollhit 0 }}<div style="float: right">Degrees of failure</div>{{/rollLess() rollhit 0 }}
             </div>
 
-          </div>
-          {{/damage}}
-          {{#description}}
-          {{#name}}<div class="sheet-template-header">{{name}}</div>{{/name}}
-          <div class="sheet-template-content">
-            <div class="sheet-template-row ">{{description}}</div>
-          </div>
-          {{/description}}
+            {{#rollWasCrit() rollhit }}<div class=" template-center">A CRITICAL FAIL!</div>{{/rollWasCrit() rollhit }}
+            {{#rollWasFumble() rollhit }}<div class=" template-center">A CRITICAL HIT!</div>{{/rollWasFumble() rollhit }}
+            {{/hit}}
+
+            {{#loc}}
+            <div class=" sheet-template-center sheet-template-break">Hit Location {{loc}}</div>
+            <div class=" sheet-template-center">
+              {{#rollBetween() loc 1 10}}  HEAD:    {{/rollBetween() loc 1 10}}
+              {{#rollBetween() loc 1 2}}   Neck     {{/rollBetween() loc 1 2}}
+              {{#rollBetween() loc 3 5}}   Mouth    {{/rollBetween() loc 3 5}}
+              {{#rollBetween() loc 6 7}}   Nose     {{/rollBetween() loc 6 7}}
+              {{#rollBetween() loc 8 8}}   Eyes     {{/rollBetween() loc 8 8}}
+              {{#rollBetween() loc 9 9}}   Ear      {{/rollBetween() loc 9 9}}
+              {{#rollBetween() loc 10 10}} Forehead {{/rollBetween() loc 10 10}}
+
+              {{#rollBetween() loc 11 20}}  LEFT ARM: {{/rollBetween() loc 11 20}}
+              {{#rollBetween() loc 11 12}}  Hands     {{/rollBetween() loc 11 12}}
+              {{#rollBetween() loc 13 15}}  Forearm   {{/rollBetween() loc 13 15}}
+              {{#rollBetween() loc 16 16}}  Elbow     {{/rollBetween() loc 16 16}}
+              {{#rollBetween() loc 17 19}}  Bicep     {{/rollBetween() loc 17 19}}
+              {{#rollBetween() loc 20 20}}  Shoulder  {{/rollBetween() loc 20 20}}
+
+              {{#rollBetween() loc 21 30}}  RIGHT ARM: {{/rollBetween() loc 21 30}}
+              {{#rollBetween() loc 21 22}}  Hands      {{/rollBetween() loc 21 22}}
+              {{#rollBetween() loc 23 25}}  Forearm	   {{/rollBetween() loc 23 25}}
+              {{#rollBetween() loc 26 26}}  Elbow      {{/rollBetween() loc 26 26}}
+              {{#rollBetween() loc 27 29}}  Bicep  	   {{/rollBetween() loc 27 29}}
+              {{#rollBetween() loc 30 30}}  Shoulder   {{/rollBetween() loc 30 30}}
+
+              {{#rollBetween() loc 31 45}}  LEFT LEG:	{{/rollBetween() loc 31 45}}
+              {{#rollBetween() loc 31 32}}  Foot      {{/rollBetween() loc 31 32}}
+              {{#rollBetween() loc 33 37}}  Shin      {{/rollBetween() loc 33 37}}
+              {{#rollBetween() loc 38 38}}  Knee      {{/rollBetween() loc 38 38}}
+              {{#rollBetween() loc 39 43}}  Thigh     {{/rollBetween() loc 39 43}}
+              {{#rollBetween() loc 44 45}}  Hip       {{/rollBetween() loc 44 45}}
+
+              {{#rollBetween() loc 46 60}}  RIGHT LEG: {{/rollBetween() loc 46 60}}
+              {{#rollBetween() loc 46 47}}  Foot       {{/rollBetween() loc 46 47}}
+              {{#rollBetween() loc 48 53}}  Shin       {{/rollBetween() loc 48 53}}
+              {{#rollBetween() loc 54 54}}  Knee       {{/rollBetween() loc 54 54}}
+              {{#rollBetween() loc 55 58}}  Thigh      {{/rollBetween() loc 55 58}}
+              {{#rollBetween() loc 59 60}}  Hip        {{/rollBetween() loc 59 60}}
+
+              {{#rollBetween() loc 61 100}} CHEST:	                  {{/rollBetween() loc 61 100}}
+              {{#rollBetween() loc 61 65}}  Pelvis                    {{/rollBetween() loc 61 65}}
+              {{#rollBetween() loc 66 72}}  Intestines                {{/rollBetween() loc 66 72}}
+              {{#rollBetween() loc 73 78}}  Spine                     {{/rollBetween() loc 73 78}}
+              {{#rollBetween() loc 79 84}}  Stomach / Kidney / Liver  {{/rollBetween() loc 79 84}}
+              {{#rollBetween() loc 85 89}}  Heart                     {{/rollBetween() loc 85 89}}
+              {{#rollBetween() loc 90 96}}  Lungs                     {{/rollBetween() loc 90 96}}
+              {{#rollBetween() loc 97 100}} Ribcage / No Organ Struck {{/rollBetween() loc 97 100}}
+            </div>
+            {{/loc}}
 
 
 
-          {{#scatter-range}}
-          <div class="sheet-template-header">{{character}} scatters </div>
-          <div class="sheet-template-content">
-            <div class="sheet-template-row template-center">Range: {{scatter-range}} meters</div>
+            {{#damage}}
+            <div class="sheet-template-header">{{weapon}} damage</div>
+
+            <div class="sheet-template-2xn">
+              <div class="sheet-template-2xn">
+                <div class=" sheet-template-right">Damage</div>
+                <div class=" mythic_crit">{{rolldamage}}</div>
+              </div>
+              <div class="sheet-template-2xn">
+                <div class=" sheet-template-right">Pierce</div>
+                <div class=" mythic_crit">{{rollpierce}}</div>
+              </div>
+            </div>
+            {{/damage}}
+
+
+
+            {{#description}}
+            <div class="sheet-template-header">{{name}}</div>
+            <div class="sheet-template-paddedtext">{{description}}</div>
+            {{/description}}
+
+
+
+
+
+
+
+
+            {{#scatter-range}}
+            <div class="sheet-template-header">{{character}} scatters </div>
+            <div class=" template-center">Range: {{scatter-range}} meters</div>
+            <br>
             {{#rollBetween() scatter-direction 1 2}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/1-2-scatter-N.png?raw=true">{{/rollBetween() scatter-direction 1 2}}
             {{#rollBetween() scatter-direction 3 3}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/3-scatter-NE.png?raw=true">{{/rollBetween() scatter-direction 3 3}}
             {{#rollBetween() scatter-direction 4 4}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/4-scatter-E.png?raw=true">{{/rollBetween() scatter-direction 4 4}}
@@ -4147,47 +4141,44 @@
             {{#rollBetween() scatter-direction 8 8}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/8-scatter-SW.png?raw=true">{{/rollBetween() scatter-direction 8 8}}
             {{#rollBetween() scatter-direction 9 9}}   <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/9-scatter-W.png?raw=true">{{/rollBetween() scatter-direction 9 9}}
             {{#rollBetween() scatter-direction 10 10}} <img src="https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Scatter/10-scatter-NW.png?raw=true">{{/rollBetween() scatter-direction 10 10}}
-
-          </div>
-          {{/scatter-range}}
+            {{/scatter-range}}
 
 
 
-          {{#2x2}}
-          <div class="sheet-template-header">{{character}}: {{name}}</div>
-          <div class="sheet-template-content">
+            {{#2x2}}
+            <div class="sheet-template-header">{{character}}: {{name}}</div>
 
-            <div class="sheet-template-2x2">
-              <div class="sheet-template-row sheet-template-right">{{2x2-name}}</div>
+            <div class="sheet-template-2xn">
+              <div class=" sheet-template-right">{{2x2-name}}</div>
               <div><div class="sheet-inlineresult">{{2x2}}</div></div>
-              <div class="sheet-template-row sheet-template-right">{{2x2-name-max}}</div>
+              <div class=" sheet-template-right">{{2x2-name-max}}</div>
               <div><div class="sheet-inlineresult">{{2x2-max}}</div></div>
             </div>
 
-          </div>
-          {{/2x2}}
+            {{/2x2}}
 
-          {{#4x2-1}}
-          <div class="sheet-template-header">{{character}}: {{name}}</div>
-          <div class="sheet-template-content">
-            <div class="sheet-template-2x2">
+            {{#4x2-1}}
+            <div class="sheet-template-header">{{character}}: {{name}}</div>
 
-              <div class="sheet-template-2x2">
-                <div class="sheet-template-row sheet-template-right">{{4x2-1-name}}</div>
+            <div class="sheet-template-2xn">
+
+              <div class="sheet-template-2xn">
+                <div class=" sheet-template-right">{{4x2-1-name}}</div>
                 <div><div class="sheet-inlineresult">{{4x2-1}}</div></div>
-                <div class="sheet-template-row sheet-template-right">{{4x2-1-name-max}}</div>
+                <div class=" sheet-template-right">{{4x2-1-name-max}}</div>
                 <div><div class="sheet-inlineresult">{{4x2-1-max}}</div></div>
               </div>
 
-              <div class="sheet-template-2x2">
-                <div class="sheet-template-row sheet-template-right">{{4x2-2-name}}</div>
+              <div class="sheet-template-2xn">
+                <div class=" sheet-template-right">{{4x2-2-name}}</div>
                 <div><div class="sheet-inlineresult">{{4x2-2}}</div></div>
-                <div class="sheet-template-row sheet-template-right">{{4x2-2-name-max}}</div>
+                <div class=" sheet-template-right">{{4x2-2-name-max}}</div>
                 <div><div class="sheet-inlineresult">{{4x2-2-max}}</div></div>
               </div>
 
             </div>
             {{/4x2-1}}
+
 
           </div>
         </rolltemplate>

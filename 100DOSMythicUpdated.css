@@ -993,53 +993,26 @@ ______________________________ start of rolltemplate ___________________________
 
 
 
-.sheet-rolltemplate-mythic .sheet-template-header,
-.sheet-rolltemplate-mythic .sheet-template-row {
+.sheet-rolltemplate-mythic .sheet-template-content {
+	background-image: url(https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Assets/Mythic_rolltemplate_background.png?raw=true);
+	background-size: 100%;
+	border-radius: 10px;
+	border: 1px solid grey;
+	overflow: hidden;
 	color: white;
 	line-height: 1.6em;
 	font-size: 1.2em;
 	font-family: Saira Semi Condensed;
+
 }
 
 .sheet-rolltemplate-mythic .sheet-template-header {
+	border-top: 1px solid grey;
 	background: #394C6A;
-	border-radius: 10px 10px 0px 0px;
-	border-left: 2px solid grey;
-	border-right: 2px solid grey;
-	border-top: 2px solid grey;
 	text-align: center;
 	text-decoration: underline;
 }
 
-.sheet-rolltemplate-mythic .sheet-template-content {
-	background: #4a648c;
-	background-image: url(https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Assets/Mythic_rolltemplate_background.png?raw=true);
-	background-size: 100%;
-	border-radius: 0px 0px 10px 10px;
-	border-left: 2px solid grey;
-	border-right: 2px solid grey;
-	border-bottom: 2px solid grey;
-	padding: 2px
-}
-
-.sheet-rolltemplate-mythic .sheet-template-content_top {
-	border-radius: 0px 0px 0px 0px;
-	border-bottom: 3px solid #394C6A;
-}
-
-.sheet-rolltemplate-mythic .sheet-template-round {
-	border-radius: 10px 10px 10px 10px;
-}
-
-.sheet-rolltemplate-mythic .sheet-template-2x2 {
-	display: grid;
-	grid-template-columns: auto auto
-}
-
-.sheet-rolltemplate-mythic .sheet-template-3x25 {
-	display: grid;
-	grid-template-columns: auto auto auto
-}
 
 .sheet-rolltemplate-mythic .sheet-template-right {
 	text-align: right;
@@ -1050,8 +1023,15 @@ ______________________________ start of rolltemplate ___________________________
 	text-align: center;
 }
 
-.sheet-rolltemplate-mythic .sheet-template-break {
-	margin-top: 10px;
+.sheet-rolltemplate-mythic .sheet-template-paddedtext {
+	padding-left: 5px;
+	padding-right:5px;
+}
+
+
+.sheet-rolltemplate-mythic .sheet-template-2xn {
+	display: grid;
+	grid-template-columns: auto auto
 }
 
 .sheet-rolltemplate-mythic .sheet-inlineresult {
