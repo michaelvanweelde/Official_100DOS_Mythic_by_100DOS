@@ -7,7 +7,7 @@
 
 
 
-  
+
 
 
   <input type="checkbox" name="attr_sheet_select" value="PC" class="hider hidden" checked />
@@ -1069,10 +1069,6 @@
           <textarea name="attr_ability_desc"></textarea>
         </fieldset>
       </div>
-
-
-
-
 
     </div>
 
@@ -2935,113 +2931,332 @@
           <input name="attr_npc_tab" type="checkbox"  value="medical" class="hider hidden" />
           <div>
 
-            <div class="NPC_medical radius_border_top NPC_medical_header">
-              <label class="medical_initial_label"><h2 class="medical_h2 medical_h2_rollable radius_border_top">Hit Location</h2> <button type="roll" name="button" value="@{to-gm}&{template:mythic} {{loc=[[1d100]]}}" class="hidden"></button></label>
+          <div class="border_full medical_padding">
+            <div class="medical_damage_effects medical_padding">
+
+              <div>
+                <Button type="action" class="medical_button" name="act_medicalturn">&nbsp;Turn&nbsp;</Button>
+                <Button type="action" class="medical_button" name="act_medicalreset">&nbsp;Reset all&nbsp;</Button>
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">Stunned</h3>
+                <input   name="attr_medical_status_Stunned" class="full_width" type="text">
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">Lost</h3>
+                <input   name="attr_medical_status_Lost" class="full_width" type="text">
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">Lockjaw</h3>
+                <input   name="attr_medical_status_Lockjaw" class="full_width" type="text">
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">Tinnitus</h3>
+                <input   name="attr_medical_status_Tinnitus" class="full_width" type="text">
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">Vision los</h3>
+                <input   name="attr_medical_status_Visionloss" class="full_width" type="text">
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">Shellshk</h3>
+                <input   name="attr_medical_status_Shellshock" class="full_width" type="text">
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">Whiplash</h3>
+                <input   name="attr_medical_status_Whiplash" class="full_width" type="text">
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">Winded</h3>
+                <input   name="attr_medical_status_Winded" class="full_width" type="text">
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">Gasping</h3>
+                <input   name="attr_medical_status_Gasping" class="full_width" type="text">
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">Slowed</h3>
+                <input   name="attr_medical_status_Slowed" class="full_width" type="text">
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">Suffocat</h3>
+                <input   name="attr_medical_status_suffocation" class="full_width" type="text">
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">Tattered</h3>
+                <input   name="attr_medical_status_Tattered" class="full_width" type="text">
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">Paralyzd </h3>
+                <input   name="attr_medical_status_Paralyzed" class="full_width" type="text">
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">Weaknd</h3>
+                <input   name="attr_medical_status_Weakened" class="full_width" type="text">
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">Flinch</h3>
+                <input   name="attr_medical_status_Flinch" class="full_width" type="text">
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">Drop</h3>
+                <input   name="attr_medical_status_Drop" class="full_width" type="text">
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">Bloodloss</h3>
+                <input   name="attr_medical_status_Bloodloss" class="full_width" type="text">
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">Knockdn</h3>
+                <input   name="attr_medical_status_Knockdown" class="full_width" type="text">
+              </div>
+
+              <div>
+                <h3 class="radius_border_top">L death</h3>
+                <input   name="attr_medical_status_Loomingdeath" class="full_width" type="text">
+              </div>
+
             </div>
 
-            <div class="NPC_medical ">
-              <h3 class="radius_border_top">Finger / Toe</h3>
-              <input name="attr_medical_g1" type="number" value="0" class="medical_input"/>
-              <textarea name="attr_medical_g1_text" class="medical_effect"></textarea>
+            <div>
+              <h3 class="radius_border_top">Other effects</h3>
+              <textarea name="attr_medical_status_Othereffects" class="medical_damage_effects_textarea"></textarea>
             </div>
 
-            <div class="NPC_medical">
-              <h3 class="radius_border_top">Heart</h3>
-              <input name="attr_medical_g2" type="number" value="0" class="medical_input"/>
-              <textarea name="attr_medical_g2_text" class="medical_effect"></textarea>
-            </div>
-
-            <div class="NPC_medical">
-              <h3 class="radius_border_top">Neck</h3>
-              <input name="attr_medical_g3" type="number" value="0" class="medical_input"/>
-              <textarea name="attr_medical_g3_text" class="medical_effect"></textarea>
-            </div>
-
-            <div class="NPC_medical">
-              <h3 class="radius_border_top">Skull / Brain</h3>
-              <input name="attr_medical_g4" type="number" value="0" class="medical_input"/>
-              <textarea name="attr_medical_g4_text" class="medical_effect"></textarea>
-            </div>
-
-            <div class="NPC_medical">
-              <h3 class="radius_border_top">Nose / Ear</h3>
-              <input name="attr_medical_g5" type="number" value="0" class="medical_input"/>
-              <textarea name="attr_medical_g5_text" class="medical_effect"></textarea>
-            </div>
-
-            <div class="NPC_medical">
-              <h3 class="radius_border_top">Limb (Arm / Leg)</h3>
-              <input name="attr_medical_g6" type="number" value="0" class="medical_input"/>
-              <textarea name="attr_medical_g6_text" class="medical_effect_long"></textarea>
-            </div>
-
-            <div class="NPC_medical">
-              <h3 class="radius_border_top">Small / Large Intestines</h3>
-              <input name="attr_medical_g7" type="number" value="0" class="medical_input"/>
-              <textarea name="attr_medical_g7_text" class="medical_effect"></textarea>
-            </div>
-
-            <div class="NPC_medical">
-              <h3 class="radius_border_top">Lungs</h3>
-              <input name="attr_medical_g8" type="number" value="0" class="medical_input"/>
-              <textarea name="attr_medical_g8_text" class="medical_effect_long"></textarea>
-            </div>
-
-            <div class="NPC_medical">
-              <h3 class="radius_border_top">Kidney / Stomach / Liver / Spleen</h3>
-              <input name="attr_medical_g9" type="number" value="0" class="medical_input"/>
-              <textarea name="attr_medical_g9_text" class="medical_effect"></textarea>
-            </div>
-
-            <div class="NPC_medical">
-              <h3 class="radius_border_top">Knee / Ankle / Shoulder / Elbow</h3>
-              <input name="attr_medical_g10" type="number" value="0" class="medical_input"/>
-              <textarea name="attr_medical_g10_text" class="medical_effect"></textarea>
-            </div>
-
-            <div class="NPC_medical">
-              <h3 class="radius_border_top">Eye</h3>
-              <input name="attr_medical_g11" type="number" value="0" class="medical_input"/>
-              <textarea name="attr_medical_g11_text" class="medical_effect_long"></textarea>
-            </div>
-
-            <div class="NPC_medical">
-              <h3 class="radius_border_top">Mouth</h3>
-              <input name="attr_medical_g12" type="number" value="0" class="medical_input"/>
-              <textarea name="attr_medical_g12_text" class="medical_effect"></textarea>
-            </div>
-
-            <div class="NPC_medical">
-              <h3 class="radius_border_top">Hand</h3>
-              <input name="attr_medical_g13" type="number" value="0" class="medical_input"/>
-              <textarea name="attr_medical_g13_text" class="medical_effect"></textarea>
-            </div>
-
-            <div class="NPC_medical">
-              <h3 class="radius_border_top">Chin / Jaw / Cheek</h3>
-              <input name="attr_medical_g14" type="number" value="0" class="medical_input"/>
-              <textarea name="attr_medical_g14_text" class="medical_effect"></textarea>
-            </div>
-
-            <div class="NPC_medical">
-              <h3 class="radius_border_top">Foot</h3>
-              <input name="attr_medical_g15" type="number" value="0" class="medical_input"/>
-              <textarea name="attr_medical_g15_text" class="medical_effect"></textarea>
-            </div>
-
-            <div class="NPC_medical">
-              <h3 class="radius_border_top">Pelvis</h3>
-              <input name="attr_medical_g16" type="number" value="0" class="medical_input"/>
-              <textarea name="attr_medical_g16_text" class="medical_effect_long"></textarea>
-            </div>
-
-            <div class="NPC_medical">
-              <h3 class="radius_border_top">Chest</h3>
-              <input name="attr_medical_g17" type="number" value="0" class="medical_input"/>
-              <textarea name="attr_medical_g17_text" class="medical_effect"></textarea>
-            </div>
           </div>
+
+            <div class="border_full">
+              <div class="medicalHOV">
+                <h3 class="radius_border">Neck</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action" name="act_neck1" class="medical_button"><div class="medical_text">1-25&nbsp;	Whiplash (1)                                        </div></button></div>
+                  <div><button type="action" name="act_neck2" class="medical_button"><div class="medical_text">26-40	Whiplash (2)                                            </div></button></div>
+                  <div><button type="action" name="act_neck3" class="medical_button"><div class="medical_text">41-55	Whiplash (3), Bloodloss (1)                             </div></button></div>
+                  <div><button type="action" name="act_neck4" class="medical_button"><div class="medical_text">56-70	Whiplash (4), Bloodloss (2), Looming Death (20)         </div></button></div>
+                  <div><button type="action" name="act_neck5" class="medical_button"><div class="medical_text">71+	&nbsp; Whiplash (4), Bloodloss (4), Looming Death (1D10)  </div></button></div>
+                </div>
+              </div>
+
+              <div class="medicalHOV">
+                <h3 class="radius_border">Mouth</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action"  name="act_mouth1" class="medical_button"><div class="medical_text">1-20&nbsp; Lockjaw (1)                                      </div></button></div>
+                  <div><button type="action"  name="act_mouth2" class="medical_button"><div class="medical_text">21-30	Lockjaw (5)                                           </div></button></div>
+                  <div><button type="action"  name="act_mouth3" class="medical_button"><div class="medical_text">31-40	Lockjaw (10), Lose 1D5 Teeth                          </div></button></div>
+                  <div><button type="action"  name="act_mouth4" class="medical_button"><div class="medical_text">41-50	Lockjaw (20), Lose 2D5 Teeth, &nbsp;Whiplash (2)      </div></button></div>
+                  <div><button type="action"  name="act_mouth5" class="medical_button"><div class="medical_text">51+	&nbsp; Lockjaw (P), &nbsp;lose 2D10 Teeth, Whiplash (4) </div></button></div>
+                </div>
+              </div>
+
+              <div class="medicalHOV">
+                <h3 class="radius_border">Nose</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action" name="act_nose1" class="medical_button"><div class="medical_text">1-20&nbsp; Nose Broken, Lost (2)              </div></button></div>
+                  <div><button type="action" name="act_nose2" class="medical_button"><div class="medical_text">21-30 Nose Broken, Lost (4)                   </div></button></div>
+                  <div><button type="action" name="act_nose3" class="medical_button"><div class="medical_text">31-40 Nose Broken, Gasping (2)                </div></button></div>
+                  <div><button type="action" name="act_nose4" class="medical_button"><div class="medical_text">41-50 Nose Broken, Gasping (3)                </div></button></div>
+                  <div><button type="action" name="act_nose5" class="medical_button"><div class="medical_text">51+ &nbsp; Nose Lost,&nbsp;&nbsp; Gasping (4) </div></button></div>
+                </div>
+              </div>
+
+              <div class="medicalHOV">
+                <h3 class="radius_border">Ear</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action" name="act_ear1" class="medical_button"><div class="medical_text">1-20&nbsp; Tinnitus (1)                                    </div></button></div>
+                  <div><button type="action" name="act_ear2" class="medical_button"><div class="medical_text">21-30	Tinnitus (3)                                         </div></button></div>
+                  <div><button type="action" name="act_ear3" class="medical_button"><div class="medical_text">31-40	Tinnitus (5),&nbsp; Flinch (1)                       </div></button></div>
+                  <div><button type="action" name="act_ear4" class="medical_button"><div class="medical_text">41-50	Tinnitus (10), Flinch (2),&nbsp; &nbsp; Whiplash (1) </div></button></div>
+                  <div><button type="action" name="act_ear5" class="medical_button"><div class="medical_text">51+ &nbsp;	Tinnitus (60), Stunned (3D5), Ear Lost         </div></button></div>
+                </div>
+              </div>
+
+              <div class="medicalHOV">
+                <h3 class="radius_border">Eye</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action" name="act_eye1" class="medical_button"><div class="medical_text">1-20&nbsp;	Vision Loss (3)                                   </div></button></div>
+                  <div><button type="action" name="act_eye2" class="medical_button"><div class="medical_text">21-30	Vision Loss (5)                                         </div></button></div>
+                  <div><button type="action" name="act_eye3" class="medical_button"><div class="medical_text">31-40	Vision Loss (10), Flinch (1)                            </div></button></div>
+                  <div><button type="action" name="act_eye4" class="medical_button"><div class="medical_text">41-50	Vision Loss (10), Flinch (2), &nbsp; &nbsp;Whiplash (1) </div></button></div>
+                  <div><button type="action" name="act_eye5" class="medical_button"><div class="medical_text">51+ &nbsp; Vision Loss (60), Stunned (3D5), Eye Los           </div></button></div>
+                </div>
+              </div>
+
+              <div class="medicalHOV">
+                <h3 class="radius_border">Forehead</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action" name="act_forehead1" class="medical_button"><div class="medical_text">1-30&nbsp;	Lost (2)                                   </div></button></div>
+                  <div><button type="action" name="act_forehead2" class="medical_button"><div class="medical_text">31-50 Lost (4),&nbsp; Shellshock (1)                  </div></button></div>
+                  <div><button type="action" name="act_forehead3" class="medical_button"><div class="medical_text">51-65 Lost (6),&nbsp; Shellshock (2)                  </div></button></div>
+                  <div><button type="action" name="act_forehead4" class="medical_button"><div class="medical_text">66-80 Lost (10), Shellshock (3D5), Looming Death (10) </div></button></div>
+                  <div><button type="action" name="act_forehead5" class="medical_button"><div class="medical_text">81+ &nbsp; Instant Death, Head destroyed              </div></button></div>
+                </div>
+              </div>
+
+              <div class="medicalHOV">
+                <h3 class="radius_border">Hand</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action" name="act_hand1" class="medical_button"><div class="medical_text">1-25&nbsp;	Flinch (1)                             </div></button></div>
+                  <div><button type="action" name="act_hand2" class="medical_button"><div class="medical_text">26-40 Flinch (1), Drop                            </div></button></div>
+                  <div><button type="action" name="act_hand3" class="medical_button"><div class="medical_text">41-55 Flinch (3), Drop (3), Bone Broken (Fracture)</div></button></div>
+                  <div><button type="action" name="act_hand4" class="medical_button"><div class="medical_text">56-70 Flinch (3), Drop (5), Bone Broken (Shatter) </div></button></div>
+                  <div><button type="action" name="act_hand5" class="medical_button"><div class="medical_text">71+ &nbsp;	Flinch (5), Hand lost                  </div></button></div>
+                </div>
+              </div>
+
+              <div class="medicalHOV">
+                <h3 class="radius_border">Bicep and Forearm</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action" name="act_bicepforearm1" class="medical_button"><div class="medical_text">1-30&nbsp;	Flinch (1)                    </div></button></div>
+                  <div><button type="action" name="act_bicepforearm2" class="medical_button"><div class="medical_text">31-50 Flinch (2), Paralyzed (1)          </div></button></div>
+                  <div><button type="action" name="act_bicepforearm3" class="medical_button"><div class="medical_text">51-65 Flinch (5), Bone Broken (Fracture) </div></button></div>
+                  <div><button type="action" name="act_bicepforearm4" class="medical_button"><div class="medical_text">66-80 Flinch (6), Bone Broken (Shatter)  </div></button></div>
+                  <div><button type="action" name="act_bicepforearm5" class="medical_button"><div class="medical_text">81+ &nbsp;	Looming Death (10), Arm lost  </div></button></div>
+                </div>
+              </div>
+
+              <div class="medicalHOV">
+                <h3 class="radius_border">Elbow and Shoulder</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action" name="act_elbowshoulder1" class="medical_button"><div class="medical_text">1-25&nbsp;	Weakened (1)                                                  </div></button></div>
+                  <div><button type="action" name="act_elbowshoulder2" class="medical_button"><div class="medical_text">26-40	Weakened (2), Drop                                                  </div></button></div>
+                  <div><button type="action" name="act_elbowshoulder3" class="medical_button"><div class="medical_text">41-55	Weakened (4), Drop (2), Bone Broken (Fracture)  </div></button></div>
+                  <div><button type="action" name="act_elbowshoulder4" class="medical_button"><div class="medical_text">56-70	Weakened (4), Paral (2), Bone Broken (Shatter)                  </div></button></div>
+                  <div><button type="action" name="act_elbowshoulder5" class="medical_button"><div class="medical_text">71+	&nbsp; Looming Death (9), Arm lost                                    </div></button></div>
+                </div>
+              </div>
+
+              <div class="medicalHOV">
+                <h3 class="radius_border">Foot</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action" name="act_foot1" class="medical_button"><div class="medical_text">1-25&nbsp;	Slowed (2)                                                              </div></button></div>
+                  <div><button type="action" name="act_foot2" class="medical_button"><div class="medical_text">26-40	Slowed (3), Knockdown                                                   </div></button></div>
+                  <div><button type="action" name="act_foot3" class="medical_button"><div class="medical_text">41-55	Slow (5), Knockdown (2), Bone Broken (Fracture)  </div></button></div>
+                  <div><button type="action" name="act_foot4" class="medical_button"><div class="medical_text">56-70	Slow (6),Knckdwn Pron (2), Bone Broken (Shatter)                  </div></button></div>
+                  <div><button type="action" name="act_foot5" class="medical_button"><div class="medical_text">71+	&nbsp; Slow (10), Knckdwn Pron (4), foot Lost                              </div></button></div>
+                </div>
+              </div>
+
+              <div class="medicalHOV">
+                <h3 class="radius_border">Shin and Thigh</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action" name="act_shinthigh1" class="medical_button"><div class="medical_text">1-30&nbsp;	Slowed (1)                                              </div></button></div>
+                  <div><button type="action" name="act_shinthigh2" class="medical_button"><div class="medical_text">31-50	Slowed (3)                                                    </div></button></div>
+                  <div><button type="action" name="act_shinthigh3" class="medical_button"><div class="medical_text">51-65	Slowed (6), Paral (2), Bone Broken (Fracture)       </div></button></div>
+                  <div><button type="action" name="act_shinthigh4" class="medical_button"><div class="medical_text">66-80	Slowed (7), Paral (3), Bone Broken (Shatter)        </div></button></div>
+                  <div><button type="action" name="act_shinthigh5" class="medical_button"><div class="medical_text">81+ &nbsp; Slowed (10), Paralyzed (4), L Death (8), Leg Lost  </div></button></div>
+                </div>
+              </div>
+
+              <div class="medicalHOV">
+                <h3 class="radius_border">Knee and Hip</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action" name="act_kneehip1" class="medical_button"><div class="medical_text">1-25&nbsp;	Knockdown                                               </div></button></div>
+                  <div><button type="action" name="act_kneehip2" class="medical_button"><div class="medical_text">26-40	Knockdown (1)                                                 </div></button></div>
+                  <div><button type="action" name="act_kneehip3" class="medical_button"><div class="medical_text">41-55	Knockdown (2), Slowed (3), Bone Broken (Fracture) </div></button></div>
+                  <div><button type="action" name="act_kneehip4" class="medical_button"><div class="medical_text">56-70	Knockdown (3), Slowed (5), Bone Broken (Shatter)  </div></button></div>
+                  <div><button type="action" name="act_kneehip5" class="medical_button"><div class="medical_text">71+	&nbsp; Knockdown (10), Slow (10), L Death (8), Leg Lost </div></button></div>
+                </div>
+              </div>
+
+              <div class="medicalHOV">
+                <h3 class="radius_border">Pelvis</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action" name="act_pelvis1" class="medical_button"><div class="medical_text">1-25&nbsp;	Slowed (2)                                              </div></button></div>
+                  <div><button type="action" name="act_pelvis2" class="medical_button"><div class="medical_text">26-40	Slowed (3), Tattered (2)                                      </div></button></div>
+                  <div><button type="action" name="act_pelvis3" class="medical_button"><div class="medical_text">41-55	Slowed (4), Tattered (3), &nbsp;Bone Broken (Fracture)              </div></button></div>
+                  <div><button type="action" name="act_pelvis4" class="medical_button"><div class="medical_text">56-70	Slowed (4), Tattered (5), &nbsp;Bone Broken (Shatter)               </div></button></div>
+                  <div><button type="action" name="act_pelvis5" class="medical_button"><div class="medical_text">71+ &nbsp;	Slowed (P), Tattered (20), Bone Broken (Shatter)</div></button></div>
+                </div>
+              </div>
+
+              <div class="medicalHOV">
+                <h3 class="radius_border">Intestines</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action" name="act_intestines1" class="medical_button"><div class="medical_text">1-25&nbsp;	Tattered (2)                                      </div></button></div>
+                  <div><button type="action" name="act_intestines2" class="medical_button"><div class="medical_text">26-40	Tattered (3), Weakened (2)                              </div></button></div>
+                  <div><button type="action" name="act_intestines3" class="medical_button"><div class="medical_text">41-50	Tattered (4), Weakened (4)                              </div></button></div>
+                  <div><button type="action" name="act_intestines4" class="medical_button"><div class="medical_text">51-60	Tattered (5), Weakened (5), Looming Death (15)          </div></button></div>
+                  <div><button type="action" name="act_intestines5" class="medical_button"><div class="medical_text">61+ &nbsp;	Tattered (6), Weakened (5), Looming Death (1D10)  </div></button></div>
+                </div>
+              </div>
+
+              <div class="medicalHOV">
+                <h3 class="radius_border">Spine</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action" name="act_spine1" class="medical_button"><div class="medical_text">1-25&nbsp;	Knockdown, Flinch (1), Drop </div></button></div>
+                  <div><button type="action" name="act_spine2" class="medical_button"><div class="medical_text">26-40	Knockdown (1), Flinch (2), Drop (2)             </div></button></div>
+                  <div><button type="action" name="act_spine3" class="medical_button"><div class="medical_text">41-55	Knockdown (3), Paral (2),  Bone Broken (Fracture)       </div></button></div>
+                  <div><button type="action" name="act_spine4" class="medical_button"><div class="medical_text">56-70	Knckdn Prone (5), Paral (5), Bone Broken(Shatter)</div></button></div>
+                  <div><button type="action" name="act_spine5" class="medical_button"><div class="medical_text">71+ &nbsp;	Spine destroyed, Instant Death                                              </div></button></div>
+                </div>
+              </div>
+
+              <div class="medicalHOV">
+                <h3 class="radius_border">Stomach, Kidney, and Liver</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action" name="act_stomach1" class="medical_button"><div class="medical_text">1-25&nbsp;	Gasping (1)                                   </div></button></div>
+                  <div><button type="action" name="act_stomach2" class="medical_button"><div class="medical_text">26-40	Gasping (2), Tattered (1)                           </div></button></div>
+                  <div><button type="action" name="act_stomach3" class="medical_button"><div class="medical_text">41-50	Gasping (3), Tattered (2)                           </div></button></div>
+                  <div><button type="action" name="act_stomach4" class="medical_button"><div class="medical_text">51-60	Gasping (4), Tattered (5), Looming Death (20)       </div></button></div>
+                  <div><button type="action" name="act_stomach5" class="medical_button"><div class="medical_text">61+ &nbsp;	Gasping (5), Tattered (6), Looming Death (10) </div></button></div>
+                </div>
+              </div>
+
+              <div class="medicalHOV">
+                <h3 class="radius_border">Heart</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action" name="act_heart1"class="medical_button"><div class="medical_text">1-25&nbsp;	Winded (5)                                        </div></button></div>
+                  <div><button type="action" name="act_heart2"class="medical_button"><div class="medical_text">26-40	Winded (10), Stunned (2D5), Looming Death (5D10)        </div></button></div>
+                  <div><button type="action" name="act_heart3"class="medical_button"><div class="medical_text">41-50	Winded (10), Stunned (3D5), Looming Death (3D10)        </div></button></div>
+                  <div><button type="action" name="act_heart4"class="medical_button"><div class="medical_text">51-60	Winded (P), &nbsp;Stunned (3D5), Looming Death (1D10) </div></button></div>
+                  <div><button type="action" name="act_heart5"class="medical_button"><div class="medical_text">61+ &nbsp;	Heart destroyed, Instant Death                    </div></button></div>
+                </div>
+              </div>
+
+              <div class="medicalHOV">
+                <h3 class="radius_border">Lungs</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action" name="act_lungs1" class="medical_button"><div class="medical_text">1-25&nbsp;	Winded (2), Gasping (2)               </div></button></div>
+                  <div><button type="action" name="act_lungs2" class="medical_button"><div class="medical_text">26-40	Winded (3), Gasping (3)                     </div></button></div>
+                  <div><button type="action" name="act_lungs3" class="medical_button"><div class="medical_text">41-50	Winded (4), Gasping (5), Looming Death (20) </div></button></div>
+                  <div><button type="action" name="act_lungs4" class="medical_button"><div class="medical_text">51-60	Winded (5), Gasping (5), Looming Death (15) </div></button></div>
+                  <div><button type="action" name="act_lungs5" class="medical_button"><div class="medical_text">61+	&nbsp; Winded (6), Gasping (5), Suffocation   </div></button></div>
+                </div>
+              </div>
+
+              <div class="medicalHOV">
+                <h3 class="radius_border">Ribcage or No Organ Struck</h3>
+                <div class="medicalHOV_not">
+                  <div><button type="action" name="act_ribcage1" class="medical_button"><div class="medical_text">1-30&nbsp;	Winded (1), Gasping (1)                         </div></button></div>
+                  <div><button type="action" name="act_ribcage2" class="medical_button"><div class="medical_text">31-50	Winded (2), Gasping (1)                               </div></button></div>
+                  <div><button type="action" name="act_ribcage3" class="medical_button"><div class="medical_text">51-65	Winded (3), Gasping (2)                               </div></button></div>
+                  <div><button type="action" name="act_ribcage4" class="medical_button"><div class="medical_text">66-80	Winded (4), Gasping (4), Bone Broken (Fractured)      </div></button></div>
+                  <div><button type="action" name="act_ribcage5" class="medical_button"><div class="medical_text">81+ &nbsp;	Winded (5), Gasping (4), Bone Broken (Shattered)</div></button></div>
+                </div>
+              </div>
+
+            </div>
         </div>
+
+      </div>
 
         <div>
           <input name="attr_npc_tab" type="checkbox"  value="vehicleweps" class="hider hidden" />
