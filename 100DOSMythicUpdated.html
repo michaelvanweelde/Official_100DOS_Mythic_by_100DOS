@@ -1058,7 +1058,7 @@
       </div>
 
       <br>
-
+      
       <div class="border_full">
         <h3 style="text-indent: -50px">Abilities</h3>
         <fieldset name='abilities' class='repeating_abilities'>
@@ -1340,280 +1340,378 @@
     <input name='attr_sheet_tab' type='checkbox'  value='medical' class='hider hidden' />
     <div class='box'>
       <!-- Medical -->
+
+      <div class="border_full medical_padding">
+        <div class="medical_damage_effects medical_padding">
+
+          <div>
+            <Button type="action" class="medical_button" name="act_medicalturn">&nbsp;Turn&nbsp;</Button>
+            <Button type="action" class="medical_button" name="act_medicalreset">&nbsp;Reset all&nbsp;</Button>
+          </div>
+
+          <div>
+            <h3 class="radius_border_top">Stunned</h3>
+            <input   name="attr_medical_status_Stunned" class="full_width" type="text">
+          </div>
+
+          <div>
+            <h3 class="radius_border_top">Lost</h3>
+            <input   name="attr_medical_status_Lost" class="full_width" type="text">
+          </div>
+
+          <div></div>
+
+          <div>
+            <h3 class="radius_border_top">Lockjaw</h3>
+            <input   name="attr_medical_status_Lockjaw" class="full_width" type="text">
+          </div>
+
+          <div>
+            <h3 class="radius_border_top">Tinnitus</h3>
+            <input   name="attr_medical_status_Tinnitus" class="full_width" type="text">
+          </div>
+
+          <div>
+            <h3 class="radius_border_top">Vision loss</h3>
+            <input   name="attr_medical_status_Visionloss" class="full_width" type="text">
+          </div>
+
+          <div>
+            <h3 class="radius_border_top">Shellshock</h3>
+            <input   name="attr_medical_status_Shellshock" class="full_width" type="text">
+          </div>
+
+          <div>
+            <h3 class="radius_border_top">Whiplash</h3>
+            <input   name="attr_medical_status_Whiplash" class="full_width" type="text">
+          </div>
+
+          <div>
+            <h3 class="radius_border_top">Winded</h3>
+            <input   name="attr_medical_status_Winded" class="full_width" type="text">
+          </div>
+
+          <div>
+            <h3 class="radius_border_top">Gasping</h3>
+            <input   name="attr_medical_status_Gasping" class="full_width" type="text">
+          </div>
+
+          <div>
+            <h3 class="radius_border_top">Slowed</h3>
+            <input   name="attr_medical_status_Slowed" class="full_width" type="text">
+          </div>
+
+          <div>
+            <h3 class="radius_border_top">Suffocation</h3>
+            <input   name="attr_medical_status_suffocation" class="full_width" type="text">
+          </div>
+
+          <div>
+            <h3 class="radius_border_top">Tattered</h3>
+            <input   name="attr_medical_status_Tattered" class="full_width" type="text">
+          </div>
+
+          <div>
+            <h3 class="radius_border_top">Paralyzed </h3>
+            <input   name="attr_medical_status_Paralyzed" class="full_width" type="text">
+          </div>
+
+          <div>
+            <h3 class="radius_border_top">Weakened</h3>
+            <input   name="attr_medical_status_Weakened" class="full_width" type="text">
+          </div>
+
+          <div>
+            <h3 class="radius_border_top">Flinch</h3>
+            <input   name="attr_medical_status_Flinch" class="full_width" type="text">
+          </div>
+
+          <div>
+            <h3 class="radius_border_top">Drop</h3>
+            <input   name="attr_medical_status_Drop" class="full_width" type="text">
+          </div>
+
+          <div>
+            <h3 class="radius_border_top">Bloodloss</h3>
+            <input   name="attr_medical_status_Bloodloss" class="full_width" type="text">
+          </div>
+
+          <div>
+            <h3 class="radius_border_top">Knockdown</h3>
+            <input   name="attr_medical_status_Knockdown" class="full_width" type="text">
+          </div>
+
+          <div>
+            <h3 class="radius_border_top">Looming death</h3>
+            <input   name="attr_medical_status_Loomingdeath" class="full_width" type="text">
+          </div>
+
+        </div>
+
+        <div>
+          <h3 class="radius_border_top">Other effects</h3>
+          <textarea name='attr_medical_status_Othereffects' class="medical_damage_effects_textarea"></textarea>
+        </div>
+
+      </div>
+
+
       <div class='medical-grid'>
 
         <div class="border_full">
-          <div>
-            <h3 class='medicalHOV'>Neck</h3>
-            <div>
-              <div class='medical_table'>01-12 Whiplash(1)</div>
-              <div class='medical_table'>13-24 Whiplash(2)</div>
-              <div class='medical_table'>25-36 Whiplash(3) Bloodloss(1)</div>
-              <div class='medical_table'>37-48 Whiplash(4) Bloodloss(2)</div>
-              <div class='medical_table'>48-60 Whiplash(4) Bloodloss(2) Looming Death(20)</div>
-              <div class='medical_table radius_border_bottom'>61+ &nbsp; Whiplash(4) Bloodloss(4) Looming Death(1D10)</div>
+
+          <div class="medicalHOV">
+            <h3 class="radius_border">Neck</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action" name="act_neck1" class='medical_button'><div class="medical_text">1-25&nbsp;	Whiplash (1)                                        </div></button></div>
+              <div><button type="action" name="act_neck2" class='medical_button'><div class="medical_text">26-40	Whiplash (2)                                            </div></button></div>
+              <div><button type="action" name="act_neck3" class='medical_button'><div class="medical_text">41-55	Whiplash (3), Bloodloss (1)                             </div></button></div>
+              <div><button type="action" name="act_neck4" class='medical_button'><div class="medical_text">56-70	Whiplash (4), Bloodloss (2), Looming Death (20)         </div></button></div>
+              <div><button type="action" name="act_neck5" class='medical_button'><div class="medical_text">71+	&nbsp; Whiplash (4), Bloodloss (4), Looming Death (1D10)  </div></button></div>
             </div>
           </div>
 
-          <div>
-            <h3 class='radius_border_top medicalHOV'>Mouth</h3>
-            <div>
-              <div class='medical_table'>01-08	Lockjaw(1)</div>
-              <div class='medical_table'>09-16	Lockjaw(5)</div>
-              <div class='medical_table'>17-24	Lockjaw(10) Lose 1D5 Teeth</div>
-              <div class='medical_table'>25-32	Lockjaw(15) Whiplash(1) Lose 1D5 Teeth</div>
-              <div class='medical_table'>33-40	Lockjaw(20) Whiplash(3) Lose 2D5 Teeth</div>
-              <div class='medical_table'>41+ &nbsp;	Lockjaw(Permanent) Whiplash(4) lose 2D10 Teeth</div>
+          <div class="medicalHOV">
+            <h3 class="radius_border">Mouth</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action"  name="act_mouth1" class='medical_button'><div class="medical_text">1-20&nbsp; Lockjaw (1)                                      </div></button></div>
+              <div><button type="action"  name="act_mouth2" class='medical_button'><div class="medical_text">21-30	Lockjaw (5)                                           </div></button></div>
+              <div><button type="action"  name="act_mouth3" class='medical_button'><div class="medical_text">31-40	Lockjaw (10), Lose 1D5 Teeth                          </div></button></div>
+              <div><button type="action"  name="act_mouth4" class='medical_button'><div class="medical_text">41-50	Lockjaw (20), Lose 2D5 Teeth, &nbsp;Whiplash (2)      </div></button></div>
+              <div><button type="action"  name="act_mouth5" class='medical_button'><div class="medical_text">51+	&nbsp; Lockjaw (P), &nbsp;lose 2D10 Teeth, Whiplash (4) </div></button></div>
             </div>
           </div>
 
-          <div>
-            <h3 class='radius_border_top medicalHOV'>Nose</h3>
-            <div>
-              <div class='medical_table'>01-08	Lost(2) Nose Broken</div>
-              <div class='medical_table'>09-16	Lost(4) Nose Broken</div>
-              <div class='medical_table'>17-24	Gasping(1) Nose Broken</div>
-              <div class='medical_table'>25-32	Gasping(2) Nose Broken</div>
-              <div class='medical_table'>33-40	Stunned(2D5) Nose Broken</div>
-              <div class='medical_table'>41+	&nbsp; Stunned(3D5) Nose Lost</div>
+          <div class="medicalHOV">
+            <h3 class="radius_border">Nose</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action" name="act_nose1" class='medical_button'><div class="medical_text">1-20&nbsp; Nose Broken, Lost (2)              </div></button></div>
+              <div><button type="action" name="act_nose2" class='medical_button'><div class="medical_text">21-30 Nose Broken, Lost (4)                   </div></button></div>
+              <div><button type="action" name="act_nose3" class='medical_button'><div class="medical_text">31-40 Nose Broken, Gasping (2)                </div></button></div>
+              <div><button type="action" name="act_nose4" class='medical_button'><div class="medical_text">41-50 Nose Broken, Gasping (3)                </div></button></div>
+              <div><button type="action" name="act_nose5" class='medical_button'><div class="medical_text">51+ &nbsp; Nose Lost,&nbsp;&nbsp; Gasping (4) </div></button></div>
             </div>
           </div>
 
-          <div>
-            <h3 class='radius_border_top medicalHOV'>Ear</h3>
-            <div>
-              <div class='medical_table'>01-08	Tinnitus(1)</div>
-              <div class='medical_table'>09-16	Tinnitus(3)</div>
-              <div class='medical_table'>17-24	Tinnitus(5)</div>
-              <div class='medical_table'>25-32	Tinnitus(10) Flinch(1)</div>
-              <div class='medical_table'>33-40	Tinnitus(10) Flinch(2) Whiplash(1)</div>
-              <div class='medical_table'>41+ &nbsp;	Tinnitus(60) Stunned(3D5) Ear Lost</div>
+          <div class="medicalHOV">
+            <h3 class="radius_border">Ear</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action" name="act_ear1" class='medical_button'><div class="medical_text">1-20&nbsp; Tinnitus (1)                                    </div></button></div>
+              <div><button type="action" name="act_ear2" class='medical_button'><div class="medical_text">21-30	Tinnitus (3)                                         </div></button></div>
+              <div><button type="action" name="act_ear3" class='medical_button'><div class="medical_text">31-40	Tinnitus (5),&nbsp; Flinch (1)                       </div></button></div>
+              <div><button type="action" name="act_ear4" class='medical_button'><div class="medical_text">41-50	Tinnitus (10), Flinch (2),&nbsp; &nbsp; Whiplash (1) </div></button></div>
+              <div><button type="action" name="act_ear5" class='medical_button'><div class="medical_text">51+ &nbsp;	Tinnitus (60), Stunned (3D5), Ear Lost         </div></button></div>
             </div>
           </div>
 
-          <div>
-            <h3 class='radius_border_top medicalHOV'>Eye</h3>
-            <div>
-              <div class='medical_table'>01-08	Vision Loss(1)</div>
-              <div class='medical_table'>09-16	Vision Loss(3)</div>
-              <div class='medical_table'>17-24	Vision Loss(5)</div>
-              <div class='medical_table'>25-32	Vision Loss(10) Flinch(1)</div>
-              <div class='medical_table'>33-40	Vision Loss(10) Flinch(2) Whiplash(1)</div>
-              <div class='medical_table'>41+ &nbsp;	Vision Loss(60) Stunned(3D5) Eye Lost</div>
+          <div class="medicalHOV">
+            <h3 class="radius_border">Eye</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action" name="act_eye1" class='medical_button'><div class="medical_text">1-20&nbsp;	Vision Loss (3)                                   </div></button></div>
+              <div><button type="action" name="act_eye2" class='medical_button'><div class="medical_text">21-30	Vision Loss (5)                                         </div></button></div>
+              <div><button type="action" name="act_eye3" class='medical_button'><div class="medical_text">31-40	Vision Loss (10), Flinch (1)                            </div></button></div>
+              <div><button type="action" name="act_eye4" class='medical_button'><div class="medical_text">41-50	Vision Loss (10), Flinch (2), &nbsp; &nbsp;Whiplash (1) </div></button></div>
+              <div><button type="action" name="act_eye5" class='medical_button'><div class="medical_text">51+ &nbsp; Vision Loss (60), Stunned (3D5), Eye Los           </div></button></div>
             </div>
           </div>
 
-          <div>
-            <h3 class='radius_border_top medicalHOV'>Forehead</h3>
-            <div>
-              <div class='medical_table'>01-14	Lost(2)</div>
-              <div class='medical_table'>15-28	Lost(4) Shellshock(1)</div>
-              <div class='medical_table'>29-42	Lost(6) Shellshock(2)</div>
-              <div class='medical_table'>43-56	Lost(10) Shellshock(5)</div>
-              <div class='medical_table'>57-70	Lost(10) Stunned(3D5) Looming Death(10)</div>
-              <div class='medical_table'>71+ &nbsp;	Instant Death, Head destroyed</div>
+          <div class="medicalHOV">
+            <h3 class="radius_border">Forehead</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action" name="act_forehead1" class='medical_button'><div class="medical_text">1-30&nbsp;	Lost (2)                                   </div></button></div>
+              <div><button type="action" name="act_forehead2" class='medical_button'><div class="medical_text">31-50 Lost (4),&nbsp; Shellshock (1)                  </div></button></div>
+              <div><button type="action" name="act_forehead3" class='medical_button'><div class="medical_text">51-65 Lost (6),&nbsp; Shellshock (2)                  </div></button></div>
+              <div><button type="action" name="act_forehead4" class='medical_button'><div class="medical_text">66-80 Lost (10), Shellshock (3D5), Looming Death (10) </div></button></div>
+              <div><button type="action" name="act_forehead5" class='medical_button'><div class="medical_text">81+ &nbsp; Instant Death, Head destroyed              </div></button></div>
             </div>
           </div>
 
-          <div>
-            <h3 class='radius_border_top medicalHOV'>Hand</h3>
-            <div>
-              <div class='medical_table'>01-12	Flinch(1)</div>
-              <div class='medical_table'>13-24	Flinch(1) Drop</div>
-              <div class='medical_table'>25-36	Flinch(2) Drop(3)</div>
-              <div class='medical_table'>37-48	Flinch(3) Drop(5) Bone Broken(Fracture)</div>
-              <div class='medical_table'>48-60	Flinch(3) Drop(10) Bone Broken(Shatter)</div>
-              <div class='medical_table'>61+ &nbsp;	Hand lost</div>
+          <div class="medicalHOV">
+            <h3 class="radius_border">Hand</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action" name="act_hand1" class='medical_button'><div class="medical_text">1-25&nbsp;	Flinch (1)                             </div></button></div>
+              <div><button type="action" name="act_hand2" class='medical_button'><div class="medical_text">26-40 Flinch (1), Drop                            </div></button></div>
+              <div><button type="action" name="act_hand3" class='medical_button'><div class="medical_text">41-55 Flinch (3), Drop (3), Bone Broken (Fracture)</div></button></div>
+              <div><button type="action" name="act_hand4" class='medical_button'><div class="medical_text">56-70 Flinch (3), Drop (5), Bone Broken (Shatter) </div></button></div>
+              <div><button type="action" name="act_hand5" class='medical_button'><div class="medical_text">71+ &nbsp;	Flinch (5), Hand lost                  </div></button></div>
             </div>
           </div>
 
-          <div>
-            <h3 class='radius_border_top medicalHOV'>Bicep / Forearm</h3>
-            <div>
-              <div class='medical_table'>01-14	Flinch(1)</div>
-              <div class='medical_table'>15-28	Flinch(2) Paralyzed(1)</div>
-              <div class='medical_table'>29-42	Flinch(3) Paralyzed(2)</div>
-              <div class='medical_table'>43-56	Flinch(5) Bone Broken(Fracture)</div>
-              <div class='medical_table'>57-70	Flinch(6) Bone Broken(Shatter)</div>
-              <div class='medical_table'>71+ &nbsp;	Looming Death(10) Arm lost</div>
+          <div class="medicalHOV">
+            <h3 class="radius_border">Bicep and Forearm</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action" name="act_bicepforearm1" class='medical_button'><div class="medical_text">1-30&nbsp;	Flinch (1)                    </div></button></div>
+              <div><button type="action" name="act_bicepforearm2" class='medical_button'><div class="medical_text">31-50 Flinch (2), Paralyzed (1)          </div></button></div>
+              <div><button type="action" name="act_bicepforearm3" class='medical_button'><div class="medical_text">51-65 Flinch (5), Bone Broken (Fracture) </div></button></div>
+              <div><button type="action" name="act_bicepforearm4" class='medical_button'><div class="medical_text">66-80 Flinch (6), Bone Broken (Shatter)  </div></button></div>
+              <div><button type="action" name="act_bicepforearm5" class='medical_button'><div class="medical_text">81+ &nbsp;	Looming Death (10), Arm lost  </div></button></div>
             </div>
           </div>
 
-          <div>
-            <h3 class='radius_border_top medicalHOV'>Elbow / Shoulder</h3>
-            <div>
-              <div class='medical_table'>01-12	Weakened(1)</div>
-              <div class='medical_table'>13-24	Weakened(2) Drop</div>
-              <div class='medical_table'>25-36	Weakened(3) Drop(1)</div>
-              <div class='medical_table'>37-48	Weakened(4) Drop(2) Bone Broken(Fracture)</div>
-              <div class='medical_table'>48-60	Weakened(4) Paralyzed(2) Bone Broken(Shatter)</div>
-              <div class='medical_table'>61+ &nbsp;	Looming Death(9) Arm lost</div>
+          <div class="medicalHOV">
+            <h3 class="radius_border">Elbow and Shoulder</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action" name="act_elbowshoulder1" class='medical_button'><div class="medical_text">1-25&nbsp;	Weakened (1)                                                  </div></button></div>
+              <div><button type="action" name="act_elbowshoulder2" class='medical_button'><div class="medical_text">26-40	Weakened (2), Drop                                                  </div></button></div>
+              <div><button type="action" name="act_elbowshoulder3" class='medical_button'><div class="medical_text">41-55	Weakened (4), Drop (2), &nbsp; &nbsp; &nbsp;Bone Broken (Fracture)  </div></button></div>
+              <div><button type="action" name="act_elbowshoulder4" class='medical_button'><div class="medical_text">56-70	Weakened (4), Paralyzed (2), Bone Broken (Shatter)                  </div></button></div>
+              <div><button type="action" name="act_elbowshoulder5" class='medical_button'><div class="medical_text">71+	&nbsp; Looming Death (9), Arm lost                                    </div></button></div>
             </div>
           </div>
 
-          <div>
-            <h3 class='radius_border_top medicalHOV'>Foot</h3>
-            <div>
-              <div class='medical_table'>01-12	Slowed(2)</div>
-              <div class='medical_table'>13-24	Slowed(3) Knockdown</div>
-              <div class='medical_table'>25-36	Slowed(3) Knockdown(1)</div>
-              <div class='medical_table'>37-48	Slowed(5) Knockdown(2) Bone Broken(Fracture)</div>
-              <div class='medical_table'>48-60	Slowed(6) Knockdown Prone(2) Bone Broken(Shatter)</div>
-              <div class='medical_table'>61+ &nbsp;	Slowed(10) Knockdown Prone(4) foot Lost</div>
+          <div class="medicalHOV">
+            <h3 class="radius_border">Foot</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action" name="act_foot1" class='medical_button'><div class="medical_text">1-25&nbsp;	Slowed (2)                                                              </div></button></div>
+              <div><button type="action" name="act_foot2" class='medical_button'><div class="medical_text">26-40	Slowed (3), &nbsp;Knockdown                                                   </div></button></div>
+              <div><button type="action" name="act_foot3" class='medical_button'><div class="medical_text">41-55	Slowed (5), &nbsp;Knockdown (2), &nbsp; &nbsp; &nbsp; Bone Broken (Fracture)  </div></button></div>
+              <div><button type="action" name="act_foot4" class='medical_button'><div class="medical_text">56-70	Slowed (6), &nbsp;Knockdown Prone (2), Bone Broken (Shatter)                  </div></button></div>
+              <div><button type="action" name="act_foot5" class='medical_button'><div class="medical_text">71+	&nbsp; Slowed (10), Knockdown Prone (4), foot Lost                              </div></button></div>
             </div>
           </div>
 
-          <div>
-            <h3 class='radius_border_top medicalHOV'>Shin / Thigh</h3>
-            <div>
-              <div class='medical_table'>01-14	Slowed(1)</div>
-              <div class='medical_table'>15-28	Slowed(3)</div>
-              <div class='medical_table'>29-42	Slowed(5) Paralyzed(1)</div>
-              <div class='medical_table'>43-56	Slowed(6) Paralyzed(2) Bone Broken(Fracture)</div>
-              <div class='medical_table'>57-70	Slowed(7) Paralyzed(3) Bone Broken(Shatter)</div>
-              <div class='medical_table'>71+ &nbsp;	Slowed(10) Paralyzed(4) Looming Death(8) Leg Lost</div>
+          <div class="medicalHOV">
+            <h3 class="radius_border">Shin and Thigh</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action" name="act_shinthigh1" class='medical_button'><div class="medical_text">1-30&nbsp;	Slowed (1)                                              </div></button></div>
+              <div><button type="action" name="act_shinthigh2" class='medical_button'><div class="medical_text">31-50	Slowed (3)                                                    </div></button></div>
+              <div><button type="action" name="act_shinthigh3" class='medical_button'><div class="medical_text">51-65	Slowed (6), &nbsp;Paralyzed (2), Bone Broken (Fracture)       </div></button></div>
+              <div><button type="action" name="act_shinthigh4" class='medical_button'><div class="medical_text">66-80	Slowed (7), &nbsp;Paralyzed (3), Bone Broken (Shatter)        </div></button></div>
+              <div><button type="action" name="act_shinthigh5" class='medical_button'><div class="medical_text">81+ &nbsp; Slowed (10), Paralyzed (4), Looming Death (8), Leg Lost  </div></button></div>
             </div>
           </div>
 
-          <div>
-            <h3 class='radius_border_top medicalHOV'>Knee / Hip</h3>
-            <div>
-              <div class='medical_table'>01-12	Knockdown</div>
-              <div class='medical_table'>13-24	Knockdown(1)</div>
-              <div class='medical_table'>25-36	Knockdown(2) Slowed(2)</div>
-              <div class='medical_table'>37-48	Knockdown(3) Slowed(3) Bone Broken(Fracture)</div>
-              <div class='medical_table'>48-60	Knockdown(3) Slowed(5) Bone Broken(Shatter)</div>
-              <div class='medical_table'>61+ &nbsp;	Knockdown(10) Slowed(10) Looming Death(8) Leg Lost</div>
+          <div class="medicalHOV">
+            <h3 class="radius_border">Knee and Hip</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action" name="act_kneehip1" class='medical_button'><div class="medical_text">1-25&nbsp;	Knockdown                                               </div></button></div>
+              <div><button type="action" name="act_kneehip2" class='medical_button'><div class="medical_text">26-40	Knockdown (1)                                                 </div></button></div>
+              <div><button type="action" name="act_kneehip3" class='medical_button'><div class="medical_text">41-55	Knockdown (2), &nbsp;Slowed (3), &nbsp;Bone Broken (Fracture) </div></button></div>
+              <div><button type="action" name="act_kneehip4" class='medical_button'><div class="medical_text">56-70	Knockdown (3), &nbsp;Slowed (5), &nbsp;Bone Broken (Shatter)  </div></button></div>
+              <div><button type="action" name="act_kneehip5" class='medical_button'><div class="medical_text">71+	&nbsp; Knockdown (10), Slowed (10), Looming Death (8), Leg Lost </div></button></div>
             </div>
           </div>
 
-          <div>
-            <h3 class='radius_border_top medicalHOV'>Pelvis</h3>
-            <div>
-              <div class='medical_table'>01-14	Slowed(2)</div>
-              <div class='medical_table'>15-28	Slowed(3)</div>
-              <div class='medical_table'>29-42	Slowed(3) Tattered(2)</div>
-              <div class='medical_table'>43-56	Slowed(4) Tattered(3) Bone Broken(Fracture)</div>
-              <div class='medical_table'>57-70	Slowed(4) Tattered(5) Bone Broken(Shatter)</div>
-              <div class='medical_table'>71+ &nbsp;	Slowed(Permanent) Tattered(20) Bone Broken(Shatter)</div>
+          <div class="medicalHOV">
+            <h3 class="radius_border">Pelvis</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action" name="act_pelvis1" class='medical_button'><div class="medical_text">1-25&nbsp;	Slowed (2)                                              </div></button></div>
+              <div><button type="action" name="act_pelvis2" class='medical_button'><div class="medical_text">26-40	Slowed (3), Tattered (2)                                      </div></button></div>
+              <div><button type="action" name="act_pelvis3" class='medical_button'><div class="medical_text">41-55	Slowed (4), Tattered (3), &nbsp;Bone Broken (Fracture)              </div></button></div>
+              <div><button type="action" name="act_pelvis4" class='medical_button'><div class="medical_text">56-70	Slowed (4), Tattered (5), &nbsp;Bone Broken (Shatter)               </div></button></div>
+              <div><button type="action" name="act_pelvis5" class='medical_button'><div class="medical_text">71+ &nbsp;	Slowed (P), Tattered (20), Bone Broken (Shatter)</div></button></div>
             </div>
           </div>
 
-          <div>
-            <h3 class='radius_border_top medicalHOV'>Intestines</h3>
-            <div>
-              <div class='medical_table'>01-10	Tattered(2)</div>
-              <div class='medical_table'>11-20	Tattered(3) Weakened(2)</div>
-              <div class='medical_table'>21-30	Tattered(4) Weakened(4)</div>
-              <div class='medical_table'>31-40	Tattered(5) Weakened(4)</div>
-              <div class='medical_table'>41-50	Tattered(5) Weakened(5) Looming Death(15)</div>
-              <div class='medical_table'>51+ &nbsp;	Tattered(6) Weakened(5) Looming Death(1D10)</div>
+          <div class="medicalHOV">
+            <h3 class="radius_border">Intestines</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action" name="act_intestines1" class='medical_button'><div class="medical_text">1-25&nbsp;	Tattered (2)                                      </div></button></div>
+              <div><button type="action" name="act_intestines2" class='medical_button'><div class="medical_text">26-40	Tattered (3), Weakened (2)                              </div></button></div>
+              <div><button type="action" name="act_intestines3" class='medical_button'><div class="medical_text">41-50	Tattered (4), Weakened (4)                              </div></button></div>
+              <div><button type="action" name="act_intestines4" class='medical_button'><div class="medical_text">51-60	Tattered (5), Weakened (5), Looming Death (15)          </div></button></div>
+              <div><button type="action" name="act_intestines5" class='medical_button'><div class="medical_text">61+ &nbsp;	Tattered (6), Weakened (5), Looming Death (1D10)  </div></button></div>
             </div>
           </div>
 
-          <div>
-            <h3 class='radius_border_top medicalHOV'>Spine</h3>
-            <div>
-              <div class='medical_table'>01-12	Flinch(1) Drop, and Knockdown</div>
-              <div class='medical_table'>13-24	Flinch(2) Drop(2) and Knockdown(1)</div>
-              <div class='medical_table'>25-36	Flinch(3) Paralyzed(2) and Knockdown(3)</div>
-              <div class='medical_table'>37-48	Paralyzed(2) Knockdown Prone(3) Bone Broken(Fractured)</div>
-              <div class='medical_table'>48-60	Paralyzed(5) Knockdown Prone(5) Bone Broken(Shattered)</div>
-              <div class='medical_table'>61+ &nbsp;	Spine destroyed, Instant Death</div>
+          <div class="medicalHOV">
+            <h3 class="radius_border">Spine</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action" name="act_spine1" class='medical_button'><div class="medical_text">1-25&nbsp;	Knockdown, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Flinch (1), &nbsp; &nbsp;Drop </div></button></div>
+              <div><button type="action" name="act_spine2" class='medical_button'><div class="medical_text">26-40	Knockdown (1), &nbsp; &nbsp; &nbsp; Flinch (2), &nbsp; &nbsp;Drop (2)             </div></button></div>
+              <div><button type="action" name="act_spine3" class='medical_button'><div class="medical_text">41-55	Knockdown (3), &nbsp; &nbsp; &nbsp; Paralyzed (2),  Bone Broken (Fractured)       </div></button></div>
+              <div><button type="action" name="act_spine4" class='medical_button'><div class="medical_text">56-70	Knockdown Prone (5), Paralyzed (5),  Bone Broken (Shattered)                      </div></button></div>
+              <div><button type="action" name="act_spine5" class='medical_button'><div class="medical_text">71+ &nbsp;	Spine destroyed, Instant Death                                              </div></button></div>
             </div>
           </div>
 
-          <div>
-            <h3 class='radius_border_top medicalHOV'>Stomach Kidney Liver</h3>
-            <div>
-              <div class='medical_table'>01-10	Gasping(1)</div>
-              <div class='medical_table'>11-20	Gasping(2) Tattered(1)</div>
-              <div class='medical_table'>21-30	Gasping(3) Tattered(2)</div>
-              <div class='medical_table'>31-40	Gasping(4) Tattered(4)</div>
-              <div class='medical_table'>41-50	Gasping(5) Tattered(5) Looming Death(20)</div>
-              <div class='medical_table'>51+ &nbsp;	Gasping(6) Tattered(6) Looming Death(10)</div>
+          <div class="medicalHOV">
+            <h3 class="radius_border">Stomach, Kidney, and Liver</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action" name="act_stomach1" class='medical_button'><div class="medical_text">1-25&nbsp;	Gasping (1)                                   </div></button></div>
+              <div><button type="action" name="act_stomach2" class='medical_button'><div class="medical_text">26-40	Gasping (2), Tattered (1)                           </div></button></div>
+              <div><button type="action" name="act_stomach3" class='medical_button'><div class="medical_text">41-50	Gasping (3), Tattered (2)                           </div></button></div>
+              <div><button type="action" name="act_stomach4" class='medical_button'><div class="medical_text">51-60	Gasping (4), Tattered (5), Looming Death (20)       </div></button></div>
+              <div><button type="action" name="act_stomach5" class='medical_button'><div class="medical_text">61+ &nbsp;	Gasping (5), Tattered (6), Looming Death (10) </div></button></div>
             </div>
           </div>
 
-          <div>
-            <h3 class='radius_border_top medicalHOV'>Heart</h3>
-            <div>
-              <div class='medical_table'>01-10	Winded(5)</div>
-              <div class='medical_table'>11-20	Winded(5)</div>
-              <div class='medical_table'>21-30	Winded(10) Stunned(2D5) Looming Death(5D10)</div>
-              <div class='medical_table'>31-40	Winded(10) Stunned(3D5) Looming Death(3D10)</div>
-              <div class='medical_table'>41-50	Winded(Permanent) Stunned(3D5) Looming Death(1D10)</div>
-              <div class='medical_table'>51+ &nbsp;	Heart destroyed, Instant Death</div>
+          <div class="medicalHOV">
+            <h3 class="radius_border">Heart</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action" name="act_heart1"class='medical_button'><div class="medical_text">1-25&nbsp;	Winded (5)                                        </div></button></div>
+              <div><button type="action" name="act_heart2"class='medical_button'><div class="medical_text">26-40	Winded (10), Stunned (2D5), Looming Death (5D10)        </div></button></div>
+              <div><button type="action" name="act_heart3"class='medical_button'><div class="medical_text">41-50	Winded (10), Stunned (3D5), Looming Death (3D10)        </div></button></div>
+              <div><button type="action" name="act_heart4"class='medical_button'><div class="medical_text">51-60	Winded (P), &nbsp;Stunned (3D5), Looming Death (1D10) </div></button></div>
+              <div><button type="action" name="act_heart5"class='medical_button'><div class="medical_text">61+ &nbsp;	Heart destroyed, Instant Death                    </div></button></div>
             </div>
           </div>
 
-          <div>
-            <h3 class='radius_border_top medicalHOV'>Lungs</h3>
-            <div>
-              <div class='medical_table'>01-10	Winded(2) Gasping(2)</div>
-              <div class='medical_table'>11-20	Winded(2) Gasping(2)</div>
-              <div class='medical_table'>21-30	Winded(4) Gasping(4)</div>
-              <div class='medical_table'>31-40	Winded(5) Gasping(5) Looming Death(20)</div>
-              <div class='medical_table'>41-50	Winded(6) Gasping(5) Looming Death(15)</div>
-              <div class='medical_table'>51+ &nbsp;	Winded(7) Gasping(5) Suffocation</div>
+          <div class="medicalHOV">
+            <h3 class="radius_border">Lungs</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action" name="act_lungs1" class='medical_button'><div class="medical_text">1-25&nbsp;	Winded (2), Gasping (2)               </div></button></div>
+              <div><button type="action" name="act_lungs2" class='medical_button'><div class="medical_text">26-40	Winded (3), Gasping (3)                     </div></button></div>
+              <div><button type="action" name="act_lungs3" class='medical_button'><div class="medical_text">41-50	Winded (4), Gasping (5), Looming Death (20) </div></button></div>
+              <div><button type="action" name="act_lungs4" class='medical_button'><div class="medical_text">51-60	Winded (5), Gasping (5), Looming Death (15) </div></button></div>
+              <div><button type="action" name="act_lungs5" class='medical_button'><div class="medical_text">61+	&nbsp; Winded (6), Gasping (5), Suffocation   </div></button></div>
             </div>
           </div>
 
-          <div>
-            <h3 class='radius_border_top medicalHOV'>Ribcage</h3>
-            <div>
-              <div class='medical_table'>01-14	Winded(1) Gasping(1)</div>
-              <div class='medical_table'>15-28	Winded(2) Gasping(1)</div>
-              <div class='medical_table'>29-42	Winded(3) Gasping(2)</div>
-              <div class='medical_table'>43-56	Winded(4) Gasping(3)</div>
-              <div class='medical_table'>57-70	Winded(5) Gasping(4) Bone Broken(Fractured)</div>
-              <div class='medical_table'>71+ &nbsp;	Winded(6) Gasping(4) Bone Broken(Shattered)</div>
+          <div class="medicalHOV">
+            <h3 class="radius_border">Ribcage or No Organ Struck</h3>
+            <div class="medicalHOV_not">
+              <div><button type="action" name="act_ribcage1" class='medical_button'><div class="medical_text">1-30&nbsp;	Winded (1), Gasping (1)                         </div></button></div>
+              <div><button type="action" name="act_ribcage2" class='medical_button'><div class="medical_text">31-50	Winded (2), Gasping (1)                               </div></button></div>
+              <div><button type="action" name="act_ribcage3" class='medical_button'><div class="medical_text">51-65	Winded (3), Gasping (2)                               </div></button></div>
+              <div><button type="action" name="act_ribcage4" class='medical_button'><div class="medical_text">66-80	Winded (4), Gasping (4), Bone Broken (Fractured)      </div></button></div>
+              <div><button type="action" name="act_ribcage5" class='medical_button'><div class="medical_text">81+ &nbsp;	Winded (5), Gasping (4), Bone Broken (Shattered)</div></button></div>
             </div>
           </div>
 
         </div>
 
         <div class='border_full'>
-          <label class='medical_initial_label'><h3 class='medical_h2 medical_h2_rollable radius_border_top'>Hit Location</h3> <button type='roll' name='button' value='@{to-gm}&{template:mythic} {{loc=[[1d100]]}}' class='hidden'></button></label>
+          <label><h3 class='medical_header'>Hit Location</h3> <button type='roll' name='button' value='@{to-gm}&{template:mythic} {{loc=[[1d100]]}}' class='hidden'></button></label>
           <h3> 01-10 HEAD</h3>
           <div class='medical_table'> 01-02 Neck</div>
-          <div class='medical_table'> 03-05 Mouth</div>
-          <div class='medical_table'> 06-07 Nose</div>
-          <div class='medical_table'> 08 Eyes</div>
-          <div class='medical_table'> 09 Ear</div>
-          <div class='medical_table'> 10 Forehead</div>
+          <div class='medical_table'> 03-04 Mouth</div>
+          <div class='medical_table'> 05-06 Nose</div>
+          <div class='medical_table'> 07 &nbsp; &nbsp;Eyes</div>
+          <div class='medical_table'> 08 &nbsp; &nbsp;Ear</div>
+          <div class='medical_table'> 10 &nbsp; &nbsp;Forehead</div>
           <h3>11-20 LEFT ARM</h3>
           <div class='medical_table'>11-12 Hands</div>
           <div class='medical_table'>13-15 Forearm</div>
-          <div class='medical_table'>16 Elbow</div>
+          <div class='medical_table'>16 &nbsp; &nbsp;Elbow</div>
           <div class='medical_table'>17-19 Bicep</div>
-          <div class='medical_table'>20 Shoulder</div>
+          <div class='medical_table'>20 &nbsp; &nbsp;Shoulder</div>
           <h3>21-30 RIGHT ARM</h3>
           <div class='medical_table'>21-22 Hands</div>
           <div class='medical_table'>23-25 Forearm</div>
-          <div class='medical_table'>26 Elbow</div>
+          <div class='medical_table'>26 &nbsp; &nbsp;Elbow</div>
           <div class='medical_table'>27-29 Bicep</div>
-          <div class='medical_table'>30 Shoulder</div>
+          <div class='medical_table'>30 &nbsp; &nbsp;Shoulder</div>
           <h3>31-45 LEFT LEG</h3>
           <div class='medical_table'>31-32 Foot</div>
           <div class='medical_table'>33-37 Shin</div>
-          <div class='medical_table'>38 Knee</div>
+          <div class='medical_table'>38 &nbsp; &nbsp;Knee</div>
           <div class='medical_table'>39-43 Thigh</div>
           <div class='medical_table'>44-45 hip</div>
           <h3>46-60 RIGHT LEG</h3>
           <div class='medical_table'>46-47 Foot</div>
           <div class='medical_table'>48-53 Shin</div>
-          <div class='medical_table'>54 Knee</div>
+          <div class='medical_table'>54 &nbsp; &nbsp;Knee</div>
           <div class='medical_table'>55-58 Thigh</div>
           <div class='medical_table'>59-60 hip</div>
           <h3>62-100 CHEST</h3>
-          <div class='medical_table'>61-65 Pelvis</div>
-          <div class='medical_table'>66-72 Intestines</div>
-          <div class='medical_table'>73-78 Kidney</div>
-          <div class='medical_table'>79-84 Stomach / Kidney / Liver</div>
-          <div class='medical_table'>85-89 Heart</div>
-          <div class='medical_table'>90-96 Lungs</div>
-          <div class='medical_table radius_border_bottom'>97-100 Ribcage, No Organ Struck</div>
+          <div class='medical_table'>61-65 &nbsp;Pelvis</div>
+          <div class='medical_table'>66-72 &nbsp;Intestines</div>
+          <div class='medical_table'>73-78 &nbsp;Kidney</div>
+          <div class='medical_table'>79-84 &nbsp;Stomach, Kidney, Liver</div>
+          <div class='medical_table'>85-89 &nbsp;Heart</div>
+          <div class='medical_table'>90-96 &nbsp;Lungs</div>
+          <div class='medical_table'>97-100 Ribcage, No Organ Struck</div>
         </div>
       </div>
 
@@ -3770,9 +3868,360 @@
     // ____________________Medical sheet worker___________________________________
     // ___________________________________________________________________________
 
+    const medicalconditions = [
+    ["neck1",'','','','','','','1','','','','','','','','','','','','','',''],
+    ["neck2",'','','','','','','2','','','','','','','','','','','','','',''],
+    ["neck3",'','','','','','','3','','','','','','','','','','1','','','',''],
+    ["neck4",'','','','','','','4','','','','','','','','','','2','','20','',''],
+    ["neck5",'','','','','','','4','','','','','','','','','','4','','1d10','',''],
+
+    ["mouth1",'','','1','','','','','','','','','','','','','','','','','',''],
+    ["mouth2",'','','5','','','','','','','','','','','','','','','','','',''],
+    ["mouth3",'','','10','','','','','','','','','','','','','','','','','Lost teeth ','1d5'],
+    ["mouth4",'','','20','','','','2','','','','','','','','','','','','','Lost teeth ','2d5'],
+    ["mouth5",'','','p','','','','4','','','','','','','','','','','','','Lost teeth ','2d10'],
+
+    ["nose1",'','2','','','','','','','','','','','','','','','','','','Nose broken',''],
+    ["nose2",'','4','','','','','','','','','','','','','','','','','','Nose broken',''],
+    ["nose3",'','','','','','','','','2','','','','','','','','','','','Nose broken',''],
+    ["nose4",'','','','','','','','','3','','','','','','','','','','','Nose broken',''],
+    ["nose5",'','','','','','','','','4','','','','','','','','','','','Nose lost',''],
+
+    ["ear1",'','','','1','','','','','','','','','','','','','','','','',''],
+    ["ear2",'','','','3','','','','','','','','','','','','','','','','',''],
+    ["ear3",'','','','5','','','','','','','','','','','1','','','','','',''],
+    ["ear4",'','','','10','','','1','','','','','','','','2','','','','','',''],
+    ["ear5",'3d5','','','60','','','','','','','','','','','','','','','','Ear lost',''],
+
+    ["eye1",'','','','','3','','','','','','','','','','','','','','','',''],
+    ["eye2",'','','','','5','','','','','','','','','','','','','','','',''],
+    ["eye3",'','','','','10','','','','','','','','','','1','','','','','',''],
+    ["eye4",'','','','','10','','1','','','','','','','','2','','','','','',''],
+    ["eye5",'3d5','','','','60','','','','','','','','','','','','','','','Eye lost',''],
+
+    ["forehead1",'','2','','','','','','','','','','','','','','','','','','',''],
+    ["forehead2",'','4','','','','1','','','','','','','','','','','','','','',''],
+    ["forehead3",'','6','','','','2','','','','','','','','','','','','','','',''],
+    ["forehead4",'','10','','','','3d5','','','','','','','','','','','','','10','',''],
+    ["forehead5",'','','','','','','','','','','','','','','','','','','','Instant Death, Head destroyed',''],
+
+    ["hand1",'','','','','','','','','','','','','','','1','','','','','',''],
+    ["hand2",'','','','','','','','','','','','','','','1','','','','','',''],
+    ["hand3",'','','','','','','','','','','','','','','3','3','','','','Hand Broken (Fractured)',''],
+    ["hand4",'','','','','','','','','','','','','','','3','5','','','','Hand Broken (Shattered)',''],
+    ["hand5",'','','','','','','','','','','','','','','5','','','','','Hand lost',''],
+
+    ["bicepforearm1",'','','','','','','','','','','','','','','1','','','','','',''],
+    ["bicepforearm2",'','','','','','','','','','','','','1','','2','','','','','',''],
+    ["bicepforearm3",'','','','','','','','','','','','','','','5','','','','','Bicep or Forearm Broken (Fractured)',''],
+    ["bicepforearm4",'','','','','','','','','','','','','','','6','','','','','Bicep or Forearm Broken (Shattered)',''],
+    ["bicepforearm5",'','','','','','','','','','','','','','','','','','','10','Bicep or Forearm lost',''],
+
+    ["elbowshoulder1",'','','','','','','','','','','','','','1','','','','','','',''],
+    ["elbowshoulder2",'','','','','','','','','','','','','','2','','','','','','',''],
+    ["elbowshoulder3",'','','','','','','','','','','','','','4','','2','','','','Elbow or Shoulder Broken (Fractured)',''],
+    ["elbowshoulder4",'','','','','','','','','','','','','2','4','','','','','','Elbow or Shoulder Broken (Shattered)',''],
+    ["elbowshoulder5",'','','','','','','','','','','','','','','','','','','9','Elbow or Shoulder lost',''],
+
+    ["foot1",'','','','','','','','','','2','','','','','','','','','','',''],
+    ["foot2",'','','','','','','','','','3','','','','','','','','','','',''],
+    ["foot3",'','','','','','','','','','5','','','','','','','','2','','Foot Broken (Fractured)',''],
+    ["foot4",'','','','','','','','','','6','','','','','','','','2','','Foot Broken (Shattered)',''],
+    ["foot5",'','','','','','','','','','10','','','','','','','','4','','Foot lost',''],
+
+    ["shinthigh1",'','','','','','','','','','1','','','','','','','','','','',''],
+    ["shinthigh2",'','','','','','','','','','3','','','','','','','','','','',''],
+    ["shinthigh3",'','','','','','','','','','6','','','2','','','','','','','Shin or Thigh Broken (Fractured)',''],
+    ["shinthigh4",'','','','','','','','','','7','','','3','','','','','','','Shin or Thigh Broken (Shattered)',''],
+    ["shinthigh5",'','','','','','','','','','10','','','4','','','','','','8','Leg Lost',''],
+
+    ["kneehip1",'','','','','','','','','','','','','','','','','','','','',''],
+    ["kneehip2",'','','','','','','','','','','','','','','','','','1','','',''],
+    ["kneehip3",'','','','','','','','','','3','','','','','','','','2','','Knee or Hip Broken (Fractured)',''],
+    ["kneehip4",'','','','','','','','','','5','','','','','','','','3','','Knee or Hip Broken (Shattered)',''],
+    ["kneehip5",'','','','','','','','','','10','','','','','','','','10','8','Leg Lost',''],
+
+    ["pelvis1",'','','','','','','','','','2','','','','','','','','','','',''],
+    ["pelvis2",'','','','','','','','','','3','','2','','','','','','','','',''],
+    ["pelvis3",'','','','','','','','','','4','','3','','','','','','','','Pelvis Broken (Fractured)',''],
+    ["pelvis4",'','','','','','','','','','4','','5','','','','','','','','Pelvis Broken (Shattered)',''],
+    ["pelvis5",'','','','','','','','','','p','','20','','','','','','','','Pelvis Broken (Shattered)',''],
+
+    ["intestines1",'','','','','','','','','','','','2','','','','','','','','',''],
+    ["intestines2",'','','','','','','','','','','','3','','2','','','','','','',''],
+    ["intestines3",'','','','','','','','','','','','4','','4','','','','','','',''],
+    ["intestines4",'','','','','','','','','','','','5','','5','','','','','15','',''],
+    ["intestines5",'','','','','','','','','','','','6','','5','','','','','1d10','',''],
+
+    ["spine1",'','','','','','','','','','','','','','','1','','','','','',''],
+    ["spine2",'','','','','','','','','','','','','','','2','2','','1','','',''],
+    ["spine3",'','','','','','','','','','','','','2','','','','','3','','Spine Broken (Fractured)',''],
+    ["spine4",'','','','','','','','','','','','','5','','','','','5','','Spine Broken (Shattered)',''],
+    ["spine5",'','','','','','','','','','','','','','','','','','','','Spine destroyed, Instant Death',''],
+
+    ["stomach1",'','','','','','','','','1','','','','','','','','','','','',''],
+    ["stomach2",'','','','','','','','','2','','','1','','','','','','','','',''],
+    ["stomach3",'','','','','','','','','3','','','2','','','','','','','','',''],
+    ["stomach4",'','','','','','','','','4','','','5','','','','','','','20','',''],
+    ["stomach5",'','','','','','','','','5','','','6','','','','','','','10','',''],
+
+    ["heart1",'','','','','','','','5','','','','','','','','','','','','',''],
+    ["heart2",'2d5','','','','','','','10','','','','','','','','','','','5d10','',''],
+    ["heart3",'3d5','','','','','','','10','','','','','','','','','','','3d10','',''],
+    ["heart4",'3d5','','','','','','','p','','','','','','','','','','','1d10','',''],
+    ["heart5",'','','','','','','','','','','','','','','','','','','','Heart destroyed, Instant Death',''],
+
+    ["lungs1",'','','','','','','','2','2','','','','','','','','','','','',''],
+    ["lungs2",'','','','','','','','3','3','','','','','','','','','','','',''],
+    ["lungs3",'','','','','','','','4','5','','','','','','','','','','20','',''],
+    ["lungs4",'','','','','','','','5','5','','','','','','','','','','15','',''],
+    ["lungs5",'','','','','','','','6','5','','','','','','','','','','','Suffocation',''],
+
+    ["ribcage1",'','','','','','','','1','1','','','','','','','','','','','',''],
+    ["ribcage2",'','','','','','','','2','1','','','','','','','','','','','',''],
+    ["ribcage3",'','','','','','','','3','2','','','','','','','','','','','',''],
+    ["ribcage4",'','','','','','','','4','4','','','','','','','','','','','Ribcage Broken (Fractured)',''],
+    ["ribcage5",'','','','','','','','5','4','','','','','','','','','','','Ribcage Broken (Shattered)','']
+    ];
+
+    const checkAndReturnMax = (input1, input2) =>{
+      const lowercaseInput1 = String(input1).toLowerCase();
+      const lowercaseInput2 = String(input2).toLowerCase();
+
+      if (lowercaseInput2 !== "" && isNaN(lowercaseInput2)) {
+        return input2;
+      }
+
+      if (lowercaseInput1 !== "" && isNaN(lowercaseInput1)) {
+        return input1;
+      }
+
+      const parsedInt1 = parseInt(lowercaseInput1, 10);
+      const parsedInt2 = parseInt(lowercaseInput2, 10);
+
+      if (!isNaN(parsedInt1) && !isNaN(parsedInt2)) {
+        return Math.max(parsedInt1, parsedInt2).toString();
+      }
+
+      if (!isNaN(parsedInt1)) {
+        return parsedInt1.toString();
+      }
+
+      if (!isNaN(parsedInt2)) {
+        return parsedInt2.toString();
+      }
+
+      return "";
+    }
+
+    const reducedbymod = (input,mod) =>{
+      if(input!==""){
+        return Math.max( input-Math.floor(mod),1)
+      }
+      return input
+    }
+
+
+    medicalconditions.forEach(button => {
+      var buttonparsed = button.slice()
+
+      on(`clicked:${button[0]}`, function() {
+
+        for (var i = 0; i < button.length; i++) {
+          var element = button[i];
+
+          if (typeof element === "string" && element.trim() !== "") {
+            var match = element.match(/\d+d\d+/g);
+
+            if (match) {
+              var numbers = match[0].match(/\d+/g).map(Number);
+              buttonparsed[i] = Math.floor(Math.random() * (numbers[1]*numbers[0] - numbers[0] + 1)) + numbers[0];
+            }
+          }
+        }
+
+        getAttrs([
+        'tou',
+        'tou_mythic',
+        'tou_advancement',
+
+        'medical_status_Stunned',
+        'medical_status_Lost',
+        'medical_status_Lockjaw',
+        'medical_status_Tinnitus',
+        'medical_status_Visionloss',
+        'medical_status_Shellshock',
+        'medical_status_Whiplash',
+        'medical_status_Winded',
+        'medical_status_Gasping',
+        'medical_status_Slowed',
+        'medical_status_suffocation',
+        'medical_status_Tattered',
+        'medical_status_Paralyzed',
+        'medical_status_Weakened',
+        'medical_status_Flinch',
+        'medical_status_Drop',
+        'medical_status_Bloodloss',
+        'medical_status_Knockdown',
+        'medical_status_Loomingdeath',
+        'medical_status_Othereffects'
+
+        ], function(values) {
+          const tou = parseInt(values['tou'], 10) || 0;
+          const tou_mythic = parseInt(values['tou_mythic'], 10) || 0;
+          const tou_advancement = parseInt(values['tou_advancement'], 10) || 0;
+          const tou_mod = Math.floor((tou + tou_advancement)/10)+tou_mythic
+
+          var Current_Stunned     = values['medical_status_Stunned'];
+          var Current_Lost        = values['medical_status_Lost'];
+          var Current_Lockjaw     = values['medical_status_Lockjaw'];
+          var Current_Tinnitus    = values['medical_status_Tinnitus'];
+          var Current_Visionloss  = values['medical_status_Visionloss'];
+          var Current_Shellshock  = values['medical_status_Shellshock'];
+          var Current_Whiplash    = values['medical_status_Whiplash'];
+          var Current_Winded      = values['medical_status_Winded'];
+          var Current_Gasping     = values['medical_status_Gasping'];
+          var Current_Slowed      = values['medical_status_Slowed'];
+          var Current_suffocation = values['medical_status_suffocation'];
+          var Current_Tattered    = values['medical_status_Tattered'];
+          var Current_Paralyzed   = values['medical_status_Paralyzed'];
+          var Current_Weakened    = values['medical_status_Weakened'];
+          var Current_Flinch      = values['medical_status_Flinch'];
+          var Current_Drop        = values['medical_status_Drop'];
+          var Current_Bloodloss   = values['medical_status_Bloodloss'];
+          var Current_Knockdown   = values['medical_status_Knockdown'];
+          var Current_Loomingdeath= values['medical_status_Loomingdeath'];
+          var Current_Othereffects= values['medical_status_Othereffects'];
+
+          if(buttonparsed[20] !==""){
+            if(Current_Othereffects !==""){
+              Current_Othereffects = Current_Othereffects + "\n" + buttonparsed[20] + buttonparsed[21]
+            } else {
+              Current_Othereffects = buttonparsed[20] + buttonparsed[21]
+            }
+          }
+
+
+          setAttrs({
+            medical_status_Stunned      : checkAndReturnMax(reducedbymod(buttonparsed[1],tou_mod) , Current_Stunned     ),
+            medical_status_Lost         : checkAndReturnMax(reducedbymod(buttonparsed[2],tou_mod/2) , Current_Lost        ),
+            medical_status_Lockjaw      : checkAndReturnMax(buttonparsed[3]                       , Current_Lockjaw     ),
+            medical_status_Tinnitus     : checkAndReturnMax(buttonparsed[4]                       , Current_Tinnitus    ),
+            medical_status_Visionloss   : checkAndReturnMax(buttonparsed[5]                       , Current_Visionloss  ),
+            medical_status_Shellshock   : checkAndReturnMax(buttonparsed[6]                       , Current_Shellshock  ),
+            medical_status_Whiplash     : checkAndReturnMax(buttonparsed[7]                       , Current_Whiplash    ),
+            medical_status_Winded       : checkAndReturnMax(buttonparsed[8]                       , Current_Winded      ),
+            medical_status_Gasping      : checkAndReturnMax(buttonparsed[9]                       , Current_Gasping     ),
+            medical_status_Slowed       : checkAndReturnMax(buttonparsed[10]                      , Current_Slowed      ),
+            medical_status_suffocation  : checkAndReturnMax(buttonparsed[11]                      , Current_suffocation ),
+            medical_status_Tattered     : checkAndReturnMax(buttonparsed[12]                      , Current_Tattered    ),
+            medical_status_Paralyzed    : checkAndReturnMax(buttonparsed[13]                      , Current_Paralyzed   ),
+            medical_status_Weakened     : checkAndReturnMax(buttonparsed[14]                      , Current_Weakened    ),
+            medical_status_Flinch       : checkAndReturnMax(buttonparsed[15]                      , Current_Flinch      ),
+            medical_status_Drop         : checkAndReturnMax(buttonparsed[16]                      , Current_Drop        ),
+            medical_status_Bloodloss    : checkAndReturnMax(buttonparsed[17]                      , Current_Bloodloss   ),
+            medical_status_Knockdown    : checkAndReturnMax(buttonparsed[18]                      , Current_Knockdown   ),
+            medical_status_Loomingdeath : checkAndReturnMax(buttonparsed[19]                      , Current_Loomingdeath),
+            medical_status_Othereffects : Current_Othereffects
 
 
 
+          });
+        });
+      });
+    });
+
+    on('clicked:medicalreset', function() {
+      setAttrs({
+        medical_status_Stunned      : "",
+        medical_status_Lost         : "",
+        medical_status_Lockjaw      : "",
+        medical_status_Tinnitus     : "",
+        medical_status_Visionloss   : "",
+        medical_status_Shellshock   : "",
+        medical_status_Whiplash     : "",
+        medical_status_Winded       : "",
+        medical_status_Gasping      : "",
+        medical_status_Slowed       : "",
+        medical_status_suffocation  : "",
+        medical_status_Tattered     : "",
+        medical_status_Paralyzed    : "",
+        medical_status_Weakened     : "",
+        medical_status_Flinch       : "",
+        medical_status_Drop         : "",
+        medical_status_Bloodloss    : "",
+        medical_status_Knockdown    : "",
+        medical_status_Loomingdeath : "",
+        medical_status_Othereffects : ""
+      });
+    });
+
+    on(`clicked:medicalturn`, function() {
+
+      getAttrs([
+      'medical_status_Stunned',
+      'medical_status_Lost',
+      'medical_status_Lockjaw',
+      'medical_status_Tinnitus',
+      'medical_status_Visionloss',
+      'medical_status_Shellshock',
+      'medical_status_Whiplash',
+      'medical_status_Winded',
+      'medical_status_Gasping',
+      'medical_status_Slowed',
+      'medical_status_suffocation',
+      'medical_status_Tattered',
+      'medical_status_Paralyzed',
+      'medical_status_Weakened',
+      'medical_status_Flinch',
+      'medical_status_Drop',
+      'medical_status_Bloodloss',
+      'medical_status_Knockdown',
+      'medical_status_Loomingdeath'
+
+      ], function(values) {
+        var Current_Stunned     = values['medical_status_Stunned'];
+        var Current_Lost        = values['medical_status_Lost'];
+        var Current_Lockjaw     = values['medical_status_Lockjaw'];
+        var Current_Tinnitus    = values['medical_status_Tinnitus'];
+        var Current_Visionloss  = values['medical_status_Visionloss'];
+        var Current_Shellshock  = values['medical_status_Shellshock'];
+        var Current_Whiplash    = values['medical_status_Whiplash'];
+        var Current_Winded      = values['medical_status_Winded'];
+        var Current_Gasping     = values['medical_status_Gasping'];
+        var Current_Slowed      = values['medical_status_Slowed'];
+        var Current_suffocation = values['medical_status_suffocation'];
+        var Current_Tattered    = values['medical_status_Tattered'];
+        var Current_Paralyzed   = values['medical_status_Paralyzed'];
+        var Current_Weakened    = values['medical_status_Weakened'];
+        var Current_Flinch      = values['medical_status_Flinch'];
+        var Current_Drop        = values['medical_status_Drop'];
+        var Current_Bloodloss   = values['medical_status_Bloodloss'];
+        var Current_Knockdown   = values['medical_status_Knockdown'];
+        var Current_Loomingdeath= values['medical_status_Loomingdeath'];
+
+        setAttrs({
+          medical_status_Stunned      : (!isNaN(Current_Stunned     ) && +Current_Stunned      > 0) ? String(Math.max(+Current_Stunned      - 2,0)) : Current_Stunned     ,
+          medical_status_Lost         : (!isNaN(Current_Lost        ) && +Current_Lost         > 0) ? String(Math.max(+Current_Lost         - 2,0)) : Current_Lost        ,
+          medical_status_Lockjaw      : (!isNaN(Current_Lockjaw     ) && +Current_Lockjaw      > 0) ? String(         +Current_Lockjaw      - 1   ) : Current_Lockjaw     ,
+          medical_status_Tinnitus     : (!isNaN(Current_Tinnitus    ) && +Current_Tinnitus     > 0) ? String(         +Current_Tinnitus     - 1   ) : Current_Tinnitus    ,
+          medical_status_Visionloss   : (!isNaN(Current_Visionloss  ) && +Current_Visionloss   > 0) ? String(         +Current_Visionloss   - 1   ) : Current_Visionloss  ,
+          medical_status_Shellshock   : (!isNaN(Current_Shellshock  ) && +Current_Shellshock   > 0) ? String(         +Current_Shellshock   - 1   ) : Current_Shellshock  ,
+          medical_status_Whiplash     : (!isNaN(Current_Whiplash    ) && +Current_Whiplash     > 0) ? String(         +Current_Whiplash     - 1   ) : Current_Whiplash    ,
+          medical_status_Winded       : (!isNaN(Current_Winded      ) && +Current_Winded       > 0) ? String(         +Current_Winded       - 1   ) : Current_Winded      ,
+          medical_status_Gasping      : (!isNaN(Current_Gasping     ) && +Current_Gasping      > 0) ? String(         +Current_Gasping      - 1   ) : Current_Gasping     ,
+          medical_status_Slowed       : (!isNaN(Current_Slowed      ) && +Current_Slowed       > 0) ? String(         +Current_Slowed       - 1   ) : Current_Slowed      ,
+          medical_status_suffocation  : (!isNaN(Current_suffocation ) && +Current_suffocation  > 0) ? String(         +Current_suffocation  - 1   ) : Current_suffocation ,
+          medical_status_Tattered     : (!isNaN(Current_Tattered    ) && +Current_Tattered     > 0) ? String(Math.max(+Current_Tattered     - 2,0)) : Current_Tattered    ,
+          medical_status_Paralyzed    : (!isNaN(Current_Paralyzed   ) && +Current_Paralyzed    > 0) ? String(         +Current_Paralyzed    - 1   ) : Current_Paralyzed   ,
+          medical_status_Weakened     : (!isNaN(Current_Weakened    ) && +Current_Weakened     > 0) ? String(         +Current_Weakened     - 1   ) : Current_Weakened    ,
+          medical_status_Flinch       : (!isNaN(Current_Flinch      ) && +Current_Flinch       > 0) ? String(         +Current_Flinch       - 2   ) : Current_Flinch      ,
+          medical_status_Drop         : (!isNaN(Current_Drop        ) && +Current_Drop         > 0) ? String(         +Current_Drop         - 1   ) : Current_Drop        ,
+          medical_status_Knockdown    : (!isNaN(Current_Knockdown   ) && +Current_Knockdown    > 0) ? String(         +Current_Knockdown    - 1   ) : Current_Knockdown   ,
+          medical_status_Loomingdeath : (!isNaN(Current_Loomingdeath) && +Current_Loomingdeath > 0) ? String(         +Current_Loomingdeath - 1   ) : Current_Loomingdeath
+        });
+      });
+    });
 
 
     // ___________________________________________________________________________
@@ -4111,10 +4560,10 @@
 
         <div class=" sheet-template-right">{{roll}}</div>
 
-        <div class="">
-          {{#^rollLess() roll 0 }}Degrees of success{{/^rollLess() roll 0 }}
-          {{#rollLess() roll 0 }}Degrees of failure{{/rollLess() roll 0 }}
-        </div>
+        <div class="template-DOS"><h3 class="template-DOS">DOS</h3></div>
+
+
+
 
       </div>
       {{/roll-name}}
@@ -4172,12 +4621,8 @@
 
       <div class="sheet-template-2xn ">
         <div class="sheet-template-right">{{rollhit}}</div>
-        {{#^rollLess() rollhit 0 }}<div style="float: right">Degrees of success</div>{{/^rollLess() rollhit 0 }}
-        {{#rollLess() rollhit 0 }}<div style="float: right">Degrees of failure</div>{{/rollLess() rollhit 0 }}
+        <h3 class="template-DOS">DOS</h3>
       </div>
-
-      {{#rollWasCrit() rollhit }}<div class=" template-center">A CRITICAL FAIL!</div>{{/rollWasCrit() rollhit }}
-      {{#rollWasFumble() rollhit }}<div class=" template-center">A CRITICAL HIT!</div>{{/rollWasFumble() rollhit }}
       {{/hit}}
 
       {{#loc}}
@@ -4185,11 +4630,11 @@
       <div class=" sheet-template-center">
         {{#rollBetween() loc 1 10}}  HEAD:    {{/rollBetween() loc 1 10}}
         {{#rollBetween() loc 1 2}}   Neck     {{/rollBetween() loc 1 2}}
-        {{#rollBetween() loc 3 5}}   Mouth    {{/rollBetween() loc 3 5}}
-        {{#rollBetween() loc 6 7}}   Nose     {{/rollBetween() loc 6 7}}
-        {{#rollBetween() loc 8 8}}   Eyes     {{/rollBetween() loc 8 8}}
-        {{#rollBetween() loc 9 9}}   Ear      {{/rollBetween() loc 9 9}}
-        {{#rollBetween() loc 10 10}} Forehead {{/rollBetween() loc 10 10}}
+        {{#rollBetween() loc 3 4}}   Mouth    {{/rollBetween() loc 3 4}}
+        {{#rollBetween() loc 5 6}}   Nose     {{/rollBetween() loc 5 6}}
+        {{#rollBetween() loc 7 7}}   Eyes     {{/rollBetween() loc 7 7}}
+        {{#rollBetween() loc 8 8}}   Ear      {{/rollBetween() loc 8 8}}
+        {{#rollBetween() loc 9 10}} Forehead {{/rollBetween() loc 9 10}}
 
         {{#rollBetween() loc 11 20}}  LEFT ARM: {{/rollBetween() loc 11 20}}
         {{#rollBetween() loc 11 12}}  Hands     {{/rollBetween() loc 11 12}}
@@ -4223,10 +4668,10 @@
         {{#rollBetween() loc 61 65}}  Pelvis                    {{/rollBetween() loc 61 65}}
         {{#rollBetween() loc 66 72}}  Intestines                {{/rollBetween() loc 66 72}}
         {{#rollBetween() loc 73 78}}  Spine                     {{/rollBetween() loc 73 78}}
-        {{#rollBetween() loc 79 84}}  Stomach / Kidney / Liver  {{/rollBetween() loc 79 84}}
+        {{#rollBetween() loc 79 84}}  Stomach, Kidney, Liver    {{/rollBetween() loc 79 84}}
         {{#rollBetween() loc 85 89}}  Heart                     {{/rollBetween() loc 85 89}}
         {{#rollBetween() loc 90 96}}  Lungs                     {{/rollBetween() loc 90 96}}
-        {{#rollBetween() loc 97 100}} Ribcage / No Organ Struck {{/rollBetween() loc 97 100}}
+        {{#rollBetween() loc 97 100}} Ribcage, No Organ Struck  {{/rollBetween() loc 97 100}}
       </div>
       {{/loc}}
 
