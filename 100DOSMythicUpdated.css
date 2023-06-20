@@ -950,12 +950,7 @@ ______________________________ start of settings tab ___________________________
 .sheet-settings_speciesinputwidth{width: 75%;}
 
 .sheet-tokenmoddisplay{	height: 82px !important;}
-.sheet-tokenmodbuttons{width: 60px !important;}
 
-.sheet-tokenmodbuttons_grid{
-	display: grid;
-	grid-template-columns: 55px 62px 68px 51px auto;
-}
 
 /* ______________________________ end of settings tab ______________________________
 ______________________________ start of NPC sheet overrides ________________________ */
