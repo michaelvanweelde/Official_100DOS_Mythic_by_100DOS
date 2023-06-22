@@ -996,12 +996,19 @@ ______________________________ start of NPC sheet overrides ____________________
 }
 
 .sheet-NPC_characteristics_fields { height: 26px !important; font-size: 16px; color: white;}
-.sheet-NPC_characteristics_roll { width:calc(100% - 10px); height: 20px !important; font-size: 16px; }
-.sheet-NPC_characteristics {
+.sheet-NPC_characteristics_roll { width:calc(100% - 10px); height: 20.3px !important; font-size: 16px; }
+.sheet-NPC_characteristics_cols {
 	color: white;
 	display: grid;
 	grid-template-columns: 60px 40px 10px 40px 10px 60px 60px;
 }
+.sheet-NPC_characteristics_rows {
+	display: grid;
+	grid-template-columns: 100%;
+
+}
+
+
 .sheet-NPC_pageselect{
 	display: grid;
 	grid-template-columns: 70px 67px 120px;
