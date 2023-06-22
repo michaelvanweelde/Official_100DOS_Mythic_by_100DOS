@@ -470,36 +470,48 @@ ______________________________ start of minimisable infographic ________________
 	grid-template-columns: 99px 99px 99px 99px 203px 203px
 }
 
-.sheet-infographic_g1 { grid-area: mi1; background: #394C6A !important;border: 0px solid transparent !important; font-family: Orbitron !important;justify-self: center; margin: -2px 0px 0px 0px!important;width: 100%; }
-.sheet-infographic_g2 { grid-area: mi2; color: white; justify-self: right; margin-top: 3px; margin-right: 3px; }
-.sheet-infographic_g3 { grid-area: mi3; }
-.sheet-infographic_g4 { grid-area: mi4; color: white; justify-self: right; margin-top: 3px; margin-right: 3px; }
-.sheet-infographic_g5 { grid-area: mi5; border-bottom-right-radius: 11px}
-.sheet-infographic_field2x3 {
-	background: #4a648c;
-	display: grid;
-	grid-template-columns: 50px 46px;
-	grid-template-rows: 25px 25px 25px;
-	grid-template-areas:
-	'mi1 mi1'
-	'mi2 mi3'
-	'mi4 mi5';
+
+.sheet-infographic_header_text {
+	background: #394C6A !important;
+	border: 0px solid transparent !important;
+	border-radius: 0px 0px 0px 3px !important;
+	font-family: Orbitron !important;
+	width: 100%;
+	margin: -1px 0px 0px 0px !important;
+	box-shadow: none;
 }
 
-.sheet-infographic_g6 { grid-area: mi6; color: white; font-family: Saira Semi Condensed; justify-self: right; margin-top: 3px; margin-right: 3px; }
-.sheet-infographic_g7 { grid-area: mi7; }
-.sheet-infographic_g8 { grid-area: mi8; color: white; font-family: Saira Semi Condensed; justify-self: right; margin-top: 3px; margin-right: 3px; }
-.sheet-infographic_g9 { grid-area: mi9; }
-.sheet-infographic_field4x3 {
+.sheet-infographic_header_checkmark {
+	width: 100%;
+	text-align: right;
+	border: 0px solid transparent;
+	border-radius: 0px 0px 3px 0px;
+	font-family: Orbitron !important;
+	font-weight: normal;
+	font-size: 18px;
+	margin: 1px 0px 0px -3px;
+}
+.sheet-infographic_text {color: white; justify-self: right; margin-top: 3px; margin-right: 3px; }
+.sheet-infographic_last_element {border-bottom-right-radius: 11px}
+
+.sheet-infographic_header_grid_checkbox {
+	display: grid;
+	grid-template-columns: 65px auto;
+}
+.sheet-infographic_grid_4x {
 	background: #4a648c;
 	display: grid;
 	grid-template-columns: 50px 50px 50px 50px;
-	grid-template-rows: 25px 25px 25px;
-	grid-template-areas:
-	'mi1 mi1 mi1 mi1'
-	'mi6 mi7 mi2 mi3'
-	'mi8 mi9 mi4 mi5';
+	grid-template-rows: 26px 26px;
 }
+
+.sheet-infographic_field_2x {
+	background: #4a648c;
+	display: grid;
+	grid-template-columns: 50px 46px;
+	grid-template-rows: 26px 26px;
+}
+
 
 .sheet-armorgrid_description_container{overflow: hidden;border-radius: 10px}
 .sheet-armorgrid_description{height:calc(100% - 11px); border-radius: 10px}
