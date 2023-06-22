@@ -1,8 +1,8 @@
-<div class="compendium-drop-target">
-  <input name="attr_comp_category" accept="Category" type="text" />
-  <input name="attr_comp_Name" accept="Name" type="text" />
-  <input name="attr_comp_data" accept="data" type="text" />
-  <hr>
+<div class="compendium-drop-target background_radius">
+  <input name="attr_comp_category" accept="Category" type="text" hidden/>
+  <input name="attr_comp_Name" accept="Name" type="text" hidden/>
+  <input name="attr_comp_data" accept="data" type="text" hidden/>
+
 
 
 
@@ -11,7 +11,7 @@
 
 
   <input type="checkbox" name="attr_sheet_select" value="PC" class="hider hidden" checked />
-  <div class="background_radius">
+  <div>
     <input name="attr_faction" type="radio" value="1" class="background_switch_1" display=none hidden checked />
     <input name="attr_faction" type="radio" value="2" class="background_switch_2" display=none hidden />
     <input name="attr_faction" type="radio" value="6" class="background_switch_6" display=none hidden />
@@ -1366,7 +1366,7 @@
           </div>
 
           <div>
-            <h3 class="radius_border_top">Vision loss</h3>
+            <h3 class="radius_border_top">Vision Loss</h3>
             <input   name="attr_medical_status_Visionloss" class="full_width" type="text">
           </div>
 
@@ -1436,14 +1436,14 @@
           </div>
 
           <div>
-            <h3 class="radius_border_top">Looming death</h3>
+            <h3 class="radius_border_top">Looming Death</h3>
             <input   name="attr_medical_status_Loomingdeath" class="full_width" type="text">
           </div>
 
         </div>
 
         <div>
-          <h3 class="radius_border_top">Other effects</h3>
+          <h3 class="radius_border_top">Other Effects</h3>
           <textarea name="attr_medical_status_Othereffects" class="medical_damage_effects_textarea"></textarea>
         </div>
 
@@ -2438,7 +2438,7 @@
 
           <h3 class="radius_border_top">Token mod command</h3>
           <textarea class="tokenmoddisplay radius_border_bottom" name="attr_Tokenmod_settings" placeholder="If you remove the default commands and want them back empty the text field and reopen the sheet.&#13; &#13;Some example commands:&#13;ARMR[@{armor_head}/@{armor_arms}/@{armor_chest}/@{armor_legs}] &#13;SLDS[@{shields}/@{shields|max}] &#13;WNDS[@{wounds}/@{wounds|max}] &#13;CAMO[?{Camo result in dos|0}]DOS">ARMR[@{armor_head}/@{armor_arms}/@{armor_chest}/@{armor_legs}] SLDS[@{shields}/@{shields|max}] WNDS[@{wounds}/@{wounds|max}] CAMO[?{Camo result in dos|0}]DOS</textarea>
-          
+
           <h3 class="radius_border_top">Extra commands</h3>
           <textarea class="tokenmoddisplay radius_border_bottom" name="attr_Tokenmod_custom" placeholder="Type your custom commands here (They will be appended to the token mod command)"></textarea>
         </div>
@@ -2460,7 +2460,7 @@
   <!-- ______________________________ start of Npc sheet ______________________________ -->
 
   <input type="checkbox" name="attr_sheet_select" value="NPC" class="hider hidden" />
-  <div class="box background_radius">
+  <div class="box">
     <div class="tabs_main">
 
       <div class="initiative_container bttn_top_padding">
@@ -2954,7 +2954,7 @@
                 </div>
 
                 <div>
-                  <h3 class="radius_border_top">Vision los</h3>
+                  <h3 class="radius_border_top">Vision Los</h3>
                   <input   name="attr_medical_status_Visionloss" class="full_width" type="text">
                 </div>
 
@@ -3024,7 +3024,7 @@
                 </div>
 
                 <div>
-                  <h3 class="radius_border_top">L death</h3>
+                  <h3 class="radius_border_top">L Death</h3>
                   <input   name="attr_medical_status_Loomingdeath" class="full_width" type="text">
                 </div>
 
@@ -3617,7 +3617,7 @@
   <!-- GM manager sheet -->
 
   <input type="checkbox" name="attr_sheet_select" value="GM" class="hider hidden" />
-  <div class="box background_radius">
+  <div class="box">
     <br>
     <div class="infographic_toggles">
       <label><input type="checkbox" name="attr_to-gm" value="/w gm" class="select_button hidden" /><span class="select_text">To GM</span></label>
@@ -3683,12 +3683,11 @@
           <input class="GM_infographic_element" type="number" name="attr_GM_NPC_shields_Max" value="0"/>
           <input class="GM_infographic_element" type="number" name="attr_GM_NPC_recharge" value="0"/>
           <input class="GM_infographic_element" type="number" name="attr_GM_NPC_delay" value="0"/>
+          </div>
         </fieldset>
       </div>
-    </div>
-
-
   </div>
+</div>
 
 
 
@@ -4222,6 +4221,36 @@
       return "";
     }
 
+    const checkAndReturnMin = (input1, input2) =>{
+      const lowercaseInput1 = String(input1).toLowerCase();
+      const lowercaseInput2 = String(input2).toLowerCase();
+
+      if (lowercaseInput2 !== "" && isNaN(lowercaseInput2)) {
+        return input2;
+      }
+
+      if (lowercaseInput1 !== "" && isNaN(lowercaseInput1)) {
+        return input1;
+      }
+
+      const parsedInt1 = parseInt(lowercaseInput1, 10);
+      const parsedInt2 = parseInt(lowercaseInput2, 10);
+
+      if (!isNaN(parsedInt1) && !isNaN(parsedInt2)) {
+        return Math.min(parsedInt1, parsedInt2).toString();
+      }
+
+      if (!isNaN(parsedInt1)) {
+        return parsedInt1.toString();
+      }
+
+      if (!isNaN(parsedInt2)) {
+        return parsedInt2.toString();
+      }
+
+      return "";
+    }
+
     const reducedbymod = (input,mod) =>{
       if(input!==""){
         return Math.max( input-Math.floor(mod),1)
@@ -4329,11 +4358,8 @@
             medical_status_Drop         : checkAndReturnMax(buttonparsed[16]                      , Current_Drop        ),
             medical_status_Bloodloss    : checkAndReturnMax(buttonparsed[17]                      , Current_Bloodloss   ),
             medical_status_Knockdown    : checkAndReturnMax(buttonparsed[18]                      , Current_Knockdown   ),
-            medical_status_Loomingdeath : checkAndReturnMax(buttonparsed[19]                      , Current_Loomingdeath),
+            medical_status_Loomingdeath : checkAndReturnMin(buttonparsed[19]                      , Current_Loomingdeath),
             medical_status_Othereffects : Current_Othereffects
-
-
-
           });
         });
       });
@@ -4423,7 +4449,7 @@
           medical_status_Tattered     : (!isNaN(Current_Tattered    ) && +Current_Tattered     > 0) ? String(Math.max(+Current_Tattered     - 2,0)) : Current_Tattered    ,
           medical_status_Paralyzed    : (!isNaN(Current_Paralyzed   ) && +Current_Paralyzed    > 0) ? String(         +Current_Paralyzed    - 1   ) : Current_Paralyzed   ,
           medical_status_Weakened     : (!isNaN(Current_Weakened    ) && +Current_Weakened     > 0) ? String(         +Current_Weakened     - 1   ) : Current_Weakened    ,
-          medical_status_Flinch       : (!isNaN(Current_Flinch      ) && +Current_Flinch       > 0) ? String(         +Current_Flinch       - 2   ) : Current_Flinch      ,
+          medical_status_Flinch       : (!isNaN(Current_Flinch      ) && +Current_Flinch       > 0) ? String(Math.max(+Current_Tattered     - 2,0)) : Current_Flinch      ,
           medical_status_Drop         : (!isNaN(Current_Drop        ) && +Current_Drop         > 0) ? String(         +Current_Drop         - 1   ) : Current_Drop        ,
           medical_status_Knockdown    : (!isNaN(Current_Knockdown   ) && +Current_Knockdown    > 0) ? String(         +Current_Knockdown    - 1   ) : Current_Knockdown   ,
           medical_status_Loomingdeath : (!isNaN(Current_Loomingdeath) && +Current_Loomingdeath > 0) ? String(         +Current_Loomingdeath - 1   ) : Current_Loomingdeath
@@ -4610,7 +4636,7 @@
           const UUID2 = generateRowID();
           const updateAttrs = {};
           updateAttrs[loc + UUID1 + "_weapon_name"] = compcheck(comp_name)
-          updateAttrs[loc + UUID1 + "_weapon_type"] = compcheck(comp_data_Parsed.COMP_type)
+          updateAttrs[loc + UUID1 + "_weapon_type"] = compcheck(comp_data_Parsed["COMP_type"])
           updateAttrs[loc + UUID1 + "_Weapon_attr"] = compcheck(comp_data_Parsed.COMP_atribute)
           updateAttrs[loc + UUID1 + "_weapon_range"] = compcheck(comp_data_Parsed.COMP_range)
           updateAttrs[loc + UUID1 + "_weapon_dam-roll"] = compcheck(comp_data_Parsed.COMP_damage_roll)
@@ -4757,7 +4783,10 @@
 
       {{#initiative}}
       <div class="sheet-template-header">{{character}} rolls for Initiative</div>
-      <div class=" sheet-template-center mythic_crit">{{initiative}} Degrees of success</div>
+      <div class="sheet-template-2xn">
+        <div class=" sheet-template-right mythic_crit">{{initiative}}</div>
+        <div class="template-DOS"><h3 class="template-DOS">DOS</h3></div>
+      </div>
       {{/initiative}}
 
 
@@ -4765,14 +4794,8 @@
       {{#roll-name}}
       <div class="sheet-template-header">{{character}} rolls for {{roll-name}}</div>
       <div class="sheet-template-2xn">
-
         <div class=" sheet-template-right">{{roll}}</div>
-
         <div class="template-DOS"><h3 class="template-DOS">DOS</h3></div>
-
-
-
-
       </div>
       {{/roll-name}}
 
