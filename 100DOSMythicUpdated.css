@@ -106,9 +106,11 @@ input[disabled] {
 	pointer-events: none;
 }
 
-p{
+.sheet-whitetext{
 	color: white;
 }
+
+
 
 
 /* ______________________________ end of CSS selectors ______________________________
@@ -116,11 +118,17 @@ ______________________________ start of multipurpose or special-use classes such
 
 
 
-.sheet-background_radius {
-	border: 2px solid black;
-	border-radius: 11px;
+.sheet-compendium-drop-target {
+	border: 5px solid black;
+	border-radius: 16px;
 	margin: -15px;
 	overflow: hidden;
+	background-color: black;
+}
+
+.sheet-compendium-drop-target.active-drop-target {
+	border: 5px solid green;
+	background-color: green;
 }
 
 .sheet-full_width_49px { width: calc(100% - 49px); }

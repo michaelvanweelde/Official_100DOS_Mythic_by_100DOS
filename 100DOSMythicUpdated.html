@@ -1,4 +1,4 @@
-<div class="compendium-drop-target background_radius">
+<div class="compendium-drop-target">
   <input name="attr_comp_category" accept="Category" type="text" hidden/>
   <input name="attr_comp_Name" accept="Name" type="text" hidden/>
   <input name="attr_comp_data" accept="data" type="text" hidden/>
@@ -11,7 +11,7 @@
 
 
   <input type="checkbox" name="attr_sheet_select" value="PC" class="hider hidden" checked />
-  <div>
+  <div class="whitetext">
     <input name="attr_faction" type="radio" value="1" class="background_switch_1" display=none hidden checked />
     <input name="attr_faction" type="radio" value="2" class="background_switch_2" display=none hidden />
     <input name="attr_faction" type="radio" value="6" class="background_switch_6" display=none hidden />
@@ -2460,7 +2460,7 @@
   <!-- ______________________________ start of Npc sheet ______________________________ -->
 
   <input type="checkbox" name="attr_sheet_select" value="NPC" class="hider hidden" />
-  <div class="box">
+  <div class="box whitetext">
     <div class="tabs_main">
 
       <div class="initiative_container bttn_top_padding">
@@ -3617,7 +3617,7 @@
   <!-- GM manager sheet -->
 
   <input type="checkbox" name="attr_sheet_select" value="GM" class="hider hidden" />
-  <div class="box">
+  <div class="box whitetext">
     <br>
     <div class="infographic_toggles">
       <label><input type="checkbox" name="attr_to-gm" value="/w gm" class="select_button hidden" /><span class="select_text">To GM</span></label>
@@ -4062,8 +4062,8 @@
             const credit_repeating = idArray.reduce((total, id) => total + (getValue(id, "gear_cost") * getValue(id, "gear_quantity") ), 0)
             const weight_repeating = idArray.reduce((total, id) => total + (getValue(id, "gear_weight") * getValue(id, "gear_quantity") * getValue(id, "gear_carried")), 0)
             setAttrs({
-              credit_total: credit_repeating + credit_tare,
-              weight_total: weight_repeating
+              credit_total: Math.round((credit_repeating + credit_tare)*100)/100,
+              weight_total: Math.round(weight_repeating*100)/100
             });
           });
         });
