@@ -106,9 +106,7 @@ input[disabled] {
 	pointer-events: none;
 }
 
-.sheet-whitetext{
-	color: white;
-}
+
 
 
 
@@ -116,7 +114,9 @@ input[disabled] {
 /* ______________________________ end of CSS selectors ______________________________
 ______________________________ start of multipurpose or special-use classes such as grey border box on Core and Settings tabs ______________________________ */
 
-
+.sheet-whitetext{
+	color: white;
+}
 
 .sheet-compendium-drop-target {
 	border: 5px solid black;
