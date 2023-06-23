@@ -337,8 +337,7 @@
         <div class="infographic_grid">
 
           <div class="border_full">
-            <button name="wounds_roll" type="roll" class="infographic_header_text clear"
-            value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Wounds}} {{2x2-name=Current}} {{2x2=@{wounds}}} {{2x2-name-max=Max}} {{2x2-max=@{wounds|max}}}">Wounds</button>
+            <button name="wounds_roll" type="roll" class="infographic_header_text clear" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Wounds}} {{2x2-name=Current}} {{2x2=@{wounds}}} {{2x2-name-max=Max}} {{2x2-max=@{wounds|max}}}">Wounds</button>
 
             <div class="infographic_field_2x">
               <p class="infographic_text">Current</p>
@@ -349,8 +348,7 @@
           </div>
 
           <div class="border_full">
-            <button name="fatigue_roll" type="roll" class="infographic_header_text clear"
-            value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Fatigue}} {{2x2-name=Current}} {{2x2=@{fatigue}}} {{2x2-name-max=Max}} {{2x2-max=@{fatigue|max}}}">Fatigue</button>
+            <button name="fatigue_roll" type="roll" class="infographic_header_text clear" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Fatigue}} {{2x2-name=Current}} {{2x2=@{fatigue}}} {{2x2-name-max=Max}} {{2x2-max=@{fatigue|max}}}">Fatigue</button>
 
             <div class="infographic_field_2x">
               <p class="infographic_text">Current</p>
@@ -361,8 +359,7 @@
           </div>
 
           <div class="border_full">
-            <button name="luck_roll" type="roll" class="infographic_header_text clear"
-            value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Luck}} {{2x2-name=Current}} {{2x2=@{luck}}} {{2x2-name-max=Max}} {{2x2-max=@{luck|max}}}">Luck</button>
+            <button name="luck_roll" type="roll" class="infographic_header_text clear" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Luck}} {{2x2-name=Current}} {{2x2=@{luck}}} {{2x2-name-max=Max}} {{2x2-max=@{luck|max}}}">Luck</button>
 
             <div class="infographic_field_2x">
               <p class="infographic_text">Current</p>
@@ -1736,7 +1733,7 @@
       <br>
 
       <div class="border_full">
-        <h3>Prosthetics and limb replacement</h3>
+        <h3>Prosthetics and limb replacements</h3>
         <div class="medical_prosthetics_grid equipment_titles">
           <p class="bold_text equipment_titles">Name & Location</p>
           <p class="bold_text equipment_titles">Breakpoints</p>
@@ -1806,6 +1803,8 @@
           </div>
         </fieldset>
       </div>
+
+      <br>
 
       <div class="training">
         <div class="ssc border_full">
@@ -1888,7 +1887,7 @@
           <input class="characteristic_spending_number" name="attr_characteristic_spending_crg_spending"  type="number" value="0" />
           <input class="characteristic_spending_number" name="attr_characteristic_spending_cha_spending"  type="number" value="0" />
           <input class="characteristic_spending_number" name="attr_characteristic_spending_ldr_spending"  type="number" value="0" />
-          <h3>Spent</h3>
+          <h3>Points</h3>
         </div>
 
         <div class="characteristic_spending_window">
@@ -1942,16 +1941,20 @@
     <input name="attr_sheet_tab" type="checkbox"  value="journal" class="hider hidden" />
     <div class="box whitetext">
       <!-- Journal -->
-      <h2>Journal: Objectives</h2>
-      <div class="edge_padding ssc">
+      <div class="border_full">
+      <h3 style="text-indent: -30px" class="radius_border_top">Objectives</h3>
+      <div class="ssc">
         <fieldset name="objectives" class="repeating_objectives">
           <input name="attr_objective" type="text" class="full_width_30px" />
           <label class="margin_adjust"><input type="checkbox" name="attr_objective_completed" value="1" class="select_button hidden"/><span class="select_text">&nbsp;✔&nbsp;</span></label>
         </fieldset>
       </div>
+      </div>
+
+      <br>
 
       <div class="border_full">
-        <h3 style="text-indent: -50px" class="radius_border_top">Journal: Notes</h3>
+        <h3 style="text-indent: -50px" class="radius_border_top">Notes</h3>
         <fieldset name="Notes" class="repeating_notes">
           <input name="attr_note" type="text" placeholder="Name" class="full_width_49px" />
           <label class="margin_adjust"><input type="checkbox" name="attr_collapse" value="4" class="hider select_button hidden" checked/><span class="select_text ">▼</span></label>
@@ -1965,7 +1968,7 @@
     </div>
 
 
-
+    
     <!-- ______________________________ start of tab Vehicles ______________________________ -->
     <input name="attr_sheet_tab" type="checkbox"  value="vehicles" class="hider hidden" />
     <div class="box whitetext ssc">

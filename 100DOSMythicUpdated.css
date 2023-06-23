@@ -864,7 +864,6 @@ ______________________________ start of advancements tab _______________________
 }
 
 .sheet-training {
-	margin: 10px 0px 0px 0px;
 	display: grid;
 	grid-template-columns: 33% auto;
 	grid-column-gap: 5px
