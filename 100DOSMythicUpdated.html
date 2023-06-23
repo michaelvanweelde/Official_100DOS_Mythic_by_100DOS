@@ -1584,7 +1584,7 @@
               <div><button type="action" name="act_foot2" class="medical_button"><div class="medical_text">26-40	Slowed (3), &nbsp;Knockdown                                                   </div></button></div>
               <div><button type="action" name="act_foot3" class="medical_button"><div class="medical_text">41-55	Slowed (5), &nbsp;Knockdown (2), &nbsp; &nbsp; &nbsp; Bone Broken (Fracture)  </div></button></div>
               <div><button type="action" name="act_foot4" class="medical_button"><div class="medical_text">56-70	Slowed (6), &nbsp;Knockdown Prone (2), Bone Broken (Shatter)                  </div></button></div>
-              <div><button type="action" name="act_foot5" class="medical_button"><div class="medical_text">71+	&nbsp; Slowed (10), Knockdown Prone (4), foot Lost                              </div></button></div>
+              <div><button type="action" name="act_foot5" class="medical_button"><div class="medical_text">71+	&nbsp; Slowed (10), Knockdown Prone (4), Foot Lost                              </div></button></div>
             </div>
           </div>
 
@@ -2516,112 +2516,92 @@
       <br>
     </div>
 
-    <div class="infographic_grid">
+    <div class="infographic_main">
 
-      <div class="border_full">
-        <button name="wounds_roll" type="roll" class="infographic_header_text clear"
-        value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Wounds}} {{2x2-name=Current}} {{2x2=@{wounds}}} {{2x2-name-max=Max}} {{2x2-max=@{wounds|max}}}">Wounds</button>
-
-        <div class="infographic_field_2x">
-          <p class="infographic_text">Current</p>
-          <input class="full_width" type="text" name="attr_wounds" value="0" />
-          <p class="infographic_text">Max</p>
-          <input class="full_width infographic_last_element" type="text" name="attr_wounds_max" value="0" />
-        </div>
+      <div class="infographic_toggles">
+        <label><input type="checkbox" name="attr_to-gm" value="/w gm" class="select_button hidden" /><span class="select_text">To GM</span></label>
+        <label><input type="checkbox" name="attr_inlinemod-toggle" value="?{Modifier|0}" class="select_button hidden" checked/><span class="select_text">Inline Mod</span></label>
+        <select name="attr_sheet_select" class="full_width infographic_select">
+          <option value="PC" selected="selected">PC sheet</option>
+          <option value="NPC">NPC sheet</option>
+          <option value="GM">GM sheet</option>
+        </select>
+        <button class="clear infographic_buttons" type="roll" name="autodamage" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{avrdam= [[0+[[([[(?{Amount of hits|1}*?{Amount of D10s|0})d10]] + [[?{Amount of hits|1}*?{Base|0}]] - [[?{Amount of hits|1}*(?{Armor|0} - ?{Pierce|0})d1]])d1]]]]}}">Auto-Damage</button>
+        <button class="clear infographic_buttons" type="roll" name="multiroll" value="
+        @{to-gm}&{template:mythic} {{character= @{character_name}}}{{nrofrolls= [[?{How many rolls?|1}]]}}{{multiroll0=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*0]]-1d100)/10)]]}}{{multiroll1=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*1]]-1d100)/10)]]}}{{multiroll2=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*2]]-1d100)/10)]]}}{{multiroll3=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*3]]-1d100)/10)]]}}{{multiroll4=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*4]]-1d100)/10)]]}}{{multiroll5=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*5]]-1d100)/10)]]}}{{multiroll6=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*6]]-1d100)/10)]]}}{{multiroll7=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*7]]-1d100)/10)]]}}{{multiroll8=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*8]]-1d100)/10)]]}}{{multiroll9=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*9]]-1d100)/10)]]}}{{multiroll10=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*10]]-1d100)/10)]]}}{{multiroll11=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*11]]-1d100)/10)]]}}{{multiroll12=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*12]]-1d100)/10)]]}}{{multiroll13=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*13]]-1d100)/10)]]}}{{multiroll14=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*14]]-1d100)/10)]]}}{{multiroll15=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*15]]-1d100)/10)]]}}{{multiroll16=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*16]]-1d100)/10)]]}}{{multiroll17=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*17]]-1d100)/10)]]}}{{multiroll18=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*18]]-1d100)/10)]]}}{{multiroll19=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*19]]-1d100)/10)]]}}{{multiroll20=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*20]]-1d100)/10)]]}}{{multiroll21=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*21]]-1d100)/10)]]}}{{multiroll22=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*22]]-1d100)/10)]]}}{{multiroll23=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*23]]-1d100)/10)]]}}{{multiroll24=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*24]]-1d100)/10)]]}}{{multiroll25=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*25]]-1d100)/10)]]}}
+        ">Multi-Roll</button>
+        <button class="clear infographic_buttons" type="roll" name="scatter" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{scatter-range= [[[[(abs(?{Degrees of Failiure|0})+floor(?{range from target|0}/100))*?{Target at|Normal range,1|Max range,2|Extreme range,4})]]d10]]}} {{scatter-direction=[[1d10]]d1}}" >Scatter</button>
+        <button class="clear infographic_buttons" type="roll" name="tokenmod" value='!token-mod --set tooltip|"@{Tokenmod_settings}" --on show_tooltip @{Tokenmod_custom}'>Tokenmod</button>
       </div>
 
-      <div class="border_full">
-        <button name="fatigue_roll" type="roll" class="infographic_header_text clear"
-        value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Fatigue}} {{2x2-name=Current}} {{2x2=@{fatigue}}} {{2x2-name-max=Max}} {{2x2-max=@{fatigue|max}}}">Fatigue</button>
-
-        <div class="infographic_field_2x">
-          <p class="infographic_text">Current</p>
-          <input class="full_width" type="text" name="attr_fatigue" value="0" />
-          <p class="infographic_text">Max</p>
-          <input class="full_width infographic_last_element" type="text" name="attr_fatigue_max" value="0" />
-        </div>
-      </div>
-
-      <div class="border_full">
-        <button name="luck_roll" type="roll" class="infographic_header_text clear"
-        value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Luck}} {{2x2-name=Current}} {{2x2=@{luck}}} {{2x2-name-max=Max}} {{2x2-max=@{luck|max}}}">Luck</button>
-
-        <div class="infographic_field_2x">
-          <p class="infographic_text">Current</p>
-          <input class="full_width" type="text" name="attr_luck" value="0" />
-          <p class="infographic_text">Max</p>
-          <input class="full_width infographic_last_element" type="text" name="attr_luck_max" value="0" />
-        </div>
-      </div>
-
-      <div class="border_full">
-        <button name="support_roll" type="roll" class="infographic_header_text clear"
-        value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=SP}} {{2x2-name=Current}} {{2x2=@{support}}} {{2x2-name-max=Max}} {{2x2-max=@{support|max}}}">S Pts</button>
-
-        <div class="infographic_field_2x">
-          <p class="infographic_text">Current</p>
-          <input class="full_width" type="text" name="attr_support" value="0" />
-          <p class="infographic_text">Max</p>
-          <input class="full_width infographic_last_element" type="text" name="attr_support_max" value="0" />
-        </div>
-      </div>
-
-      <div class="border_full">
-        <button class="infographic_header_text clear" name="damage_resistance_roll" type="roll"  value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=damage_resistance}} {{4x2-1-name=Head}} {{4x2-1=@{damage_resistance_head}}} {{4x2-1-name-max=Arms}} {{4x2-1-max=@{damage_resistance_arms}}} {{4x2-2-name=Chest}} {{4x2-2=@{damage_resistance_chest}}} {{4x2-2-name-max=Legs}} {{4x2-2-max=@{damage_resistance_legs}}}">Damage Resistance</button>
-
-        <div class="infographic_grid_4x">
-          <p class="infographic_text">Head</p>
-          <input class="full_width" type="text" name="attr_damage_resistance_head" value="0" />
-          <p class="infographic_text">Arms</p>
-          <input class="full_width" type="text" name="attr_damage_resistance_arms" value="0" />
-          <p class="infographic_text">Chest</p>
-          <input class="full_width" type="text" name="attr_damage_resistance_chest" value="0" />
-          <p class="infographic_text">Legs</p>
-          <input class="full_width infographic_last_element" type="text" name="attr_damage_resistance_legs" value="0" />
-        </div>
-      </div>
-
-      <div class="border_full">
-        <button name="shield_roll" type="roll" class="infographic_header_text clear"
-        value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Shields}} {{4x2-1-name=Current}} {{4x2-1=@{shields}}} {{4x2-1-name-max=Max}} {{4x2-1-max=@{shields|max}}} {{4x2-2-name=Charge}} {{4x2-2=@{shields_charge}}} {{4x2-2-name-max=Delay}} {{4x2-2-max=@{shields_delay}}}">Shields</button>
-
-        <div class="infographic_grid_4x">
-          <p class="infographic_text">Current</p>
-          <input class="full_width" type="text" name="attr_shields" value="0" />
-          <p class="infographic_text">Max</p>
-          <input class="full_width" type="text" name="attr_shields_max" value="0" />
-          <p class="infographic_text">Delay</p>
-          <input class="full_width" type="text" name="attr_shields_delay" value="0" />
-          <p class="infographic_text">Charge</p>
-          <input class="infographic_last_element full_width" type="text" name="attr_shields_charge" value="0" />
-        </div>
-      </div>
-
-    </div>
-
-    <fieldset name="repeating_armor" class="repeating_armor">
-      <div class="armorgrid">
+      <div class="infographic_grid">
 
         <div class="border_full">
-          <div class="infographic_header_grid_checkbox">
-            <label class="infographic_header_checkmark"><input type="checkbox" checked name="attr_armor_worn" value="1" class="select_button hidden"/><span class="infographic_header_checkmark select_text">Worn</span></label>
-            <button class="infographic_header_text clear" name="armor_roll" type="roll"  value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Armor}} {{4x2-1-name=Head}} {{4x2-1=@{armor_head}}} {{4x2-1-name-max=Arms}} {{4x2-1-max=@{armor_arms}}} {{4x2-2-name=Chest}} {{4x2-2=@{armor_chest}}} {{4x2-2-name-max=Legs}} {{4x2-2-max=@{armor_legs}}}">Armor</button>
+          <button name="wounds_roll" type="roll" class="infographic_header_text clear"
+          value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Wounds}} {{2x2-name=Current}} {{2x2=@{wounds}}} {{2x2-name-max=Max}} {{2x2-max=@{wounds|max}}}">Wounds</button>
+
+          <div class="infographic_field_2x">
+            <p class="infographic_text">Current</p>
+            <input class="full_width" type="text" name="attr_wounds" value="0" />
+            <p class="infographic_text">Max</p>
+            <input class="full_width infographic_last_element" type="text" name="attr_wounds_max" value="0" />
           </div>
+        </div>
+
+        <div class="border_full">
+          <button name="fatigue_roll" type="roll" class="infographic_header_text clear"
+          value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Fatigue}} {{2x2-name=Current}} {{2x2=@{fatigue}}} {{2x2-name-max=Max}} {{2x2-max=@{fatigue|max}}}">Fatigue</button>
+
+          <div class="infographic_field_2x">
+            <p class="infographic_text">Current</p>
+            <input class="full_width" type="text" name="attr_fatigue" value="0" />
+            <p class="infographic_text">Max</p>
+            <input class="full_width infographic_last_element" type="text" name="attr_fatigue_max" value="0" />
+          </div>
+        </div>
+
+        <div class="border_full">
+          <button name="luck_roll" type="roll" class="infographic_header_text clear"
+          value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Luck}} {{2x2-name=Current}} {{2x2=@{luck}}} {{2x2-name-max=Max}} {{2x2-max=@{luck|max}}}">Luck</button>
+
+          <div class="infographic_field_2x">
+            <p class="infographic_text">Current</p>
+            <input class="full_width" type="text" name="attr_luck" value="0" />
+            <p class="infographic_text">Max</p>
+            <input class="full_width infographic_last_element" type="text" name="attr_luck_max" value="0" />
+          </div>
+        </div>
+
+        <div class="border_full">
+          <button name="support_roll" type="roll" class="infographic_header_text clear"
+          value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=SP}} {{2x2-name=Current}} {{2x2=@{support}}} {{2x2-name-max=Max}} {{2x2-max=@{support|max}}}">S Pts</button>
+
+          <div class="infographic_field_2x">
+            <p class="infographic_text">Current</p>
+            <input class="full_width" type="text" name="attr_support" value="0" />
+            <p class="infographic_text">Max</p>
+            <input class="full_width infographic_last_element" type="text" name="attr_support_max" value="0" />
+          </div>
+        </div>
+
+        <div class="border_full">
+          <button class="infographic_header_text clear" name="damage_resistance_roll" type="roll"  value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=damage_resistance}} {{4x2-1-name=Head}} {{4x2-1=@{damage_resistance_head}}} {{4x2-1-name-max=Arms}} {{4x2-1-max=@{damage_resistance_arms}}} {{4x2-2-name=Chest}} {{4x2-2=@{damage_resistance_chest}}} {{4x2-2-name-max=Legs}} {{4x2-2-max=@{damage_resistance_legs}}}">Damage Resistance</button>
 
           <div class="infographic_grid_4x">
             <p class="infographic_text">Head</p>
-            <input class="full_width" type="text" name="attr_armor_head" value="0" />
+            <input class="full_width" type="text" name="attr_damage_resistance_head" value="0" />
             <p class="infographic_text">Arms</p>
-            <input class="full_width" type="text" name="attr_armor_arms" value="0" />
+            <input class="full_width" type="text" name="attr_damage_resistance_arms" value="0" />
             <p class="infographic_text">Chest</p>
-            <input class="full_width" type="text" name="attr_armor_chest" value="0" />
+            <input class="full_width" type="text" name="attr_damage_resistance_chest" value="0" />
             <p class="infographic_text">Legs</p>
-            <input class="full_width infographic_last_element" type="text" name="attr_armor_legs" value="0" />
+            <input class="full_width infographic_last_element" type="text" name="attr_damage_resistance_legs" value="0" />
           </div>
         </div>
 
         <div class="border_full">
-          <button name="shield_roll" type="roll" class="infographic_header_text clear" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Shields}} {{4x2-1-name=Current}} {{4x2-1=@{shields}}} {{4x2-1-name-max=Max}} {{4x2-1-max=@{shields|max}}} {{4x2-2-name=Charge}} {{4x2-2=@{shields_charge}}} {{4x2-2-name-max=Delay}} {{4x2-2-max=@{shields_delay}}}">Shields</button>
+          <button name="shield_roll" type="roll" class="infographic_header_text clear"
+          value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Shields}} {{4x2-1-name=Current}} {{4x2-1=@{shields}}} {{4x2-1-name-max=Max}} {{4x2-1-max=@{shields|max}}} {{4x2-2-name=Charge}} {{4x2-2=@{shields_charge}}} {{4x2-2-name-max=Delay}} {{4x2-2-max=@{shields_delay}}}">Shields</button>
 
           <div class="infographic_grid_4x">
             <p class="infographic_text">Current</p>
@@ -2635,11 +2615,51 @@
           </div>
         </div>
 
-        <div class="armorgrid_description_container"><textarea class="armorgrid_description" name="attr_description" placeholder="Armor special rules, Damage, Exteriour features, etc."></textarea></div>
-
       </div>
-    </fieldset>
 
+      <fieldset name="repeating_armor" class="repeating_armor">
+        <div class="armorgrid">
+
+          <div class="border_full">
+            <div class="infographic_header_grid_checkbox">
+              <label class="infographic_header_checkmark"><input type="checkbox" checked name="attr_armor_worn" value="1" class="select_button hidden"/><span class="infographic_header_checkmark select_text">Worn</span></label>
+              <button class="infographic_header_text clear" name="armor_roll" type="roll"  value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Armor}} {{4x2-1-name=Head}} {{4x2-1=@{armor_head}}} {{4x2-1-name-max=Arms}} {{4x2-1-max=@{armor_arms}}} {{4x2-2-name=Chest}} {{4x2-2=@{armor_chest}}} {{4x2-2-name-max=Legs}} {{4x2-2-max=@{armor_legs}}}">Armor</button>
+            </div>
+
+            <div class="infographic_grid_4x">
+              <p class="infographic_text">Head</p>
+              <input class="full_width" type="text" name="attr_armor_head" value="0" />
+              <p class="infographic_text">Arms</p>
+              <input class="full_width" type="text" name="attr_armor_arms" value="0" />
+              <p class="infographic_text">Chest</p>
+              <input class="full_width" type="text" name="attr_armor_chest" value="0" />
+              <p class="infographic_text">Legs</p>
+              <input class="full_width infographic_last_element" type="text" name="attr_armor_legs" value="0" />
+            </div>
+          </div>
+
+          <div class="border_full">
+            <button name="shield_roll" type="roll" class="infographic_header_text clear" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Shields}} {{4x2-1-name=Current}} {{4x2-1=@{shields}}} {{4x2-1-name-max=Max}} {{4x2-1-max=@{shields|max}}} {{4x2-2-name=Charge}} {{4x2-2=@{shields_charge}}} {{4x2-2-name-max=Delay}} {{4x2-2-max=@{shields_delay}}}">Shields</button>
+
+            <div class="infographic_grid_4x">
+              <p class="infographic_text">Current</p>
+              <input class="full_width" type="text" name="attr_shields" value="0" />
+              <p class="infographic_text">Max</p>
+              <input class="full_width" type="text" name="attr_shields_max" value="0" />
+              <p class="infographic_text">Delay</p>
+              <input class="full_width" type="text" name="attr_shields_delay" value="0" />
+              <p class="infographic_text">Charge</p>
+              <input class="infographic_last_element full_width" type="text" name="attr_shields_charge" value="0" />
+            </div>
+          </div>
+
+          <div class="armorgrid_description_container"><textarea class="armorgrid_description" name="attr_description" placeholder="Armor special rules, Damage, Exteriour features, etc."></textarea></div>
+
+        </div>
+      </fieldset>
+
+
+    </div>
     <br>
 
     <div class="NPC_core_grid">
@@ -2759,12 +2779,12 @@
 
     <div class="NPC_pageselect">
       <label><input type="checkbox" name="attr_npc_tab" class="select_button hidden" value="vehicles"/><span class="select_text">Vehicles</span></label>
-      <label><input type="checkbox" name="attr_npc_tab" class="select_button hidden" value="medical"/><span class="select_text">Medical</span></label>
+      <label><input type="checkbox" name="attr_npc_tab" class="select_button hidden" value="medical" checked/><span class="select_text">Medical</span></label>
       <label><input type="checkbox" name="attr_npc_tab" class="select_button hidden" value="vehicleweps"/><span class="select_text">Vehicle weapons</span></label>
     </div>
 
 
-    <div class="vehicles_divider ">
+    <div class="NPC_divider">
       <div>
 
         <div>
@@ -2954,7 +2974,7 @@
         </div>
 
         <div>
-          <input name="attr_npc_tab" type="checkbox"  value="medical" class="hider hidden" />
+          <input name="attr_npc_tab" type="checkbox"  value="medical" class="hider hidden" checked/>
           <div>
 
             <div class="border_full medical_padding">
@@ -3070,6 +3090,7 @@
             </div>
 
             <div class="border_full">
+
               <div class="medicalHOV">
                 <h3 class="radius_border">Neck</h3>
                 <div class="medicalHOV_not">
@@ -3163,8 +3184,8 @@
                 <div class="medicalHOV_not">
                   <div><button type="action" name="act_elbowshoulder1" class="medical_button"><div class="medical_text">1-25&nbsp;	Weakened (1)                                                  </div></button></div>
                   <div><button type="action" name="act_elbowshoulder2" class="medical_button"><div class="medical_text">26-40	Weakened (2), Drop                                                  </div></button></div>
-                  <div><button type="action" name="act_elbowshoulder3" class="medical_button"><div class="medical_text">41-55	Weakened (4), Drop (2), Bone Broken (Fracture)  </div></button></div>
-                  <div><button type="action" name="act_elbowshoulder4" class="medical_button"><div class="medical_text">56-70	Weakened (4), Paral (2), Bone Broken (Shatter)                  </div></button></div>
+                  <div><button type="action" name="act_elbowshoulder3" class="medical_button"><div class="medical_text">41-55	Weakened (4), Drop (2), &nbsp; &nbsp; &nbsp;Bone Broken (Fracture)  </div></button></div>
+                  <div><button type="action" name="act_elbowshoulder4" class="medical_button"><div class="medical_text">56-70	Weakened (4), Paralyzed (2), Bone Broken (Shatter)                  </div></button></div>
                   <div><button type="action" name="act_elbowshoulder5" class="medical_button"><div class="medical_text">71+	&nbsp; Looming Death (9), Arm lost                                    </div></button></div>
                 </div>
               </div>
@@ -3173,10 +3194,10 @@
                 <h3 class="radius_border">Foot</h3>
                 <div class="medicalHOV_not">
                   <div><button type="action" name="act_foot1" class="medical_button"><div class="medical_text">1-25&nbsp;	Slowed (2)                                                              </div></button></div>
-                  <div><button type="action" name="act_foot2" class="medical_button"><div class="medical_text">26-40	Slowed (3), Knockdown                                                   </div></button></div>
-                  <div><button type="action" name="act_foot3" class="medical_button"><div class="medical_text">41-55	Slow (5), Knockdown (2), Bone Broken (Fracture)  </div></button></div>
-                  <div><button type="action" name="act_foot4" class="medical_button"><div class="medical_text">56-70	Slow (6),Knckdwn Pron (2), Bone Broken (Shatter)                  </div></button></div>
-                  <div><button type="action" name="act_foot5" class="medical_button"><div class="medical_text">71+	&nbsp; Slow (10), Knckdwn Pron (4), foot Lost                              </div></button></div>
+                  <div><button type="action" name="act_foot2" class="medical_button"><div class="medical_text">26-40	Slowed (3), &nbsp;Knockdn                                                   </div></button></div>
+                  <div><button type="action" name="act_foot3" class="medical_button"><div class="medical_text">41-55	Slowed (5), &nbsp;Knockdn (2), &nbsp; &nbsp; Bone Broke (Fracture)  </div></button></div>
+                  <div><button type="action" name="act_foot4" class="medical_button"><div class="medical_text">56-70	Slowed (6), &nbsp;Knockdn Prone (2), Bone Broke (Shatter)                  </div></button></div>
+                  <div><button type="action" name="act_foot5" class="medical_button"><div class="medical_text">71+	&nbsp; Slowed (10), Knockdn Prone (4), Foot Lost                              </div></button></div>
                 </div>
               </div>
 
@@ -3185,8 +3206,8 @@
                 <div class="medicalHOV_not">
                   <div><button type="action" name="act_shinthigh1" class="medical_button"><div class="medical_text">1-30&nbsp;	Slowed (1)                                              </div></button></div>
                   <div><button type="action" name="act_shinthigh2" class="medical_button"><div class="medical_text">31-50	Slowed (3)                                                    </div></button></div>
-                  <div><button type="action" name="act_shinthigh3" class="medical_button"><div class="medical_text">51-65	Slowed (6), Paral (2), Bone Broken (Fracture)       </div></button></div>
-                  <div><button type="action" name="act_shinthigh4" class="medical_button"><div class="medical_text">66-80	Slowed (7), Paral (3), Bone Broken (Shatter)        </div></button></div>
+                  <div><button type="action" name="act_shinthigh3" class="medical_button"><div class="medical_text">51-65	Slowed (6), &nbsp;Paralyzed (2), Bone Broke (Fracture)       </div></button></div>
+                  <div><button type="action" name="act_shinthigh4" class="medical_button"><div class="medical_text">66-80	Slowed (7), &nbsp;Paralyzed (3), Bone Broke (Shatter)        </div></button></div>
                   <div><button type="action" name="act_shinthigh5" class="medical_button"><div class="medical_text">81+ &nbsp; Slowed (10), Paralyzed (4), L Death (8), Leg Lost  </div></button></div>
                 </div>
               </div>
@@ -3196,9 +3217,9 @@
                 <div class="medicalHOV_not">
                   <div><button type="action" name="act_kneehip1" class="medical_button"><div class="medical_text">1-25&nbsp;	Knockdown                                               </div></button></div>
                   <div><button type="action" name="act_kneehip2" class="medical_button"><div class="medical_text">26-40	Knockdown (1)                                                 </div></button></div>
-                  <div><button type="action" name="act_kneehip3" class="medical_button"><div class="medical_text">41-55	Knockdown (2), Slowed (3), Bone Broken (Fracture) </div></button></div>
-                  <div><button type="action" name="act_kneehip4" class="medical_button"><div class="medical_text">56-70	Knockdown (3), Slowed (5), Bone Broken (Shatter)  </div></button></div>
-                  <div><button type="action" name="act_kneehip5" class="medical_button"><div class="medical_text">71+	&nbsp; Knockdown (10), Slow (10), L Death (8), Leg Lost </div></button></div>
+                  <div><button type="action" name="act_kneehip3" class="medical_button"><div class="medical_text">41-55	Knockdown (2), &nbsp;Slowed (3), &nbsp;Bone Broken (Fracture) </div></button></div>
+                  <div><button type="action" name="act_kneehip4" class="medical_button"><div class="medical_text">56-70	Knockdown (3), &nbsp;Slowed (5), &nbsp;Bone Broken (Shatter)  </div></button></div>
+                  <div><button type="action" name="act_kneehip5" class="medical_button"><div class="medical_text">71+	&nbsp; Knockdown (10), Slowed (10), L Death (8), Leg Lost </div></button></div>
                 </div>
               </div>
 
@@ -3227,10 +3248,10 @@
               <div class="medicalHOV">
                 <h3 class="radius_border">Spine</h3>
                 <div class="medicalHOV_not">
-                  <div><button type="action" name="act_spine1" class="medical_button"><div class="medical_text">1-25&nbsp;	Knockdown, Flinch (1), Drop </div></button></div>
-                  <div><button type="action" name="act_spine2" class="medical_button"><div class="medical_text">26-40	Knockdown (1), Flinch (2), Drop (2)             </div></button></div>
-                  <div><button type="action" name="act_spine3" class="medical_button"><div class="medical_text">41-55	Knockdown (3), Paral (2),  Bone Broken (Fracture)       </div></button></div>
-                  <div><button type="action" name="act_spine4" class="medical_button"><div class="medical_text">56-70	Knckdn Prone (5), Paral (5), Bone Broken(Shatter)</div></button></div>
+                  <div><button type="action" name="act_spine1" class="medical_button"><div class="medical_text">1-25&nbsp;	Knockdown, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Flinch (1), &nbsp; &nbsp;Drop </div></button></div>
+                  <div><button type="action" name="act_spine2" class="medical_button"><div class="medical_text">26-40	Knockdn(1), &nbsp; &nbsp; &nbsp; Flinch (2), &nbsp; &nbsp;Drop (2)             </div></button></div>
+                  <div><button type="action" name="act_spine3" class="medical_button"><div class="medical_text">41-55	Knockdn(3), Paralyzd(2),  Bone Broke(Fractured)       </div></button></div>
+                  <div><button type="action" name="act_spine4" class="medical_button"><div class="medical_text">56-70	Knockdn Prone(5), Paralyzd(5), Bone Broke(Shattered)                      </div></button></div>
                   <div><button type="action" name="act_spine5" class="medical_button"><div class="medical_text">71+ &nbsp;	Spine destroyed, Instant Death                                              </div></button></div>
                 </div>
               </div>

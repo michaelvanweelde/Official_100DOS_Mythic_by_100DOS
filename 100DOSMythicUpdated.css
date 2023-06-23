@@ -995,6 +995,12 @@ ______________________________ start of NPC sheet overrides ____________________
 	grid-template-columns: 290px 5px auto;
 }
 
+.sheet-NPC_divider{
+		display: grid;
+		grid-template-columns: 52% auto;
+		grid-column-gap: 10px;
+}
+
 .sheet-NPC_characteristics_fields { height: 26px !important; font-size: 16px; color: white;}
 .sheet-NPC_characteristics_roll { width:calc(100% - 10px); height: 20.3px !important; font-size: 16px; }
 .sheet-NPC_characteristics_cols {
@@ -1005,7 +1011,6 @@ ______________________________ start of NPC sheet overrides ____________________
 .sheet-NPC_characteristics_rows {
 	display: grid;
 	grid-template-columns: 100%;
-
 }
 
 
