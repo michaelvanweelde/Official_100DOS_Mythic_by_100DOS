@@ -284,7 +284,7 @@
             <option value="?{dice|1d10}">Custom</option>
           </select>
           <p class="init_plus">+</p>
-          <input name="attr_initmod2" type="number" value="0" />
+          <input class="full_width" name="attr_initmod2" type="text" value="0" />
           <p class="init_plus">+</p>
           <select name="attr_initmod3" class="init_field">
             <option value="[[(@{AGI}+@{AGI_advancement} + @{fatigue_mod})/10]]" selected="selected">Agility</option>
@@ -1088,7 +1088,7 @@
         <fieldset name="abilities" class="repeating_abilities">
           <input name="attr_ability" type="text" placeholder="Name" class="full_width_49px" />
           <label class="margin_adjust"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text ">▼</span></label>
-          <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{name=@{ability} }} {{description=@{ability_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+          <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{ability} }} {{description=@{ability_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
           <input name="attr_collapse" type="checkbox"  value="3" class="hider hidden" />
           <textarea name="attr_ability_desc"></textarea>
         </fieldset>
@@ -1152,7 +1152,7 @@
               <div>
                 <input name="attr_weapon_special_rules" type="text" placeholder="Description" class="full_width_49px border_none radius_border_left" />
                 <label class="margin_adjust_wep"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text radius_border_right_wep">▼</span></label>
-                <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{name=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
                 <input name="attr_collapse" type="checkbox"  value="3" class="hider hidden" />
                 <div>
                   <div class="equipment_ranged_weapons_grid5">
@@ -1241,7 +1241,7 @@
               <div>
                 <input name="attr_weapon_special_rules" type="text" placeholder="Description" class="full_width_49px border_none radius_border_left" />
                 <label class="margin_adjust_wep"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text radius_border_right_wep">▼</span></label>
-                <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{name=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
                 <input name="attr_collapse" type="checkbox"  value="3" class="hider hidden" />
                 <div>
                   <div class="equipment_ranged_weapons_grid5">
@@ -1315,7 +1315,7 @@
             <input class="full_width" type="text" name="attr_permutation_location" placeholder="Location & Hardpoints">
           </div>
           <label class="margin_adjust"><input type="checkbox" name="attr_collapse" value="2" class="hider select_button hidden" /><span class="select_text">▼</span></label>
-          <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{name=@{permutation_name} }} {{description=@{permutation_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+          <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{permutation_name} }} {{description=@{permutation_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
           <input name="attr_collapse" type="checkbox"  value="2" class="hider hidden" />
           <textarea name="attr_permutation_desc" class="radius_border_bottom" placeholder="All Human BDUs and Armor are designed to take Permutations. Permutations are attachments that modify Armor and offer various forms of function. Each section of Armor can only fit so many Permutations, which are shown as Hardpoints."></textarea>
         </fieldset>
@@ -1736,11 +1736,34 @@
       <br>
 
       <div class="border_full">
+        <h3>Prosthetics and limb replacement</h3>
+        <div class="medical_prosthetics_grid equipment_titles">
+          <p class="bold_text equipment_titles">Name & Location</p>
+          <p class="bold_text equipment_titles">Breakpoints</p>
+          <p class="bold_text equipment_titles">Armor</p>
+        </div>
+
+        <fieldset name="Prosthetics" class="repeating_Prosthetics">
+          <div class="medical_prosthetics_grid">
+            <input class="full_width" type="text" name="attr_prosthetic_name" placeholder="Name & Location">
+            <input class="full_width" type="text" name="attr_prosthetic_Breakpoints" placeholder="Breakpoints">
+            <input class="full_width" type="text" name="attr_prosthetic_Armor" placeholder="Armor">
+          </div>
+          <label class="margin_adjust"><input type="checkbox" name="attr_collapse" value="2" class="hider select_button hidden" /><span class="select_text">▼</span></label>
+          <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{prosthetic_name} }} {{2x2-name=Breakpoints}} {{2x2=@{prosthetic_Breakpoints}}} {{2x2-name-max=Armor}} {{2x2-max=@{prosthetic_Armor}}} {{description=@{prosthetic_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+          <input name="attr_collapse" type="checkbox"  value="2" class="hider hidden" />
+          <textarea name="attr_prosthetic_desc" class="radius_border_bottom" placeholder="Add any additional information here such as whether a neural implant had to be installed or whether the replacement has skin-mimicking layering."></textarea>
+        </fieldset>
+      </div>
+
+      <br>
+
+      <div class="border_full">
         <h3 style="text-indent: -50px">Medical Information</h3>
         <fieldset name="medical" class="repeating_medical">
           <input name="attr_medical" type="text" placeholder="Name" class="full_width_49px" />
           <label class="margin_adjust"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text ">▼</span></label>
-          <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{name=@{medical} }} {{description=@{medical_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+          <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{medical} }} {{description=@{medical_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
           <input name="attr_collapse" type="checkbox"  value="3" class="hider hidden" />
           <textarea name="attr_medical_desc" placeholder="Not all injuries in 100DOS are lethal. Exhaustion, combat trauma, or exchanging blows with bare fists can all leave a character tattered, but intact. Fatigue measures the amount of non-lethal injury a character can take. For every level of Fatigue a Character has, they take a -5 Penalty to all Tests made.&#10;&#10;Once a Character surpasses their Toughness Modifier, multiplied by 2, in Fatigue, they fall into a coma. The Character’s coma will last one hour for every level of Fatigue the Character has. Every hour that passes, the level of Fatigue is reduced by one. The Character may wake up once their level of Fatigue is their Toughness Modifier or lower."></textarea>
         </fieldset>
@@ -1905,7 +1928,7 @@
         <fieldset name="abilities" class="repeating_abilities">
           <input name="attr_ability" type="text" placeholder="Name" class="full_width_49px" />
           <label class="margin_adjust"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text ">▼</span></label>
-          <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{name=@{ability} }} {{description=@{ability_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+          <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{ability} }} {{description=@{ability_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
           <input name="attr_collapse" type="checkbox"  value="3" class="hider hidden" />
           <textarea name="attr_ability_desc"></textarea>
         </fieldset>
@@ -1932,7 +1955,7 @@
         <fieldset name="Notes" class="repeating_notes">
           <input name="attr_note" type="text" placeholder="Name" class="full_width_49px" />
           <label class="margin_adjust"><input type="checkbox" name="attr_collapse" value="4" class="hider select_button hidden" checked/><span class="select_text ">▼</span></label>
-          <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{name=@{note} }} {{description=@{note_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+          <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{note} }} {{description=@{note_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
           <input name="attr_collapse" type="checkbox"  value="4" class="hider hidden" checked/>
           <textarea name="attr_note_desc" placeholder="Enter information such as plot details, unresolved mission details such as escaped targets, character relationships, et cetera here.&#10;
           &#10;Also feel free to write appearance details here or in Bio & Info for public viewing: age, height, weight, colors of eyes, hair, skin, more that come to mind."></textarea>
@@ -2115,17 +2138,17 @@
               <div>
                 <input name="attr_aditional_info" type="text" placeholder="Additional Info" class="full_width_49px" />
                 <label class="margin_adjust"><input type="checkbox" name="attr_collapse" value="5" class="hider select_button hidden" /><span class="select_text ">▼</span></label>
-                <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{name=@{aditional_info} }} {{description=@{aditional_info_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{aditional_info} }} {{description=@{aditional_info_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
                 <input name="attr_collapse" type="checkbox"  value="5" class="hider hidden" />
                 <textarea name="attr_aditional_info_desc" class="description_rounded_margin" placeholder="Enter any vehicle-specific rules or other unique information here."></textarea>
               </div>
               <div>
                 <input name="attr_modifications" type="text" placeholder="Modifications" class="full_width_49px vehicles_descriptor" />
                 <label class="margin_adjust"><input type="checkbox" name="attr_collapse2" value="6" class="hider select_button hidden" /><span class="select_text radius_border_right">▼</span></label>
-                <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{name=@{modifications} }} {{description=@{modifications_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{modifications} }} {{description=@{modifications_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
                 <input name="attr_collapse2" type="checkbox"  value="6" class="hider hidden" />
                 <textarea name="attr_modifications_desc" class=" description_rounded_margin" placeholder="Vehicles in Mythic can be modified in many ways.  These use a Vehicle’s Weapon Points and Size Points, which are specialized Hardpoints on a Vehicle. Each Modification takes a specified amount of Weapon and Size Points.
-                &#10;Vehicle modifications are classified into five categories; Body, Propulsion, Electronic, Combat, and Miscellaneous.""></textarea>
+                &#10;Vehicle modifications are classified into five categories; Body, Propulsion, Electronic, Combat, and Miscellaneous."></textarea>
               </div>
             </div>
             <br>
@@ -2184,7 +2207,7 @@
                 <div>
                   <input name="attr_weapon_special_rules" type="text" placeholder="Description" class="full_width_49px border_none radius_border_left" />
                   <label class="margin_adjust_wep"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text radius_border_right_wep">▼</span></label>
-                  <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{name=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                  <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
                   <input name="attr_collapse" type="checkbox"  value="3" class="hider hidden" />
                   <div>
                     <div class="equipment_ranged_weapons_grid5">
@@ -2273,7 +2296,7 @@
                 <div>
                   <input name="attr_weapon_special_rules" type="text" placeholder="Description" class="full_width_49px border_none radius_border_left" />
                   <label class="margin_adjust_wep"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text radius_border_right_wep">▼</span></label>
-                  <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{name=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                  <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
                   <input name="attr_collapse" type="checkbox"  value="3" class="hider hidden" />
                   <div>
                     <div class="equipment_ranged_weapons_grid5">
@@ -2497,7 +2520,7 @@
           <option value="?{dice|1d10}">Custom</option>
         </select>
         <p class="init_plus">+</p>
-        <input name="attr_initmod2" type="number" value="0" />
+        <input class="full_width" name="attr_initmod2" type="text" value="0" />
         <p class="init_plus">+</p>
         <select name="attr_initmod3" class="init_field">
           <option value="[[(@{AGI}+@{AGI_advancement} + @{fatigue_mod})/10]]" selected="selected">Agility</option>
@@ -2955,14 +2978,14 @@
                 <div>
                   <input name="attr_aditional_info" type="text" placeholder="Additional Info" class="full_width_49px" />
                   <label class="margin_adjust"><input type="checkbox" name="attr_collapse" value="5" class="hider select_button hidden" /><span class="select_text ">▼</span></label>
-                  <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{name=@{aditional_info} }} {{description=@{aditional_info_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                  <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{aditional_info} }} {{description=@{aditional_info_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
                   <input name="attr_collapse" type="checkbox"  value="5" class="hider hidden" />
                   <textarea name="attr_aditional_info_desc" class="description_rounded_margin" placeholder="Enter any vehicle-specific rules or other unique information here."></textarea>
                 </div>
                 <div>
                   <input name="attr_modifications" type="text" placeholder="Modifications" class="full_width_49px vehicles_descriptor" />
                   <label class="margin_adjust"><input type="checkbox" name="attr_collapse2" value="6" class="hider select_button hidden" /><span class="select_text radius_border_right">▼</span></label>
-                  <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{name=@{modifications} }} {{description=@{modifications_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                  <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{modifications} }} {{description=@{modifications_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
                   <input name="attr_collapse2" type="checkbox"  value="6" class="hider hidden" />
                   <textarea name="attr_modifications_desc" class=" description_rounded_margin" placeholder="Vehicles in Mythic can be modified in many ways.  These use a Vehicle’s Weapon Points and Size Points, which are specialized Hardpoints on a Vehicle.  Each Modification takes a specified amount of Weapon and Size Points.
                   &#10;Vehicle modifications are classified into five categories; Body, Propulsion, Electronic, Combat, and Miscellaneous."></textarea>
@@ -3360,7 +3383,7 @@
                     <div>
                       <input name="attr_weapon_special_rules" type="text" placeholder="Description" class="full_width_49px border_none radius_border_left" />
                       <label class="margin_adjust_wep"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text radius_border_right_wep">▼</span></label>
-                      <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{name=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                      <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
                       <input name="attr_collapse" type="checkbox"  value="3" class="hider hidden" />
                       <div>
                         <div class="equipment_ranged_weapons_grid5">
@@ -3448,7 +3471,7 @@
                     <div>
                       <input name="attr_weapon_special_rules" type="text" placeholder="Description" class="full_width_49px border_none radius_border_left" />
                       <label class="margin_adjust_wep"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text radius_border_right_wep">▼</span></label>
-                      <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{name=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                      <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
                       <input name="attr_collapse" type="checkbox"  value="3" class="hider hidden" />
                       <div>
                         <div class="equipment_ranged_weapons_grid5">
@@ -3526,7 +3549,7 @@
               <div>
                 <input name="attr_weapon_special_rules" type="text" placeholder="Description" class="full_width_49px border_none radius_border_left" />
                 <label class="margin_adjust_wep"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text radius_border_right_wep">▼</span></label>
-                <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{name=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
                 <input name="attr_collapse" type="checkbox"  value="3" class="hider hidden" />
                 <div>
                   <div class="equipment_ranged_weapons_grid5">
@@ -3614,7 +3637,7 @@
               <div>
                 <input name="attr_weapon_special_rules" type="text" placeholder="Description" class="full_width_49px border_none radius_border_left" />
                 <label class="margin_adjust_wep"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text radius_border_right_wep">▼</span></label>
-                <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{name=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
                 <input name="attr_collapse" type="checkbox"  value="3" class="hider hidden" />
                 <div>
                   <div class="equipment_ranged_weapons_grid5">
@@ -3646,7 +3669,7 @@
       <fieldset name="abilities" class="repeating_abilities">
         <input name="attr_ability" type="text" placeholder="Name" class="full_width_49px" />
         <label class="margin_adjust"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text ">▼</span></label>
-        <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{name=@{ability} }} {{description=@{ability_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+        <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{ability} }} {{description=@{ability_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
         <input name="attr_collapse" type="checkbox"  value="3" class="hider hidden" />
         <textarea name="attr_ability_desc"></textarea>
       </fieldset>
@@ -3678,7 +3701,7 @@
       <select name="attr_sheet_select" class="full_width infographic_select">
         <option value="PC" selected="selected">PC sheet</option>
         <option value="NPC">NPC sheet</option>
-        <option value="GM">GM manager sheet</option>
+        <option value="GM">GM sheet</option>
       </select>
       <button class="clear infographic_buttons" type="roll" name="autodamage" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{avrdam= [[0+[[([[(?{Amount of hits|1}*?{Amount of D10s|0})d10]] + [[?{Amount of hits|1}*?{Base|0}]] - [[?{Amount of hits|1}*(?{Armor|0} - ?{Pierce|0})d1]])d1]]]]}}">Auto-Damage</button>
       <button class="clear infographic_buttons" type="roll" name="multiroll" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{multiroll= [[ ?{How many rolls?|1}d100<[[?{Using|Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} |Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} |Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} |Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod} } + ?{Modifier|0} ]] ]] }}">Multi-Roll</button>
@@ -5071,7 +5094,7 @@
 
 
     {{#description}}
-    <div class="sheet-template-header">{{name}}</div>
+    <div class="sheet-template-header">{{title}}</div>
     <div class="sheet-template-paddedtext">{{description}}</div>
     {{/description}}
 
@@ -5099,7 +5122,9 @@
 
 
     {{#2x2}}
+    {{#name}}
     <div class="sheet-template-header">{{character}}: {{name}}</div>
+    {{/name}}
 
     <div class="sheet-template-2xn">
       <div class=" sheet-template-right">{{2x2-name}}</div>

@@ -178,7 +178,7 @@ the appropriate element is displayed on a 4 all elements are hidden */
 .sheet-box {
 	background: #4d4d4d;
 	border-top: 3px black solid;
-	border-radius: 0px
+	border-radius: 0px;
 	color: white;
 	overflow: hidden;
 	margin-top: -4px
@@ -406,19 +406,20 @@ ______________________________ start of grid structure for initiative and sheet 
 
 .sheet-initiative_container {
 	display: grid;
-	grid-template-columns: 100px 90px 18px 50px 18px 90px;
+	grid-template-columns: 100px 78px 16px 50px 16px 70px;
 }
 
 .sheet-init_field {
 	height: 100%;
 	margin-right: -60px;
-	width:85px;
+	width:100%;
 }
 
 .sheet-init_plus {
 	font-size: 24px;
 	font-weight: bold;
 	padding-top: 12px;
+	text-align: center;
 }
 
 .sheet-sheet_tabs {
@@ -824,7 +825,11 @@ ______________________________ start of medical tab ____________________________
 	font-size: 12px;
 }
 
-
+.sheet-medical_prosthetics_grid{
+	margin: 0px 50.5px 0.6px 0px;
+	display: grid;
+	grid-template-columns: auto 100px 100px;
+}
 
 
 /* ______________________________ end of medical tab __________________________________________________________
