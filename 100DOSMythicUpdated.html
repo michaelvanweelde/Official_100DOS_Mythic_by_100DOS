@@ -1942,13 +1942,13 @@
     <div class="box whitetext">
       <!-- Journal -->
       <div class="border_full">
-      <h3 style="text-indent: -30px" class="radius_border_top">Objectives</h3>
-      <div class="ssc">
-        <fieldset name="objectives" class="repeating_objectives">
-          <input name="attr_objective" type="text" class="full_width_30px" />
-          <label class="margin_adjust"><input type="checkbox" name="attr_objective_completed" value="1" class="select_button hidden"/><span class="select_text">&nbsp;✔&nbsp;</span></label>
-        </fieldset>
-      </div>
+        <h3 style="text-indent: -30px" class="radius_border_top">Objectives</h3>
+        <div class="ssc">
+          <fieldset name="objectives" class="repeating_objectives">
+            <input name="attr_objective" type="text" class="full_width_30px" />
+            <label class="margin_adjust"><input type="checkbox" name="attr_objective_completed" value="1" class="select_button hidden"/><span class="select_text">&nbsp;✔&nbsp;</span></label>
+          </fieldset>
+        </div>
       </div>
 
       <br>
@@ -1968,7 +1968,7 @@
     </div>
 
 
-    
+
     <!-- ______________________________ start of tab Vehicles ______________________________ -->
     <input name="attr_sheet_tab" type="checkbox"  value="vehicles" class="hider hidden" />
     <div class="box whitetext ssc">
@@ -1980,55 +1980,55 @@
             <div class="border_full">
 
 
-              <div class="vehicles_grid_header">
-                <input name="attr_vehicle-name" type="text" class="vehicles_Gn full_width" placeholder="Name" />
-
+              <div class="vehicles_grid_header vehicle_break">
                 <select name="attr_vehicle-shield" class="vehicles_Gs full_width">
                   <option value="0" selected="selected">Unshielded</option>
                   <option value="1">Shielded</option>
                 </select>
+
+                <input name="attr_vehicle-name" type="text" class="vehicles_Gn full_width" placeholder="Name" />
 
                 <select name="attr_vehicle-type" class="vehicles_Gt full_width">
                   <option value="0" selected="selected">Ground/Air</option>
                   <option value="1">Walker</option>
                   <option value="2">Stationary</option>
                 </select>
-
-                <div class="vehicles_G1"><h3>DIMENSIONS</h3></div>
               </div>
 
-              <div class="vehicles_grid_4x">
-                <div>Length</div>
-                <div>Width</div>
-                <div>Height</div>
-                <div>Weight</div>
-                <input name="attr_vehicle-length" type="text" class="full_width" placeholder="# Meters" />
-                <input name="attr_vehicle-width" type="text" class="full_width" placeholder="# Meters" />
-                <input name="attr_vehicle-height" type="text" class="full_width" placeholder="# Meters" />
-                <input name="attr_vehicle-weight" type="text" class="full_width" placeholder="KG / Metric Tons" />
+              <div class="vehicles_grid_4x vehicle_break">
+                <h3 class="radius_border_top">Length</h3>
+                <h3 class="radius_border_top">Width</h3>
+                <h3 class="radius_border_top">Height</h3>
+                <h3 class="radius_border_top">Weight</h3>
+
+                <input name="attr_vehicle-length" type="text" class="full_width" placeholder="Meters" />
+                <input name="attr_vehicle-width" type="text" class="full_width" placeholder="Meters" />
+                <input name="attr_vehicle-height" type="text" class="full_width" placeholder="Meters" />
+                <input name="attr_vehicle-weight" type="text" class="full_width" placeholder="kg / tonne" />
               </div>
 
               <input name="attr_vehicle-type" type="checkbox" value="0" class="hidden hider" checked />
               <div>
-                <div><h3>SPEED AND MANEUVERABILITY</h3></div>
-                <div class="vehicles_grid_4x">
-
-                  <div>Accelerate</div>
-                  <div>Brake</div>
+                <h3 class="radius_border_top">Mobility</h3>
+                <div class="vehicles_grid_5x vehicle_break vehicle_background">
+                  <button class="clear vehicle_smallrollbutton" type="roll" name="vehicle-accelerate" value="!token-mod {{--set bar@{Vehicle-speed_bar}_max|@{vehicle-top_speed} bar@{Vehicle-speed_bar}_value|+@{vehicle-accelerate}}}">Accelerate</button>
+                  <button class="clear vehicle_smallrollbutton" type="roll" name="vehicle-evade" value="!token-mod {{--set bar@{Vehicle-speed_bar}_max|@{vehicle-top_speed} bar@{Vehicle-speed_bar}_value|-@{vehicle-brake}}}">Brake</button>
                   <div>Top Speed</div>
                   <div>Maneuver</div>
+                  <div></div>
 
-                  <input name="attr_vehicle-accelerate" type="text" class="full_width" placeholder="Meters per Turn" />
-                  <input name="attr_vehicle-brake" type="text" class="full_width" placeholder="Meters per Turn" />
-                  <input name="attr_vehicle-top_speed" type="text" class="full_width" placeholder="MpT/(# km/h)" />
+                  <input name="attr_vehicle-accelerate" type="text" class="full_width" placeholder="MpT" />
+                  <input name="attr_vehicle-brake" type="text" class="full_width" placeholder="MpT" />
+                  <input name="attr_vehicle-top_speed" type="text" class="full_width" placeholder="MpT (Km/H)" />
                   <input name="attr_vehicle-maneuver" type="text" class="full_width" placeholder="Max Evasion" />
+                  <button class="clear " type="roll" name="vehicle-evade" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Vehicle Evasion}} {{roll=[[@{settings_rounding}([[ {0d1+(@{AGI} + @{AGI_advancement} + @{fatigue_mod}),0d1+@{vehicle-maneuver}}kl1 ]][lowest of AGI,AGI]+@{mod2_evasion}+[[@{mod3_evasion} -20]]+@{inlinemod-toggle}-1d100)/10)]]}}">Evade</button>
                 </div>
               </div>
 
               <input name="attr_vehicle-type" type="checkbox" value="1" class="hidden hider" />
               <div>
-                <div><h3>CHARACTERISTICS AND SPEED</h3></div>
-                <div class="vehicles_grid_4x">
+                <h3 class="radius_border_top">CHARACTERISTICS AND SPEED</h3>
+                <div class="vehicles_grid_4x vehicle_background vehicle_break">
                   <div>STR</div>
                   <div>MYTHIC STR</div>
                   <div>AGI</div>
@@ -2048,59 +2048,85 @@
                   <input name="attr_vehicle-full_move" type="text" class="full_width " value="floor(@{vehicle-AGI}/10 + @{vehicle-AGI_mythic})*2" disabled/>
                   <input name="attr_vehicle-run_move" type="text" class="full_width " value="floor(@{vehicle-AGI}/10 + @{vehicle-AGI_mythic})*3" disabled/>
                   <input name="attr_vehicle-charge_move" type="text" class="full_width " value="floor(@{vehicle-AGI}/10 + @{vehicle-AGI_mythic})*6" disabled/>
-
                   <div>Jump</div>
-                  <input name="attr_vehicle-jump" type="text" class="full_width" value="@{vehicle-STR_mythic}/2" disabled />
-
                   <div>Leap</div>
+                  <div></div>
+                  <div></div>
+
+                  <input name="attr_vehicle-jump" type="text" class="full_width" value="@{vehicle-STR_mythic}/2" disabled />
                   <input name="attr_vehicle-leap" type="text" class="full_width" value="@{vehicle-STR_mythic}" disabled />
+                  <button class="clear " type="roll" name="vehicle-evade" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Vehicle Evasion}} {{roll=[[@{settings_rounding}([[ {0d1+(@{AGI} + @{AGI_advancement} + @{fatigue_mod}),0d1+@{vehicle-AGI}}kl1 ]][lowest of AGI,AGI]+@{mod2_evasion}+[[@{mod3_evasion} -20]]+@{inlinemod-toggle}-1d100)/10)]]}}">Evade</button>
+                  <button class="clear " type="roll" name="vehicle-parry" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Vehicle Parry}} {{roll=[[@{settings_rounding}([[ {0d1+(@{WFM} + @{WFM_advancement} + @{fatigue_mod}),0d1+@{vehicle-AGI}}kl1 ]][lowest of WFM,AGI]+@{mod2_evasion}+[[@{mod3_evasion} -20]]+@{inlinemod-toggle}-1d100)/10)]]}}">Parry</button>
                 </div>
               </div>
 
-              <div><h3>CREW AND COMPLEMENT</h3></div>
-              <div class="vehicles_grid_2x">
-                <div>Crew</div>
-                <div>Complement</div>
+              <div class="vehicles_grid_2x vehicle_break">
+                <h3 class="radius_border_top">CREW</h3>
+                <h3 class="radius_border_top">COMPLEMENT</h3>
                 <input name="attr_vehicle-crew" type="text" class="full_width" placeholder="Minimum Crew Prerequisite" />
                 <input name="attr_vehicle-compliment" type="text" class="full_width" placeholder="Maximum Crew Space" />
               </div>
 
-              <div><h3>BREAKPOINTS</h3></div>
-              <div class="vehicles_grid_5x">
-                <div>1-20 Wep</div>
-                <div>21-40 Mob</div>
-                <div>41-60 Eng</div>
-                <div>61-80 Optic</div>
-                <div>81-100 Hull</div>
-                <input name="attr_vehicle-bp-wep" type="text" class="full_width" placeholder="Weapon" />
-                <input name="attr_vehicle-bp-mod" type="text" class="full_width" placeholder="Mobility" />
-                <input name="attr_vehicle-bp-eng"type="text" class="full_width" placeholder="Engine" />
-                <input name="attr_vehicle-bp-op"type="text" class="full_width" placeholder="Optic" />
-                <input name="attr_vehicle-bp-crew"type="text" class="full_width" placeholder="Hull Points" />
+              <input name="attr_vehicle-type" type="checkbox" value="2" class="hidden hidernot" />
+              <div class="vehicle_break">
+                <h3 class="radius_border_top">BREAKPOINTS</h3>
+                <div class="vehicles_grid_5x vehicle_background">
+                  <div>1-15 Wep</div>
+                  <div>16-30 Mob</div>
+                  <div>31-45 Engine</div>
+                  <div>46-60 Optics</div>
+                  <div>61-100 Hull</div>
+                  <input name="attr_vehicle-bp_weapon" type="text" value="0" class="full_width"/>
+                  <input name="attr_vehicle-bp_mobility " type="text" value="0" class="full_width"/>
+                  <input name="attr_vehicle-bp_engine"type="text" value="0" class="full_width"/>
+                  <input name="attr_vehicle-bp_optic"type="text" value="0" class="full_width"/>
+                  <input name="attr_vehicle-bp_hull"type="text" value="0" class="full_width"/>
+                </div>
+              </div>
+
+              <input name="attr_vehicle-type" type="checkbox" value="2" class="hidden hider" />
+              <div class="vehicle_break">
+                <h3 class="radius_border_top">HULL INTEGRITY</h3>
+                <input name="attr_vehicle-bp_hull"type="text" value="0" class="full_width" placeholder="Hull Points" />
+              </div>
+
+              <input name="attr_vehicle-bp_hull" type="checkbox" value="0" class="hidden hider" checked/>
+              <div class="vehicle_break">
+                <h3 class="radius_border_top">Doomed state</h3>
+                <div>
+                  <input name="attr_doomedstate_value" type="text" placeholder="Doomedstate damage taken" class="full_width_49px vehicles_descriptor" />
+                  <label class="margin_adjust"><input type="checkbox" name="attr_collapse2" value="7" class="hider select_button hidden" /><span class="select_text radius_border_right">▼</span></label>
+                  <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title= @{vehicle-name} Doomed State (@{doomedstate_value})}} {{description=@{doomedstate_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+
+                  <input name="attr_collapse2" type="checkbox"  value="7" class="hider hidden" />
+                  <textarea name="attr_doomedstate_desc" class=" description_rounded_margin"></textarea>
+
+                  <input name="attr_collapse2" type="checkbox"  value="7" class="hidernot hidden" />
+                  <div class="vehicle_break"></div>
+                </div>
               </div>
 
 
-              <div><h3>Armor</h3></div>
-              <div class="vehicles_grid_5x">
+
+              <h3 class="radius_border_top">Armor</h3>
+              <div class="vehicles_grid_5x vehicle_break vehicle_background">
                 <div>Front</div>
                 <div>Back</div>
                 <div>Side</div>
                 <div>Top</div>
                 <div>Bottom</div>
-                <input name="attr_vehicle-armor-front" type="text" class="full_width" />
-                <input name="attr_vehicle-armor-back" type="text" class="full_width" />
-                <input name="attr_vehicle-armor-side" type="text" class="full_width" />
-                <input name="attr_vehicle-armor-top" type="text" class="full_width" />
-                <input name="attr_vehicle-armor-bottom" type="text" class="full_width" />
+                <input name="attr_vehicle-armor_front" type="text" class="full_width" />
+                <input name="attr_vehicle-armor_back" type="text" class="full_width" />
+                <input name="attr_vehicle-armor_side" type="text" class="full_width" />
+                <input name="attr_vehicle-armor_top" type="text" class="full_width" />
+                <input name="attr_vehicle-armor_bottom" type="text" class="full_width" />
               </div>
 
-              <input name="attr_vehicle-type" type="checkbox" value="0" class="hidden hider" />
+              <input name="attr_vehicle-type" type="checkbox" value="0" class="hidden hider" checked/>
               <div>
-                <div><h3>Miscellaneous</h3></div>
-                <div class="vehicles_grid_2x">
-                  <div>Size Points</div>
-                  <div>Weapon Points</div>
-
+                <div class="vehicles_grid_2x vehicle_break">
+                  <h3 class="radius_border_top">Size Points</h3>
+                  <h3 class="radius_border_top">Weapon Points</h3>
                   <input name="attr_vehicle-size-points" type="text" class="full_width"/>
                   <input name="attr_vehicle-weapon-points" type="text" class="full_width"/>
                 </div>
@@ -2108,8 +2134,9 @@
 
               <input name="attr_vehicle-type" type="checkbox" value="1" class="hidden hider" />
               <div>
-                <div><h3>Miscellaneous</h3></div>
-                <div class="vehicles_grid_4x">
+                <h3 class="radius_border_top">Miscellaneous</h3>
+                <div class="vehicles_grid_4x vehicle_break vehicle_background">
+
                   <div>Size Points</div>
                   <div>Weapon Points</div>
                   <div>Size category</div>
@@ -2124,8 +2151,8 @@
 
               <input name="attr_vehicle-shield" type="checkbox" value="1" class="hidden hider" />
               <div>
-                <div><h3>Energy shield</h3></div>
-                <div class="vehicles_grid_4x">
+                <h3 class="radius_border_top">Energy shield</h3>
+                <div class="vehicles_grid_4x vehicle_break vehicle_background">
                   <div>Shield Rating</div>
                   <div>Shield Current</div>
                   <div>Recharge Delay</div>
@@ -2491,6 +2518,14 @@
 
           <h3 class="radius_border_top">Extra commands</h3>
           <textarea class="tokenmoddisplay radius_border_bottom" name="attr_Tokenmod_custom" placeholder="Type your custom commands here (They will be appended to the token mod command)"></textarea>
+
+          <h3 class="radius_border_top">Vehicle speed buttons</h3>
+          <select name="attr_Vehicle-speed_bar" class="full_width edge_padding radius_border_bottom">
+            <option value="0" >Vehicle speed Disabled</option>
+            <option value="1">Vehicle speed uses bar 1 (GREEN)</option>
+            <option value="2">Vehicle speed uses bar 2 (BLUE)</option>
+            <option value="3"selected="selected" >Vehicle speed uses bar 3 (RED)</option>
+          </select>
         </div>
       </div>
     </div>
@@ -2820,55 +2855,55 @@
               <div class="border_full">
 
 
-                <div class="vehicles_grid_header">
-                  <input name="attr_vehicle-name" type="text" class="vehicles_Gn full_width" placeholder="Name" />
-
+                <div class="vehicles_grid_header vehicle_break">
                   <select name="attr_vehicle-shield" class="vehicles_Gs full_width">
                     <option value="0" selected="selected">Unshielded</option>
                     <option value="1">Shielded</option>
                   </select>
+
+                  <input name="attr_vehicle-name" type="text" class="vehicles_Gn full_width" placeholder="Name" />
 
                   <select name="attr_vehicle-type" class="vehicles_Gt full_width">
                     <option value="0" selected="selected">Ground/Air</option>
                     <option value="1">Walker</option>
                     <option value="2">Stationary</option>
                   </select>
-
-                  <div class="vehicles_G1"><h3>DIMENSIONS</h3></div>
                 </div>
 
-                <div class="vehicles_grid_4x">
-                  <div>Length</div>
-                  <div>Width</div>
-                  <div>Height</div>
-                  <div>Weight</div>
-                  <input name="attr_vehicle-length" type="text" class="full_width" placeholder="# Meters" />
-                  <input name="attr_vehicle-width" type="text" class="full_width" placeholder="# Meters" />
-                  <input name="attr_vehicle-height" type="text" class="full_width" placeholder="# Meters" />
-                  <input name="attr_vehicle-weight" type="text" class="full_width" placeholder="KG / Metric Tons" />
+                <div class="vehicles_grid_4x vehicle_break">
+                  <h3 class="radius_border_top">Length</h3>
+                  <h3 class="radius_border_top">Width</h3>
+                  <h3 class="radius_border_top">Height</h3>
+                  <h3 class="radius_border_top">Weight</h3>
+
+                  <input name="attr_vehicle-length" type="text" class="full_width" placeholder="Meters" />
+                  <input name="attr_vehicle-width" type="text" class="full_width" placeholder="Meters" />
+                  <input name="attr_vehicle-height" type="text" class="full_width" placeholder="Meters" />
+                  <input name="attr_vehicle-weight" type="text" class="full_width" placeholder="kg / tonne" />
                 </div>
 
                 <input name="attr_vehicle-type" type="checkbox" value="0" class="hidden hider" checked />
                 <div>
-                  <div><h3>SPEED AND MANEUVERABILITY</h3></div>
-                  <div class="vehicles_grid_4x">
-
-                    <div>Accelerate</div>
-                    <div>Brake</div>
+                  <h3 class="radius_border_top">Mobility</h3>
+                  <div class="vehicles_grid_5x vehicle_break vehicle_background">
+                    <button class="clear vehicle_smallrollbutton" type="roll" name="vehicle-accelerate" value="!token-mod {{--set bar@{Vehicle-speed_bar}_max|@{vehicle-top_speed} bar@{Vehicle-speed_bar}_value|+@{vehicle-accelerate}}}">Accelerate</button>
+                    <button class="clear vehicle_smallrollbutton" type="roll" name="vehicle-evade" value="!token-mod {{--set bar@{Vehicle-speed_bar}_max|@{vehicle-top_speed} bar@{Vehicle-speed_bar}_value|-@{vehicle-brake}}}">Brake</button>
                     <div>Top Speed</div>
                     <div>Maneuver</div>
+                    <div></div>
 
-                    <input name="attr_vehicle-accelerate" type="text" class="full_width" placeholder="Meters per Turn" />
-                    <input name="attr_vehicle-brake" type="text" class="full_width" placeholder="Meters per Turn" />
-                    <input name="attr_vehicle-top_speed" type="text" class="full_width" placeholder="MpT/(# km/h)" />
+                    <input name="attr_vehicle-accelerate" type="text" class="full_width" placeholder="MpT" />
+                    <input name="attr_vehicle-brake" type="text" class="full_width" placeholder="MpT" />
+                    <input name="attr_vehicle-top_speed" type="text" class="full_width" placeholder="MpT (Km/H)" />
                     <input name="attr_vehicle-maneuver" type="text" class="full_width" placeholder="Max Evasion" />
+                    <button class="clear " type="roll" name="vehicle-evade" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Vehicle Evasion}} {{roll=[[@{settings_rounding}([[ {0d1+(@{AGI} + @{AGI_advancement} + @{fatigue_mod}),0d1+@{vehicle-maneuver}}kl1 ]][lowest of AGI,AGI]+@{mod2_evasion}+[[@{mod3_evasion} -20]]+@{inlinemod-toggle}-1d100)/10)]]}}">Evade</button>
                   </div>
                 </div>
 
                 <input name="attr_vehicle-type" type="checkbox" value="1" class="hidden hider" />
                 <div>
-                  <div><h3>CHARACTERISTICS AND SPEED</h3></div>
-                  <div class="vehicles_grid_4x">
+                  <h3 class="radius_border_top">CHARACTERISTICS AND SPEED</h3>
+                  <div class="vehicles_grid_4x vehicle_background vehicle_break">
                     <div>STR</div>
                     <div>MYTHIC STR</div>
                     <div>AGI</div>
@@ -2888,59 +2923,85 @@
                     <input name="attr_vehicle-full_move" type="text" class="full_width " value="floor(@{vehicle-AGI}/10 + @{vehicle-AGI_mythic})*2" disabled/>
                     <input name="attr_vehicle-run_move" type="text" class="full_width " value="floor(@{vehicle-AGI}/10 + @{vehicle-AGI_mythic})*3" disabled/>
                     <input name="attr_vehicle-charge_move" type="text" class="full_width " value="floor(@{vehicle-AGI}/10 + @{vehicle-AGI_mythic})*6" disabled/>
-
                     <div>Jump</div>
-                    <input name="attr_vehicle-jump" type="text" class="full_width" value="@{vehicle-STR_mythic}/2" disabled />
-
                     <div>Leap</div>
+                    <div></div>
+                    <div></div>
+
+                    <input name="attr_vehicle-jump" type="text" class="full_width" value="@{vehicle-STR_mythic}/2" disabled />
                     <input name="attr_vehicle-leap" type="text" class="full_width" value="@{vehicle-STR_mythic}" disabled />
+                    <button class="clear " type="roll" name="vehicle-evade" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Vehicle Evasion}} {{roll=[[@{settings_rounding}([[ {0d1+(@{AGI} + @{AGI_advancement} + @{fatigue_mod}),0d1+@{vehicle-AGI}}kl1 ]][lowest of AGI,AGI]+@{mod2_evasion}+[[@{mod3_evasion} -20]]+@{inlinemod-toggle}-1d100)/10)]]}}">Evade</button>
+                    <button class="clear " type="roll" name="vehicle-parry" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Vehicle Parry}} {{roll=[[@{settings_rounding}([[ {0d1+(@{WFM} + @{WFM_advancement} + @{fatigue_mod}),0d1+@{vehicle-AGI}}kl1 ]][lowest of WFM,AGI]+@{mod2_evasion}+[[@{mod3_evasion} -20]]+@{inlinemod-toggle}-1d100)/10)]]}}">Parry</button>
                   </div>
                 </div>
 
-                <div><h3>CREW AND COMPLEMENT</h3></div>
-                <div class="vehicles_grid_2x">
-                  <div>Crew</div>
-                  <div>Complement</div>
+                <div class="vehicles_grid_2x vehicle_break">
+                  <h3 class="radius_border_top">CREW</h3>
+                  <h3 class="radius_border_top">COMPLEMENT</h3>
                   <input name="attr_vehicle-crew" type="text" class="full_width" placeholder="Minimum Crew Prerequisite" />
                   <input name="attr_vehicle-compliment" type="text" class="full_width" placeholder="Maximum Crew Space" />
                 </div>
 
-                <div><h3>BREAKPOINTS</h3></div>
-                <div class="vehicles_grid_5x">
-                  <div>1-20 Wep</div>
-                  <div>21-40 Mob</div>
-                  <div>41-60 Eng</div>
-                  <div>61-80 Optic</div>
-                  <div>81-100 Hull</div>
-                  <input name="attr_vehicle-bp-wep" type="text" class="full_width" placeholder="Weapon" />
-                  <input name="attr_vehicle-bp-mod" type="text" class="full_width" placeholder="Mobility" />
-                  <input name="attr_vehicle-bp-eng"type="text" class="full_width" placeholder="Engine" />
-                  <input name="attr_vehicle-bp-op"type="text" class="full_width" placeholder="Optic" />
-                  <input name="attr_vehicle-bp-crew"type="text" class="full_width" placeholder="Hull Points" />
+                <input name="attr_vehicle-type" type="checkbox" value="2" class="hidden hidernot" />
+                <div class="vehicle_break">
+                  <h3 class="radius_border_top">BREAKPOINTS</h3>
+                  <div class="vehicles_grid_5x vehicle_background">
+                    <div>1-15 Wep</div>
+                    <div>16-30 Mob</div>
+                    <div>31-45 Engine</div>
+                    <div>46-60 Optics</div>
+                    <div>61-100 Hull</div>
+                    <input name="attr_vehicle-bp_weapon" type="text" value="0" class="full_width"/>
+                    <input name="attr_vehicle-bp_mobility " type="text" value="0" class="full_width"/>
+                    <input name="attr_vehicle-bp_engine"type="text" value="0" class="full_width"/>
+                    <input name="attr_vehicle-bp_optic"type="text" value="0" class="full_width"/>
+                    <input name="attr_vehicle-bp_hull"type="text" value="0" class="full_width"/>
+                  </div>
+                </div>
+
+                <input name="attr_vehicle-type" type="checkbox" value="2" class="hidden hider" />
+                <div class="vehicle_break">
+                  <h3 class="radius_border_top">HULL INTEGRITY</h3>
+                  <input name="attr_vehicle-bp_hull"type="text" value="0" class="full_width" placeholder="Hull Points" />
+                </div>
+
+                <input name="attr_vehicle-bp_hull" type="checkbox" value="0" class="hidden hider" checked/>
+                <div class="vehicle_break">
+                  <h3 class="radius_border_top">Doomed state</h3>
+                  <div>
+                    <input name="attr_doomedstate_value" type="text" placeholder="Doomedstate damage taken" class="full_width_49px vehicles_descriptor" />
+                    <label class="margin_adjust"><input type="checkbox" name="attr_collapse2" value="7" class="hider select_button hidden" /><span class="select_text radius_border_right">▼</span></label>
+                    <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title= @{vehicle-name} Doomed State (@{doomedstate_value})}} {{description=@{doomedstate_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+
+                    <input name="attr_collapse2" type="checkbox"  value="7" class="hider hidden" />
+                    <textarea name="attr_doomedstate_desc" class=" description_rounded_margin"></textarea>
+
+                    <input name="attr_collapse2" type="checkbox"  value="7" class="hidernot hidden" />
+                    <div class="vehicle_break"></div>
+                  </div>
                 </div>
 
 
-                <div><h3>Armor</h3></div>
-                <div class="vehicles_grid_5x">
+
+                <h3 class="radius_border_top">Armor</h3>
+                <div class="vehicles_grid_5x vehicle_break vehicle_background">
                   <div>Front</div>
                   <div>Back</div>
                   <div>Side</div>
                   <div>Top</div>
                   <div>Bottom</div>
-                  <input name="attr_vehicle-armor-front" type="text" class="full_width" />
-                  <input name="attr_vehicle-armor-back" type="text" class="full_width" />
-                  <input name="attr_vehicle-armor-side" type="text" class="full_width" />
-                  <input name="attr_vehicle-armor-top" type="text" class="full_width" />
-                  <input name="attr_vehicle-armor-bottom" type="text" class="full_width" />
+                  <input name="attr_vehicle-armor_front" type="text" class="full_width" />
+                  <input name="attr_vehicle-armor_back" type="text" class="full_width" />
+                  <input name="attr_vehicle-armor_side" type="text" class="full_width" />
+                  <input name="attr_vehicle-armor_top" type="text" class="full_width" />
+                  <input name="attr_vehicle-armor_bottom" type="text" class="full_width" />
                 </div>
 
-                <input name="attr_vehicle-type" type="checkbox" value="0" class="hidden hider" />
+                <input name="attr_vehicle-type" type="checkbox" value="0" class="hidden hider" checked/>
                 <div>
-                  <div><h3>Miscellaneous</h3></div>
-                  <div class="vehicles_grid_2x">
-                    <div>Size Points</div>
-                    <div>Weapon Points</div>
-
+                  <div class="vehicles_grid_2x vehicle_break">
+                    <h3 class="radius_border_top">Size Points</h3>
+                    <h3 class="radius_border_top">Weapon Points</h3>
                     <input name="attr_vehicle-size-points" type="text" class="full_width"/>
                     <input name="attr_vehicle-weapon-points" type="text" class="full_width"/>
                   </div>
@@ -2948,8 +3009,9 @@
 
                 <input name="attr_vehicle-type" type="checkbox" value="1" class="hidden hider" />
                 <div>
-                  <div><h3>Miscellaneous</h3></div>
-                  <div class="vehicles_grid_4x">
+                  <h3 class="radius_border_top">Miscellaneous</h3>
+                  <div class="vehicles_grid_4x vehicle_break vehicle_background">
+
                     <div>Size Points</div>
                     <div>Weapon Points</div>
                     <div>Size category</div>
@@ -2964,8 +3026,8 @@
 
                 <input name="attr_vehicle-shield" type="checkbox" value="1" class="hidden hider" />
                 <div>
-                  <div><h3>Energy shield</h3></div>
-                  <div class="vehicles_grid_4x">
+                  <h3 class="radius_border_top">Energy shield</h3>
+                  <div class="vehicles_grid_4x vehicle_break vehicle_background">
                     <div>Shield Rating</div>
                     <div>Shield Current</div>
                     <div>Recharge Delay</div>
@@ -2990,7 +3052,7 @@
                   <label class="margin_adjust"><input type="checkbox" name="attr_collapse2" value="6" class="hider select_button hidden" /><span class="select_text radius_border_right">▼</span></label>
                   <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{modifications} }} {{description=@{modifications_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
                   <input name="attr_collapse2" type="checkbox"  value="6" class="hider hidden" />
-                  <textarea name="attr_modifications_desc" class=" description_rounded_margin" placeholder="Vehicles in Mythic can be modified in many ways.  These use a Vehicle’s Weapon Points and Size Points, which are specialized Hardpoints on a Vehicle.  Each Modification takes a specified amount of Weapon and Size Points.
+                  <textarea name="attr_modifications_desc" class=" description_rounded_margin" placeholder="Vehicles in Mythic can be modified in many ways.  These use a Vehicle’s Weapon Points and Size Points, which are specialized Hardpoints on a Vehicle. Each Modification takes a specified amount of Weapon and Size Points.
                   &#10;Vehicle modifications are classified into five categories; Body, Propulsion, Electronic, Combat, and Miscellaneous."></textarea>
                 </div>
               </div>
@@ -4737,6 +4799,39 @@
 
 
 
+
+
+
+
+
+
+
+  // ___________________________________________________________________________
+  // __________________________Vehicle sheet worker__________________________
+  // ___________________________________________________________________________
+  on("change:repeating_vehicles:doomedstate_value", (eventInfo) => {
+    console.log(eventInfo.triggerName);
+    getAttrs([
+    eventInfo.triggerName,
+
+    ], values => {
+      var doomedstate = parseInt(values[eventInfo.triggerName], 10) || 0;
+      var doomedstatedesc = "Nothing happens.";
+      const updateAttrs ={}
+
+      if (doomedstate>10) {doomedstatedesc = "The Vehicle’s current Armor is reduced by 1 on all Locations."};
+      if (doomedstate>20) {doomedstatedesc = "The Vehicle’s current Armor is reduced by 2 on all Locations. \n\tA Character within the Vehicle takes the Damage of the Attack, reduced by half of the current Armor of the Vehicle."};
+      if (doomedstate>30) {doomedstatedesc = "The Vehicle’s current Armor is reduced by 3 on all Locations. \n\tA Character within the Vehicle takes the full Damage of the Attack."};
+      if (doomedstate>40) {doomedstatedesc = "The Vehicle’s current Armor is reduced by 4 on all Locations. \n\t  The Vehicle cannot move and any weapon that needs an engine to move can no longer turn and aim."};
+      if (doomedstate>50) {doomedstatedesc = "The Vehicle’s current Armor is reduced by 5 on all Locations. \n\t  The Vehicle catches fire and the Characters inside will take Flame (2) each Round until they escape."};
+      if (doomedstate>65) {doomedstatedesc = "The Vehicle catches fire and major sections of the Vehicle have been destroyed. \n\tThe Vehicle’s ammunition and fuel will soon detonate. \n\tThe Characters have 4 Rounds to escape the Vehicle before it fully detonates. The Blast Radius is the Vehicle’s Size Points multiplied by 2, while the Kill Radius is the Vehicle’s Size Points."};
+      if (doomedstate>80) {doomedstatedesc = "The Vehicle violently explodes due to the damage to the fuel systems and ammunition in the Vehicle. \n\tThis gives the Characters 2 Rounds to escape before the Vehicle fully detonates. The Blast Radius is the Vehicle’s Size Points multiplied by 3, while the Kill Radius is the Vehicle’s Size Points multiplied by 2."};
+      if (doomedstate>99) {doomedstatedesc = "The Vehicle instantly detonates with no chance of escaping. \n\tThe Blast Radius is the Vehicle’s Size Points multiplied by 4, while the Kill Radius is the Vehicle’s Size Points multiplied by 3."}
+
+      updateAttrs[eventInfo.triggerName.split('_doomedstate_value')[0] + "_doomedstate_desc"] = doomedstatedesc
+      setAttrs(updateAttrs);
+    });
+  });
 
 
 

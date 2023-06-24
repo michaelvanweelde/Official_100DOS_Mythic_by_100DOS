@@ -916,17 +916,17 @@ ______________________________ start of vehicles tab ___________________________
 	grid-column-gap: 10px;
 }
 
-.sheet-vehicles_Gn  { grid-area: vn; background: #394C6A; border: none; border-bottom: 1px solid white; border-radius: 9px 9px 0px 0px; color: white; font-family: Saira Semi Condensed; text-align: center; font-size: 16px; }
-.sheet-vehicles_Gs  { grid-area: vs; height: 28.5px; margin-bottom: -8px; margin-top: -1px; border-top: 1px solid white; }
-.sheet-vehicles_Gt  { grid-area: vt; height: 28.5px; margin-bottom: -8px; margin-top: -1px; border-top: 1px solid white; }
-.sheet-vehicles_G1  { grid-area: v1 }
+.sheet-vehicle_break{
+	margin-bottom: 10px;
+}
+
+.sheet-vehicles_Gn  { background: #394C6A; border: none; border-bottom: 1px solid white; border-radius: 0px 0px 0px 0px; color: white; font-family: Saira Semi Condensed; text-align: center; font-size: 16px; }
+.sheet-vehicles_Gs  { height: 28px; margin-bottom: -8px; margin-top: -1px; border-radius: 0px 0px 0px 4px; border: 0px solid white; border-bottom: 1px solid white; border-right: 1px solid white; }
+.sheet-vehicles_Gt  { height: 28px; margin-bottom: -8px; margin-top: -1px; border-radius: 0px 0px 4px 0px; border: 0px solid white; border-bottom: 1px solid white; border-left: 1px solid white; }
 
 .sheet-vehicles_grid_header {
 	display: grid;
-	grid-template-columns: 25% 25% 25% 25%;
-	grid-template-areas:
-	'vn  vn  vn  vn'
-	'vs  v1  v1  vt'
+	grid-template-columns: 87px auto 87px;
 }
 
 .sheet-vehicles_grid_2x {
@@ -952,6 +952,17 @@ ______________________________ start of vehicles tab ___________________________
 	border-bottom-left-radius: 8px;
 }
 
+.sheet-vehicle_background{
+		background-color: #394c6a;
+}
+
+.sheet-vehicle_smallrollbutton{
+	font-size: 12px !important;
+	height: 15px !important;
+	border-radius: 7px 7px 0px 0px;
+	border-bottom: 0px;
+	padding-top: 0px !important;
+}
 
 
 
