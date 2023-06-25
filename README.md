@@ -1,7 +1,19 @@
 # Mythic_Updated
 
-  This sheet is designed for use in Roll20.  There is a universal header that applies to all in-sheet tabs.  This header section consists of five grid sub-sections: first logo and core character details, second characteristics, third Mythical characteristics plus physical calculations such as movement and carrying capacity, fourth initiative roller and alternate in-sheet tabs, and fifth has all other numbers that should be accessible on-hand by the player such as luck, wounds, etc.
+Official character sheet for the 100DOS and mythic system.
 
-  Specifically, the fifth header grid will be made to have the following attributes displayed: total experience points, luck points, support points, fatigue points, wound count, armor data, shield data, and credit count.  Note that these attributes will be accessible and editable in other parts of the sheet.
+This sheet includes extra features such as token descriptions and vehicle speed tracking if the TokenMod API is enabled.
 
-  These tabs are composed of different sections: core character information such as skills and education, a summary of medical status along with any bodily injuries that could be sustained, a list of equipment both used in and out of combat such as weapons or communications gear, an experience page to differentiate unspent/spent experience points toward an automatically tracked total sum number, a player-kept journal tab to list complete/incomplete objectives in a mission or keep a history of your character's time spent, a vehicles tab to list vehicle data, and a settings tab to allow the player to apply technical changes to the sheet if needed, such as applying an automatic jump multiplier if playing as a Jackal.
+The Core section includes: basic skills, educations and features,
+
+The Equipment section includes: weapons, inventory, and armor displays. The Tare button will set the current CR calculations to 0 allowing you to track the amount you've spent or expended during or in between missions. The reset button will undo the Tare.
+
+The Medical section includes: on hit special damage effects, prosthetics and extra medical info. Hovering over a special damage location will show its possible damage effects. The turns button will reduce any effects which are reduced on a turn basis and the Reset All button will completely reset all special damage effects.
+
+The Advancements section includes: XP tracking, Faction and weapon training, character point buy and stat tracking and a repeat of the abilities section for easier character creation. The Apply button will automatically apply the stats in the point buy tracker to the main stats listed at the top of the sheet.
+
+The Journal section includes: objective tracking and notes.
+
+The vehicles section includes: A display with vehicle stats and weapons. When the vehicle sheet is opened Any melee or ranged weapons dragged onto the sheet from the compendium will be moved here. The accelerate and brake buttons will increase a token bar is a token was selected, allowing you to track a vehicle's current speed.
+
+The settings section allows you to overwrite the default settings of the sheet.

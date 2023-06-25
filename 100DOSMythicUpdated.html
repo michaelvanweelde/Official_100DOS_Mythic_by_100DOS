@@ -1137,7 +1137,7 @@
                 <input class="equipment_ranged_weapons_gs16 full_width" type="text" value="0" name="attr_weapon_mag" />
                 <div class="equipment_ranged_weapons_gs17">/</div>
                 <input class="equipment_ranged_weapons_gs18 full_width" type="text" value="0" name="attr_weapon_mag_max" />
-                <button class="equipment_ranged_weapons_gs19 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
+                <button class="equipment_ranged_weapons_gs19 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
                 <button class="equipment_ranged_weapons_gs20 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
               </div>
               <div class="equipment_ranged_weapons_grid4">
@@ -1212,7 +1212,7 @@
                 <input class="equipment_melee_weapons_gs6 full_width" type="text" value="0" name="attr_weapon_breakpoints" />
                 <div class="equipment_melee_weapons_gs7">/</div>
                 <input class="equipment_melee_weapons_gs8 full_width" type="text" value="0" name="attr_weapon_breakpoints_max" />
-                <button class="equipment_melee_weapons_gs9 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}" >Hit</button>
+                <button class="equipment_melee_weapons_gs9 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}" >Hit</button>
                 <button class="equipment_melee_weapons_gs10 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}" >DMG</button>
               </div>
               <div class="equipment_melee_weapons_grid4">
@@ -2225,7 +2225,7 @@
                   <input class="equipment_ranged_weapons_gs16 full_width" type="text" value="0" name="attr_weapon_mag" />
                   <div class="equipment_ranged_weapons_gs17">/</div>
                   <input class="equipment_ranged_weapons_gs18 full_width" type="text" value="0" name="attr_weapon_mag_max" />
-                  <button class="equipment_ranged_weapons_gs19 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
+                  <button class="equipment_ranged_weapons_gs19 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
                   <button class="equipment_ranged_weapons_gs20 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}" >DMG</button>
                 </div>
                 <div class="equipment_ranged_weapons_grid4">
@@ -2300,7 +2300,7 @@
                   <input class="equipment_melee_weapons_gs6 full_width" type="text" value="0" name="attr_weapon_breakpoints" />
                   <div class="equipment_melee_weapons_gs7">/</div>
                   <input class="equipment_melee_weapons_gs8 full_width" type="text" value="0" name="attr_weapon_breakpoints_max" />
-                  <button class="equipment_melee_weapons_gs9 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}"" >Hit</button>
+                  <button class="equipment_melee_weapons_gs9 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}"" >Hit</button>
                   <button class="equipment_melee_weapons_gs10 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}" >DMG</button>
                 </div>
                 <div class="equipment_melee_weapons_grid4">
@@ -2452,8 +2452,8 @@
 
           <h3 class="radius_border_top">Initiative Overrides</h3>
           <select name="attr_initmod0" class="full_width edge_padding radius_border_bottom">
-            <option value="[[" >No tiebreaker</option>
-            <option value="[[floor" selected="selected">Decimal tiebreaker</option>
+            <option value="[[floor" >No tiebreaker</option>
+            <option value="[[" selected="selected">Decimal tiebreaker</option>
             <option value="tiebreaker [[@{AGI_total}]] roll [[floor">AGI tiebreaker</option>
           </select>
           <br><br>
@@ -2461,19 +2461,19 @@
 
 
           <h3 class="radius_border_top">Weapon rolling selectors</h3>
-          <select name="attr_autorolldamage" class="full_width edge_padding radius_border_bottom">
+          <select name="attr_settings_autorolldamage" class="full_width edge_padding radius_border_bottom">
             <option value="{{hit= }} {{damage= }}" selected="selected">autoroll damage</option>
             <option value="{{hit= }} ">Dont autoroll damage</option>
           </select>
 
           <select name="attr_settings_hitroll" class="full_width edge_padding radius_border">
-            <option value="{{loc=[[1d100]]}}"selected="selected">Automatically roll hit locations</option>
-            <option value=" ">Don"t automatically roll hit locations</option>
+            <option value="{{loc=[[1d100]]}}"selected="selected">Include hit locations</option>
+            <option value=" ">Don't include hit locations</option>
           </select>
 
           <select name="attr_settings_weapondescription" class="full_width edge_padding radius_border">
-            <option value="description"selected="selected">Include weapon description</option>
-            <option value=" ">Exclude weapon description</option>
+            <option value="description"selected="selected">Include weapon special rules</option>
+            <option value=" ">Don't include weapon special rules</option>
           </select>
           <br><br>
 
@@ -3436,7 +3436,7 @@
                       <input class="equipment_ranged_weapons_gs16 full_width" type="text" value="0" name="attr_weapon_mag" />
                       <div class="equipment_ranged_weapons_gs17">/</div>
                       <input class="equipment_ranged_weapons_gs18 full_width" type="text" value="0" name="attr_weapon_mag_max" />
-                      <button class="equipment_ranged_weapons_gs19 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
+                      <button class="equipment_ranged_weapons_gs19 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
                       <button class="equipment_ranged_weapons_gs20 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}" >DMG</button>
                     </div>
                     <div class="equipment_ranged_weapons_grid4">
@@ -3510,7 +3510,7 @@
                       <input class="equipment_melee_weapons_gs6 full_width" type="text" value="0" name="attr_weapon_breakpoints" />
                       <div class="equipment_melee_weapons_gs7">/</div>
                       <input class="equipment_melee_weapons_gs8 full_width" type="text" value="0" name="attr_weapon_breakpoints_max" />
-                      <button class="equipment_melee_weapons_gs9 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
+                      <button class="equipment_melee_weapons_gs9 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
                       <button class="equipment_melee_weapons_gs10 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}" >DMG</button>
                     </div>
                     <div class="equipment_melee_weapons_grid4">
@@ -3602,7 +3602,7 @@
                 <input class="equipment_ranged_weapons_gs16 full_width" type="text" value="0" name="attr_weapon_mag" />
                 <div class="equipment_ranged_weapons_gs17">/</div>
                 <input class="equipment_ranged_weapons_gs18 full_width" type="text" value="0" name="attr_weapon_mag_max" />
-                <button class="equipment_ranged_weapons_gs19 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
+                <button class="equipment_ranged_weapons_gs19 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
                 <button class="equipment_ranged_weapons_gs20 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
               </div>
               <div class="equipment_ranged_weapons_grid4">
@@ -3676,7 +3676,7 @@
                 <input class="equipment_melee_weapons_gs6 full_width" type="text" value="0" name="attr_weapon_breakpoints" />
                 <div class="equipment_melee_weapons_gs7">/</div>
                 <input class="equipment_melee_weapons_gs8 full_width" type="text" value="0" name="attr_weapon_breakpoints_max" />
-                <button class="equipment_melee_weapons_gs9 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
+                <button class="equipment_melee_weapons_gs9 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
                 <button class="equipment_melee_weapons_gs10 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
               </div>
               <div class="equipment_melee_weapons_grid4">
