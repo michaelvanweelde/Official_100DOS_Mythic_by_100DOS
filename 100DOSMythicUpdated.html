@@ -4182,9 +4182,9 @@
         setAttrs({
           half_move:  ((agi_mod+agi_mythic+settings_half_addi)  * 1 * settings_half_mult),
           full_move:  ((agi_mod+agi_mythic+settings_full_addi)  * 2 * settings_full_mult),
-          charge_move:((agi_mod+settings_charge_addi)* 3 * settings_charge_mult),
-          run_move:   ((agi_mod+settings_run_addi)   * 6 * settings_run_mult),
-          blur_move:  ((agi_mod+settings_blur_addi)  * 8 * settings_blur_mult),
+          charge_move:((agi_mod+agi_mythic+settings_charge_addi)* 3 * settings_charge_mult),
+          run_move:   ((agi_mod+agi_mythic+settings_run_addi)   * 6 * settings_run_mult),
+          blur_move:  ((agi_mod+agi_mythic+settings_blur_addi)  * 8 * settings_blur_mult),
 
           jump_move:  ((str_mod+settings_jump_addi) * 0.25 * settings_jump_mult),
           leap_move:  ((Math.floor(Math.max(agi_mod , str_mod))+settings_leap_addi) * 0.5 * settings_leap_mult),
