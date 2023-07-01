@@ -382,7 +382,7 @@
           </div>
 
           <div class="border_full">
-            <button class="infographic_header_text clear" name="damage_resistance_roll" type="roll"  value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=damage_resistance}} {{4x2-1-name=Head}} {{4x2-1=@{damage_resistance_head}}} {{4x2-1-name-max=Arms}} {{4x2-1-max=@{damage_resistance_arms}}} {{4x2-2-name=Chest}} {{4x2-2=@{damage_resistance_chest}}} {{4x2-2-name-max=Legs}} {{4x2-2-max=@{damage_resistance_legs}}}">Damage Resistance</button>
+            <button class="infographic_header_text clear" name="damage_resistance_roll" type="roll"  value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{name=Damage Resistance}} {{4x2-1-name=Head}} {{4x2-1=@{damage_resistance_head}}} {{4x2-1-name-max=Arms}} {{4x2-1-max=@{damage_resistance_arms}}} {{4x2-2-name=Chest}} {{4x2-2=@{damage_resistance_chest}}} {{4x2-2-name-max=Legs}} {{4x2-2-max=@{damage_resistance_legs}}}">Damage Resistance</button>
 
             <div class="infographic_grid_4x">
               <p class="infographic_text">Head</p>
@@ -2514,7 +2514,7 @@
           <br>
 
           <h3 class="radius_border_top">Token mod command</h3>
-          <textarea class="tokenmoddisplay radius_border_bottom" name="attr_Tokenmod_settings" placeholder="If you remove the default commands and want them back empty the text field and reopen the sheet.&#13; &#13;Some example commands:&#13;ARMR[@{armor_head}/@{armor_arms}/@{armor_chest}/@{armor_legs}] &#13;SLDS[@{shields}/@{shields|max}] &#13;WNDS[@{wounds}/@{wounds|max}] &#13;CAMO[?{Camo result in dos|0}]DOS">ARMR[@{armor_head}/@{armor_arms}/@{armor_chest}/@{armor_legs}] SLDS[@{shields}/@{shields|max}] WNDS[@{wounds}/@{wounds|max}] CAMO[?{Camo result in dos|0}]DOS</textarea>
+          <textarea class="tokenmoddisplay radius_border_bottom" name="attr_Tokenmod_settings" placeholder="If you remove the default commands and want them back empty the text field and reopen the sheet.&#13; &#13;Some example commands:&#13;ARMR[@{damage_resistance_head}/@{damage_resistance_arms}/@{damage_resistance_chest}/@{damage_resistance_legs}] &#13;SLDS[@{shields}/@{shields|max}] &#13;WNDS[@{wounds}/@{wounds|max}] &#13;CAMO[?{Camo result in dos|0}]DOS">ARMR[@{damage_resistance_head}/@{damage_resistance_arms}/@{damage_resistance_chest}/@{damage_resistance_legs}] SLDS[@{shields}/@{shields|max}] WNDS[@{wounds}/@{wounds|max}] CAMO[?{Camo result in dos|0}]DOS</textarea>
 
           <h3 class="radius_border_top">Extra commands</h3>
           <textarea class="tokenmoddisplay radius_border_bottom" name="attr_Tokenmod_custom" placeholder="Type your custom commands here (They will be appended to the token mod command)"></textarea>
@@ -4326,7 +4326,7 @@
   ["mouth2","","","5","","","","","","","","","","","","","","","","","",""],
   ["mouth3","","","10","","","","","","","","","","","","","","","","","Lost teeth ","1d5"],
   ["mouth4","","","20","","","","2","","","","","","","","","","","","","Lost teeth ","2d5"],
-  ["mouth5","","","p","","","","4","","","","","","","","","","","","","Lost teeth ","2d10"],
+  ["mouth5","","","P","","","","4","","","","","","","","","","","","","Lost teeth ","2d10"],
 
   ["nose1","","2","","","","","","","","","","","","","","","","","","Nose broken",""],
   ["nose2","","4","","","","","","","","","","","","","","","","","","Nose broken",""],
@@ -4392,7 +4392,7 @@
   ["pelvis2","","","","","","","","","","3","","2","","","","","","","","",""],
   ["pelvis3","","","","","","","","","","4","","3","","","","","","","","Pelvis Broken (Fractured)",""],
   ["pelvis4","","","","","","","","","","4","","5","","","","","","","","Pelvis Broken (Shattered)",""],
-  ["pelvis5","","","","","","","","","","p","","20","","","","","","","","Pelvis Broken (Shattered)",""],
+  ["pelvis5","","","","","","","","","","P","","20","","","","","","","","Pelvis Broken (Shattered)",""],
 
   ["intestines1","","","","","","","","","","","","2","","","","","","","","",""],
   ["intestines2","","","","","","","","","","","","3","","2","","","","","","",""],
@@ -4415,7 +4415,7 @@
   ["heart1","","","","","","","","5","","","","","","","","","","","","",""],
   ["heart2","2d5","","","","","","","10","","","","","","","","","","","5d10","",""],
   ["heart3","3d5","","","","","","","10","","","","","","","","","","","3d10","",""],
-  ["heart4","3d5","","","","","","","p","","","","","","","","","","","1d10","",""],
+  ["heart4","3d5","","","","","","","P","","","","","","","","","","","1d10","",""],
   ["heart5","","","","","","","","","","","","","","","","","","","","Heart destroyed, Instant Death",""],
 
   ["lungs1","","","","","","","","2","2","","","","","","","","","","","",""],
