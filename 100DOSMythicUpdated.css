@@ -637,9 +637,9 @@ ______________________________ start of equipment tab __________________________
 .sheet-equipment_ranged_weapons_grid1 {
 	align-items: center;
 	display: grid;
-	grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+	grid-template-columns: auto 45% auto auto auto;
 	grid-template-areas:
-	'rw1 rw2 rw2 rw2 rw2 rw2 rw2 rw3 rw4 rw31';
+	'rw1 rw2 rw2 rw3 rw4 rw31';
 }
 
 .sheet-equipment_ranged_weapons_grid2 {
@@ -988,6 +988,15 @@ ______________________________ start of settings tab ___________________________
 	justify-items: center;
 	margin-bottom: 7px;
 }
+
+.sheet-settings_speciesgrid_weight{
+	display: grid;
+	grid-template-columns: calc(100%/6) calc(100%/3) calc(100%/3) calc(100%/6);
+	align-items: center;
+	justify-items: center;
+	margin-bottom: 7px;
+}
+
 .sheet-settings_speciesinputwidth{width: 75%;}
 
 .sheet-tokenmoddisplay{	height: 82px !important;}
