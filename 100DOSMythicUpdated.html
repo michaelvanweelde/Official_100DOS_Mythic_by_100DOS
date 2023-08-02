@@ -5315,7 +5315,7 @@
         if(compcheck(comp_data_Parsed["Comp_accelerate"])>0)  updateAttrs["repeating_vehicles_" + UUID1 + "_vehicle-type"] = 0
         else if(compcheck(comp_data_Parsed["Comp_AGI"])>0)    updateAttrs["repeating_vehicles_" + UUID1 + "_vehicle-type"] = 1
         else                                                  updateAttrs["repeating_vehicles_" + UUID1 + "_vehicle-type"] = 2
-        
+
         updateAttrs["repeating_vehicles_" + UUID1 + "_vehicle-name"]    = compcheck(comp_name)
         updateAttrs["repeating_vehicles_" + UUID1 + "_vehicle-length"]  = compcheck(comp_data_Parsed["COMP_length"])
         updateAttrs["repeating_vehicles_" + UUID1 + "_vehicle-width"]   = compcheck(comp_data_Parsed["Comp_width"])
@@ -5434,7 +5434,7 @@
           }
         }
 
-        
+
         setAttrs(updateAttrs);
       };
 
