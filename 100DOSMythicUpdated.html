@@ -4002,7 +4002,7 @@
       var settings_fatigue = values["settings_fatigue"]
       const settings_race = values["settings_race"]
 
-      if(settings_race != "dont mod"){
+      if(settings_race != "dont mod" && settings_race != "dont calc"){
         // normal no modifiers ___________________________________________________
         setAttrs({
           settings_half_mult: (1),
@@ -4124,7 +4124,7 @@
   });
 
 
-  on("change:settings_half_mult change:settings_half_addi change:settings_full_mult change:settings_full_addi change:settings_charge_mult change:settings_charge_addi change:settings_run_mult change:settings_run_addi change:settings_blur_mult change:settings_blur_addi change:settings_jump_mult change:settings_jump_addi change:settings_leap_mult change:settings_leap_addi change:settings_carry_mult_str change:settings_carry_mult_tou change:settings_carry_addi change:settings_lift_mult_str change:settings_lift_mult_tou change:settings_lift_addi change:settings_push_mult_str_change:settings_push_mult_tou change:settings_push_addi change:settings_fatigue_mult change:settings_fatigue_addi change:fatigue change:agi change:agi_mythic change:agi_advancement change:str change:str_mythic change:str_advancement change:tou change:tou_mythic change:tou_advancement", function() {
+  on("change:settings_race change:settings_fatigue change:settings_half_mult change:settings_half_addi change:settings_full_mult change:settings_full_addi change:settings_charge_mult change:settings_charge_addi change:settings_run_mult change:settings_run_addi change:settings_blur_mult change:settings_blur_addi change:settings_jump_mult change:settings_jump_addi change:settings_leap_mult change:settings_leap_addi change:settings_carry_mult_str change:settings_carry_mult_tou change:settings_carry_addi change:settings_lift_mult_str change:settings_lift_mult_tou change:settings_lift_addi change:settings_push_mult_str_change:settings_push_mult_tou change:settings_push_addi change:settings_fatigue_mult change:settings_fatigue_addi change:fatigue change:agi change:agi_mythic change:agi_advancement change:str change:str_mythic change:str_advancement change:tou change:tou_mythic change:tou_advancement", function() {
     getAttrs([
     "settings_race",
     "settings_fatigue",
