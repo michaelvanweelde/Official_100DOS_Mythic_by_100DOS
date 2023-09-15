@@ -5126,6 +5126,8 @@
 
         if(comp_data_Parsed.COMP_field == "Npc"){
           updateAttrs["character_name"] = compcheck(comp_name)
+          updateAttrs["npc_XP"] = compcheck(comp_data_Parsed["COMP_experience"])
+          updateAttrs["npc_SIZE"] = compcheck(comp_data_Parsed["COMP_size"])
 
           updateAttrs["STR"] = compcheck(comp_data_Parsed["COMP_strength"])
           updateAttrs["TOU"] = compcheck(comp_data_Parsed["COMP_toughness"])
