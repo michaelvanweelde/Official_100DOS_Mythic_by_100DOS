@@ -1819,10 +1819,10 @@
 
       <h2>Experience Summary</h2>
       <div class="text_centered">
-        Unspent XP: <input name="attr_xp_current" type="number" value="(@{xp_total}-@{xp_spent})" class="numerical_field" disabled="true"/>
-        Spent XP: <input name="attr_xp_spentcalc" type="number" value="(@{xp_spent})" class="numerical_field" disabled="true""/>
-        <input name="attr_xp_spent" hidden/> <!-- only here for cosmetic reasons-->
-        XP Total: <input name="attr_xp_total" type="number" class="numerical_field end_field" />
+        Unspent XP: <input name="attr_xp_current" type="number" value="@{xp_total}-@{xp_spent}" class="numerical_field" disabled="true"/>
+        Spent XP: <input name="attr_xp_spentcalc" type="number" value="@{xp_spent}" class="numerical_field" disabled="true""/>
+        <input name="attr_xp_spent" value="0" hidden/> <!-- only here for cosmetic reasons-->
+        XP Total: <input name="attr_xp_total" value="0" type="number" class="numerical_field end_field" />
       </div>
 
       <br>
