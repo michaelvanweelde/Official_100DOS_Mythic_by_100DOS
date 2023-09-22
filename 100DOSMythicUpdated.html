@@ -1820,7 +1820,7 @@
       <h2>Experience Summary</h2>
       <div class="text_centered">
         Unspent XP: <input name="attr_xp_current" type="number" value="@{xp_total}-@{xp_spent}" class="numerical_field" disabled="true"/>
-        Spent XP: <input name="attr_xp_spentcalc" type="number" value="@{xp_spent}" class="numerical_field" disabled="true""/>
+        Spent XP: <input name="attr_xp_spentcalc" type="number" value="@{xp_spent}" class="numerical_field" disabled="true"/>
         <input name="attr_xp_spent" value="0" hidden/> <!-- only here for cosmetic reasons-->
         XP Total: <input name="attr_xp_total" value="0" type="number" class="numerical_field end_field" />
       </div>
@@ -1889,9 +1889,9 @@
           <input class="characteristic_spending_number_total" name="attr_characteristic_spending_wfm_total" value="@{characteristic_spending_wfm_base} + @{characteristic_spending_wfm_spending} + @{characteristic_spending_wfm_extra}" disabled="true" type="number"/>
           <input class="characteristic_spending_number_total" name="attr_characteristic_spending_int_total" value="@{characteristic_spending_int_base} + @{characteristic_spending_int_spending} + @{characteristic_spending_int_extra}" disabled="true" type="number"/>
           <input class="characteristic_spending_number_total" name="attr_characteristic_spending_per_total" value="@{characteristic_spending_per_base} + @{characteristic_spending_per_spending} + @{characteristic_spending_per_extra}" disabled="true" type="number"/>
-          <input class="characteristic_spending_number_total" name="attr_characteristic_spending_crg_total"  value="@{characteristic_spending_crg_base}  + @{characteristic_spending_crg_spending}  + @{characteristic_spending_crg_extra}" disabled="true" type="number"/>
-          <input class="characteristic_spending_number_total" name="attr_characteristic_spending_cha_total"  value="@{characteristic_spending_cha_base}  + @{characteristic_spending_cha_spending}  + @{characteristic_spending_cha_extra}" disabled="true" type="number"/>
-          <input class="characteristic_spending_number_total" name="attr_characteristic_spending_ldr_total"  value="@{characteristic_spending_ldr_base}  + @{characteristic_spending_ldr_spending}  + @{characteristic_spending_ldr_extra}" disabled="true" type="number"/>
+          <input class="characteristic_spending_number_total" name="attr_characteristic_spending_crg_total" value="@{characteristic_spending_crg_base} + @{characteristic_spending_crg_spending} + @{characteristic_spending_crg_extra}" disabled="true" type="number"/>
+          <input class="characteristic_spending_number_total" name="attr_characteristic_spending_cha_total" value="@{characteristic_spending_cha_base} + @{characteristic_spending_cha_spending} + @{characteristic_spending_cha_extra}" disabled="true" type="number"/>
+          <input class="characteristic_spending_number_total" name="attr_characteristic_spending_ldr_total" value="@{characteristic_spending_ldr_base} + @{characteristic_spending_ldr_spending} + @{characteristic_spending_ldr_extra}" disabled="true" type="number"/>
           <h3>Total</h3>
         </div>
 
@@ -1903,9 +1903,9 @@
           <input class="characteristic_spending_number" name="attr_characteristic_spending_wfm_base" type="number" value="0" />
           <input class="characteristic_spending_number" name="attr_characteristic_spending_int_base" type="number" value="0" />
           <input class="characteristic_spending_number" name="attr_characteristic_spending_per_base" type="number" value="0" />
-          <input class="characteristic_spending_number" name="attr_characteristic_spending_crg_base"  type="number" value="0" />
-          <input class="characteristic_spending_number" name="attr_characteristic_spending_cha_base"  type="number" value="0" />
-          <input class="characteristic_spending_number" name="attr_characteristic_spending_ldr_base"  type="number" value="0" />
+          <input class="characteristic_spending_number" name="attr_characteristic_spending_crg_base" type="number" value="0" />
+          <input class="characteristic_spending_number" name="attr_characteristic_spending_cha_base" type="number" value="0" />
+          <input class="characteristic_spending_number" name="attr_characteristic_spending_ldr_base" type="number" value="0" />
           <h3>Base</h3>
         </div>
 
@@ -1917,9 +1917,9 @@
           <input class="characteristic_spending_number" name="attr_characteristic_spending_wfm_spending" type="number" value="0" />
           <input class="characteristic_spending_number" name="attr_characteristic_spending_int_spending" type="number" value="0" />
           <input class="characteristic_spending_number" name="attr_characteristic_spending_per_spending" type="number" value="0" />
-          <input class="characteristic_spending_number" name="attr_characteristic_spending_crg_spending"  type="number" value="0" />
-          <input class="characteristic_spending_number" name="attr_characteristic_spending_cha_spending"  type="number" value="0" />
-          <input class="characteristic_spending_number" name="attr_characteristic_spending_ldr_spending"  type="number" value="0" />
+          <input class="characteristic_spending_number" name="attr_characteristic_spending_crg_spending" type="number" value="0" />
+          <input class="characteristic_spending_number" name="attr_characteristic_spending_cha_spending" type="number" value="0" />
+          <input class="characteristic_spending_number" name="attr_characteristic_spending_ldr_spending" type="number" value="0" />
           <h3>Points</h3>
         </div>
 
@@ -1931,9 +1931,9 @@
           <input class="characteristic_spending_number" name="attr_characteristic_spending_wfm_extra" type="number" value="0" hidden/>
           <input class="characteristic_spending_number" name="attr_characteristic_spending_int_extra" type="number" value="0" hidden/>
           <input class="characteristic_spending_number" name="attr_characteristic_spending_per_extra" type="number" value="0" hidden/>
-          <input class="characteristic_spending_number" name="attr_characteristic_spending_crg_extra"  type="number" value="0" hidden/>
-          <input class="characteristic_spending_number" name="attr_characteristic_spending_cha_extra"  type="number" value="0" hidden/>
-          <input class="characteristic_spending_number" name="attr_characteristic_spending_ldr_extra"  type="number" value="0" hidden/>
+          <input class="characteristic_spending_number" name="attr_characteristic_spending_crg_extra" type="number" value="0" hidden/>
+          <input class="characteristic_spending_number" name="attr_characteristic_spending_cha_extra" type="number" value="0" hidden/>
+          <input class="characteristic_spending_number" name="attr_characteristic_spending_ldr_extra" type="number" value="0" hidden/>
         </div>
 
         <fieldset name="abilities" class="repeating_characteristics">
@@ -1945,9 +1945,9 @@
             <input class="characteristic_spending_number" name="attr_characteristic_spending_wfm_extra_r" type="number" value="0" />
             <input class="characteristic_spending_number" name="attr_characteristic_spending_int_extra_r" type="number" value="0" />
             <input class="characteristic_spending_number" name="attr_characteristic_spending_per_extra_r" type="number" value="0" />
-            <input class="characteristic_spending_number" name="attr_characteristic_spending_crg_extra_r"  type="number" value="0" />
-            <input class="characteristic_spending_number" name="attr_characteristic_spending_cha_extra_r"  type="number" value="0" />
-            <input class="characteristic_spending_number" name="attr_characteristic_spending_ldr_extra_r"  type="number" value="0" />
+            <input class="characteristic_spending_number" name="attr_characteristic_spending_crg_extra_r" type="number" value="0" />
+            <input class="characteristic_spending_number" name="attr_characteristic_spending_cha_extra_r" type="number" value="0" />
+            <input class="characteristic_spending_number" name="attr_characteristic_spending_ldr_extra_r" type="number" value="0" />
             <input class="characteristic_spending_text_input" name="attr_characteristic_spending_ldr_extra_name_r"  type="text" placeholder="extra" />
           </div>
         </fieldset>
