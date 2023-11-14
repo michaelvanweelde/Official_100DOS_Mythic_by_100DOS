@@ -1044,9 +1044,9 @@ ______________________________ start of GM sheet overrides _____________________
 
 .sheet-GM_infographic {
 	color: white;
-	text-align: left;
+	text-align: center;
 	display: grid;
-	grid-template-columns: auto 10px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 10px 50px 50px 50px 50px 50px 50px 50px;
+	grid-template-columns: auto 3px repeat(10,43px) 3px repeat(7,45px);
 }
 .sheet-GM_infographic_header {
 	margin-top: 5px;
@@ -1055,8 +1055,8 @@ ______________________________ start of GM sheet overrides _____________________
 
 .sheet-GM_infographic_element {
 	align-content: center;
-	margin-left: -3px;
-	width: calc(100% + 3px) !important;
+	text-align: center;
+	width: 100% !important;
 }
 
 
