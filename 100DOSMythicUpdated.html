@@ -227,40 +227,64 @@
 
       <div class="characteristics_mythic_movement_carry">
 
-        <div class="characteristics2_mythic">
-          <p class="mythicgs1"><b>Mythic</b></p>
-          <input name="attr_STR_mythic" type="text" value="0" class="mythicgs2 mythicgs_width" />
-          <input name="attr_TOU_mythic" type="text" value="0" class="mythicgs3 mythicgs_width" />
-          <input name="attr_AGI_mythic" type="text" value="0" class="mythicgs4 mythicgs_width" />
-          <p class="mythicgs5">STR</p>
-          <p class="mythicgs6">TOU</p>
-          <p class="mythicgs7">AGI</p>
+        <div>
+          <p class="characteristics_mythic_movement_carry_header"><b>Mythic</b></p>
+          <div class="mythic_grid">
+            <input name="attr_STR_mythic" type="text" value="0" class="characteristics_mythic_movement_carry_input" />
+            <input name="attr_TOU_mythic" type="text" value="0" class="characteristics_mythic_movement_carry_input" />
+            <input name="attr_AGI_mythic" type="text" value="0" class="characteristics_mythic_movement_carry_input" />
+          </div>
+          <div class="mythic_grid">
+            <p class="characteristics_mythic_movement_carry_text">STR</p>
+            <p class="characteristics_mythic_movement_carry_text">TOU</p>
+            <p class="characteristics_mythic_movement_carry_text">AGI</p>
+          </div>
         </div>
-        <div class="characteristics2_movement">
-          <p class="movementgs1 mythicgs_heading"><b>Character Movement</b></p>
-          <input name="attr_half_move" type="text" class="movementgs2 mythicgs_width" />
-          <input name="attr_full_move" type="text" class="movementgs3 mythicgs_width" />
-          <input name="attr_charge_move" type="text" class="movementgs4 mythicgs_width" />
-          <input name="attr_run_move" type="text" class="movementgs5 mythicgs_width" />
-          <input name="attr_blur_move" type="text" class="movementgs6 mythicgs_width" />
-          <input name="attr_jump_move" type="text" class="movementgs7 mythicgs_width" />
-          <input name="attr_leap_move" type="text" class="movementgs8 mythicgs_width" />
-          <p class="movementgs9 ">Half</p>
-          <p class="movementgs10 ">Full</p>
-          <p class="movementgs11 ">Charge</p>
-          <p class="movementgs12 ">Run</p>
-          <p class="movementgs13 ">Blur</p>
-          <p class="movementgs14 ">Jump</p>
-          <p class="movementgs15 ">Leap</p>
+
+        <div>
+          <p class="characteristics_mythic_movement_carry_header"><b>Character Movement</b></p>
+          <div class="move_grid">
+            <input name="attr_half_move" type="text" class="characteristics_mythic_movement_carry_input" />
+            <input name="attr_full_move" type="text" class="characteristics_mythic_movement_carry_input" />
+            <input name="attr_charge_move" type="text" class="characteristics_mythic_movement_carry_input" />
+            <input name="attr_run_move" type="text" class="characteristics_mythic_movement_carry_input" />
+            <input name="attr_blur_move" type="text" class="characteristics_mythic_movement_carry_input" />
+            <input name="attr_jump_move" type="text" class="characteristics_mythic_movement_carry_input" />
+            <input name="attr_leap_move" type="text" class="characteristics_mythic_movement_carry_input" />
+          </div>
+          <div class="move_grid">
+            <p class="characteristics_mythic_movement_carry_text">Half</p>
+            <p class="characteristics_mythic_movement_carry_text">Full</p>
+            <p class="characteristics_mythic_movement_carry_text">Charge</p>
+            <p class="characteristics_mythic_movement_carry_text">Run</p>
+            <p class="characteristics_mythic_movement_carry_text">Blur</p>
+            <p class="characteristics_mythic_movement_carry_text">Jump</p>
+            <p class="characteristics_mythic_movement_carry_text">Leap</p>
+          </div>
         </div>
-        <div class="characteristics2_carry">
-          <p class="carrygs1 mythicgs_heading"><b>Weight Capacity</b></p>
-          <input name="attr_carry" type="text" class="carrygs2 mythicgs_width" />
-          <input name="attr_lift" type="text" class="carrygs3 mythicgs_width" />
-          <input name="attr_push" type="text" class="carrygs4 mythicgs_width" />
-          <p class="carrygs5">Carry</p>
-          <p class="carrygs6">Lift</p>
-          <p class="carrygs7">Push</p>
+
+        <div>
+          <p class="characteristics_mythic_movement_carry_header"><b>Sight</b></p>
+          <div class="sight_grid">
+            <input name="attr_perceptive_range" type="text" class="characteristics_mythic_movement_carry_input" />
+          </div>
+          <div class="sight_grid">
+            <p class="characteristics_mythic_movement_carry_text">Perceptive</p>
+          </div>
+        </div>
+
+        <div>
+          <p class="characteristics_mythic_movement_carry_header"><b>Weight</b></p>
+          <div class="carry_grid">
+            <input name="attr_carry" type="text" class="characteristics_mythic_movement_carry_input" />
+            <input name="attr_lift" type="text" class="characteristics_mythic_movement_carry_input" />
+            <input name="attr_push" type="text" class="characteristics_mythic_movement_carry_input" />
+          </div>
+          <div class="carry_grid">
+            <p class="characteristics_mythic_movement_carry_text">Carry</p>
+            <p class="characteristics_mythic_movement_carry_text">Lift</p>
+            <p class="characteristics_mythic_movement_carry_text">Push</p>
+          </div>
         </div>
 
       </div>
@@ -334,7 +358,7 @@
           @{to-gm}&{template:mythic} {{character= @{character_name}}}{{nrofrolls= [[?{How many rolls?|1}]]}}{{multiroll0=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*0]]-1d100)/10)]]}}{{multiroll1=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*1]]-1d100)/10)]]}}{{multiroll2=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*2]]-1d100)/10)]]}}{{multiroll3=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*3]]-1d100)/10)]]}}{{multiroll4=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*4]]-1d100)/10)]]}}{{multiroll5=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*5]]-1d100)/10)]]}}{{multiroll6=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*6]]-1d100)/10)]]}}{{multiroll7=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*7]]-1d100)/10)]]}}{{multiroll8=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*8]]-1d100)/10)]]}}{{multiroll9=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*9]]-1d100)/10)]]}}{{multiroll10=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*10]]-1d100)/10)]]}}{{multiroll11=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*11]]-1d100)/10)]]}}{{multiroll12=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*12]]-1d100)/10)]]}}{{multiroll13=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*13]]-1d100)/10)]]}}{{multiroll14=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*14]]-1d100)/10)]]}}{{multiroll15=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*15]]-1d100)/10)]]}}{{multiroll16=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*16]]-1d100)/10)]]}}{{multiroll17=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*17]]-1d100)/10)]]}}{{multiroll18=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*18]]-1d100)/10)]]}}{{multiroll19=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*19]]-1d100)/10)]]}}{{multiroll20=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*20]]-1d100)/10)]]}}{{multiroll21=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*21]]-1d100)/10)]]}}{{multiroll22=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*22]]-1d100)/10)]]}}{{multiroll23=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*23]]-1d100)/10)]]}}{{multiroll24=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*24]]-1d100)/10)]]}}{{multiroll25=[[@{settings_rounding}( ?{Using| Warfare Ranged, @{WFR} + @{WFR_advancement} + @{fatigue_mod} | Warfare Melee, @{WFM} + @{WFM_advancement} + @{fatigue_mod} | Strength, @{STR} + @{STR_advancement} + @{fatigue_mod} |Toughness, @{TOU} + @{TOU_advancement} + @{fatigue_mod}|Agility, @{AGI} + @{AGI_advancement} + @{fatigue_mod} | Intelligence, @{INT} + @{INT_advancement} + @{fatigue_mod} |Perception, @{PER} + @{PER_advancement} + @{fatigue_mod} |Courage, @{CRG} + @{CRG_advancement} + @{fatigue_mod} |Charisma, @{CHA} + @{CHA_advancement} + @{fatigue_mod}|Leadership, @{LDR} + @{LDR_advancement} + @{fatigue_mod}}+@{inlinemod-toggle} -[[?{successive  penalties?|none, 0|10 every roll, 10|5 every roll, 5}*25]]-1d100)/10)]]}}
           ">Multi-Roll</button>
 
-          <button class="clear infographic_buttons" type="roll" name="Throwing" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{throwmod= [[ floor((@{STR} + @{STR_advancement} + @{fatigue_mod})/10 + @{STR_mythic}) ]]}} {{throwmod12=[[[[ floor((@{STR} + @{STR_advancement} + @{fatigue_mod})/10 + @{STR_mythic}) ]]*([[20]]+([[0-floor( ?{Roll?|Roll WFM, (@{WFM} + @{WFM_advancement}+@{fatigue_mod} + ?{modifier&amp;#124;0&amp;#125; - 1d100)/10|Custom,  ?{Result of WFM roll&amp;#124;0&amp;#125;})]])d1 [Invert this to find your DOS]-[[floor(?{Item weight|0} * 4)]]-?{Grip modifier|solid, 0|slight, 1|Partial, 2|Sloppy, 2}) * ?{Distance modifier|None, 1|Sloppy or obj too big, 0.5}]]}} {{throwmod34=[[[[ floor((@{STR} + @{STR_advancement} + @{fatigue_mod})/10 + @{STR_mythic}) ]]*([[20]]+([[0-floor( ?{Roll?|Roll WFM, (@{WFM} + @{WFM_advancement}+@{fatigue_mod} + ?{modifier&amp;#124;0&amp;#125; - 1d100)/10|Custom,  ?{Result of WFM roll&amp;#124;0&amp;#125;})]])d1 [Invert this to find your DOS]-[[floor(?{Item weight|0} * 2)]]-?{Grip modifier|solid, 0|slight, 1|Partial, 2|Sloppy, 2}) * ?{Distance modifier|None, 1|Sloppy or obj too big, 0.5}]]}} {{throwmod56=[[[[ floor((@{STR} + @{STR_advancement} + @{fatigue_mod})/10 + @{STR_mythic}) ]]*([[20]]+([[0-floor( ?{Roll?|Roll WFM, (@{WFM} + @{WFM_advancement}+@{fatigue_mod} + ?{modifier&amp;#124;0&amp;#125; - 1d100)/10|Custom,  ?{Result of WFM roll&amp;#124;0&amp;#125;})]])d1 [Invert this to find your DOS]-[[floor(?{Item weight|0} * 1)]]-?{Grip modifier|solid, 0|slight, 1|Partial, 2|Sloppy, 2}) * ?{Distance modifier|None, 1|Sloppy or obj too big, 0.5}]]}} {{throwmod79=[[[[ floor((@{STR} + @{STR_advancement} + @{fatigue_mod})/10 + @{STR_mythic}) ]]*([[20]]+([[0-floor( ?{Roll?|Roll WFM, (@{WFM} + @{WFM_advancement}+@{fatigue_mod} + ?{modifier&amp;#124;0&amp;#125; - 1d100)/10|Custom,  ?{Result of WFM roll&amp;#124;0&amp;#125;})]])d1 [Invert this to find your DOS]-[[floor(?{Item weight|0} * 0.5)]]-?{Grip modifier|solid, 0|slight, 1|Partial, 2|Sloppy, 2}) * ?{Distance modifier|None, 1|Sloppy or obj too big, 0.5}]]}} {{throwmod1012=[[[[ floor((@{STR} + @{STR_advancement} + @{fatigue_mod})/10 + @{STR_mythic}) ]]*([[20]]+([[0-floor( ?{Roll?|Roll WFM, (@{WFM} + @{WFM_advancement}+@{fatigue_mod} + ?{modifier&amp;#124;0&amp;#125; - 1d100)/10|Custom,  ?{Result of WFM roll&amp;#124;0&amp;#125;})]])d1 [Invert this to find your DOS]-[[floor(?{Item weight|0} * 0.2)]]-?{Grip modifier|solid, 0|slight, 1|Partial, 2|Sloppy, 2}) * ?{Distance modifier|None, 1|Sloppy or obj too big, 0.5}]]}} {{throwmod1318=[[[[ floor((@{STR} + @{STR_advancement} + @{fatigue_mod})/10 + @{STR_mythic}) ]]*([[20]]+([[0-floor( ?{Roll?|Roll WFM, (@{WFM} + @{WFM_advancement}+@{fatigue_mod} + ?{modifier&amp;#124;0&amp;#125; - 1d100)/10|Custom,  ?{Result of WFM roll&amp;#124;0&amp;#125;})]])d1 [Invert this to find your DOS]-[[floor(?{Item weight|0} * 0.1)]]-?{Grip modifier|solid, 0|slight, 1|Partial, 2|Sloppy, 2}) * ?{Distance modifier|None, 1|Sloppy or obj too big, 0.5}]]}} {{throwmod1925=[[[[ floor((@{STR} + @{STR_advancement} + @{fatigue_mod})/10 + @{STR_mythic}) ]]*([[20]]+([[0-floor( ?{Roll?|Roll WFM, (@{WFM} + @{WFM_advancement}+@{fatigue_mod} + ?{modifier&amp;#124;0&amp;#125; - 1d100)/10|Custom,  ?{Result of WFM roll&amp;#124;0&amp;#125;})]])d1 [Invert this to find your DOS]-[[floor(?{Item weight|0} * 0.05)]]-?{Grip modifier|solid, 0|slight, 1|Partial, 2|Sloppy, 2}) * ?{Distance modifier|None, 1|Sloppy or obj too big, 0.5}]]}} {{Item weight= [[?{Item weight|0}]]}}" >Throwing</button>
+          <button class="clear infographic_buttons" type="roll" name="Throwing" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{throwmod= [[ floor((@{STR} + @{STR_advancement} + @{fatigue_mod})/10 + @{STR_mythic}) ]]}} {{throwmod12=[[[[ floor((@{STR} + @{STR_advancement} + @{fatigue_mod})/10 + @{STR_mythic}) ]]*([[20]]+([[0-floor( ?{Roll?|Roll WFM, (@{WFM} + @{WFM_advancement}+@{fatigue_mod} + ?{modifier&amp;#124;0&amp;#125; - 1d100)/10|Custom,  ?{Result of WFM roll&amp;#124;0&amp;#125;})]])d1 [Invert this to find your DOS]-[[floor(?{Item weight|0} * 1/0.1)]]-?{Grip modifier|solid, 0|slight, 1|Partial, 2|Sloppy, 2}) * ?{Distance modifier|None, 1|Sloppy or obj too big, 0.5}]]}} {{throwmod34=[[[[ floor((@{STR} + @{STR_advancement} + @{fatigue_mod})/10 + @{STR_mythic}) ]]*([[20]]+([[0-floor( ?{Roll?|Roll WFM, (@{WFM} + @{WFM_advancement}+@{fatigue_mod} + ?{modifier&amp;#124;0&amp;#125; - 1d100)/10|Custom,  ?{Result of WFM roll&amp;#124;0&amp;#125;})]])d1 [Invert this to find your DOS]-[[floor(?{Item weight|0} * 1/0.2)]]-?{Grip modifier|solid, 0|slight, 1|Partial, 2|Sloppy, 2}) * ?{Distance modifier|None, 1|Sloppy or obj too big, 0.5}]]}} {{throwmod56=[[[[ floor((@{STR} + @{STR_advancement} + @{fatigue_mod})/10 + @{STR_mythic}) ]]*([[20]]+([[0-floor( ?{Roll?|Roll WFM, (@{WFM} + @{WFM_advancement}+@{fatigue_mod} + ?{modifier&amp;#124;0&amp;#125; - 1d100)/10|Custom,  ?{Result of WFM roll&amp;#124;0&amp;#125;})]])d1 [Invert this to find your DOS]-[[floor(?{Item weight|0} * 1/0.3)]]-?{Grip modifier|solid, 0|slight, 1|Partial, 2|Sloppy, 2}) * ?{Distance modifier|None, 1|Sloppy or obj too big, 0.5}]]}} {{throwmod79=[[[[ floor((@{STR} + @{STR_advancement} + @{fatigue_mod})/10 + @{STR_mythic}) ]]*([[20]]+([[0-floor( ?{Roll?|Roll WFM, (@{WFM} + @{WFM_advancement}+@{fatigue_mod} + ?{modifier&amp;#124;0&amp;#125; - 1d100)/10|Custom,  ?{Result of WFM roll&amp;#124;0&amp;#125;})]])d1 [Invert this to find your DOS]-[[floor(?{Item weight|0} * 1/0.5)]]-?{Grip modifier|solid, 0|slight, 1|Partial, 2|Sloppy, 2}) * ?{Distance modifier|None, 1|Sloppy or obj too big, 0.5}]]}} {{throwmod1012=[[[[ floor((@{STR} + @{STR_advancement} + @{fatigue_mod})/10 + @{STR_mythic}) ]]*([[20]]+([[0-floor( ?{Roll?|Roll WFM, (@{WFM} + @{WFM_advancement}+@{fatigue_mod} + ?{modifier&amp;#124;0&amp;#125; - 1d100)/10|Custom,  ?{Result of WFM roll&amp;#124;0&amp;#125;})]])d1 [Invert this to find your DOS]-[[floor(?{Item weight|0} * 1/2)]]-?{Grip modifier|solid, 0|slight, 1|Partial, 2|Sloppy, 2}) * ?{Distance modifier|None, 1|Sloppy or obj too big, 0.5}]]}} {{throwmod1318=[[[[ floor((@{STR} + @{STR_advancement} + @{fatigue_mod})/10 + @{STR_mythic}) ]]*([[20]]+([[0-floor( ?{Roll?|Roll WFM, (@{WFM} + @{WFM_advancement}+@{fatigue_mod} + ?{modifier&amp;#124;0&amp;#125; - 1d100)/10|Custom,  ?{Result of WFM roll&amp;#124;0&amp;#125;})]])d1 [Invert this to find your DOS]-[[floor(?{Item weight|0} * 1/5)]]-?{Grip modifier|solid, 0|slight, 1|Partial, 2|Sloppy, 2}) * ?{Distance modifier|None, 1|Sloppy or obj too big, 0.5}]]}} {{throwmod1925=[[[[ floor((@{STR} + @{STR_advancement} + @{fatigue_mod})/10 + @{STR_mythic}) ]]*([[20]]+([[0-floor( ?{Roll?|Roll WFM, (@{WFM} + @{WFM_advancement}+@{fatigue_mod} + ?{modifier&amp;#124;0&amp;#125; - 1d100)/10|Custom,  ?{Result of WFM roll&amp;#124;0&amp;#125;})]])d1 [Invert this to find your DOS]-[[floor(?{Item weight|0} * 1/10)]]-?{Grip modifier|solid, 0|slight, 1|Partial, 2|Sloppy, 2}) * ?{Distance modifier|None, 1|Sloppy or obj too big, 0.5}]]}} {{Item weight= [[?{Item weight|0}]]}}" >Throwing</button>
 
           <button class="clear infographic_buttons" type="roll" name="scatter" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{scatter-range= [[[[(abs(?{Degrees of Failiure|0})+floor(?{range from target|0}/100))*?{Target at|Normal range,1|Max range,2|Extreme range,4})]]d10*?{Scatter type|Weapon or ordnance,1|Thrown,0.5}]]}} {{scatter-direction=[[1d10]]d1}}" >Scatter</button>
 
@@ -2454,6 +2478,12 @@
             <input class="settings_speciesinputwidth" type="text" value="0" name="attr_settings_fatigue_addi" />
           </div>
 
+          <div class="settings_speciesgrid">
+            <p>PER range</p>
+            <input class="settings_speciesinputwidth" type="text" value="5" name="attr_settings_perceptive_mult" />
+            <input class="settings_speciesinputwidth" type="text" value="0" name="attr_settings_perceptive_addi" />
+          </div>
+
           <div class="settings_speciesgrid_weight">
             <h2>Trait</h2>
             <h2>mod str</h2>
@@ -4150,7 +4180,7 @@
   });
 
 
-  on("change:settings_race change:settings_fatigue change:settings_half_mult change:settings_half_addi change:settings_full_mult change:settings_full_addi change:settings_charge_mult change:settings_charge_addi change:settings_run_mult change:settings_run_addi change:settings_blur_mult change:settings_blur_addi change:settings_jump_mult change:settings_jump_addi change:settings_leap_mult change:settings_leap_addi change:settings_carry_mult_str change:settings_carry_mult_tou change:settings_carry_addi change:settings_lift_mult_str change:settings_lift_mult_tou change:settings_lift_addi change:settings_push_mult_str_change:settings_push_mult_tou change:settings_push_addi change:settings_fatigue_mult change:settings_fatigue_addi change:fatigue change:agi change:agi_mythic change:agi_advancement change:str change:str_mythic change:str_advancement change:tou change:tou_mythic change:tou_advancement", function() {
+  on("change:settings_race change:settings_fatigue change:settings_half_mult change:settings_half_addi change:settings_full_mult change:settings_full_addi change:settings_charge_mult change:settings_charge_addi change:settings_run_mult change:settings_run_addi change:settings_blur_mult change:settings_blur_addi change:settings_jump_mult change:settings_jump_addi change:settings_leap_mult change:settings_leap_addi change:settings_carry_mult_str change:settings_carry_mult_tou change:settings_carry_addi change:settings_lift_mult_str change:settings_lift_mult_tou change:settings_lift_addi change:settings_push_mult_str_change:settings_push_mult_tou change:settings_push_addi change:settings_fatigue_mult change:settings_fatigue_addi change:fatigue change:agi change:agi_mythic change:agi_advancement change:str change:str_mythic change:str_advancement change:tou change:tou_mythic change:tou_advancement change:per change:per_advancement", function() {
     getAttrs([
     "settings_race",
     "settings_fatigue",
@@ -4174,6 +4204,9 @@
     "settings_fatigue_mult",
     "settings_fatigue_addi",
 
+    "settings_perceptive_mult",
+    "settings_perceptive_addi",
+
     "settings_carry_mult_str",
     "settings_carry_mult_tou",
     "settings_carry_addi",
@@ -4194,6 +4227,9 @@
     "tou",
     "tou_mythic",
     "tou_advancement",
+
+    "per",
+    "per_advancement",
 
     "fatigue",
 
@@ -4221,6 +4257,9 @@
       const settings_fatigue_mult = parseFloat(values["settings_fatigue_mult"]) || 0;
       const settings_fatigue_addi = parseFloat(values["settings_fatigue_addi"]) || 0;
 
+      const settings_perceptive_mult = parseFloat(values["settings_perceptive_mult"]) || 0;
+      const settings_perceptive_addi = parseFloat(values["settings_perceptive_addi"]) || 0;
+
       const settings_carry_mult_str = parseFloat(values["settings_carry_mult_str"]) || 0;
       const settings_carry_mult_tou = parseFloat(values["settings_carry_mult_tou"]) || 0;
       const settings_carry_addi = parseFloat(values["settings_carry_addi"]) || 0;
@@ -4241,6 +4280,8 @@
       const tou = parseInt(values["tou"], 10) || 0;
       const tou_mythic = parseInt(values["tou_mythic"], 10) || 0;
       const tou_advancement = parseInt(values["tou_advancement"], 10) || 0;
+      const per = parseInt(values["per"], 10) || 0;
+      const per_advancement = parseInt(values["per_advancement"], 10) || 0;
 
       var fatigue = parseInt(values["fatigue"], 10) || 0;
 
@@ -4264,13 +4305,14 @@
           jump_move:  ((str_mod+settings_jump_addi) * 0.25 * settings_jump_mult),
           leap_move:  ((Math.floor(Math.max(agi_mod , str_mod))+settings_leap_addi) * 0.5 * settings_leap_mult),
 
+          fatigue_max: (tou_mod * 2 * settings_fatigue_mult),
+          fatigue_mod: (- Math.max(0, (fatigue)-settings_fatigue_addi) * 5),
+
+          perceptive_range: ((per+per_advancement + settings_perceptive_addi) * settings_perceptive_mult),
+
           carry: (((str + str_advancement + str_mythic*10) * settings_carry_mult_str + (tou + tou_advancement + tou_mythic*10) * settings_carry_mult_tou) * 1 + settings_carry_addi),
           lift:  (((str + str_advancement + str_mythic*10) * settings_lift_mult_str + (tou + tou_advancement + tou_mythic*10) * settings_lift_mult_tou) * 2 + settings_lift_addi),
           push:  (((str + str_advancement + str_mythic*10) * settings_push_mult_str + (tou + tou_advancement + tou_mythic*10) * settings_push_mult_tou) * 4 + settings_push_addi),
-
-
-          fatigue_max: (tou_mod * 2 * settings_fatigue_mult),
-          fatigue_mod: (- Math.max(0, (fatigue)-settings_fatigue_addi) * 5)
         });
       }
 
@@ -4930,6 +4972,16 @@
     }
   }
 
+  const safeparse = (value) =>{
+    try{
+      console.log(JSON.parse(value))
+      return JSON.parse(value);
+    }
+    catch {
+      return []
+    }
+  }
+
   on("change:comp_data", () => {
     getAttrs([
     "comp_name",
@@ -4937,21 +4989,26 @@
     "sheet_tab",
     "sheet_select",
     "npc_tab",
+    "WFR", "WFR_advancement",
     "WFM", "WFM_advancement",
+    "AGI", "AGI_advancement",
     "TOU", "TOU_advancement"
 
 
     ], values => {
       const wfm_total = Math.floor(((parseInt(values["WFM"], 10) || 0) + (parseInt(values["WFM_advancement"], 10) || 0 ))/10);
       const tou_total = Math.floor(((parseInt(values["TOU"], 10) || 0) + (parseInt(values["TOU_advancement"], 10) || 0 ))/10);
+      const wfr_total = Math.floor(((parseInt(values["WFR"], 10) || 0) + (parseInt(values["WFR_advancement"], 10) || 0 ))/10);
+      const agi_total = Math.floor(((parseInt(values["AGI"], 10) || 0) + (parseInt(values["AGI_advancement"], 10) || 0 ))/10);
 
       const sheet_tab = values["sheet_tab"]
       const sheet_select = values["sheet_select"]
       const npc_tab = values["npc_tab"]
 
       const {comp_name, comp_data} = values;
-      const comp_data_Parsed = JSON.parse(comp_data)
-      console.log(comp_data_Parsed)
+
+
+      const comp_data_Parsed = safeparse(comp_data)
 
       const updateAttrs = {};
 
@@ -5081,10 +5138,7 @@
           loc = "repeating_meleeweapons_"
         }
 
-        const wep_data_Parsed = JSON.parse(comp_data_Parsed["data-MeleeWeapon"])
-        console.log(wep_data_Parsed)
-
-
+        const wep_data_Parsed = safeparse(comp_data_Parsed["data-MeleeWeapon"])
 
 
         for (let i = 0; i < wep_data_Parsed.length; i++) {
@@ -5146,9 +5200,6 @@
 
       // _________________Compendium Npc sheet worker___________________
       if (comp_data_Parsed.COMP_field == "Baseline" || comp_data_Parsed.COMP_field == "Npc") {
-
-        const ability_data_Parsed = JSON.parse(comp_data_Parsed["data-Ability"])
-        console.log(ability_data_Parsed)
 
         if(comp_data_Parsed.COMP_field == "Npc"){
           updateAttrs["character_name"] = compcheck(comp_name)
@@ -5215,8 +5266,7 @@
 
         updateAttrs["settings_race"] = "dont mod"
 
-
-        if((compcheck(comp_data_Parsed["COMP_armor_chest"]) + compcheck(comp_data_Parsed["COMP_armor_chest"]) + compcheck(comp_data_Parsed["COMP_armor_head"]) + compcheck(comp_data_Parsed["COMP_armor_legs"]) + compcheck(comp_data_Parsed["COMP_shield_delay"]) + compcheck(comp_data_Parsed["COMP_shield_integrity"]) + compcheck(comp_data_Parsed["COMP_shield_recharge"])) != "0000000"){
+        if((compcheck(comp_data_Parsed["COMP_armor_chest"]) + compcheck(comp_data_Parsed["COMP_armor_chest"]) + compcheck(comp_data_Parsed["COMP_armor_head"]) + compcheck(comp_data_Parsed["COMP_armor_legs"]) + compcheck(comp_data_Parsed["COMP_shield_delay"]) + compcheck(comp_data_Parsed["COMP_shield_integrity"]) + compcheck(comp_data_Parsed["COMP_shield_recharge"])) != ""){
 
           const UUID1 = generateRowID();
           updateAttrs["repeating_armor_" + UUID1 + "_name"]           = compcheck(comp_name)
@@ -5232,11 +5282,20 @@
         }
 
 
-        for (let i = 0; i < ability_data_Parsed.length; i++) {
-          const UUID2 = generateRowID();
 
-          updateAttrs["repeating_abilities_" + UUID2 + "_ability"]       = compcheck(ability_data_Parsed[i]["COMP_aditional_info"])
-          updateAttrs["repeating_abilities_" + UUID2 + "_ability_desc"]  = compcheck(ability_data_Parsed[i]["COMP_description"])
+
+
+
+        if("data-Ability" in comp_data_Parsed){
+          const ability_data_Parsed = safeparse(comp_data_Parsed["data-Ability"]);
+
+
+          for (let i = 0; i < ability_data_Parsed.length; i++) {
+            const UUID2 = generateRowID();
+
+            updateAttrs["repeating_abilities_" + UUID2 + "_ability"]       = compcheck(ability_data_Parsed[i]["COMP_aditional_info"])
+            updateAttrs["repeating_abilities_" + UUID2 + "_ability_desc"]  = compcheck(ability_data_Parsed[i]["COMP_description"])
+          }
         }
 
 
@@ -5280,13 +5339,13 @@
         }
 
 
-        const wep_data_Parsed = JSON.parse(comp_data_Parsed["data-RangedWeapon"])
-        console.log(wep_data_Parsed)
+        const wep_data_Parsed = safeparse(comp_data_Parsed["data-RangedWeapon"])
+
 
         for (let i = 0; i < wep_data_Parsed.length; i++) {
           if ("COMP_name" in wep_data_Parsed[i]){
             const UUID1 = generateRowID();
-
+            
             if (wep_data_Parsed[i]["COMP_attribute"] == "STR") {wep_data_Parsed[i]["COMP_attribute"] = "@{STR} + @{STR_advancement} + @{fatigue_mod}"}
             if (wep_data_Parsed[i]["COMP_attribute"] == "TOU") {wep_data_Parsed[i]["COMP_attribute"] = "@{TOU} + @{TOU_advancement} + @{fatigue_mod}"}
             if (wep_data_Parsed[i]["COMP_attribute"] == "AGI") {wep_data_Parsed[i]["COMP_attribute"] = "@{AGI} + @{AGI_advancement} + @{fatigue_mod}"}
@@ -5309,7 +5368,7 @@
             updateAttrs[loc + UUID1 + "_weapon_mag"]            = compcheck(wep_data_Parsed[i]["COMP_magazine"])
             updateAttrs[loc + UUID1 + "_weapon_mag_max"]        = compcheck(wep_data_Parsed[i]["COMP_magazine"])
             updateAttrs[loc + UUID1 + "_weapon_rof"]            = compcheck(wep_data_Parsed[i]["COMP_rof"])
-            updateAttrs[loc + UUID1 + "_weapon_reload"]         = compcheck(wep_data_Parsed[i]["COMP_reload"])
+            updateAttrs[loc + UUID1 + "_weapon_reload"]         = Math.max(parseInt(compcheck(wep_data_Parsed[i]["COMP_reload"])) -Math.floor(agi_total/2) -Math.floor(wfr_total/2),1) + "/" + compcheck(wep_data_Parsed[i]["COMP_reload"])
             updateAttrs[loc + UUID1 + "_weapon_special_rules"]  = compcheck(wep_data_Parsed[i]["COMP_special_rules"])
             updateAttrs[loc + UUID1 + "_description"]           = compcheck(wep_data_Parsed[i]["COMP_description"])
           }
@@ -5415,8 +5474,8 @@
         updateAttrs["repeating_vehicles_" + UUID1 + "_aditional_info_desc"] = "Price = " + compcheck(comp_data_Parsed["COMP_price"]) + "   Experience on kill = " + compcheck(comp_data_Parsed["COMP_experience"]) + "\n\n" + compcheck(comp_data_Parsed["COMP_description"])
 
         if ("data-RangedWeapon" in comp_data_Parsed) {
-          const rwep_data_Parsed = JSON.parse(comp_data_Parsed["data-RangedWeapon"])
-          console.log(rwep_data_Parsed)
+          const rwep_data_Parsed = safeparse(comp_data_Parsed["data-RangedWeapon"])
+
 
           for (let i = 0; i < rwep_data_Parsed.length; i++) {
             if ("COMP_name" in rwep_data_Parsed[i]){
@@ -5452,8 +5511,8 @@
         }
 
         if ("data-MeleeWeapon" in comp_data_Parsed) {
-          const mwep_data_Parsed = JSON.parse(comp_data_Parsed["data-MeleeWeapon"])
-          console.log(mwep_data_Parsed)
+          const mwep_data_Parsed = safeparse(comp_data_Parsed["data-MeleeWeapon"])
+
 
           for (let i = 0; i < mwep_data_Parsed.length; i++) {
             if ("COMP_name" in mwep_data_Parsed[i]){
@@ -5560,7 +5619,6 @@
 
     <div class="sheet-template-center"> For WFM DOS hover over distance. </div>
     {{/throwmod}}
-
 
 
 
