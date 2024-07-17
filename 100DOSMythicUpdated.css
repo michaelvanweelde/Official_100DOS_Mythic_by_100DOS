@@ -947,12 +947,6 @@ ______________________________ start of settings tab ___________________________
 	column-gap: 5px;
 }
 
-.sheet-settings_grid_2x {
-	display: grid;
-	grid-template-columns: 50% 50%;
-	text-align: center;
-}
-
 .sheet-bordered_container{
 	border: 2px solid #4a648c;
 	border-radius: 10px;
@@ -979,6 +973,11 @@ ______________________________ start of settings tab ___________________________
 
 .sheet-tokenmoddisplay{	height: 82px !important;}
 
+.sheet-settings_compendium_grid {
+	display: grid;
+	grid-template-columns: 65px calc(100% - 65px);
+	text-align: center;
+}
 
 /* ______________________________ end of settings tab ______________________________
 ______________________________ start of NPC sheet overrides ________________________ */
@@ -994,7 +993,8 @@ ______________________________ start of NPC sheet overrides ____________________
 
 .sheet-NPC_core_grid{
 	display: grid;
-	grid-template-columns: 290px 5px auto;
+	grid-template-columns: 290px auto;
+	grid-gap: 5px;
 }
 
 .sheet-NPC_divider{
@@ -1069,7 +1069,8 @@ ______________________________ start of rolltemplate ___________________________
 
 
 .sheet-rolltemplate-mythic .sheet-template-content {
-	background-image: url(https://github.com/michaelvanweelde/Halo_Mythic_4dot0/blob/master/images/Assets/Mythic_rolltemplate_background.png?raw=true);
+	background-color: #506b95;
+	background-image: url(https://github.com/Roll20/roll20-character-sheets/blob/master/Official_100DOS_Mythic_by_100DOS/images/Assets/Mythic_rolltemplate_background.png?raw=true);
 	background-size: 100%;
 	border-radius: 10px;
 	border: 1px solid grey;
