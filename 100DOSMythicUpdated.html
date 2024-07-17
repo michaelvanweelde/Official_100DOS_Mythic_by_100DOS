@@ -4159,9 +4159,9 @@
 
 
 <script type="text/worker">
-  // ___________________________________________________________________________
-  // __________________________General sum sheet worker_________________________
-  // ___________________________________________________________________________
+  // _______________________________________________________________________________________________
+  // Repeating sum sheet worker_____________________________________________________________________
+  // _______________________________________________________________________________________________
   /* ===== PARAMETERS ==========
   destinations = the name of the attribute that stores the total quantity
   section = name of repeating fieldset, without the repeating_
@@ -4266,9 +4266,9 @@
 
 
 
-  // ___________________________________________________________________________
-  // ____________________Movement and Weight sheet worker_______________________
-  // ___________________________________________________________________________
+  // _______________________________________________________________________________________________
+  // Movement and Weight sheet worker_______________________________________________________________
+  // _______________________________________________________________________________________________
 
   on("change:settings_race change:settings_fatigue", function() {
 
@@ -4308,7 +4308,7 @@
       const settings_race = values["settings_race"]
 
       if(settings_race != "dont mod" && settings_race != "dont calc"){
-        // normal no modifiers ___________________________________________________
+        // normal no modifiers
         setAttrs({
           settings_half_mult: (1),
           settings_half_addi: (0),
@@ -4348,7 +4348,7 @@
           });
         }
 
-        // Spartan + Jiralhanae + Promethean Knight + Prelate (carry weight * 2) ___________
+        // Spartan + Jiralhanae + Promethean Knight + Prelate (carry weight * 2)
         if(settings_race == "spartans" || settings_race == "Brutes" || settings_race == "Promethean Knight") {
           setAttrs({
             settings_carry_mult_str: (2),
@@ -4360,7 +4360,7 @@
           });
         }
 
-        // Sangheili (+2 agi leap, carry weight * 2) _____________________________
+        // Sangheili (+2 agi leap, carry weight * 2)
         if(settings_race == "Elite") {
           setAttrs({
             settings_carry_mult_str: (2),
@@ -4373,21 +4373,21 @@
           });
         }
 
-        // Ruutian & Ibie"shan (double agi to jump) ______________________________
+        // Ruutian & Ibie"shan (double agi to jump)
         if(settings_race == "Ruutian" || settings_race == "Ibieshan") {
           setAttrs({
             settings_jump_mult: (2),
           });
         }
 
-        // Jackal T"vaoan (mod to jump * 3) ______________________________________
+        // Jackal T"vaoan (mod to jump * 3)
         if(settings_race == "Tvaoan") {
           setAttrs({
             settings_jump_mult: (3),
           });
         }
 
-        // Mgalekgolo (Hunter) (carry = 5000, +3 agi to charge/run) _________
+        // Mgalekgolo (Hunter) (carry = 5000, +3 agi to charge/run)
         if(settings_race == "Hunters") {
           setAttrs({
             settings_carry_mult_str: (0),
@@ -4403,7 +4403,7 @@
             settings_run_addi: (3),
           });
         }
-        // engineer (carry = 1000) _________
+        // engineer (carry = 1000)
         if(settings_race == "Engineer") {
           setAttrs({
             settings_carry_mult_str: (0),
@@ -4542,7 +4542,7 @@
 
 
 
-      // normal no modifiers ___________________________________________________
+      // normal no modifiers
       if(settings_race != "dont calc") {
         setAttrs({
           half_move:  ((agi_mod+agi_mythic+settings_half_addi)  * 1 * settings_half_mult),
@@ -4574,9 +4574,9 @@
 
 
 
-  // ___________________________________________________________________________
-  // ________________Damage resistance calculation sheet worker_________________
-  // ___________________________________________________________________________
+  // _______________________________________________________________________________________________
+  // Damage resistance calculation sheet worker_____________________________________________________
+  // _______________________________________________________________________________________________
   on("change:repeating_armor remove:repeating_armor change:TOU change:TOU_advancement change:TOU_mythic", () => {
     repeatingSum("damage_resistance_head","armor",["armor_head","armor_worn"],"TOU:1/10","TOU_advancement:1/10","TOU_mythic","floor");
     repeatingSum("damage_resistance_arms","armor",["armor_arms","armor_worn"],"TOU:1/10","TOU_advancement:1/10","TOU_mythic","floor");
@@ -4602,9 +4602,9 @@
 
 
 
-  // ___________________________________________________________________________
-  // ____________________Tabs sheet worker______________________________________
-  // ___________________________________________________________________________
+  // _______________________________________________________________________________________________
+  // Tabs sheet worker______________________________________________________________________________
+  // _______________________________________________________________________________________________
   const buttonlist = ["core","equipment","medical","advancements","journal","vehicles","settings"];
   buttonlist.forEach(button => {
     on(`clicked:${button}`, function() {
@@ -4619,9 +4619,9 @@
 
 
 
-  // ___________________________________________________________________________
-  // ____________________gear cost/weight sheet worker__________________________
-  // ___________________________________________________________________________
+  // _______________________________________________________________________________________________
+  // gear cost/weight sheet worker__________________________________________________________________
+  // _______________________________________________________________________________________________
 
   on(`clicked:tare`, function() {
     getAttrs(["credit_tare"], function(values) {
@@ -4677,9 +4677,9 @@
   });
 
 
-  // ___________________________________________________________________________
-  // ____________________Medical sheet worker___________________________________
-  // ___________________________________________________________________________
+  // _______________________________________________________________________________________________
+  // Medical sheet worker___________________________________________________________________________
+  // _______________________________________________________________________________________________
 
   const medicalconditions = [
   ["neck1","","","","","","","1","","","","","","","","","","","","","",""],
@@ -5064,9 +5064,9 @@
   });
 
 
-  // ___________________________________________________________________________
-  // __________________________Advancements experience sheet worker___________________
-  // ___________________________________________________________________________
+  // _______________________________________________________________________________________________
+  // Advancements experience sheet worker___________________________________________________________
+  // _______________________________________________________________________________________________
   on("change:repeating_advancements remove:repeating_advancements", () => {
     repeatingSum(["xp_spent"],"advancements",["advancement_cost"])
   });
@@ -5074,9 +5074,9 @@
 
 
 
-  // ___________________________________________________________________________
-  // __________________________Advancements stat sheet worker___________________
-  // ___________________________________________________________________________
+  // _______________________________________________________________________________________________
+  // Advancements stat sheet worker_________________________________________________________________
+  // _______________________________________________________________________________________________
 
   on("change:repeating_characteristics remove:repeating_characteristics", () => {
     repeatingSum([    "characteristic_spending_str_extra","characteristic_spending_tou_extra","characteristic_spending_agi_extra","characteristic_spending_wfr_extra","characteristic_spending_wfm_extra","characteristic_spending_int_extra","characteristic_spending_per_extra","characteristic_spending_crg_extra","characteristic_spending_cha_extra","characteristic_spending_ldr_extra"],"characteristics",["characteristic_spending_str_extra_r","characteristic_spending_tou_extra_r","characteristic_spending_agi_extra_r","characteristic_spending_wfr_extra_r","characteristic_spending_wfm_extra_r","characteristic_spending_int_extra_r","characteristic_spending_per_extra_r","characteristic_spending_crg_extra_r","characteristic_spending_cha_extra_r","characteristic_spending_ldr_extra_r"])
@@ -5172,9 +5172,9 @@
 
 
 
-  // ___________________________________________________________________________
-  // __________________________Vehicle sheet worker__________________________
-  // ___________________________________________________________________________
+  // _______________________________________________________________________________________________
+  // Vehicle sheet worker___________________________________________________________________________
+  // _______________________________________________________________________________________________
   on("change:repeating_vehicles:doomedstate_value", (eventInfo) => {
     console.log(eventInfo.triggerName);
     getAttrs([
@@ -5206,9 +5206,9 @@
 
 
 
-  // ___________________________________________________________________________
-  // __________________________Compendium sheet worker__________________________
-  // ___________________________________________________________________________
+  // _______________________________________________________________________________________________
+  // Compendium sheet workers_______________________________________________________________________
+  // _______________________________________________________________________________________________
 
   const compcheck = (value,index="none") =>{
 
@@ -5255,13 +5255,10 @@
       const npc_tab = values["npc_tab"]
 
       const {comp_name, comp_data} = values;
-
-
       const comp_data_Parsed = safeparse(comp_data)
-
       const updateAttrs = {};
 
-      // _________________Clear compendium sheet worker___________________
+      // Clear compendium
       setAttrs({
         comp_name:"",
         comp_data:""
@@ -5269,7 +5266,8 @@
 
 
 
-      // _________________Compendium Ability sheet worker___________________
+      // ___________________________________________________________________________________________
+      // Compendium Ability
       if (comp_data_Parsed.COMP_field == "Ability") {
 
         const UUID1 = generateRowID();
@@ -5283,9 +5281,10 @@
         setAttrs(updateAttrs);
       };
 
+      
 
-
-      // _________________Compendium Armor sheet worker___________________
+      // ___________________________________________________________________________________________
+      // Compendium Armor sheet worker
       if (comp_data_Parsed.COMP_field == "Armour") {
 
         const UUID1 = generateRowID();
@@ -5318,7 +5317,8 @@
 
 
 
-      // _________________Compendium Armor Permutations sheet worker___________________
+      // ___________________________________________________________________________________________
+      // Compendium Armor Permutations sheet worker
       if (comp_data_Parsed.COMP_field == "Permutation") {
 
         const UUID1 = generateRowID();
@@ -5339,7 +5339,8 @@
 
 
 
-      // _________________Compendium Education sheet worker___________________
+      // ___________________________________________________________________________________________
+      // Compendium Education sheet worker
       if (comp_data_Parsed.COMP_field == "Education") {
 
         const UUID1 = generateRowID();
@@ -5359,7 +5360,8 @@
 
 
 
-      // _________________Compendium Equipment, Modifications and Ammo sheet worker___________________
+      // ___________________________________________________________________________________________
+      // Compendium Equipment, Modifications and Ammo sheet worker
       if (comp_data_Parsed.COMP_field == "Equipment" || comp_data_Parsed.COMP_field == "Weapon mod" || comp_data_Parsed.COMP_field == "Vehicle mod" || comp_data_Parsed.COMP_field == "Special ammo") {
 
         const UUID1 = generateRowID();
@@ -5374,7 +5376,8 @@
 
 
 
-      // _________________Compendium Melee weapon sheet worker___________________
+      // ___________________________________________________________________________________________
+      // Compendium Melee weapon sheet worker
       if (comp_data_Parsed.COMP_field == "Mel_Wep") {
 
         if (sheet_select == "PC" && sheet_tab == "vehicles") {
@@ -5389,10 +5392,8 @@
 
         const wep_data_Parsed = safeparse(comp_data_Parsed["data-MeleeWeapon"])
 
-
         for (let i = 0; i < wep_data_Parsed.length; i++) {
           if ("COMP_name" in wep_data_Parsed[i]){
-
 
             const UUID1 = generateRowID();
 
@@ -5447,7 +5448,8 @@
 
 
 
-      // _________________Compendium NPC sheet worker___________________
+      // ___________________________________________________________________________________________
+      // Compendium NPC sheet worker
       if (comp_data_Parsed.COMP_field == "Baseline" || comp_data_Parsed.COMP_field == "Npc") {
 
         if(comp_data_Parsed.COMP_field == "Npc"){
@@ -5532,15 +5534,8 @@
           updateAttrs["repeating_armor_" + UUID1 + "_description"]    = compcheck(comp_name) + "\n" + compcheck(comp_data_Parsed["COMP_armor_description"])
         }
 
-
-
-
-
-
         if("data-Ability" in comp_data_Parsed){
           const ability_data_Parsed = safeparse(comp_data_Parsed["data-Ability"]);
-
-
           for (let i = 0; i < ability_data_Parsed.length; i++) {
             const UUID2 = generateRowID();
 
@@ -5548,7 +5543,6 @@
             updateAttrs["repeating_abilities_" + UUID2 + "_ability_desc"]  = compcheck(ability_data_Parsed[i]["COMP_description"])
           }
         }
-
 
         const UUID3 = generateRowID();
         updateAttrs["repeating_advancements_" + UUID3 + "_advancement_name"]  = compcheck(comp_name)
@@ -5560,7 +5554,8 @@
 
 
 
-      // _________________Compendium Outlier sheet worker___________________
+      // ___________________________________________________________________________________________
+      // Compendium Outlier sheet worker__
       if (comp_data_Parsed.COMP_field == "Outlier") {
 
         const UUID1 = generateRowID();
@@ -5576,7 +5571,8 @@
 
 
 
-      // _________________Compendium Ranged weapon sheet worker___________________
+      // ___________________________________________________________________________________________
+      // Compendium Ranged weapon sheet worker__
       if (comp_data_Parsed.COMP_field == "Ran_Wep") {
 
         if (sheet_select == "PC" && sheet_tab == "vehicles") {
@@ -5589,9 +5585,7 @@
           loc = "repeating_rangedweapons_"
         }
 
-
         const wep_data_Parsed = safeparse(comp_data_Parsed["data-RangedWeapon"])
-
 
         for (let i = 0; i < wep_data_Parsed.length; i++) {
           if ("COMP_name" in wep_data_Parsed[i]){
@@ -5637,7 +5631,8 @@
 
 
 
-      // _________________Compendium Skill sheet worker___________________
+      // ___________________________________________________________________________________________
+      // Compendium Skill sheet worker__
       if (comp_data_Parsed.COMP_field == "Skill") {
 
         const UUID1 = generateRowID();
@@ -5649,7 +5644,8 @@
 
 
 
-      // _________________Compendium Faction Training sheet worker___________________
+      // ___________________________________________________________________________________________
+      // Compendium Faction Training sheet worker__
       if (comp_data_Parsed.COMP_field == "Faction Training") {
 
         const UUID1 = generateRowID();
@@ -5659,7 +5655,8 @@
 
 
 
-      // _________________Compendium Weapon Training sheet worker___________________
+      // ___________________________________________________________________________________________
+      // Compendium Weapon Training sheet worker__
       if (comp_data_Parsed.COMP_field == "Weapon Training") {
 
         const UUID1 = generateRowID();
@@ -5669,7 +5666,8 @@
 
 
 
-      // _________________Compendium Vehicle sheet worker___________________
+      // ___________________________________________________________________________________________
+      // Compendium Vehicle sheet worker__
       if (comp_data_Parsed.COMP_field == "Vehicle") {
 
         const UUID1 = generateRowID();
@@ -5727,7 +5725,6 @@
         if ("data-RangedWeapon" in comp_data_Parsed) {
           const rwep_data_Parsed = safeparse(comp_data_Parsed["data-RangedWeapon"])
 
-
           for (let i = 0; i < rwep_data_Parsed.length; i++) {
             if ("COMP_name" in rwep_data_Parsed[i]){
               const UUID2 = generateRowID();
@@ -5763,7 +5760,6 @@
 
         if ("data-MeleeWeapon" in comp_data_Parsed) {
           const mwep_data_Parsed = safeparse(comp_data_Parsed["data-MeleeWeapon"])
-
 
           for (let i = 0; i < mwep_data_Parsed.length; i++) {
             if ("COMP_name" in mwep_data_Parsed[i]){
