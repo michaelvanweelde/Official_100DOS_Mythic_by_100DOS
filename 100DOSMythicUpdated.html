@@ -1,4 +1,4 @@
-<div class="compendium-drop-target">
+<div class="compendium-drop-target bestiary">
   <input name="attr_comp_Name" accept="Name" type="text" hidden/>
   <input name="attr_comp_data" accept="data" type="text" hidden/>
 
@@ -119,7 +119,7 @@
 
         <button name="STR" type="roll" class="clear full_width characteristics_button"value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Strength}} {{roll=[[@{settings_rounding}([[@{STR} + @{STR_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}">STR |<input name="attr_STR_total" value="@{STR} + @{STR_advancement}+@{fatigue_mod}" class="input_background input_char_background" disabled /></button>
         <button name="TOU" type="roll" class="clear full_width characteristics_button"value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Toughness}} {{roll=[[@{settings_rounding}([[@{TOU} + @{TOU_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}">TOU |<input name="attr_TOU_total" value="@{TOU} + @{TOU_advancement}+@{fatigue_mod}" class="input_background input_char_background" disabled /></button>
-        <button name="AGI"  type="roll" class="clear full_width characteristics_button"value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Agility}} {{roll=[[@{settings_rounding}([[@{AGI} + @{AGI_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}">AGI |<input name="attr_AGI_total" value="@{AGI} + @{AGI_advancement}+@{fatigue_mod}" class="input_background input_char_background" disabled /></button>
+        <button name="AGI" type="roll" class="clear full_width characteristics_button"value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Agility}} {{roll=[[@{settings_rounding}([[@{AGI} + @{AGI_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}">AGI |<input name="attr_AGI_total" value="@{AGI} + @{AGI_advancement}+@{fatigue_mod}" class="input_background input_char_background" disabled /></button>
         <button name="WFR" type="roll" class="clear full_width characteristics_button"value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Warfare Ranged}} {{roll=[[@{settings_rounding}([[@{WFR} + @{WFR_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}">WFR |<input name="attr_WFR_total" value="@{WFR} + @{WFR_advancement}+@{fatigue_mod}" class="input_background input_char_background" disabled /></button>
         <button name="WFM" type="roll" class="clear full_width characteristics_button"value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Warfare Melee}} {{roll=[[@{settings_rounding}([[@{WFM} + @{WFM_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}">WFM |<input name="attr_WFM_total" value="@{WFM} + @{WFM_advancement}+@{fatigue_mod}" class="input_background input_char_background" disabled /></button>
         <button name="INT" type="roll" class="clear full_width characteristics_button"value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Intelligence}} {{roll=[[@{settings_rounding}([[@{INT} + @{INT_advancement}+@{fatigue_mod}]] + @{inlinemod-toggle} - 1d100)/10)]]}}">INT |<input name="attr_INT_total" value="@{INT} + @{INT_advancement}+@{fatigue_mod}" class="input_background input_char_background" disabled /></button>
@@ -1801,7 +1801,7 @@
           <div class="medical_table"> 05-06 Nose</div>
           <div class="medical_table"> 07 &nbsp; &nbsp;Eyes</div>
           <div class="medical_table"> 08 &nbsp; &nbsp;Ear</div>
-          <div class="medical_table"> 10 &nbsp; &nbsp;Forehead</div>
+          <div class="medical_table"> 09-10 &nbsp; &nbsp;Forehead</div>
           <h3>11-20 LEFT ARM</h3>
           <div class="medical_table">11-12 Hands</div>
           <div class="medical_table">13-15 Forearm</div>
@@ -2633,9 +2633,10 @@
           <!-- community user import fields -->
           <h3 class="radius_border_top">Community google sheet import</h3>
           <div class="settings_compendium_grid">
-            <Button type="action" class=" radius_border_left" name="act_medicalturn">&nbsp;Apply&nbsp;</Button>
-            <input name="attr_comp_Manual" type="text" placeholder="Place EXPORT arrays from the community google sheet here" class="full_width radius_border_right"/>
+            <Button type="action" class=" radius_border_left" name="act_compendiumapply">&nbsp;Apply&nbsp;</Button>
+            <input name="attr_comp_manual" type="text" placeholder="Place EXPORT arrays from the community google sheet here" class="full_width radius_border_right"/>
           </div>
+          <input name="attr_comp_feedback" type="text" placeholder="Waiting for compendium drop" class="full_width settings_compendium_text"/>
 
         </div>
       </div>
@@ -3885,7 +3886,7 @@
 
 
 
-  <!-- GM manager sheet -->
+  <!-- GM manager sheet ____________________________________________________________________________-->
 
   <input type="checkbox" name="attr_sheet_select" value="GM" class="hider hidden" />
   <div class="box whitetext">
@@ -5221,20 +5222,93 @@
     }
   }
 
-  const safeparse = (value) =>{
-    try{
-      console.log(JSON.parse(value))
-      return JSON.parse(value);
-    }
-    catch {
-      return []
-    }
-  }
+  const safeparse = (value) => {
+    try {
+      const parsed = JSON.parse(value);
 
+      if (typeof parsed === 'object' && parsed !== null) {
+        for (const key in parsed) {
+          parsed[key] = safeparse(parsed[key]);
+        }
+      } else if (Array.isArray(parsed)) {
+        for (let i = 0; i < parsed.length; i++) {
+          parsed[i] = safeparse(parsed[i]);
+        }
+      }
+
+      return parsed;
+    } catch {
+      return value;
+    }
+  };
+
+
+  // ___________________________________________________________________________________________
+  // R20 compendium drop handler
   on("change:comp_data", () => {
     getAttrs([
     "comp_name",
     "comp_data",
+
+    ], values => {
+
+      if(values["comp_name"] != "" && values["comp_data"] != ""){
+        compendiumhandler(
+        values["comp_name"],
+        safeparse(values["comp_data"])
+        )
+      }
+    });
+
+    setAttrs({
+      comp_name:"",
+      comp_data:"",
+    });
+  });
+
+  // ___________________________________________________________________________________________
+  // Armory manual compendium entry drop handler
+  on("clicked:compendiumapply", () => {
+    getAttrs([
+    "comp_manual",
+
+    ], values => {
+      manual_compendium_entry = safeparse(values["comp_manual"])
+
+      // Check if manual_compendium_entry is an object and not an array
+      if (typeof manual_compendium_entry !== "object" || manual_compendium_entry === null) {
+        setAttrs({comp_feedback: "JSON invalid - No valid compendium data provided."});
+        return;
+      }
+
+      if (Array.isArray(manual_compendium_entry)) {
+        setAttrs({comp_feedback: "JSON valid - Multi item compendium drop attempted."});
+        for (const single_compendium_entry of manual_compendium_entry) {
+          compendiumhandler(
+          single_compendium_entry["Name"],
+          single_compendium_entry["Data"]
+          );
+        }
+      }
+
+      else{
+        setAttrs({comp_feedback:"JSON valid - Single item compendium drop attempted."});
+        compendiumhandler(
+        manual_compendium_entry["Name"],
+        manual_compendium_entry["Data"]
+        )
+      }
+
+      setAttrs({
+        comp_manual:""
+      });
+    });
+  });
+
+
+
+  const compendiumhandler = (comp_name,comp_data) => {
+    getAttrs([
     "sheet_tab",
     "sheet_select",
     "npc_tab",
@@ -5254,15 +5328,16 @@
       const sheet_select = values["sheet_select"]
       const npc_tab = values["npc_tab"]
 
-      const {comp_name, comp_data} = values;
-      const comp_data_Parsed = safeparse(comp_data)
+      var manual_compendium_entry = ""
+      var comp_name_Parsed = ""
+      var comp_data_Parsed = ""
       const updateAttrs = {};
 
-      // Clear compendium
-      setAttrs({
-        comp_name:"",
-        comp_data:""
-      });
+      comp_name_Parsed = comp_name
+      comp_data_Parsed = comp_data
+
+      console.log(comp_name_Parsed)
+      console.log(comp_data_Parsed)
 
 
 
@@ -5271,24 +5346,24 @@
       if (comp_data_Parsed.COMP_field == "Ability") {
 
         const UUID1 = generateRowID();
-        updateAttrs["repeating_abilities_" + UUID1 + "_ability"]       = compcheck(comp_name) + "   " + compcheck(comp_data_Parsed["COMP_aditional_info"])
+        updateAttrs["repeating_abilities_" + UUID1 + "_ability"]       = compcheck(comp_name_Parsed) + " - " + compcheck(comp_data_Parsed["COMP_aditional_info"])
         updateAttrs["repeating_abilities_" + UUID1 + "_ability_desc"]  = compcheck(comp_data_Parsed["COMP_description"])
 
         const UUID2 = generateRowID();
-        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_name"]  = compcheck(comp_name)
+        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_name"]  = compcheck(comp_name_Parsed)
         updateAttrs["repeating_advancements_" + UUID1 + "_advancement_cost"]  = compcheck(comp_data_Parsed["COMP_experience"])
         updateAttrs["repeating_advancements_" + UUID1 + "_advancement_pgnr"]  = ""
         setAttrs(updateAttrs);
       };
 
-      
+
 
       // ___________________________________________________________________________________________
       // Compendium Armor sheet worker
       if (comp_data_Parsed.COMP_field == "Armour") {
 
         const UUID1 = generateRowID();
-        updateAttrs["repeating_armor_" + UUID1 + "_name"]           = compcheck(comp_name)
+        updateAttrs["repeating_armor_" + UUID1 + "_name"]           = compcheck(comp_name_Parsed)
         updateAttrs["repeating_armor_" + UUID1 + "_armor_head"]     = parseInt(compcheck(comp_data_Parsed["COMP_armor_head"]))
         updateAttrs["repeating_armor_" + UUID1 + "_armor_arms"]     = parseInt(compcheck(comp_data_Parsed["COMP_armor_arms"]))
         updateAttrs["repeating_armor_" + UUID1 + "_armor_chest"]    = parseInt(compcheck(comp_data_Parsed["COMP_armor_chest"]))
@@ -5297,13 +5372,13 @@
         updateAttrs["repeating_armor_" + UUID1 + "_shields_max"]    = compcheck(comp_data_Parsed["COMP_shield_integrity"])
         updateAttrs["repeating_armor_" + UUID1 + "_shields_delay"]  = compcheck(comp_data_Parsed["COMP_shield_delay"])
         updateAttrs["repeating_armor_" + UUID1 + "_shields_charge"] = compcheck(comp_data_Parsed["COMP_shield_recharge"])
-        updateAttrs["repeating_armor_" + UUID1 + "_description"]    = compcheck(comp_name) + "\n" + compcheck(comp_data_Parsed["COMP_description"])
+        updateAttrs["repeating_armor_" + UUID1 + "_description"]    = compcheck(comp_name_Parsed) + "\n" + compcheck(comp_data_Parsed["COMP_description"])
         if(comp_data_Parsed.COMP_variant == "1"){
-          updateAttrs["repeating_armor_" + UUID1 + "_description"]  = "[Variant] " +compcheck(comp_name) + "\n" + compcheck(comp_data_Parsed["COMP_description"])
+          updateAttrs["repeating_armor_" + UUID1 + "_description"]  = "[Variant] " +compcheck(comp_name_Parsed) + "\n" + compcheck(comp_data_Parsed["COMP_description"])
         }
 
         const UUID2 = generateRowID();
-        updateAttrs["repeating_gear_" + UUID2 + "_gear_name"]     = compcheck(comp_name) + "   armor[" + compcheck(comp_data_Parsed["COMP_armor_head"]) +" "+ compcheck(comp_data_Parsed["COMP_armor_arms"]) +" "+ compcheck(comp_data_Parsed["COMP_armor_chest"]) +" "+ compcheck(comp_data_Parsed["COMP_armor_legs"]) + "]" + " shields[" + compcheck(comp_data_Parsed["COMP_shield_integrity"]) +" "+ compcheck(comp_data_Parsed["COMP_shield_delay"]) +" "+ compcheck(comp_data_Parsed["COMP_shield_recharge"]) + "]"
+        updateAttrs["repeating_gear_" + UUID2 + "_gear_name"]     = compcheck(comp_name_Parsed) + "   armor[" + compcheck(comp_data_Parsed["COMP_armor_head"]) +" "+ compcheck(comp_data_Parsed["COMP_armor_arms"]) +" "+ compcheck(comp_data_Parsed["COMP_armor_chest"]) +" "+ compcheck(comp_data_Parsed["COMP_armor_legs"]) + "]" + " shields[" + compcheck(comp_data_Parsed["COMP_shield_integrity"]) +" "+ compcheck(comp_data_Parsed["COMP_shield_delay"]) +" "+ compcheck(comp_data_Parsed["COMP_shield_recharge"]) + "]"
         updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity"] = 1
         updateAttrs["repeating_gear_" + UUID2 + "_gear_cost"]     = compcheck(comp_data_Parsed["COMP_price"])
         updateAttrs["repeating_gear_" + UUID2 + "_gear_weight"]   = compcheck(comp_data_Parsed["COMP_weight"])
@@ -5322,12 +5397,12 @@
       if (comp_data_Parsed.COMP_field == "Permutation") {
 
         const UUID1 = generateRowID();
-        updateAttrs["repeating_permutations_" + UUID1 + "_permutation_name"]      = compcheck(comp_name)
+        updateAttrs["repeating_permutations_" + UUID1 + "_permutation_name"]      = compcheck(comp_name_Parsed)
         updateAttrs["repeating_permutations_" + UUID1 + "_permutation_location"]  = compcheck(comp_data_Parsed["COMP_hpt_location"])
         updateAttrs["repeating_permutations_" + UUID1 + "_permutation_desc"]      = compcheck(comp_data_Parsed["COMP_description"])
 
         const UUID2 = generateRowID();
-        updateAttrs["repeating_gear_" + UUID2 + "_gear_name"]     = compcheck(comp_name)
+        updateAttrs["repeating_gear_" + UUID2 + "_gear_name"]     = compcheck(comp_name_Parsed)
         updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity"] = 1
         updateAttrs["repeating_gear_" + UUID2 + "_gear_cost"]     = compcheck(comp_data_Parsed["COMP_price"])
         updateAttrs["repeating_gear_" + UUID2 + "_gear_weight"]   = compcheck(comp_data_Parsed["COMP_weight"])
@@ -5344,7 +5419,7 @@
       if (comp_data_Parsed.COMP_field == "Education") {
 
         const UUID1 = generateRowID();
-        updateAttrs["repeating_education_" + UUID1 + "_education_name"]   = compcheck(comp_name) + " (" + compcheck(comp_data_Parsed["COMP_difficulty"]) + ")"
+        updateAttrs["repeating_education_" + UUID1 + "_education_name"]   = compcheck(comp_name_Parsed) + " (" + compcheck(comp_data_Parsed["COMP_difficulty"]) + ")"
         if(compcheck(comp_data_Parsed["COMP_bonus_10"]) == "1"){
           updateAttrs["repeating_education_" + UUID1 + "_education_mod3"] = "10"
         }else{
@@ -5352,7 +5427,7 @@
         }
 
         const UUID2 = generateRowID();
-        updateAttrs["repeating_advancements_" + UUID2 + "_advancement_name"]  = compcheck(comp_name)
+        updateAttrs["repeating_advancements_" + UUID2 + "_advancement_name"]  = compcheck(comp_name_Parsed)
         updateAttrs["repeating_advancements_" + UUID2 + "_advancement_cost"]  = compcheck(comp_data_Parsed["COMP_experience"])
         updateAttrs["repeating_advancements_" + UUID2 + "_advancement_pgnr"]  = ""
         setAttrs(updateAttrs);
@@ -5365,7 +5440,7 @@
       if (comp_data_Parsed.COMP_field == "Equipment" || comp_data_Parsed.COMP_field == "Weapon mod" || comp_data_Parsed.COMP_field == "Vehicle mod" || comp_data_Parsed.COMP_field == "Special ammo") {
 
         const UUID1 = generateRowID();
-        updateAttrs["repeating_gear_" + UUID1 + "_gear_name"]     = compcheck(comp_name)
+        updateAttrs["repeating_gear_" + UUID1 + "_gear_name"]     = compcheck(comp_name_Parsed)
         updateAttrs["repeating_gear_" + UUID1 + "_gear_quantity"] = 1
         updateAttrs["repeating_gear_" + UUID1 + "_gear_cost"]     = compcheck(comp_data_Parsed["COMP_price"])
         updateAttrs["repeating_gear_" + UUID1 + "_gear_weight"]   = compcheck(comp_data_Parsed["COMP_weight"])
@@ -5390,54 +5465,56 @@
           loc = "repeating_meleeweapons_"
         }
 
-        const wep_data_Parsed = safeparse(comp_data_Parsed["data-MeleeWeapon"])
+        const wep_data_Parsed = comp_data_Parsed["data-MeleeWeapon"]
 
         for (let i = 0; i < wep_data_Parsed.length; i++) {
           if ("COMP_name" in wep_data_Parsed[i]){
+            if (wep_data_Parsed[i]["COMP_name"] != ""){
 
-            const UUID1 = generateRowID();
+              const UUID1 = generateRowID();
 
-            if (wep_data_Parsed[i]["COMP_attribute"] == "STR") {wep_data_Parsed[i]["COMP_attribute"] = "@{STR} + @{STR_advancement} + @{fatigue_mod}"}
-            if (wep_data_Parsed[i]["COMP_attribute"] == "TOU") {wep_data_Parsed[i]["COMP_attribute"] = "@{TOU} + @{TOU_advancement} + @{fatigue_mod}"}
-            if (wep_data_Parsed[i]["COMP_attribute"] == "AGI") {wep_data_Parsed[i]["COMP_attribute"] = "@{AGI} + @{AGI_advancement} + @{fatigue_mod}"}
-            if (wep_data_Parsed[i]["COMP_attribute"] == "WFR") {wep_data_Parsed[i]["COMP_attribute"] = "@{WFR} + @{WFR_advancement} + @{fatigue_mod}"}
-            if (wep_data_Parsed[i]["COMP_attribute"] == "WFM") {wep_data_Parsed[i]["COMP_attribute"] = "@{WFM} + @{WFM_advancement} + @{fatigue_mod}"}
-            if (wep_data_Parsed[i]["COMP_attribute"] == "INT") {wep_data_Parsed[i]["COMP_attribute"] = "@{INT} + @{INT_advancement} + @{fatigue_mod}"}
-            if (wep_data_Parsed[i]["COMP_attribute"] == "PER") {wep_data_Parsed[i]["COMP_attribute"] = "@{PER} + @{PER_advancement} + @{fatigue_mod}"}
-            if (wep_data_Parsed[i]["COMP_attribute"] == "CRG") {wep_data_Parsed[i]["COMP_attribute"] = "@{CRG} + @{CRG_advancement} + @{fatigue_mod}"}
-            if (wep_data_Parsed[i]["COMP_attribute"] == "CHA") {wep_data_Parsed[i]["COMP_attribute"] = "@{CHA} + @{CHA_advancement} + @{fatigue_mod}"}
-            if (wep_data_Parsed[i]["COMP_attribute"] == "LDR") {wep_data_Parsed[i]["COMP_attribute"] = "@{LDR} + @{LDR_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "STR") {wep_data_Parsed[i]["COMP_attribute"] = "@{STR} + @{STR_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "TOU") {wep_data_Parsed[i]["COMP_attribute"] = "@{TOU} + @{TOU_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "AGI") {wep_data_Parsed[i]["COMP_attribute"] = "@{AGI} + @{AGI_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "WFR") {wep_data_Parsed[i]["COMP_attribute"] = "@{WFR} + @{WFR_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "WFM") {wep_data_Parsed[i]["COMP_attribute"] = "@{WFM} + @{WFM_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "INT") {wep_data_Parsed[i]["COMP_attribute"] = "@{INT} + @{INT_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "PER") {wep_data_Parsed[i]["COMP_attribute"] = "@{PER} + @{PER_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "CRG") {wep_data_Parsed[i]["COMP_attribute"] = "@{CRG} + @{CRG_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "CHA") {wep_data_Parsed[i]["COMP_attribute"] = "@{CHA} + @{CHA_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "LDR") {wep_data_Parsed[i]["COMP_attribute"] = "@{LDR} + @{LDR_advancement} + @{fatigue_mod}"}
 
-            if (wep_data_Parsed[i]["COMP_base_add"] == "N/A")    {wep_data_Parsed[i]["COMP_base_add"] = "0"}
-            if (wep_data_Parsed[i]["COMP_base_add"] == "Half")   {wep_data_Parsed[i]["COMP_base_add"] = "[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]"}
-            if (wep_data_Parsed[i]["COMP_base_add"] == "Full")   {wep_data_Parsed[i]["COMP_base_add"] = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]"}
-            if (wep_data_Parsed[i]["COMP_base_add"] == "Double") {wep_data_Parsed[i]["COMP_base_add"] = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]"}
+              if (wep_data_Parsed[i]["COMP_base_add"] == "N/A")    {wep_data_Parsed[i]["COMP_base_add"] = "0"}
+              if (wep_data_Parsed[i]["COMP_base_add"] == "Half")   {wep_data_Parsed[i]["COMP_base_add"] = "[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]"}
+              if (wep_data_Parsed[i]["COMP_base_add"] == "Full")   {wep_data_Parsed[i]["COMP_base_add"] = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]"}
+              if (wep_data_Parsed[i]["COMP_base_add"] == "Double") {wep_data_Parsed[i]["COMP_base_add"] = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]"}
 
-            if (wep_data_Parsed[i]["COMP_pierce_add"] == "N/A")    {wep_data_Parsed[i]["COMP_pierce_add"] = "0"}
-            if (wep_data_Parsed[i]["COMP_pierce_add"] == "Half")   {wep_data_Parsed[i]["COMP_pierce_add"] = "[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]"}
-            if (wep_data_Parsed[i]["COMP_pierce_add"] == "Full")   {wep_data_Parsed[i]["COMP_pierce_add"] = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]"}
-            if (wep_data_Parsed[i]["COMP_pierce_add"] == "Double") {wep_data_Parsed[i]["COMP_pierce_add"] = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]"}
+              if (wep_data_Parsed[i]["COMP_pierce_add"] == "N/A")    {wep_data_Parsed[i]["COMP_pierce_add"] = "0"}
+              if (wep_data_Parsed[i]["COMP_pierce_add"] == "Half")   {wep_data_Parsed[i]["COMP_pierce_add"] = "[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]"}
+              if (wep_data_Parsed[i]["COMP_pierce_add"] == "Full")   {wep_data_Parsed[i]["COMP_pierce_add"] = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]"}
+              if (wep_data_Parsed[i]["COMP_pierce_add"] == "Double") {wep_data_Parsed[i]["COMP_pierce_add"] = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]"}
 
-            updateAttrs[loc + UUID1 + "_weapon_name"]                         = compcheck(wep_data_Parsed[i]["COMP_name"])
-            updateAttrs[loc + UUID1 + "_weapon_type"]                         = compcheck(wep_data_Parsed[i]["COMP_type"])
-            updateAttrs[loc + UUID1 + "_Weapon_attr"]                         = compcheck(wep_data_Parsed[i]["COMP_attribute"])
-            updateAttrs[loc + UUID1 + "_weapon_range"]                        = compcheck(wep_data_Parsed[i]["COMP_range"])
-            updateAttrs[loc + UUID1 + "_weapon_dam-roll"]                     = compcheck(wep_data_Parsed[i]["COMP_damage_roll"])
-            updateAttrs[loc + UUID1 + "_weapon_base"]                         = compcheck(wep_data_Parsed[i]["COMP_damage_base"])
-            updateAttrs[loc + UUID1 + "_weapon_pierce"]                       = compcheck(wep_data_Parsed[i]["COMP_pierce"])
-            updateAttrs[loc + UUID1 + "_weapon_hitmod"]                       = compcheck(wep_data_Parsed[i]["COMP_hitmod"])
-            updateAttrs[loc + UUID1 + "_weapon_attacks"] = Math.min(wfm_total,  compcheck(wep_data_Parsed[i]["COMP_rof"])) + " / " + compcheck(wep_data_Parsed[i]["COMP_rof"])
-            updateAttrs[loc + UUID1 + "_weapon_breakpoints"]                  = compcheck(wep_data_Parsed[i]["COMP_breakpoints"])
-            updateAttrs[loc + UUID1 + "_weapon_breakpoints_max"]              = compcheck(wep_data_Parsed[i]["COMP_breakpoints"])
-            updateAttrs[loc + UUID1 + "_weapon_base_add"]                     = compcheck(wep_data_Parsed[i]["COMP_base_add"])
-            updateAttrs[loc + UUID1 + "_weapon_pierce_add"]                   = compcheck(wep_data_Parsed[i]["COMP_pierce_add"])
-            updateAttrs[loc + UUID1 + "_weapon_special_rules"]                = compcheck(wep_data_Parsed[i]["COMP_special_rules"])
-            updateAttrs[loc + UUID1 + "_description"]                         = compcheck(wep_data_Parsed[i]["COMP_description"])
+              updateAttrs[loc + UUID1 + "_weapon_name"]                         = compcheck(wep_data_Parsed[i]["COMP_name"])
+              updateAttrs[loc + UUID1 + "_weapon_type"]                         = compcheck(wep_data_Parsed[i]["COMP_type"])
+              updateAttrs[loc + UUID1 + "_Weapon_attr"]                         = compcheck(wep_data_Parsed[i]["COMP_attribute"])
+              updateAttrs[loc + UUID1 + "_weapon_range"]                        = compcheck(wep_data_Parsed[i]["COMP_range"])
+              updateAttrs[loc + UUID1 + "_weapon_dam-roll"]                     = compcheck(wep_data_Parsed[i]["COMP_damage_roll"])
+              updateAttrs[loc + UUID1 + "_weapon_base"]                         = compcheck(wep_data_Parsed[i]["COMP_damage_base"])
+              updateAttrs[loc + UUID1 + "_weapon_pierce"]                       = compcheck(wep_data_Parsed[i]["COMP_pierce"])
+              updateAttrs[loc + UUID1 + "_weapon_hitmod"]                       = compcheck(wep_data_Parsed[i]["COMP_hitmod"])
+              updateAttrs[loc + UUID1 + "_weapon_attacks"] = Math.min(wfm_total,  compcheck(wep_data_Parsed[i]["COMP_rof"])) + " / " + compcheck(wep_data_Parsed[i]["COMP_rof"])
+              updateAttrs[loc + UUID1 + "_weapon_breakpoints"]                  = compcheck(wep_data_Parsed[i]["COMP_breakpoints"])
+              updateAttrs[loc + UUID1 + "_weapon_breakpoints_max"]              = compcheck(wep_data_Parsed[i]["COMP_breakpoints"])
+              updateAttrs[loc + UUID1 + "_weapon_base_add"]                     = compcheck(wep_data_Parsed[i]["COMP_base_add"])
+              updateAttrs[loc + UUID1 + "_weapon_pierce_add"]                   = compcheck(wep_data_Parsed[i]["COMP_pierce_add"])
+              updateAttrs[loc + UUID1 + "_weapon_special_rules"]                = compcheck(wep_data_Parsed[i]["COMP_special_rules"])
+              updateAttrs[loc + UUID1 + "_description"]                         = compcheck(wep_data_Parsed[i]["COMP_description"])
+            }
           }
         }
 
         const UUID2 = generateRowID();
-        updateAttrs["repeating_gear_" + UUID2 + "_gear_name"]     = compcheck(comp_name)
+        updateAttrs["repeating_gear_" + UUID2 + "_gear_name"]     = compcheck(comp_name_Parsed)
         updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity"] = 1
         updateAttrs["repeating_gear_" + UUID2 + "_gear_cost"]     = compcheck(comp_data_Parsed["COMP_price"])
         updateAttrs["repeating_gear_" + UUID2 + "_gear_weight"]   = compcheck(comp_data_Parsed["COMP_weight"])
@@ -5453,7 +5530,7 @@
       if (comp_data_Parsed.COMP_field == "Baseline" || comp_data_Parsed.COMP_field == "Npc") {
 
         if(comp_data_Parsed.COMP_field == "Npc"){
-          updateAttrs["character_name"] = compcheck(comp_name)
+          updateAttrs["character_name"] = compcheck(comp_name_Parsed)
           updateAttrs["npc_XP"] = compcheck(comp_data_Parsed["COMP_experience"])
           updateAttrs["npc_SIZE"] = compcheck(comp_data_Parsed["COMP_size"])
           updateAttrs["wounds"] = compcheck(comp_data_Parsed["COMP_wounds"])
@@ -5522,7 +5599,7 @@
         if((compcheck(comp_data_Parsed["COMP_armor_chest"]) + compcheck(comp_data_Parsed["COMP_armor_chest"]) + compcheck(comp_data_Parsed["COMP_armor_head"]) + compcheck(comp_data_Parsed["COMP_armor_legs"]) + compcheck(comp_data_Parsed["COMP_shield_delay"]) + compcheck(comp_data_Parsed["COMP_shield_integrity"]) + compcheck(comp_data_Parsed["COMP_shield_recharge"])) != ""){
 
           const UUID1 = generateRowID();
-          updateAttrs["repeating_armor_" + UUID1 + "_name"]           = compcheck(comp_name)
+          updateAttrs["repeating_armor_" + UUID1 + "_name"]           = compcheck(comp_name_Parsed)
           updateAttrs["repeating_armor_" + UUID1 + "_armor_head"]     = parseInt(compcheck(comp_data_Parsed["COMP_armor_head"]))
           updateAttrs["repeating_armor_" + UUID1 + "_armor_arms"]     = parseInt(compcheck(comp_data_Parsed["COMP_armor_arms"]))
           updateAttrs["repeating_armor_" + UUID1 + "_armor_chest"]    = parseInt(compcheck(comp_data_Parsed["COMP_armor_chest"]))
@@ -5531,21 +5608,24 @@
           updateAttrs["repeating_armor_" + UUID1 + "_shields_max"]    = compcheck(comp_data_Parsed["COMP_shield_integrity"])
           updateAttrs["repeating_armor_" + UUID1 + "_shields_delay"]  = compcheck(comp_data_Parsed["COMP_shield_delay"])
           updateAttrs["repeating_armor_" + UUID1 + "_shields_charge"] = compcheck(comp_data_Parsed["COMP_shield_recharge"])
-          updateAttrs["repeating_armor_" + UUID1 + "_description"]    = compcheck(comp_name) + "\n" + compcheck(comp_data_Parsed["COMP_armor_description"])
+          updateAttrs["repeating_armor_" + UUID1 + "_description"]    = compcheck(comp_name_Parsed) + "\n" + compcheck(comp_data_Parsed["COMP_armor_description"])
         }
 
         if("data-Ability" in comp_data_Parsed){
-          const ability_data_Parsed = safeparse(comp_data_Parsed["data-Ability"]);
-          for (let i = 0; i < ability_data_Parsed.length; i++) {
-            const UUID2 = generateRowID();
+          const ability_data_Parsed = comp_data_Parsed["data-Ability"]
 
-            updateAttrs["repeating_abilities_" + UUID2 + "_ability"]       = compcheck(ability_data_Parsed[i]["COMP_aditional_info"])
-            updateAttrs["repeating_abilities_" + UUID2 + "_ability_desc"]  = compcheck(ability_data_Parsed[i]["COMP_description"])
+          for (let i = 0; i < ability_data_Parsed.length; i++) {
+            if (ability_data_Parsed[i]["COMP_aditional_info"] != ""){
+              const UUID2 = generateRowID();
+
+              updateAttrs["repeating_abilities_" + UUID2 + "_ability"]       = compcheck(ability_data_Parsed[i]["COMP_aditional_info"])
+              updateAttrs["repeating_abilities_" + UUID2 + "_ability_desc"]  = compcheck(ability_data_Parsed[i]["COMP_description"])
+            }
           }
         }
 
         const UUID3 = generateRowID();
-        updateAttrs["repeating_advancements_" + UUID3 + "_advancement_name"]  = compcheck(comp_name)
+        updateAttrs["repeating_advancements_" + UUID3 + "_advancement_name"]  = compcheck(comp_name_Parsed)
         updateAttrs["repeating_advancements_" + UUID3 + "_advancement_cost"]  = compcheck(comp_data_Parsed["COMP_experience"])
         updateAttrs["repeating_advancements_" + UUID3 + "_advancement_pgnr"]  = ""
 
@@ -5555,15 +5635,15 @@
 
 
       // ___________________________________________________________________________________________
-      // Compendium Outlier sheet worker__
+      // Compendium Outlier sheet worker
       if (comp_data_Parsed.COMP_field == "Outlier") {
 
         const UUID1 = generateRowID();
-        updateAttrs["repeating_abilities_" + UUID1 + "_ability"]       = compcheck(comp_name) + " (" + compcheck(comp_data_Parsed["COMP_experience"]) + ")"
+        updateAttrs["repeating_abilities_" + UUID1 + "_ability"]       = compcheck(comp_name_Parsed)
         updateAttrs["repeating_abilities_" + UUID1 + "_ability_desc"]  = compcheck(comp_data_Parsed["COMP_description"])
 
         const UUID2 = generateRowID();
-        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_name"]  = compcheck(comp_name) + " (" + compcheck(comp_data_Parsed["COMP_experience"]) + ")"
+        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_name"]  = compcheck(comp_name_Parsed) + " (" + compcheck(comp_data_Parsed["COMP_experience"]) + ")"
         updateAttrs["repeating_advancements_" + UUID1 + "_advancement_cost"]  = ""
         updateAttrs["repeating_advancements_" + UUID1 + "_advancement_pgnr"]  = ""
         setAttrs(updateAttrs);
@@ -5572,7 +5652,7 @@
 
 
       // ___________________________________________________________________________________________
-      // Compendium Ranged weapon sheet worker__
+      // Compendium Ranged weapon sheet worker
       if (comp_data_Parsed.COMP_field == "Ran_Wep") {
 
         if (sheet_select == "PC" && sheet_tab == "vehicles") {
@@ -5585,42 +5665,45 @@
           loc = "repeating_rangedweapons_"
         }
 
-        const wep_data_Parsed = safeparse(comp_data_Parsed["data-RangedWeapon"])
+        const wep_data_Parsed = comp_data_Parsed["data-RangedWeapon"]
 
         for (let i = 0; i < wep_data_Parsed.length; i++) {
           if ("COMP_name" in wep_data_Parsed[i]){
-            const UUID1 = generateRowID();
+            if (wep_data_Parsed[i]["COMP_name"] != ""){
 
-            if (wep_data_Parsed[i]["COMP_attribute"] == "STR") {wep_data_Parsed[i]["COMP_attribute"] = "@{STR} + @{STR_advancement} + @{fatigue_mod}"}
-            if (wep_data_Parsed[i]["COMP_attribute"] == "TOU") {wep_data_Parsed[i]["COMP_attribute"] = "@{TOU} + @{TOU_advancement} + @{fatigue_mod}"}
-            if (wep_data_Parsed[i]["COMP_attribute"] == "AGI") {wep_data_Parsed[i]["COMP_attribute"] = "@{AGI} + @{AGI_advancement} + @{fatigue_mod}"}
-            if (wep_data_Parsed[i]["COMP_attribute"] == "WFR") {wep_data_Parsed[i]["COMP_attribute"] = "@{WFR} + @{WFR_advancement} + @{fatigue_mod}"}
-            if (wep_data_Parsed[i]["COMP_attribute"] == "WFM") {wep_data_Parsed[i]["COMP_attribute"] = "@{WFM} + @{WFM_advancement} + @{fatigue_mod}"}
-            if (wep_data_Parsed[i]["COMP_attribute"] == "INT") {wep_data_Parsed[i]["COMP_attribute"] = "@{INT} + @{INT_advancement} + @{fatigue_mod}"}
-            if (wep_data_Parsed[i]["COMP_attribute"] == "PER") {wep_data_Parsed[i]["COMP_attribute"] = "@{PER} + @{PER_advancement} + @{fatigue_mod}"}
-            if (wep_data_Parsed[i]["COMP_attribute"] == "CRG") {wep_data_Parsed[i]["COMP_attribute"] = "@{CRG} + @{CRG_advancement} + @{fatigue_mod}"}
-            if (wep_data_Parsed[i]["COMP_attribute"] == "CHA") {wep_data_Parsed[i]["COMP_attribute"] = "@{CHA} + @{CHA_advancement} + @{fatigue_mod}"}
-            if (wep_data_Parsed[i]["COMP_attribute"] == "LDR") {wep_data_Parsed[i]["COMP_attribute"] = "@{LDR} + @{LDR_advancement} + @{fatigue_mod}"}
+              const UUID1 = generateRowID();
 
-            updateAttrs[loc + UUID1 + "_weapon_name"]           = compcheck(wep_data_Parsed[i]["COMP_name"])
-            updateAttrs[loc + UUID1 + "_weapon_type"]           = compcheck(wep_data_Parsed[i]["COMP_type"])
-            updateAttrs[loc + UUID1 + "_Weapon_attr"]           = compcheck(wep_data_Parsed[i]["COMP_attribute"])
-            updateAttrs[loc + UUID1 + "_weapon_range"]          = compcheck(wep_data_Parsed[i]["COMP_range"])
-            updateAttrs[loc + UUID1 + "_weapon_dam-roll"]       = compcheck(wep_data_Parsed[i]["COMP_damage_roll"])
-            updateAttrs[loc + UUID1 + "_weapon_base"]           = compcheck(wep_data_Parsed[i]["COMP_damage_base"])
-            updateAttrs[loc + UUID1 + "_weapon_pierce"]         = compcheck(wep_data_Parsed[i]["COMP_pierce"])
-            updateAttrs[loc + UUID1 + "_weapon_hitmod"]         = compcheck(wep_data_Parsed[i]["COMP_hitmod"])
-            updateAttrs[loc + UUID1 + "_weapon_mag"]            = compcheck(wep_data_Parsed[i]["COMP_magazine"])
-            updateAttrs[loc + UUID1 + "_weapon_mag_max"]        = compcheck(wep_data_Parsed[i]["COMP_magazine"])
-            updateAttrs[loc + UUID1 + "_weapon_rof"]            = compcheck(wep_data_Parsed[i]["COMP_rof"])
-            updateAttrs[loc + UUID1 + "_weapon_reload"]         = Math.max(parseInt(compcheck(wep_data_Parsed[i]["COMP_reload"])) -Math.floor(agi_total/2) -Math.floor(wfr_total/2),1) + "/" + compcheck(wep_data_Parsed[i]["COMP_reload"])
-            updateAttrs[loc + UUID1 + "_weapon_special_rules"]  = compcheck(wep_data_Parsed[i]["COMP_special_rules"])
-            updateAttrs[loc + UUID1 + "_description"]           = compcheck(wep_data_Parsed[i]["COMP_description"])
+              if (wep_data_Parsed[i]["COMP_attribute"] == "STR") {wep_data_Parsed[i]["COMP_attribute"] = "@{STR} + @{STR_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "TOU") {wep_data_Parsed[i]["COMP_attribute"] = "@{TOU} + @{TOU_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "AGI") {wep_data_Parsed[i]["COMP_attribute"] = "@{AGI} + @{AGI_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "WFR") {wep_data_Parsed[i]["COMP_attribute"] = "@{WFR} + @{WFR_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "WFM") {wep_data_Parsed[i]["COMP_attribute"] = "@{WFM} + @{WFM_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "INT") {wep_data_Parsed[i]["COMP_attribute"] = "@{INT} + @{INT_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "PER") {wep_data_Parsed[i]["COMP_attribute"] = "@{PER} + @{PER_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "CRG") {wep_data_Parsed[i]["COMP_attribute"] = "@{CRG} + @{CRG_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "CHA") {wep_data_Parsed[i]["COMP_attribute"] = "@{CHA} + @{CHA_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "LDR") {wep_data_Parsed[i]["COMP_attribute"] = "@{LDR} + @{LDR_advancement} + @{fatigue_mod}"}
+
+              updateAttrs[loc + UUID1 + "_weapon_name"]           = compcheck(wep_data_Parsed[i]["COMP_name"])
+              updateAttrs[loc + UUID1 + "_weapon_type"]           = compcheck(wep_data_Parsed[i]["COMP_type"])
+              updateAttrs[loc + UUID1 + "_Weapon_attr"]           = compcheck(wep_data_Parsed[i]["COMP_attribute"])
+              updateAttrs[loc + UUID1 + "_weapon_range"]          = compcheck(wep_data_Parsed[i]["COMP_range"])
+              updateAttrs[loc + UUID1 + "_weapon_dam-roll"]       = compcheck(wep_data_Parsed[i]["COMP_damage_roll"])
+              updateAttrs[loc + UUID1 + "_weapon_base"]           = compcheck(wep_data_Parsed[i]["COMP_damage_base"])
+              updateAttrs[loc + UUID1 + "_weapon_pierce"]         = compcheck(wep_data_Parsed[i]["COMP_pierce"])
+              updateAttrs[loc + UUID1 + "_weapon_hitmod"]         = compcheck(wep_data_Parsed[i]["COMP_hitmod"])
+              updateAttrs[loc + UUID1 + "_weapon_mag"]            = compcheck(wep_data_Parsed[i]["COMP_magazine"])
+              updateAttrs[loc + UUID1 + "_weapon_mag_max"]        = compcheck(wep_data_Parsed[i]["COMP_magazine"])
+              updateAttrs[loc + UUID1 + "_weapon_rof"]            = compcheck(wep_data_Parsed[i]["COMP_rof"])
+              updateAttrs[loc + UUID1 + "_weapon_reload"]         = Math.max(parseInt(compcheck(wep_data_Parsed[i]["COMP_reload"])) -Math.floor(agi_total/2) -Math.floor(wfr_total/2),1) + "/" + compcheck(wep_data_Parsed[i]["COMP_reload"])
+              updateAttrs[loc + UUID1 + "_weapon_special_rules"]  = compcheck(wep_data_Parsed[i]["COMP_special_rules"])
+              updateAttrs[loc + UUID1 + "_description"]           = compcheck(wep_data_Parsed[i]["COMP_description"])
+            }
           }
         }
 
         const UUID2 = generateRowID();
-        updateAttrs["repeating_gear_" + UUID2 + "_gear_name"]     = compcheck(comp_name)
+        updateAttrs["repeating_gear_" + UUID2 + "_gear_name"]     = compcheck(comp_name_Parsed)
         updateAttrs["repeating_gear_" + UUID2 + "_gear_quantity"] = 1
         updateAttrs["repeating_gear_" + UUID2 + "_gear_cost"]     = compcheck(comp_data_Parsed["COMP_price"])
         updateAttrs["repeating_gear_" + UUID2 + "_gear_weight"]   = compcheck(comp_data_Parsed["COMP_weight"])
@@ -5632,11 +5715,11 @@
 
 
       // ___________________________________________________________________________________________
-      // Compendium Skill sheet worker__
+      // Compendium Skill sheet worker
       if (comp_data_Parsed.COMP_field == "Skill") {
 
         const UUID1 = generateRowID();
-        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_name"]  = compcheck(comp_name)
+        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_name"]  = compcheck(comp_name_Parsed)
         updateAttrs["repeating_advancements_" + UUID1 + "_advancement_cost"]  = compcheck(comp_data_Parsed["COMP_experience"])
         updateAttrs["repeating_advancements_" + UUID1 + "_advancement_pgnr"]  = ""
         setAttrs(updateAttrs);
@@ -5645,29 +5728,29 @@
 
 
       // ___________________________________________________________________________________________
-      // Compendium Faction Training sheet worker__
+      // Compendium Faction Training sheet worker
       if (comp_data_Parsed.COMP_field == "Faction Training") {
 
         const UUID1 = generateRowID();
-        updateAttrs["repeating_traininfaction_" + UUID1 + "_training"]  = compcheck(comp_name)
+        updateAttrs["repeating_traininfaction_" + UUID1 + "_training"]  = compcheck(comp_name_Parsed)
         setAttrs(updateAttrs);
       };
 
 
 
       // ___________________________________________________________________________________________
-      // Compendium Weapon Training sheet worker__
+      // Compendium Weapon Training sheet worker
       if (comp_data_Parsed.COMP_field == "Weapon Training") {
 
         const UUID1 = generateRowID();
-        updateAttrs["repeating_trainingweapon_" + UUID1 + "_training"]  = compcheck(comp_name)
+        updateAttrs["repeating_trainingweapon_" + UUID1 + "_training"]  = compcheck(comp_name_Parsed)
         setAttrs(updateAttrs);
       };
 
 
 
       // ___________________________________________________________________________________________
-      // Compendium Vehicle sheet worker__
+      // Compendium Vehicle sheet worker
       if (comp_data_Parsed.COMP_field == "Vehicle") {
 
         const UUID1 = generateRowID();
@@ -5678,7 +5761,7 @@
         else if(compcheck(comp_data_Parsed["COMP_AGI"])>0)    updateAttrs["repeating_vehicles_" + UUID1 + "_vehicle-type"] = 1
         else                                                  updateAttrs["repeating_vehicles_" + UUID1 + "_vehicle-type"] = 2
 
-        updateAttrs["repeating_vehicles_" + UUID1 + "_vehicle-name"]    = compcheck(comp_name)
+        updateAttrs["repeating_vehicles_" + UUID1 + "_vehicle-name"]    = compcheck(comp_name_Parsed)
         updateAttrs["repeating_vehicles_" + UUID1 + "_vehicle-length"]  = compcheck(comp_data_Parsed["COMP_length"])
         updateAttrs["repeating_vehicles_" + UUID1 + "_vehicle-width"]   = compcheck(comp_data_Parsed["COMP_width"])
         updateAttrs["repeating_vehicles_" + UUID1 + "_vehicle-height"]  = compcheck(comp_data_Parsed["COMP_height"])
@@ -5723,74 +5806,78 @@
         updateAttrs["repeating_vehicles_" + UUID1 + "_aditional_info_desc"] = "Price = " + compcheck(comp_data_Parsed["COMP_price"]) + "   Experience on kill = " + compcheck(comp_data_Parsed["COMP_experience"]) + "\n\n" + compcheck(comp_data_Parsed["COMP_description"])
 
         if ("data-RangedWeapon" in comp_data_Parsed) {
-          const rwep_data_Parsed = safeparse(comp_data_Parsed["data-RangedWeapon"])
+          const rwep_data_Parsed = comp_data_Parsed["data-RangedWeapon"]
 
           for (let i = 0; i < rwep_data_Parsed.length; i++) {
             if ("COMP_name" in rwep_data_Parsed[i]){
-              const UUID2 = generateRowID();
+              if (rwep_data_Parsed[i]["COMP_name"] != ""){
+                const UUID2 = generateRowID();
 
-              if (rwep_data_Parsed[i]["COMP_attribute"] == "STR") {rwep_data_Parsed[i]["COMP_attribute"] = "@{STR} + @{STR_advancement} + @{fatigue_mod}"}
-              if (rwep_data_Parsed[i]["COMP_attribute"] == "TOU") {rwep_data_Parsed[i]["COMP_attribute"] = "@{TOU} + @{TOU_advancement} + @{fatigue_mod}"}
-              if (rwep_data_Parsed[i]["COMP_attribute"] == "AGI") {rwep_data_Parsed[i]["COMP_attribute"] = "@{AGI} + @{AGI_advancement} + @{fatigue_mod}"}
-              if (rwep_data_Parsed[i]["COMP_attribute"] == "WFR") {rwep_data_Parsed[i]["COMP_attribute"] = "@{WFR} + @{WFR_advancement} + @{fatigue_mod}"}
-              if (rwep_data_Parsed[i]["COMP_attribute"] == "WFM") {rwep_data_Parsed[i]["COMP_attribute"] = "@{WFM} + @{WFM_advancement} + @{fatigue_mod}"}
-              if (rwep_data_Parsed[i]["COMP_attribute"] == "INT") {rwep_data_Parsed[i]["COMP_attribute"] = "@{INT} + @{INT_advancement} + @{fatigue_mod}"}
-              if (rwep_data_Parsed[i]["COMP_attribute"] == "PER") {rwep_data_Parsed[i]["COMP_attribute"] = "@{PER} + @{PER_advancement} + @{fatigue_mod}"}
-              if (rwep_data_Parsed[i]["COMP_attribute"] == "CRG") {rwep_data_Parsed[i]["COMP_attribute"] = "@{CRG} + @{CRG_advancement} + @{fatigue_mod}"}
-              if (rwep_data_Parsed[i]["COMP_attribute"] == "CHA") {rwep_data_Parsed[i]["COMP_attribute"] = "@{CHA} + @{CHA_advancement} + @{fatigue_mod}"}
-              if (rwep_data_Parsed[i]["COMP_attribute"] == "LDR") {rwep_data_Parsed[i]["COMP_attribute"] = "@{LDR} + @{LDR_advancement} + @{fatigue_mod}"}
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "STR") {rwep_data_Parsed[i]["COMP_attribute"] = "@{STR} + @{STR_advancement} + @{fatigue_mod}"}
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "TOU") {rwep_data_Parsed[i]["COMP_attribute"] = "@{TOU} + @{TOU_advancement} + @{fatigue_mod}"}
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "AGI") {rwep_data_Parsed[i]["COMP_attribute"] = "@{AGI} + @{AGI_advancement} + @{fatigue_mod}"}
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "WFR") {rwep_data_Parsed[i]["COMP_attribute"] = "@{WFR} + @{WFR_advancement} + @{fatigue_mod}"}
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "WFM") {rwep_data_Parsed[i]["COMP_attribute"] = "@{WFM} + @{WFM_advancement} + @{fatigue_mod}"}
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "INT") {rwep_data_Parsed[i]["COMP_attribute"] = "@{INT} + @{INT_advancement} + @{fatigue_mod}"}
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "PER") {rwep_data_Parsed[i]["COMP_attribute"] = "@{PER} + @{PER_advancement} + @{fatigue_mod}"}
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "CRG") {rwep_data_Parsed[i]["COMP_attribute"] = "@{CRG} + @{CRG_advancement} + @{fatigue_mod}"}
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "CHA") {rwep_data_Parsed[i]["COMP_attribute"] = "@{CHA} + @{CHA_advancement} + @{fatigue_mod}"}
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "LDR") {rwep_data_Parsed[i]["COMP_attribute"] = "@{LDR} + @{LDR_advancement} + @{fatigue_mod}"}
 
-              updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_name"]           = compcheck(rwep_data_Parsed[i]["COMP_name"])
-              updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_type"]           = compcheck(rwep_data_Parsed[i]["COMP_type"])
-              updateAttrs["repeating_vrangedweapons_" + UUID2 + "_Weapon_attr"]           = compcheck(rwep_data_Parsed[i]["COMP_attribute"])
-              updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_range"]          = compcheck(rwep_data_Parsed[i]["COMP_range"])
-              updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_dam-roll"]       = compcheck(rwep_data_Parsed[i]["COMP_damage_roll"])
-              updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_base"]           = compcheck(rwep_data_Parsed[i]["COMP_damage_base"])
-              updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_pierce"]         = compcheck(rwep_data_Parsed[i]["COMP_pierce"])
-              updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_hitmod"]         = compcheck(rwep_data_Parsed[i]["COMP_hitmod"])
-              updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_mag"]            = compcheck(rwep_data_Parsed[i]["COMP_magazine"])
-              updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_mag_max"]        = compcheck(rwep_data_Parsed[i]["COMP_magazine"])
-              updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_rof"]            = compcheck(rwep_data_Parsed[i]["COMP_rof"])
-              updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_reload"]         = compcheck(rwep_data_Parsed[i]["COMP_reload"])
-              updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_special_rules"]  = compcheck(rwep_data_Parsed[i]["COMP_special_rules"])
-              updateAttrs["repeating_vrangedweapons_" + UUID2 + "_description"]           = compcheck(rwep_data_Parsed[i]["COMP_description"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_name"]           = compcheck(rwep_data_Parsed[i]["COMP_name"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_type"]           = compcheck(rwep_data_Parsed[i]["COMP_type"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_Weapon_attr"]           = compcheck(rwep_data_Parsed[i]["COMP_attribute"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_range"]          = compcheck(rwep_data_Parsed[i]["COMP_range"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_dam-roll"]       = compcheck(rwep_data_Parsed[i]["COMP_damage_roll"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_base"]           = compcheck(rwep_data_Parsed[i]["COMP_damage_base"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_pierce"]         = compcheck(rwep_data_Parsed[i]["COMP_pierce"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_hitmod"]         = compcheck(rwep_data_Parsed[i]["COMP_hitmod"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_mag"]            = compcheck(rwep_data_Parsed[i]["COMP_magazine"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_mag_max"]        = compcheck(rwep_data_Parsed[i]["COMP_magazine"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_rof"]            = compcheck(rwep_data_Parsed[i]["COMP_rof"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_reload"]         = compcheck(rwep_data_Parsed[i]["COMP_reload"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_special_rules"]  = compcheck(rwep_data_Parsed[i]["COMP_special_rules"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_description"]           = compcheck(rwep_data_Parsed[i]["COMP_description"])
+              }
             }
           }
         }
 
         if ("data-MeleeWeapon" in comp_data_Parsed) {
-          const mwep_data_Parsed = safeparse(comp_data_Parsed["data-MeleeWeapon"])
+          const mwep_data_Parsed = comp_data_Parsed["data-MeleeWeapon"]
 
           for (let i = 0; i < mwep_data_Parsed.length; i++) {
             if ("COMP_name" in mwep_data_Parsed[i]){
-              const UUID3 = generateRowID();
+              if (mwep_data_Parsed[i]["COMP_name"] != ""){
+                const UUID3 = generateRowID();
 
-              if (mwep_data_Parsed[i]["COMP_attribute"] == "STR") {mwep_data_Parsed[i]["COMP_attribute"] = "@{STR} + @{STR_advancement} + @{fatigue_mod}"}
-              if (mwep_data_Parsed[i]["COMP_attribute"] == "TOU") {mwep_data_Parsed[i]["COMP_attribute"] = "@{TOU} + @{TOU_advancement} + @{fatigue_mod}"}
-              if (mwep_data_Parsed[i]["COMP_attribute"] == "AGI") {mwep_data_Parsed[i]["COMP_attribute"] = "@{AGI} + @{AGI_advancement} + @{fatigue_mod}"}
-              if (mwep_data_Parsed[i]["COMP_attribute"] == "WFR") {mwep_data_Parsed[i]["COMP_attribute"] = "@{WFR} + @{WFR_advancement} + @{fatigue_mod}"}
-              if (mwep_data_Parsed[i]["COMP_attribute"] == "WFM") {mwep_data_Parsed[i]["COMP_attribute"] = "@{WFM} + @{WFM_advancement} + @{fatigue_mod}"}
-              if (mwep_data_Parsed[i]["COMP_attribute"] == "INT") {mwep_data_Parsed[i]["COMP_attribute"] = "@{INT} + @{INT_advancement} + @{fatigue_mod}"}
-              if (mwep_data_Parsed[i]["COMP_attribute"] == "PER") {mwep_data_Parsed[i]["COMP_attribute"] = "@{PER} + @{PER_advancement} + @{fatigue_mod}"}
-              if (mwep_data_Parsed[i]["COMP_attribute"] == "CRG") {mwep_data_Parsed[i]["COMP_attribute"] = "@{CRG} + @{CRG_advancement} + @{fatigue_mod}"}
-              if (mwep_data_Parsed[i]["COMP_attribute"] == "CHA") {mwep_data_Parsed[i]["COMP_attribute"] = "@{CHA} + @{CHA_advancement} + @{fatigue_mod}"}
-              if (mwep_data_Parsed[i]["COMP_attribute"] == "LDR") {mwep_data_Parsed[i]["COMP_attribute"] = "@{LDR} + @{LDR_advancement} + @{fatigue_mod}"}
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "STR") {mwep_data_Parsed[i]["COMP_attribute"] = "@{STR} + @{STR_advancement} + @{fatigue_mod}"}
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "TOU") {mwep_data_Parsed[i]["COMP_attribute"] = "@{TOU} + @{TOU_advancement} + @{fatigue_mod}"}
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "AGI") {mwep_data_Parsed[i]["COMP_attribute"] = "@{AGI} + @{AGI_advancement} + @{fatigue_mod}"}
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "WFR") {mwep_data_Parsed[i]["COMP_attribute"] = "@{WFR} + @{WFR_advancement} + @{fatigue_mod}"}
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "WFM") {mwep_data_Parsed[i]["COMP_attribute"] = "@{WFM} + @{WFM_advancement} + @{fatigue_mod}"}
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "INT") {mwep_data_Parsed[i]["COMP_attribute"] = "@{INT} + @{INT_advancement} + @{fatigue_mod}"}
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "PER") {mwep_data_Parsed[i]["COMP_attribute"] = "@{PER} + @{PER_advancement} + @{fatigue_mod}"}
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "CRG") {mwep_data_Parsed[i]["COMP_attribute"] = "@{CRG} + @{CRG_advancement} + @{fatigue_mod}"}
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "CHA") {mwep_data_Parsed[i]["COMP_attribute"] = "@{CHA} + @{CHA_advancement} + @{fatigue_mod}"}
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "LDR") {mwep_data_Parsed[i]["COMP_attribute"] = "@{LDR} + @{LDR_advancement} + @{fatigue_mod}"}
 
-              updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_name"]                         = compcheck(mwep_data_Parsed[i]["COMP_name"])
-              updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_type"]                         = compcheck(mwep_data_Parsed[i]["COMP_type"])
-              updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_Weapon_attr"]                         = compcheck(mwep_data_Parsed[i]["COMP_attribute"])
-              updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_range"]                        = compcheck(mwep_data_Parsed[i]["COMP_range"])
-              updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_dam-roll"]                     = compcheck(mwep_data_Parsed[i]["COMP_damage_roll"])
-              updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_base"]                         = compcheck(mwep_data_Parsed[i]["COMP_damage_base"])
-              updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_pierce"]                       = compcheck(mwep_data_Parsed[i]["COMP_pierce"])
-              updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_hitmod"]                       = compcheck(mwep_data_Parsed[i]["COMP_hitmod"])
-              updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_attacks"] = Math.min(wfm_total,  compcheck(mwep_data_Parsed[i]["COMP_rof"])) + " / " + compcheck(mwep_data_Parsed[i]["COMP_rof"])
-              updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_breakpoints"]                  = compcheck(mwep_data_Parsed[i]["COMP_breakpoints"])
-              updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_breakpoints_max"]              = compcheck(mwep_data_Parsed[i]["COMP_breakpoints"])
-              updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_base_add"]                     = compcheck(mwep_data_Parsed[i]["COMP_base_add"])
-              updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_pierce_add"]                   = compcheck(mwep_data_Parsed[i]["COMP_pierce_add"])
-              updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_special_rules"]                = compcheck(mwep_data_Parsed[i]["COMP_special_rules"])
-              updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_description"]                         = compcheck(mwep_data_Parsed[i]["COMP_description"])
+                updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_name"]                         = compcheck(mwep_data_Parsed[i]["COMP_name"])
+                updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_type"]                         = compcheck(mwep_data_Parsed[i]["COMP_type"])
+                updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_Weapon_attr"]                         = compcheck(mwep_data_Parsed[i]["COMP_attribute"])
+                updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_range"]                        = compcheck(mwep_data_Parsed[i]["COMP_range"])
+                updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_dam-roll"]                     = compcheck(mwep_data_Parsed[i]["COMP_damage_roll"])
+                updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_base"]                         = compcheck(mwep_data_Parsed[i]["COMP_damage_base"])
+                updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_pierce"]                       = compcheck(mwep_data_Parsed[i]["COMP_pierce"])
+                updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_hitmod"]                       = compcheck(mwep_data_Parsed[i]["COMP_hitmod"])
+                updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_attacks"] = Math.min(wfm_total,  compcheck(mwep_data_Parsed[i]["COMP_rof"])) + " / " + compcheck(mwep_data_Parsed[i]["COMP_rof"])
+                updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_breakpoints"]                  = compcheck(mwep_data_Parsed[i]["COMP_breakpoints"])
+                updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_breakpoints_max"]              = compcheck(mwep_data_Parsed[i]["COMP_breakpoints"])
+                updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_base_add"]                     = compcheck(mwep_data_Parsed[i]["COMP_base_add"])
+                updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_pierce_add"]                   = compcheck(mwep_data_Parsed[i]["COMP_pierce_add"])
+                updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_special_rules"]                = compcheck(mwep_data_Parsed[i]["COMP_special_rules"])
+                updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_description"]                         = compcheck(mwep_data_Parsed[i]["COMP_description"])
+              }
             }
           }
         }
@@ -5798,7 +5885,7 @@
         setAttrs(updateAttrs);
       };
     });
-  });
+  }
 
   //end
 </script>
@@ -5913,6 +6000,8 @@
     </div>
     {{/hit}}
 
+
+
     {{#loc}}
     <div class=" sheet-template-center sheet-template-break">Hit Location {{loc}}</div>
     <div class=" sheet-template-center">
@@ -5966,7 +6055,7 @@
 
 
     {{#damage}}
-    <div class="sheet-template-header">{{weapon}} damage</div>
+    {{^hit}}<div class="sheet-template-header">{{weapon}} damage</div>{{/hit}}
 
     <div class="sheet-template-2xn">
       <div class="sheet-template-2xn">
@@ -5986,11 +6075,6 @@
     <div class="sheet-template-header">{{title}}</div>
     <div class="sheet-template-paddedtext">{{description}}</div>
     {{/description}}
-
-
-
-
-
 
 
 
@@ -6021,8 +6105,9 @@
       <div class=" sheet-template-right">{{2x2-name-max}}</div>
       <div><div class="sheet-inlineresult">{{2x2-max}}</div></div>
     </div>
-
     {{/2x2}}
+
+
 
     {{#4x2-1}}
     <div class="sheet-template-header">{{character}}: {{name}}</div>

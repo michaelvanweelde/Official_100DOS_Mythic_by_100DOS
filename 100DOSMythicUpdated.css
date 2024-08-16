@@ -979,6 +979,12 @@ ______________________________ start of settings tab ___________________________
 	text-align: center;
 }
 
+.sheet-settings_compendium_text {
+	background: transparent !important;
+	border: none;
+	
+}
+
 /* ______________________________ end of settings tab ______________________________
 ______________________________ start of NPC sheet overrides ________________________ */
 
