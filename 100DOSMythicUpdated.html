@@ -5707,7 +5707,7 @@
         updateAttrs["repeating_gear_" + UUID2 + "_gear_cost"]     = compcheck(comp_data_Parsed["COMP_price"])
         updateAttrs["repeating_gear_" + UUID2 + "_gear_weight"]   = compcheck(comp_data_Parsed["COMP_weight"])
         updateAttrs["repeating_gear_" + UUID2 + "_gear_bp"]       = compcheck(comp_data_Parsed["COMP_breakpoints"])
-        updateAttrs["repeating_gear_" + UUID2 + "_description"]   = ""
+        updateAttrs["repeating_gear_" + UUID2 + "_description"]   = "Ammo: " + compcheck(comp_data_Parsed["COMP_ammo_name"])
         setAttrs(updateAttrs);
       };
 
