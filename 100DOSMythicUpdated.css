@@ -574,12 +574,11 @@ ______________________________ start of equipment tab __________________________
 	grid-template-columns: 49% auto;
 	grid-template-areas:
 	'e1 e2'
-	'e3 e3';
 }
 
 .sheet-equipment_ranged_weapons { grid-area: e1; background:#4a648c;}
 .sheet-equipment_melee_weapons { grid-area: e2; background:#4a648c;}
-.sheet-equipment_numerics { grid-area: e3; margin-top: 10px; margin-bottom: 10px;}
+
 .sheet-equipment_ranged_weapons_rep { background:#4a648c; border:1px solid white; border-radius: 10px; padding: 2px; }
 
 .sheet-equipment_ranged_weapons_gs1 { grid-area: rw1;		color: white; font-size: 12px; padding: 0px 2px }
@@ -651,7 +650,6 @@ ______________________________ start of equipment tab __________________________
 	grid-template-columns: auto auto;
 	grid-template-areas:
 	'rw25 rw26';
-
 }
 
 .sheet-equipment_melee_weapons_gs1 { grid-area: mw1;	color: white; font-size: 12px; padding: 0px 2px }
@@ -685,6 +683,13 @@ ______________________________ start of equipment tab __________________________
 	'mw11 mw12 mw13 mw14';
 }
 
+.sheet-equipment_margin_top {
+	margin-top: 10px; 
+}
+
+.sheet-equipment_red_text {
+	color: rgb(246, 71, 79) !important;
+}
 
 .sheet-equipment_header {
 	background: #394C6A;

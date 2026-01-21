@@ -1368,20 +1368,29 @@
             <br>
           </fieldset>
         </div>
+      </div>
 
         <!-- weight and cr calculator -->
-        <div class="equipment_numerics text_centered">
+        <input type="number" name="attr_credit_tare" hidden>
+        <div class="equipment_margin_top text_centered">
           <button name="act_reset" type="action" class="bold_text">RESET</button>
           <button name="act_tare" type="action" class="bold_text">TARE</button>
+          &nbsp;
           cR Count: <input name="attr_credits" type="number" class="numerical_field" />
           cR Calculation: <input name="attr_credit_total" type="number" class="numerical_field" readonly />
           Weight Calculation: <input name="attr_weight_total" type="number" class="numerical_field end_field" readonly> kilograms</input>
-          <input type="number" name="attr_credit_tare" hidden>
         </div>
-      </div>
+
+        <!-- Encumbrance -->
+        <input name="attr_encumbrance" type="checkbox" value="over_encumbered" class="hider hidden" />
+        <div class="equipment_margin_top text_centered"><b class="equipment_red_text">Over-Encumbered:</b> -20 Penalty on any Tests that takes Physical movement.</div>
+        <input name="attr_encumbrance" type="checkbox" value="heavily_encumbered" class="hider hidden" />
+        <div class="equipment_margin_top text_centered"><b class="equipment_red_text">Heavily Encumbered:</b> -40 Penalty on any Tests that takes Physical movement. All movement speed is halved. Every minute of moving incurs fatigue.</div>
+        <input name="attr_encumbrance" type="checkbox" value="immobile" class="hider hidden" />
+        <div class="equipment_margin_top text_centered"><b class="equipment_red_text">Immobile:</b> The character is unable to move.</div>
 
       <!-- equipment / gear section -->
-      <div class="border_full">
+      <div class="border_full equipment_margin_top">
         <div class="equipment_gear equipment_header">
           <h3></h3>
           <h3>Gear / Item Name</h3>
@@ -4616,7 +4625,6 @@
     repeatingSum(["shields_max"], "armor", ["shields_max", "armor_worn"]);
     repeatingSum(["shields_delay"], "armor", ["shields_delay", "armor_worn"]);
     repeatingSum(["shields_charge"], "armor", ["shields_charge", "armor_worn"]);
-
   });
 
 
@@ -4646,7 +4654,7 @@
   // _______________________________________________________________________________________________
   on(`clicked:tare`, function () {
     getAttrs(["credit_tare"], function (values) {
-      const credit_tare = parseInt(values["credit_tare"], 10) || 0;
+      const credit_tare = parseFloat(values["credit_tare"]) || 0;
       getSectionIDs(`repeating_gear`, idArray => {
         const fieldset_carried = [];
         const fieldset_cost = [];
@@ -4677,8 +4685,12 @@
   });
 
   on("change:repeating_gear remove:repeating_gear clicked:reset", () => {
-    getAttrs(["credit_tare"], function (values) {
-      const credit_tare = parseInt(values["credit_tare"], 10) || 0;
+    getAttrs([
+    "credit_tare",
+    "carry"
+    ], function (values) {
+      const credit_tare = parseFloat(values["credit_tare"]) || 0;
+      const carry = parseFloat(values["carry"]) || 0;
       getSectionIDs(`repeating_gear`, idArray => {
         const fieldset_carried = [];
         const fieldset_cost = [];
@@ -4705,9 +4717,16 @@
           });
           const credit_repeating = idArray.reduce((total, id) => total + (getValue(id, "gear_cost") * getValue(id, "gear_quantity")), 0)
           const weight_repeating = idArray.reduce((total, id) => total + (getValue(id, "gear_weight") * getValue(id, "gear_quantity") * getValue(id, "gear_carried") * getValue(id, "gear_modifier")), 0)
+          
+          var encumberance_state = 0
+          if (weight_repeating > carry     ){encumberance_state = "over_encumbered"}
+          if (weight_repeating > carry * 2 ){encumberance_state = "heavily_encumbered"}
+          if (weight_repeating > carry * 3 ){encumberance_state = "immobile"}
+          
           setAttrs({
             credit_total: Math.round((credit_repeating + credit_tare) * 100) / 100,
-            weight_total: Math.round(weight_repeating * 100) / 100
+            weight_total: Math.round(weight_repeating * 100) / 100,
+            encumbrance: encumberance_state
           });
         });
       });
