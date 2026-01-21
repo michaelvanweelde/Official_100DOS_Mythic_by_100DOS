@@ -694,9 +694,19 @@ ______________________________ start of equipment tab __________________________
 	letter-spacing: 1px;
 }
 .sheet-equipment_gear {
+	background: #394C6A;
 	display: grid;
+	height: 29px;
 	grid-template-columns: 30px auto 80px 80px 80px 80px 27px;
 }
+
+.sheet-equipment_gear_checks {
+	background: #394C6A;
+	display: grid;
+	height: 30px;
+	grid-template-columns: auto 130px 31px 30px 245px 31px auto;
+}
+
 .sheet-equipment_gear_textarea {margin-left: 0px;}
 .sheet-equipment_checkmark {width: 100%; text-align: center; align-self: center; margin-bottom: -1px; font-size: 17px}
 .sheet-equipment_default {width: 100%; text-align: center; align-self: center; }

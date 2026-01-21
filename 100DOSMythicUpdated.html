@@ -1382,7 +1382,7 @@
       <!-- equipment / gear section -->
       <div class="border_full">
         <div class="equipment_gear equipment_header">
-          <div></div>
+          <h3></h3>
           <h3>Gear / Item Name</h3>
           <h3>Amount</h3>
           <h3>Value</h3>
@@ -1401,7 +1401,17 @@
             <label class="margin_adjust equipment_hider"><input type="checkbox" name="attr_collapse" value="2" class="hider select_button hidden" /><span class="select_text">▼</span></label>
           </div>
           <input name="attr_collapse" type="checkbox" value="2" class="hider hidden" />
+          <div>
+          <div class="equipment_gear_checks">
+            <h3></h3>
+            <h3>Worn armor</h3>
+            <label class="equipment_checkmark"><input type="checkbox" name="attr_gear_modifier" value="0.25" class="select_button hidden" /><span class="select_text">&nbsp;✔&nbsp;</span></label>
+            <h3></h3>
+            <h3>In a Weight halving pack</h3>
+            <label class="equipment_checkmark"><input type="checkbox" name="attr_gear_modifier" value="0.5" class="select_button hidden" /><span class="select_text">&nbsp;✔&nbsp;</span></label>
+          </div>
           <textarea name="attr_description" placeholder="Equipment special rules" class=" equipment_gear_textarea"></textarea>
+        </div>
         </fieldset>
       </div>
       <br>
@@ -4187,43 +4197,43 @@
   destinations = the name of the attribute that stores the total quantity
   section = name of repeating fieldset, without the repeating_
   fields = the name of the attribute field to be summed
-  can be a single attribute: 'weight'
-  or an array of attributes: ['weight','number','equipped']
+        can be a single attribute: 'weight'
+        or an array of attributes: ['weight','number','equipped']
   extras: everything after the fields parameter is optional and can be in any order:
-  'ceil'
-  'round'
-  'floor'
-  'ceil: 3'
-  'round: -2'
-  'round: equipment_weight, equipment_cost|2
-  you want to round the final total.
-  If you supply a field name, it will round just that total. You can supply multiple fields, separated by commas.
-  If you supply a number, it will round to that many digits.
-  round:1 rounds to tenths; floor:-3 rounds down to thousands, so 3567 would be shown as 3000.
-  If you dont supply a number, it assumes 0, and returns an integer (whole numbers).
-  IMPORTANT: if you list ANY field, then ALL fields to be rounded must be specifically stated.
-  Don't do this: floor:equipment_weight|2, round,
+      'ceil'
+      'round'
+      'floor'
+      'ceil: 3'
+      'round: -2'
+      'round: equipment_weight, equipment_cost|2
+          you want to round the final total. 
+          If you supply a field name, it will round just that total. You can supply multiple fields, separated by commas.
+          If you supply a number, it will round to that many digits. 
+          round:1 rounds to tenths; floor:-3 rounds down to thousands, so 3567 would be shown as 3000.
+          If you dont supply a number, it assumes 0, and returns an integer (whole numbers).
+          IMPORTANT: if you list ANY field, then ALL fields to be rounded must be specifically stated.
+          Don't do this: floor:equipment_weight|2, round,
+      
+      'multiplier: 2'
+      'multiplier:equipment_weight|2'
+      'multiplier: equipment_weight|2, equipment_cost|3'
+          Multiplier will apply a multiple to the final total. You can multiple all fields, or specific fields.
+          It doesnt apply to attributes being added from outside the repeating section.
+          Multiplier can be negative, representing a subtraction.
 
-  'multiplier: 2'
-  'multiplier:equipment_weight|2'
-  'multiplier: equipment_weight|2, equipment_cost|3'
-  Multiplier will apply a multiple to the final total. You can multiple all fields, or specific fields.
-  It doesnt apply to attributes being added from outside the repeating section.
-  Multiplier can be negative, representing a subtraction.
+      'an_attribute'
+      'an_attribute:-1'
+      'an_attribute:0.5'
+      'an_attribute:equipment_cost'
+      'an_attribute:equipment_cost|-1'
+      'an_attribute:equipment_cost|-1,equipment_weight|2'
+          You can also list attributes from outside the repeating section. Don't try to add attributes from other repeating sections.
+          by default, the listed attribute will be added to all fields.
+          You can list one or more fields, and it will only be added to those fields.
+          You can list a number: the attribute will be multiplied by that amount. So -1 subtracts the attribute.
+      */
 
-  'an_attribute'
-  'an_attribute:-1'
-  'an_attribute:0.5'
-  'an_attribute:equipment_cost'
-  'an_attribute:equipment_cost|-1'
-  'an_attribute:equipment_cost|-1,equipment_weight|2'
-  You can also list attributes from outside the repeating section. Don't try to add attributes from other repeating sections.
-  by default, the listed attribute will be added to all fields.
-  You can list one or more fields, and it will only be added to those fields.
-  You can list a number: the attribute will be multiplied by that amount. So -1 subtracts the attribute.
-  */
-
-  const repeatingSum = (destinations, section, fields, ...extras) => {
+const repeatingSum = (destinations, section, fields, ...extras) => {
     const isNumber = value => parseFloat(value).toString() === value.toString();
     const isOption = value => [...checks.valid, ...checks.roundtypes].includes(value);
     const isRounding = value => checks.roundtypes.includes(value);
@@ -4231,9 +4241,9 @@
     const getTrimmed = value => value.toLowerCase().replace(/\s/g, '');
     const getRounded = (type, value, pow) => (Math[type](value * Math.pow(10, pow)) / Math.pow(10, pow)).toFixed(Math.max(0, pow));
     const getFraction = (value) => /*{ console.log(`value: ${value}`); */
-    parseInt(value.split('/')[0]) / parseInt(value.split('/')[1]);
+        parseInt(value.split('/')[0]) / parseInt(value.split('/')[1]);
     const getMultiplier = (value, rounding = 1) => 'undefined' === typeof value ? (rounding ? 0: 1) : (
-    isNumber(value) ? parseFloat(value) : (isFraction(value) ? getFraction(value) : value));
+        isNumber(value) ? parseFloat(value) : (isFraction(value) ? getFraction(value) : value));
     if (!Array.isArray(destinations)) destinations = [getTrimmed(destinations)];
     if (!Array.isArray(fields)) fields = [getTrimmed(fields)];
     const fields_trimmed = fields.map(field => getTrimmed(field).split(':')[0]);
@@ -4241,46 +4251,45 @@
     const checks = { valid: ['multiplier'], roundtypes: ['ceil', 'round', 'floor'] };
     let properties = {attributes: {}, options: {}};
     extras.forEach(extra => {
-      const [prop, v] = getTrimmed(extra).split(':');
-      const multiplier_maybe = getMultiplier(v, isRounding(prop));
-      const obj = isNumber(multiplier_maybe) ? subfields.reduce((obj,field) => {
-        obj[field] = multiplier_maybe;
-        return obj;
-      },{}) : multiplier_maybe.split(',').reduce((obj, item) => {
-        const [stat, value] = item.split('|');
-        const multiplier = getMultiplier(value, isRounding(prop));
-        obj[stat] = multiplier;
-        return obj;
-      }, {});
-      properties[isOption(prop) ? 'options' : 'attributes'][prop] = obj;
+        const [prop, v] = getTrimmed(extra).split(':');
+        const multiplier_maybe = getMultiplier(v, isRounding(prop));
+        const obj = isNumber(multiplier_maybe) ? subfields.reduce((obj,field) => {
+            obj[field] = multiplier_maybe;
+            return obj;
+        },{}) : multiplier_maybe.split(',').reduce((obj, item) => {
+            const [stat, value] = item.split('|');
+            const multiplier = getMultiplier(value, isRounding(prop));
+            obj[stat] = multiplier;
+            return obj;
+        }, {});
+        properties[isOption(prop) ? 'options' : 'attributes'][prop] = obj;
     });
     getSectionIDs(`repeating_${section}`, idArray => {
-      const attrArray = idArray.reduce((m, id) => [...m, ...(fields_trimmed.map(field => `repeating_${section}_${id}_${field}`))], []);
-      getAttrs([...attrArray, ...Object.keys(properties.attributes)], v => {
-        const getValue = (section, id, field) => v[`repeating_${section}_${id}_${field}`] === 'on' ? 1 : parseFloat(v[`repeating_${section}_${id}_${field}`]) || 0;
-        const commonMultipliers = (fields.length <= destinations.length) ? [] : fields.splice(destinations.length, fields.length - destinations.length);
-        const output = destinations.reduce((obj, destination, index) => {
-          let sumTotal = idArray.reduce((total, id) => total + getValue(section, id, fields_trimmed[index]) * commonMultipliers.reduce((subtotal, mult) => subtotal * ((!mult.includes(':') || mult.split(':')[1].split(',').includes(fields_trimmed[index])) ? getValue(section, id, mult.split(':')[0]) : 1), 1), 0);
-          sumTotal *= (properties.options.hasOwnProperty('multiplier') && Object.keys(properties.options.multiplier).includes(fields_trimmed[index])) ? (parseFloat(properties.options.multiplier[fields_trimmed[index]]) || 0): 1;
-          sumTotal += Object.entries(properties.attributes).reduce((total, [key, value]) =>
-          total += (value.hasOwnProperty(fields_trimmed[index]) ? parseFloat(v[key] || 0) * (parseFloat(value[fields_trimmed[index]]) || 1): 0) , 0);
-          checks.roundtypes.forEach(type => {
-            if (properties.options.hasOwnProperty(type)) {
-              if (Object.keys(properties.options[type]).includes(fields_trimmed[index])) {
-                sumTotal = getRounded(type, sumTotal, (+properties.options[type][fields_trimmed[index]] || 0));
-              } else if (properties.options[type] == '0' || !isNaN(+properties.options[type] || 'x') ) {
-                sumTotal = getRounded(type, sumTotal, +properties.options[type]);
-              }
-            }
-          });
-          obj[destination] = sumTotal;
-          return obj;
-        }, {});
-        setAttrs(output);
-      });
-    });
-  };
-
+        const attrArray = idArray.reduce((m, id) => [...m, ...(fields_trimmed.map(field => `repeating_${section}_${id}_${field}`))], []);
+        getAttrs([...attrArray, ...Object.keys(properties.attributes)], v => {
+            const getValue = (section, id, field) => v[`repeating_${section}_${id}_${field}`] === 'on' ? 1 : parseFloat(v[`repeating_${section}_${id}_${field}`]) || 0;
+            const commonMultipliers = (fields.length <= destinations.length) ? [] : fields.splice(destinations.length, fields.length - destinations.length);
+            const output = destinations.reduce((obj, destination, index) => {
+                let sumTotal = idArray.reduce((total, id) => total + getValue(section, id, fields_trimmed[index]) * commonMultipliers.reduce((subtotal, mult) => subtotal * ((!mult.includes(':') || mult.split(':')[1].split(',').includes(fields_trimmed[index])) ? getValue(section, id, mult.split(':')[0]) : 1), 1), 0);
+                sumTotal *= (properties.options.hasOwnProperty('multiplier') && Object.keys(properties.options.multiplier).includes(fields_trimmed[index])) ? (parseFloat(properties.options.multiplier[fields_trimmed[index]]) || 0): 1;
+                sumTotal += Object.entries(properties.attributes).reduce((total, [key, value]) => 
+                    total += (value.hasOwnProperty(fields_trimmed[index]) ? parseFloat(v[key] || 0) * (parseFloat(value[fields_trimmed[index]]) || 1): 0) , 0);
+                checks.roundtypes.forEach(type => {
+                    if (properties.options.hasOwnProperty(type)) {
+                        if (Object.keys(properties.options[type]).includes(fields_trimmed[index])) {
+                            sumTotal = getRounded(type, sumTotal, (+properties.options[type][fields_trimmed[index]] || 0));
+                        } else if (properties.options[type] == '0' || !isNaN(+properties.options[type] || 'x') ) {
+                            sumTotal = getRounded(type, sumTotal, +properties.options[type]);
+                        } 
+                    } 
+                });
+                obj[destination] = sumTotal;
+                return obj;
+            }, {});
+            setAttrs(output);
+        }); 
+    }); 
+};
 
 
 
@@ -4595,6 +4604,8 @@
 
 
 
+
+
   // _______________________________________________________________________________________________
   // Damage resistance calculation sheet worker_____________________________________________________
   // _______________________________________________________________________________________________
@@ -4609,14 +4620,6 @@
     repeatingSum(["shields_charge"],"armor",["shields_charge","armor_worn"]);
 
   });
-
-
-
-
-
-
-
-
 
 
 
@@ -4641,9 +4644,8 @@
 
 
   // _______________________________________________________________________________________________
-  // gear cost/weight sheet worker__________________________________________________________________
+  // gear cost/weight sheet workers_________________________________________________________________
   // _______________________________________________________________________________________________
-
   on(`clicked:tare`, function() {
     getAttrs(["credit_tare"], function(values) {
       const credit_tare = parseInt(values["credit_tare"], 10) || 0;
@@ -4654,7 +4656,11 @@
         idArray.forEach(id => fieldset_carried.push (`repeating_gear_${id}_gear_carried`));
         idArray.forEach(id => fieldset_cost.push (`repeating_gear_${id}_gear_cost`));
         idArray.forEach(id => fieldset_quantity.push (`repeating_gear_${id}_gear_quantity`));
-        getAttrs([...fieldset_cost, ...fieldset_quantity, ...fieldset_carried], v => {
+        getAttrs([
+        ...fieldset_cost, 
+        ...fieldset_quantity, 
+        ...fieldset_carried
+        ], v => {
           const getValue = (id, field) => parseFloat(v[`repeating_gear_${id}_${field}`]) || 0
           const credit_repeating = idArray.reduce((total, id) => total + (getValue(id, "gear_cost") * getValue(id, "gear_quantity") ), 0)
           setAttrs({
@@ -4680,14 +4686,26 @@
         const fieldset_cost = [];
         const fieldset_weight = [];
         const fieldset_quantity = [];
+        var fieldset_modifier = [];
         idArray.forEach(id => fieldset_carried.push (`repeating_gear_${id}_gear_carried`));
         idArray.forEach(id => fieldset_cost.push (`repeating_gear_${id}_gear_cost`));
         idArray.forEach(id => fieldset_weight.push (`repeating_gear_${id}_gear_weight`));
         idArray.forEach(id => fieldset_quantity.push (`repeating_gear_${id}_gear_quantity`));
-        getAttrs([...fieldset_weight, ...fieldset_cost, ...fieldset_quantity, ...fieldset_carried], v => {
-          const getValue = (id, field) => parseFloat(v[`repeating_gear_${id}_${field}`]) || 0
+        idArray.forEach(id => fieldset_modifier.push (`repeating_gear_${id}_gear_modifier`));
+        getAttrs([
+          ...fieldset_weight, 
+          ...fieldset_cost, 
+          ...fieldset_quantity, 
+          ...fieldset_carried, 
+          ...fieldset_modifier
+          ], v => {
+            const getValue = (id, field) => parseFloat(v[`repeating_gear_${id}_${field}`]) || 0
+            fieldset_modifier.forEach(name => {
+              if (+v[name] === 0) {v[name] = 1;
+            };
+          });
           const credit_repeating = idArray.reduce((total, id) => total + (getValue(id, "gear_cost") * getValue(id, "gear_quantity") ), 0)
-          const weight_repeating = idArray.reduce((total, id) => total + (getValue(id, "gear_weight") * getValue(id, "gear_quantity") * getValue(id, "gear_carried")), 0)
+          const weight_repeating = idArray.reduce((total, id) => total + (getValue(id, "gear_weight") * getValue(id, "gear_quantity") * getValue(id, "gear_carried") * getValue(id, "gear_modifier")), 0)
           setAttrs({
             credit_total: Math.round((credit_repeating + credit_tare)*100)/100,
             weight_total: Math.round(weight_repeating*100)/100
@@ -4696,6 +4714,10 @@
       });
     });
   });
+
+
+
+
 
 
   // _______________________________________________________________________________________________
@@ -5084,12 +5106,18 @@
   });
 
 
+
+
+
+
   // _______________________________________________________________________________________________
   // Advancements experience sheet worker___________________________________________________________
   // _______________________________________________________________________________________________
   on("change:repeating_advancements remove:repeating_advancements", () => {
     repeatingSum(["xp_spent"],"advancements",["advancement_cost"])
   });
+
+
 
 
 
@@ -5188,10 +5216,6 @@
 
 
 
-
-
-
-
   // _______________________________________________________________________________________________
   // Vehicle sheet worker___________________________________________________________________________
   // _______________________________________________________________________________________________
@@ -5218,8 +5242,6 @@
       setAttrs(updateAttrs);
     });
   });
-
-
 
 
 
