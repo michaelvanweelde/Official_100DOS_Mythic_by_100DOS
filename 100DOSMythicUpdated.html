@@ -222,7 +222,7 @@
 
       </div>
       <br>
-      <input name="attr_fatigue_mod" type="text" value="0" class="characteristics_input full_width" hidden />
+
 
 
       <!-- mythic characteristics, movement and pushing grid _______________________________________ -->
@@ -390,6 +390,7 @@
               <p class="infographic_text">Max</p>
               <input class="full_width infographic_last_element" type="text" name="attr_fatigue_max" value="0" />
             </div>
+            <input name="attr_fatigue_mod" type="text" value="0" class="characteristics_input full_width" hidden />
           </div>
 
           <div class="border_full">
@@ -4233,7 +4234,7 @@
           You can list a number: the attribute will be multiplied by that amount. So -1 subtracts the attribute.
       */
 
-const repeatingSum = (destinations, section, fields, ...extras) => {
+  const repeatingSum = (destinations, section, fields, ...extras) => {
     const isNumber = value => parseFloat(value).toString() === value.toString();
     const isOption = value => [...checks.valid, ...checks.roundtypes].includes(value);
     const isRounding = value => checks.roundtypes.includes(value);
@@ -4241,55 +4242,55 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
     const getTrimmed = value => value.toLowerCase().replace(/\s/g, '');
     const getRounded = (type, value, pow) => (Math[type](value * Math.pow(10, pow)) / Math.pow(10, pow)).toFixed(Math.max(0, pow));
     const getFraction = (value) => /*{ console.log(`value: ${value}`); */
-        parseInt(value.split('/')[0]) / parseInt(value.split('/')[1]);
-    const getMultiplier = (value, rounding = 1) => 'undefined' === typeof value ? (rounding ? 0: 1) : (
-        isNumber(value) ? parseFloat(value) : (isFraction(value) ? getFraction(value) : value));
+      parseInt(value.split('/')[0]) / parseInt(value.split('/')[1]);
+    const getMultiplier = (value, rounding = 1) => 'undefined' === typeof value ? (rounding ? 0 : 1) : (
+      isNumber(value) ? parseFloat(value) : (isFraction(value) ? getFraction(value) : value));
     if (!Array.isArray(destinations)) destinations = [getTrimmed(destinations)];
     if (!Array.isArray(fields)) fields = [getTrimmed(fields)];
     const fields_trimmed = fields.map(field => getTrimmed(field).split(':')[0]);
-    const subfields = fields_trimmed.slice(0,destinations.length);
+    const subfields = fields_trimmed.slice(0, destinations.length);
     const checks = { valid: ['multiplier'], roundtypes: ['ceil', 'round', 'floor'] };
-    let properties = {attributes: {}, options: {}};
+    let properties = { attributes: {}, options: {} };
     extras.forEach(extra => {
-        const [prop, v] = getTrimmed(extra).split(':');
-        const multiplier_maybe = getMultiplier(v, isRounding(prop));
-        const obj = isNumber(multiplier_maybe) ? subfields.reduce((obj,field) => {
-            obj[field] = multiplier_maybe;
-            return obj;
-        },{}) : multiplier_maybe.split(',').reduce((obj, item) => {
-            const [stat, value] = item.split('|');
-            const multiplier = getMultiplier(value, isRounding(prop));
-            obj[stat] = multiplier;
-            return obj;
-        }, {});
-        properties[isOption(prop) ? 'options' : 'attributes'][prop] = obj;
+      const [prop, v] = getTrimmed(extra).split(':');
+      const multiplier_maybe = getMultiplier(v, isRounding(prop));
+      const obj = isNumber(multiplier_maybe) ? subfields.reduce((obj, field) => {
+        obj[field] = multiplier_maybe;
+        return obj;
+      }, {}) : multiplier_maybe.split(',').reduce((obj, item) => {
+        const [stat, value] = item.split('|');
+        const multiplier = getMultiplier(value, isRounding(prop));
+        obj[stat] = multiplier;
+        return obj;
+      }, {});
+      properties[isOption(prop) ? 'options' : 'attributes'][prop] = obj;
     });
     getSectionIDs(`repeating_${section}`, idArray => {
-        const attrArray = idArray.reduce((m, id) => [...m, ...(fields_trimmed.map(field => `repeating_${section}_${id}_${field}`))], []);
-        getAttrs([...attrArray, ...Object.keys(properties.attributes)], v => {
-            const getValue = (section, id, field) => v[`repeating_${section}_${id}_${field}`] === 'on' ? 1 : parseFloat(v[`repeating_${section}_${id}_${field}`]) || 0;
-            const commonMultipliers = (fields.length <= destinations.length) ? [] : fields.splice(destinations.length, fields.length - destinations.length);
-            const output = destinations.reduce((obj, destination, index) => {
-                let sumTotal = idArray.reduce((total, id) => total + getValue(section, id, fields_trimmed[index]) * commonMultipliers.reduce((subtotal, mult) => subtotal * ((!mult.includes(':') || mult.split(':')[1].split(',').includes(fields_trimmed[index])) ? getValue(section, id, mult.split(':')[0]) : 1), 1), 0);
-                sumTotal *= (properties.options.hasOwnProperty('multiplier') && Object.keys(properties.options.multiplier).includes(fields_trimmed[index])) ? (parseFloat(properties.options.multiplier[fields_trimmed[index]]) || 0): 1;
-                sumTotal += Object.entries(properties.attributes).reduce((total, [key, value]) => 
-                    total += (value.hasOwnProperty(fields_trimmed[index]) ? parseFloat(v[key] || 0) * (parseFloat(value[fields_trimmed[index]]) || 1): 0) , 0);
-                checks.roundtypes.forEach(type => {
-                    if (properties.options.hasOwnProperty(type)) {
-                        if (Object.keys(properties.options[type]).includes(fields_trimmed[index])) {
-                            sumTotal = getRounded(type, sumTotal, (+properties.options[type][fields_trimmed[index]] || 0));
-                        } else if (properties.options[type] == '0' || !isNaN(+properties.options[type] || 'x') ) {
-                            sumTotal = getRounded(type, sumTotal, +properties.options[type]);
-                        } 
-                    } 
-                });
-                obj[destination] = sumTotal;
-                return obj;
-            }, {});
-            setAttrs(output);
-        }); 
-    }); 
-};
+      const attrArray = idArray.reduce((m, id) => [...m, ...(fields_trimmed.map(field => `repeating_${section}_${id}_${field}`))], []);
+      getAttrs([...attrArray, ...Object.keys(properties.attributes)], v => {
+        const getValue = (section, id, field) => v[`repeating_${section}_${id}_${field}`] === 'on' ? 1 : parseFloat(v[`repeating_${section}_${id}_${field}`]) || 0;
+        const commonMultipliers = (fields.length <= destinations.length) ? [] : fields.splice(destinations.length, fields.length - destinations.length);
+        const output = destinations.reduce((obj, destination, index) => {
+          let sumTotal = idArray.reduce((total, id) => total + getValue(section, id, fields_trimmed[index]) * commonMultipliers.reduce((subtotal, mult) => subtotal * ((!mult.includes(':') || mult.split(':')[1].split(',').includes(fields_trimmed[index])) ? getValue(section, id, mult.split(':')[0]) : 1), 1), 0);
+          sumTotal *= (properties.options.hasOwnProperty('multiplier') && Object.keys(properties.options.multiplier).includes(fields_trimmed[index])) ? (parseFloat(properties.options.multiplier[fields_trimmed[index]]) || 0) : 1;
+          sumTotal += Object.entries(properties.attributes).reduce((total, [key, value]) =>
+            total += (value.hasOwnProperty(fields_trimmed[index]) ? parseFloat(v[key] || 0) * (parseFloat(value[fields_trimmed[index]]) || 1) : 0), 0);
+          checks.roundtypes.forEach(type => {
+            if (properties.options.hasOwnProperty(type)) {
+              if (Object.keys(properties.options[type]).includes(fields_trimmed[index])) {
+                sumTotal = getRounded(type, sumTotal, (+properties.options[type][fields_trimmed[index]] || 0));
+              } else if (properties.options[type] == '0' || !isNaN(+properties.options[type] || 'x')) {
+                sumTotal = getRounded(type, sumTotal, +properties.options[type]);
+              }
+            }
+          });
+          obj[destination] = sumTotal;
+          return obj;
+        }, {});
+        setAttrs(output);
+      });
+    });
+  };
 
 
 
@@ -4300,44 +4301,44 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
   // Movement and Weight sheet worker_______________________________________________________________
   // _______________________________________________________________________________________________
 
-  on("change:settings_race change:settings_fatigue", function() {
-
+  // Applying racial settings in setting window
+  on("change:settings_race change:settings_fatigue", function () {
     getAttrs([
-    "settings_race",
-    "settings_fatigue",
+      "settings_race",
+      "settings_fatigue",
 
-    "settings_half_mult",
-    "settings_half_addi",
-    "settings_full_mult",
-    "settings_full_addi",
-    "settings_charge_mult",
-    "settings_charge_addi",
-    "settings_run_mult",
-    "settings_run_addi",
-    "settings_blur_mult",
-    "settings_blur_addi",
-    "settings_jump_mult",
-    "settings_jump_addi",
-    "settings_leap_mult",
-    "settings_leap_addi",
-    "settings_carry_mult_str",
-    "settings_carry_mult_tou",
-    "settings_carry_addi",
-    "settings_lift_mult_str",
-    "settings_lift_mult_tou",
-    "settings_lift_addi",
-    "settings_push_mult_str",
-    "settings_push_mult_tou",
-    "settings_push_addi",
-    "settings_fatigue_mult",
-    "settings_fatigue_addi",
+      "settings_half_mult",
+      "settings_half_addi",
+      "settings_full_mult",
+      "settings_full_addi",
+      "settings_charge_mult",
+      "settings_charge_addi",
+      "settings_run_mult",
+      "settings_run_addi",
+      "settings_blur_mult",
+      "settings_blur_addi",
+      "settings_jump_mult",
+      "settings_jump_addi",
+      "settings_leap_mult",
+      "settings_leap_addi",
+      "settings_carry_mult_str",
+      "settings_carry_mult_tou",
+      "settings_carry_addi",
+      "settings_lift_mult_str",
+      "settings_lift_mult_tou",
+      "settings_lift_addi",
+      "settings_push_mult_str",
+      "settings_push_mult_tou",
+      "settings_push_addi",
+      "settings_fatigue_mult",
+      "settings_fatigue_addi",
 
-    ], function(values) {
+    ], function (values) {
 
       var settings_fatigue = values["settings_fatigue"]
       const settings_race = values["settings_race"]
 
-      if(settings_race != "dont mod" && settings_race != "dont calc"){
+      if (settings_race != "dont mod" && settings_race != "dont calc") {
         // normal no modifiers
         setAttrs({
           settings_half_mult: (1),
@@ -4367,19 +4368,19 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
           settings_fatigue_addi: (0)
         });
 
-        if(settings_fatigue == "Enduring +1") {
+        if (settings_fatigue == "Enduring +1") {
           setAttrs({
             settings_fatigue_addi: (1)
           });
         }
-        if(settings_fatigue == "Enduring +2") {
+        if (settings_fatigue == "Enduring +2") {
           setAttrs({
             settings_fatigue_addi: (2)
           });
         }
 
         // Spartan + Jiralhanae + Promethean Knight + Prelate (carry weight * 2)
-        if(settings_race == "spartans" || settings_race == "Brutes" || settings_race == "Promethean Knight") {
+        if (settings_race == "spartans" || settings_race == "Brutes" || settings_race == "Promethean Knight") {
           setAttrs({
             settings_carry_mult_str: (2),
             settings_carry_mult_tou: (2),
@@ -4391,7 +4392,7 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
         }
 
         // Sangheili (+2 agi leap, carry weight * 2)
-        if(settings_race == "Elite") {
+        if (settings_race == "Elite") {
           setAttrs({
             settings_carry_mult_str: (2),
             settings_carry_mult_tou: (2),
@@ -4404,21 +4405,21 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
         }
 
         // Ruutian & Ibie"shan (double agi to jump)
-        if(settings_race == "Ruutian" || settings_race == "Ibieshan") {
+        if (settings_race == "Ruutian" || settings_race == "Ibieshan") {
           setAttrs({
             settings_jump_mult: (2),
           });
         }
 
         // Jackal T"vaoan (mod to jump * 3)
-        if(settings_race == "Tvaoan") {
+        if (settings_race == "Tvaoan") {
           setAttrs({
             settings_jump_mult: (3),
           });
         }
 
         // Mgalekgolo (Hunter) (carry = 5000, +3 agi to charge/run)
-        if(settings_race == "Hunters") {
+        if (settings_race == "Hunters") {
           setAttrs({
             settings_carry_mult_str: (0),
             settings_carry_mult_tou: (0),
@@ -4434,7 +4435,7 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
           });
         }
         // engineer (carry = 1000)
-        if(settings_race == "Engineer") {
+        if (settings_race == "Engineer") {
           setAttrs({
             settings_carry_mult_str: (0),
             settings_carry_mult_tou: (0),
@@ -4447,7 +4448,7 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
             settings_push_addi: (4000),
           });
         }
-        if(settings_race == "Prelate") {
+        if (settings_race == "Prelate") {
           setAttrs({
             settings_carry_mult_str: (2),
             settings_lift_mult_str: (2),
@@ -4458,75 +4459,72 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
     });
   });
 
-
-  on("change:settings_race change:settings_fatigue change:settings_half_mult change:settings_half_addi change:settings_full_mult change:settings_full_addi change:settings_charge_mult change:settings_charge_addi change:settings_run_mult change:settings_run_addi change:settings_blur_mult change:settings_blur_addi change:settings_jump_mult change:settings_jump_addi change:settings_leap_mult change:settings_leap_addi change:settings_carry_mult_str change:settings_carry_mult_tou change:settings_carry_addi change:settings_lift_mult_str change:settings_lift_mult_tou change:settings_lift_addi change:settings_push_mult_str_change:settings_push_mult_tou change:settings_push_addi change:settings_fatigue_mult change:settings_fatigue_addi change:fatigue change:agi change:agi_mythic change:agi_advancement change:str change:str_mythic change:str_advancement change:tou change:tou_mythic change:tou_advancement change:per change:per_advancement", function() {
+  // Calculating and setting atributes
+  on("change:settings_race change:settings_fatigue change:settings_half_mult change:settings_half_addi change:settings_full_mult change:settings_full_addi change:settings_charge_mult change:settings_charge_addi change:settings_run_mult change:settings_run_addi change:settings_blur_mult change:settings_blur_addi change:settings_jump_mult change:settings_jump_addi change:settings_leap_mult change:settings_leap_addi change:settings_carry_mult_str change:settings_carry_mult_tou change:settings_carry_addi change:settings_lift_mult_str change:settings_lift_mult_tou change:settings_lift_addi change:settings_push_mult_str_change:settings_push_mult_tou change:settings_push_addi change:settings_fatigue_mult change:settings_fatigue_addi change:fatigue change:agi change:agi_mythic change:agi_advancement change:str change:str_mythic change:str_advancement change:tou change:tou_mythic change:tou_advancement change:per change:per_advancement", function () {
     getAttrs([
-    "settings_race",
-    "settings_fatigue",
+      "settings_race",
+      "settings_fatigue",
 
-    "settings_half_mult",
-    "settings_half_addi",
-    "settings_full_mult",
-    "settings_full_addi",
-    "settings_charge_mult",
-    "settings_charge_addi",
-    "settings_run_mult",
-    "settings_run_addi",
-    "settings_blur_mult",
-    "settings_blur_addi",
+      "settings_half_mult",
+      "settings_half_addi",
+      "settings_full_mult",
+      "settings_full_addi",
+      "settings_charge_mult",
+      "settings_charge_addi",
+      "settings_run_mult",
+      "settings_run_addi",
+      "settings_blur_mult",
+      "settings_blur_addi",
 
-    "settings_jump_mult",
-    "settings_jump_addi",
-    "settings_leap_mult",
-    "settings_leap_addi",
+      "settings_jump_mult",
+      "settings_jump_addi",
+      "settings_leap_mult",
+      "settings_leap_addi",
 
-    "settings_fatigue_mult",
-    "settings_fatigue_addi",
+      "settings_fatigue_mult",
+      "settings_fatigue_addi",
 
-    "settings_perceptive_mult",
-    "settings_perceptive_addi",
+      "settings_perceptive_mult",
+      "settings_perceptive_addi",
 
-    "settings_carry_mult_str",
-    "settings_carry_mult_tou",
-    "settings_carry_addi",
-    "settings_lift_mult_str",
-    "settings_lift_mult_tou",
-    "settings_lift_addi",
-    "settings_push_mult_str",
-    "settings_push_mult_tou",
-    "settings_push_addi",
+      "settings_carry_mult_str",
+      "settings_carry_mult_tou",
+      "settings_carry_addi",
+      "settings_lift_mult_str",
+      "settings_lift_mult_tou",
+      "settings_lift_addi",
+      "settings_push_mult_str",
+      "settings_push_mult_tou",
+      "settings_push_addi",
 
+      "agi",
+      "agi_mythic",
+      "agi_advancement",
+      "str",
+      "str_mythic",
+      "str_advancement",
+      "tou",
+      "tou_mythic",
+      "tou_advancement",
+      "per",
+      "per_advancement",
 
-    "agi",
-    "agi_mythic",
-    "agi_advancement",
-    "str",
-    "str_mythic",
-    "str_advancement",
-    "tou",
-    "tou_mythic",
-    "tou_advancement",
+      "fatigue",
 
-    "per",
-    "per_advancement",
-
-    "fatigue",
-
-
-    ], function(values) {
+    ], function (values) {
       const settings_fatigue = values["settings_fatigue"]
       const settings_race = values["settings_race"]
 
-      const settings_half_mult = parseFloat(values["settings_half_mult"]) || 0;
-      const settings_half_addi = parseFloat(values["settings_half_addi"]) || 0;
-      const settings_full_mult = parseFloat(values["settings_full_mult"]) || 0;
-      const settings_full_addi = parseFloat(values["settings_full_addi"]) || 0;
+      const settings_half_mult =   parseFloat(values["settings_half_mult"]) || 0;
+      const settings_half_addi =   parseFloat(values["settings_half_addi"]) || 0;
+      const settings_full_mult =   parseFloat(values["settings_full_mult"]) || 0;
+      const settings_full_addi =   parseFloat(values["settings_full_addi"]) || 0;
       const settings_charge_mult = parseFloat(values["settings_charge_mult"]) || 0;
       const settings_charge_addi = parseFloat(values["settings_charge_addi"]) || 0;
-      const settings_run_mult = parseFloat(values["settings_run_mult"]) || 0;
-      const settings_run_addi = parseFloat(values["settings_run_addi"]) || 0;
-      const settings_blur_mult = parseFloat(values["settings_blur_mult"]) || 0;
-      const settings_blur_addi = parseFloat(values["settings_blur_addi"]) || 0;
+      const settings_run_mult =    parseFloat(values["settings_run_mult"]) || 0;
+      const settings_run_addi =    parseFloat(values["settings_run_addi"]) || 0;
+      const settings_blur_mult =   parseFloat(values["settings_blur_mult"]) || 0;
+      const settings_blur_addi =   parseFloat(values["settings_blur_addi"]) || 0;
 
       const settings_jump_mult = parseFloat(values["settings_jump_mult"]) || 0;
       const settings_jump_addi = parseFloat(values["settings_jump_addi"]) || 0;
@@ -4541,62 +4539,62 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
 
       const settings_carry_mult_str = parseFloat(values["settings_carry_mult_str"]) || 0;
       const settings_carry_mult_tou = parseFloat(values["settings_carry_mult_tou"]) || 0;
-      const settings_carry_addi = parseFloat(values["settings_carry_addi"]) || 0;
-      const settings_lift_mult_str = parseFloat(values["settings_lift_mult_str"]) || 0;
-      const settings_lift_mult_tou = parseFloat(values["settings_lift_mult_tou"]) || 0;
-      const settings_lift_addi = parseFloat(values["settings_lift_addi"]) || 0;
-      const settings_push_mult_str = parseFloat(values["settings_push_mult_str"]) || 0;
-      const settings_push_mult_tou = parseFloat(values["settings_push_mult_tou"]) || 0;
-      const settings_push_addi = parseFloat(values["settings_push_addi"]) || 0;
+      const settings_carry_addi =     parseFloat(values["settings_carry_addi"]) || 0;
+      const settings_lift_mult_str =  parseFloat(values["settings_lift_mult_str"]) || 0;
+      const settings_lift_mult_tou =  parseFloat(values["settings_lift_mult_tou"]) || 0;
+      const settings_lift_addi =      parseFloat(values["settings_lift_addi"]) || 0;
+      const settings_push_mult_str =  parseFloat(values["settings_push_mult_str"]) || 0;
+      const settings_push_mult_tou =  parseFloat(values["settings_push_mult_tou"]) || 0;
+      const settings_push_addi =      parseFloat(values["settings_push_addi"]) || 0;
 
-
-      const agi = parseInt(values["agi"], 10) || 0;
-      const agi_mythic = parseInt(values["agi_mythic"], 10) || 0;
+      const agi =             parseInt(values["agi"], 10) || 0;
+      const agi_mythic =      parseInt(values["agi_mythic"], 10) || 0;
       const agi_advancement = parseInt(values["agi_advancement"], 10) || 0;
-      const str = parseInt(values["str"], 10) || 0;
-      const str_mythic = parseInt(values["str_mythic"], 10) || 0;
+      const str =             parseInt(values["str"], 10) || 0;
+      const str_mythic =      parseInt(values["str_mythic"], 10) || 0;
       const str_advancement = parseInt(values["str_advancement"], 10) || 0;
-      const tou = parseInt(values["tou"], 10) || 0;
-      const tou_mythic = parseInt(values["tou_mythic"], 10) || 0;
+      const tou =             parseInt(values["tou"], 10) || 0;
+      const tou_mythic =      parseInt(values["tou_mythic"], 10) || 0;
       const tou_advancement = parseInt(values["tou_advancement"], 10) || 0;
-      const per = parseInt(values["per"], 10) || 0;
+      const per =             parseInt(values["per"], 10) || 0;
       const per_advancement = parseInt(values["per_advancement"], 10) || 0;
 
       var fatigue = parseInt(values["fatigue"], 10) || 0;
 
       var str_mod = Math.floor((str + str_advancement) / 10);
       var agi_mod = Math.floor((agi + agi_advancement) / 10);
-      if (agi_mod + agi_mythic == 0) {agi_mod=0.5}
+      if (agi_mod + agi_mythic == 0) { agi_mod = 0.5 }
 
       var tou_mod = Math.floor((tou + tou_advancement) / 10);
 
 
-
       // normal no modifiers
-      if(settings_race != "dont calc") {
+      if (settings_race != "dont calc") {
         setAttrs({
-          half_move:  ((agi_mod+agi_mythic+settings_half_addi)  * 1 * settings_half_mult),
-          full_move:  ((agi_mod+agi_mythic+settings_full_addi)  * 2 * settings_full_mult),
-          charge_move:((agi_mod+agi_mythic+settings_charge_addi)* 3 * settings_charge_mult),
-          run_move:   ((agi_mod+agi_mythic+settings_run_addi)   * 6 * settings_run_mult),
-          blur_move:  ((agi_mod+agi_mythic+settings_blur_addi)  * 8 * settings_blur_mult),
+          half_move:  ((agi_mod + agi_mythic + settings_half_addi)  * 1 * settings_half_mult),
+          full_move:  ((agi_mod + agi_mythic + settings_full_addi)  * 2 * settings_full_mult),
+          charge_move:((agi_mod + agi_mythic + settings_charge_addi)* 3 * settings_charge_mult),
+          run_move:   ((agi_mod + agi_mythic + settings_run_addi)   * 6 * settings_run_mult),
+          blur_move:  ((agi_mod + agi_mythic + settings_blur_addi)  * 8 * settings_blur_mult),
 
-          jump_move:  ((str_mod+settings_jump_addi) * 0.25 * settings_jump_mult),
-          leap_move:  ((Math.floor(Math.max(agi_mod , str_mod))+settings_leap_addi) * 0.5 * settings_leap_mult),
+          jump_move: ((str_mod + settings_jump_addi) * 0.25 * settings_jump_mult),
+          leap_move: ((Math.floor(Math.max(agi_mod, str_mod)) + settings_leap_addi) * 0.5 * settings_leap_mult),
 
           fatigue_max: (tou_mod * 2 * settings_fatigue_mult),
-          fatigue_mod: (- Math.max(0, (fatigue)-settings_fatigue_addi) * 5),
+          fatigue_mod: (- Math.max(0, (fatigue) - settings_fatigue_addi) * 5),
 
-          perceptive_range: ((per+per_advancement + settings_perceptive_addi) * settings_perceptive_mult),
+          perceptive_range: ((per + per_advancement + settings_perceptive_addi) * settings_perceptive_mult),
 
-          carry: (((str + str_advancement + str_mythic*10) * settings_carry_mult_str + (tou + tou_advancement + tou_mythic*10) * settings_carry_mult_tou) * 0.5 * 1 + settings_carry_addi),
-          lift:  (((str + str_advancement + str_mythic*10) * settings_lift_mult_str + (tou + tou_advancement + tou_mythic*10) * settings_lift_mult_tou) * 0.5  * 3 + settings_lift_addi),
-          push:  (((str + str_advancement + str_mythic*10) * settings_push_mult_str + (tou + tou_advancement + tou_mythic*10) * settings_push_mult_tou) * 0.5  * 5 + settings_push_addi),
+          carry: (((str + str_advancement + str_mythic * 10) * settings_carry_mult_str + (tou + tou_advancement + tou_mythic * 10) * settings_carry_mult_tou) * 0.5 * 1 + settings_carry_addi),
+          lift:  (((str + str_advancement + str_mythic * 10) * settings_lift_mult_str +  (tou + tou_advancement + tou_mythic * 10) * settings_lift_mult_tou)  * 0.5 * 3 + settings_lift_addi),
+          push:  (((str + str_advancement + str_mythic * 10) * settings_push_mult_str +  (tou + tou_advancement + tou_mythic * 10) * settings_push_mult_tou)  * 0.5 * 5 + settings_push_addi),
         });
       }
 
-      if (settings_fatigue != "dont calc"){
-        fatigue_mod: 0
+      if (settings_fatigue == "dont calc") {
+        setAttrs({
+          fatigue_mod: 0
+        });
       }
     });
   });
@@ -4610,14 +4608,14 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
   // Damage resistance calculation sheet worker_____________________________________________________
   // _______________________________________________________________________________________________
   on("change:repeating_armor remove:repeating_armor change:TOU change:TOU_advancement change:TOU_mythic", () => {
-    repeatingSum("damage_resistance_head","armor",["armor_head","armor_worn"],"TOU:1/10","TOU_advancement:1/10","TOU_mythic","floor");
-    repeatingSum("damage_resistance_arms","armor",["armor_arms","armor_worn"],"TOU:1/10","TOU_advancement:1/10","TOU_mythic","floor");
-    repeatingSum("damage_resistance_chest","armor",["armor_chest","armor_worn"],"TOU:1/10","TOU_advancement:1/10","TOU_mythic","floor");
-    repeatingSum("damage_resistance_legs","armor",["armor_legs","armor_worn"],"TOU:1/10","TOU_advancement:1/10","TOU_mythic","floor");
+    repeatingSum("damage_resistance_head", "armor", ["armor_head", "armor_worn"], "TOU:1/10", "TOU_advancement:1/10", "TOU_mythic", "floor");
+    repeatingSum("damage_resistance_arms", "armor", ["armor_arms", "armor_worn"], "TOU:1/10", "TOU_advancement:1/10", "TOU_mythic", "floor");
+    repeatingSum("damage_resistance_chest", "armor", ["armor_chest", "armor_worn"], "TOU:1/10", "TOU_advancement:1/10", "TOU_mythic", "floor");
+    repeatingSum("damage_resistance_legs", "armor", ["armor_legs", "armor_worn"], "TOU:1/10", "TOU_advancement:1/10", "TOU_mythic", "floor");
 
-    repeatingSum(["shields_max"],"armor",["shields_max","armor_worn"]);
-    repeatingSum(["shields_delay"],"armor",["shields_delay","armor_worn"]);
-    repeatingSum(["shields_charge"],"armor",["shields_charge","armor_worn"]);
+    repeatingSum(["shields_max"], "armor", ["shields_max", "armor_worn"]);
+    repeatingSum(["shields_delay"], "armor", ["shields_delay", "armor_worn"]);
+    repeatingSum(["shields_charge"], "armor", ["shields_charge", "armor_worn"]);
 
   });
 
@@ -4629,9 +4627,9 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
   // _______________________________________________________________________________________________
   // Tabs sheet worker______________________________________________________________________________
   // _______________________________________________________________________________________________
-  const buttonlist = ["core","equipment","medical","advancements","journal","vehicles","settings"];
+  const buttonlist = ["core", "equipment", "medical", "advancements", "journal", "vehicles", "settings"];
   buttonlist.forEach(button => {
-    on(`clicked:${button}`, function() {
+    on(`clicked:${button}`, function () {
       setAttrs({
         sheet_tab: button
       });
@@ -4646,23 +4644,23 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
   // _______________________________________________________________________________________________
   // gear cost/weight sheet workers_________________________________________________________________
   // _______________________________________________________________________________________________
-  on(`clicked:tare`, function() {
-    getAttrs(["credit_tare"], function(values) {
+  on(`clicked:tare`, function () {
+    getAttrs(["credit_tare"], function (values) {
       const credit_tare = parseInt(values["credit_tare"], 10) || 0;
       getSectionIDs(`repeating_gear`, idArray => {
         const fieldset_carried = [];
         const fieldset_cost = [];
         const fieldset_quantity = [];
-        idArray.forEach(id => fieldset_carried.push (`repeating_gear_${id}_gear_carried`));
-        idArray.forEach(id => fieldset_cost.push (`repeating_gear_${id}_gear_cost`));
-        idArray.forEach(id => fieldset_quantity.push (`repeating_gear_${id}_gear_quantity`));
+        idArray.forEach(id => fieldset_carried.push(`repeating_gear_${id}_gear_carried`));
+        idArray.forEach(id => fieldset_cost.push(`repeating_gear_${id}_gear_cost`));
+        idArray.forEach(id => fieldset_quantity.push(`repeating_gear_${id}_gear_quantity`));
         getAttrs([
-        ...fieldset_cost, 
-        ...fieldset_quantity, 
-        ...fieldset_carried
+          ...fieldset_cost,
+          ...fieldset_quantity,
+          ...fieldset_carried
         ], v => {
           const getValue = (id, field) => parseFloat(v[`repeating_gear_${id}_${field}`]) || 0
-          const credit_repeating = idArray.reduce((total, id) => total + (getValue(id, "gear_cost") * getValue(id, "gear_quantity") ), 0)
+          const credit_repeating = idArray.reduce((total, id) => total + (getValue(id, "gear_cost") * getValue(id, "gear_quantity")), 0)
           setAttrs({
             credit_tare: - credit_repeating,
             credit_total: 0,
@@ -4672,14 +4670,14 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
     });
   });
 
-  on(`clicked:reset`, function() {
+  on(`clicked:reset`, function () {
     setAttrs({
       credit_tare: 0
     });
   });
 
-  on("change:repeating_gear remove:repeating_gear clicked:reset" ,() => {
-    getAttrs(["credit_tare"], function(values) {
+  on("change:repeating_gear remove:repeating_gear clicked:reset", () => {
+    getAttrs(["credit_tare"], function (values) {
       const credit_tare = parseInt(values["credit_tare"], 10) || 0;
       getSectionIDs(`repeating_gear`, idArray => {
         const fieldset_carried = [];
@@ -4687,28 +4685,29 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
         const fieldset_weight = [];
         const fieldset_quantity = [];
         var fieldset_modifier = [];
-        idArray.forEach(id => fieldset_carried.push (`repeating_gear_${id}_gear_carried`));
-        idArray.forEach(id => fieldset_cost.push (`repeating_gear_${id}_gear_cost`));
-        idArray.forEach(id => fieldset_weight.push (`repeating_gear_${id}_gear_weight`));
-        idArray.forEach(id => fieldset_quantity.push (`repeating_gear_${id}_gear_quantity`));
-        idArray.forEach(id => fieldset_modifier.push (`repeating_gear_${id}_gear_modifier`));
+        idArray.forEach(id => fieldset_carried.push(`repeating_gear_${id}_gear_carried`));
+        idArray.forEach(id => fieldset_cost.push(`repeating_gear_${id}_gear_cost`));
+        idArray.forEach(id => fieldset_weight.push(`repeating_gear_${id}_gear_weight`));
+        idArray.forEach(id => fieldset_quantity.push(`repeating_gear_${id}_gear_quantity`));
+        idArray.forEach(id => fieldset_modifier.push(`repeating_gear_${id}_gear_modifier`));
         getAttrs([
-          ...fieldset_weight, 
-          ...fieldset_cost, 
-          ...fieldset_quantity, 
-          ...fieldset_carried, 
+          ...fieldset_weight,
+          ...fieldset_cost,
+          ...fieldset_quantity,
+          ...fieldset_carried,
           ...fieldset_modifier
-          ], v => {
-            const getValue = (id, field) => parseFloat(v[`repeating_gear_${id}_${field}`]) || 0
-            fieldset_modifier.forEach(name => {
-              if (+v[name] === 0) {v[name] = 1;
+        ], v => {
+          const getValue = (id, field) => parseFloat(v[`repeating_gear_${id}_${field}`]) || 0
+          fieldset_modifier.forEach(name => {
+            if (+v[name] === 0) {
+              v[name] = 1;
             };
           });
-          const credit_repeating = idArray.reduce((total, id) => total + (getValue(id, "gear_cost") * getValue(id, "gear_quantity") ), 0)
+          const credit_repeating = idArray.reduce((total, id) => total + (getValue(id, "gear_cost") * getValue(id, "gear_quantity")), 0)
           const weight_repeating = idArray.reduce((total, id) => total + (getValue(id, "gear_weight") * getValue(id, "gear_quantity") * getValue(id, "gear_carried") * getValue(id, "gear_modifier")), 0)
           setAttrs({
-            credit_total: Math.round((credit_repeating + credit_tare)*100)/100,
-            weight_total: Math.round(weight_repeating*100)/100
+            credit_total: Math.round((credit_repeating + credit_tare) * 100) / 100,
+            weight_total: Math.round(weight_repeating * 100) / 100
           });
         });
       });
@@ -4725,122 +4724,122 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
   // _______________________________________________________________________________________________
 
   const medicalconditions = [
-  ["neck1","","","","","","","1","","","","","","","","","","","","","",""],
-  ["neck2","","","","","","","2","","","","","","","","","","","","","",""],
-  ["neck3","","","","","","","3","","","","","","","","","","1","","","",""],
-  ["neck4","","","","","","","4","","","","","","","","","","2","","20","",""],
-  ["neck5","","","","","","","4","","","","","","","","","","4","","1d10","",""],
+    ["neck1", "", "", "", "", "", "", "1", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["neck2", "", "", "", "", "", "", "2", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["neck3", "", "", "", "", "", "", "3", "", "", "", "", "", "", "", "", "", "1", "", "", "", ""],
+    ["neck4", "", "", "", "", "", "", "4", "", "", "", "", "", "", "", "", "", "2", "", "20", "", ""],
+    ["neck5", "", "", "", "", "", "", "4", "", "", "", "", "", "", "", "", "", "4", "", "1d10", "", ""],
 
-  ["mouth1","","","1","","","","","","","","","","","","","","","","","",""],
-  ["mouth2","","","5","","","","","","","","","","","","","","","","","",""],
-  ["mouth3","","","10","","","","","","","","","","","","","","","","","Lost teeth ","1d5"],
-  ["mouth4","","","20","","","","2","","","","","","","","","","","","","Lost teeth ","2d5"],
-  ["mouth5","","","P","","","","4","","","","","","","","","","","","","Lost teeth ","2d10"],
+    ["mouth1", "", "", "1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["mouth2", "", "", "5", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["mouth3", "", "", "10", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Lost teeth ", "1d5"],
+    ["mouth4", "", "", "20", "", "", "", "2", "", "", "", "", "", "", "", "", "", "", "", "", "Lost teeth ", "2d5"],
+    ["mouth5", "", "", "P", "", "", "", "4", "", "", "", "", "", "", "", "", "", "", "", "", "Lost teeth ", "2d10"],
 
-  ["nose1","","2","","","","","","","","","","","","","","","","","","Nose broken",""],
-  ["nose2","","4","","","","","","","","","","","","","","","","","","Nose broken",""],
-  ["nose3","","","","","","","","","2","","","","","","","","","","","Nose broken",""],
-  ["nose4","","","","","","","","","3","","","","","","","","","","","Nose broken",""],
-  ["nose5","","","","","","","","","4","","","","","","","","","","","Nose lost",""],
+    ["nose1", "", "2", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Nose broken", ""],
+    ["nose2", "", "4", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Nose broken", ""],
+    ["nose3", "", "", "", "", "", "", "", "", "2", "", "", "", "", "", "", "", "", "", "", "Nose broken", ""],
+    ["nose4", "", "", "", "", "", "", "", "", "3", "", "", "", "", "", "", "", "", "", "", "Nose broken", ""],
+    ["nose5", "", "", "", "", "", "", "", "", "4", "", "", "", "", "", "", "", "", "", "", "Nose lost", ""],
 
-  ["ear1","","","","1","","","","","","","","","","","","","","","","",""],
-  ["ear2","","","","3","","","","","","","","","","","","","","","","",""],
-  ["ear3","","","","5","","","","","","","","","","","1","","","","","",""],
-  ["ear4","","","","10","","","1","","","","","","","","2","","","","","",""],
-  ["ear5","3d5","","","60","","","","","","","","","","","","","","","","Ear lost",""],
+    ["ear1", "", "", "", "1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["ear2", "", "", "", "3", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["ear3", "", "", "", "5", "", "", "", "", "", "", "", "", "", "", "1", "", "", "", "", "", ""],
+    ["ear4", "", "", "", "10", "", "", "1", "", "", "", "", "", "", "", "2", "", "", "", "", "", ""],
+    ["ear5", "3d5", "", "", "60", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Ear lost", ""],
 
-  ["eye1","","","","","3","","","","","","","","","","","","","","","",""],
-  ["eye2","","","","","5","","","","","","","","","","","","","","","",""],
-  ["eye3","","","","","10","","","","","","","","","","1","","","","","",""],
-  ["eye4","","","","","10","","1","","","","","","","","2","","","","","",""],
-  ["eye5","3d5","","","","60","","","","","","","","","","","","","","","Eye lost",""],
+    ["eye1", "", "", "", "", "3", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["eye2", "", "", "", "", "5", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["eye3", "", "", "", "", "10", "", "", "", "", "", "", "", "", "", "1", "", "", "", "", "", ""],
+    ["eye4", "", "", "", "", "10", "", "1", "", "", "", "", "", "", "", "2", "", "", "", "", "", ""],
+    ["eye5", "3d5", "", "", "", "60", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Eye lost", ""],
 
-  ["forehead1","","2","","","","","","","","","","","","","","","","","","",""],
-  ["forehead2","","4","","","","1","","","","","","","","","","","","","","",""],
-  ["forehead3","","6","","","","2","","","","","","","","","","","","","","",""],
-  ["forehead4","","10","","","","3d5","","","","","","","","","","","","","10","",""],
-  ["forehead5","","","","","","","","","","","","","","","","","","","","Instant Death, Head destroyed",""],
+    ["forehead1", "", "2", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["forehead2", "", "4", "", "", "", "1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["forehead3", "", "6", "", "", "", "2", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["forehead4", "", "10", "", "", "", "3d5", "", "", "", "", "", "", "", "", "", "", "", "", "10", "", ""],
+    ["forehead5", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Instant Death, Head destroyed", ""],
 
-  ["hand1","","","","","","","","","","","","","","","1","","","","","",""],
-  ["hand2","","","","","","","","","","","","","","","1","","","","","",""],
-  ["hand3","","","","","","","","","","","","","","","3","3","","","","Hand Broken (Fractured)",""],
-  ["hand4","","","","","","","","","","","","","","","3","5","","","","Hand Broken (Shattered)",""],
-  ["hand5","","","","","","","","","","","","","","","5","","","","","Hand lost",""],
+    ["hand1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "1", "", "", "", "", "", ""],
+    ["hand2", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "1", "", "", "", "", "", ""],
+    ["hand3", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "3", "3", "", "", "", "Hand Broken (Fractured)", ""],
+    ["hand4", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "3", "5", "", "", "", "Hand Broken (Shattered)", ""],
+    ["hand5", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "5", "", "", "", "", "Hand lost", ""],
 
-  ["bicepforearm1","","","","","","","","","","","","","","","1","","","","","",""],
-  ["bicepforearm2","","","","","","","","","","","","","1","","2","","","","","",""],
-  ["bicepforearm3","","","","","","","","","","","","","","","5","","","","","Bicep or Forearm Broken (Fractured)",""],
-  ["bicepforearm4","","","","","","","","","","","","","","","6","","","","","Bicep or Forearm Broken (Shattered)",""],
-  ["bicepforearm5","","","","","","","","","","","","","","","","","","","10","Bicep or Forearm lost",""],
+    ["bicepforearm1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "1", "", "", "", "", "", ""],
+    ["bicepforearm2", "", "", "", "", "", "", "", "", "", "", "", "", "1", "", "2", "", "", "", "", "", ""],
+    ["bicepforearm3", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "5", "", "", "", "", "Bicep or Forearm Broken (Fractured)", ""],
+    ["bicepforearm4", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "6", "", "", "", "", "Bicep or Forearm Broken (Shattered)", ""],
+    ["bicepforearm5", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "10", "Bicep or Forearm lost", ""],
 
-  ["elbowshoulder1","","","","","","","","","","","","","","1","","","","","","",""],
-  ["elbowshoulder2","","","","","","","","","","","","","","2","","","","","","",""],
-  ["elbowshoulder3","","","","","","","","","","","","","","4","","2","","","","Elbow or Shoulder Broken (Fractured)",""],
-  ["elbowshoulder4","","","","","","","","","","","","","2","4","","","","","","Elbow or Shoulder Broken (Shattered)",""],
-  ["elbowshoulder5","","","","","","","","","","","","","","","","","","","9","Elbow or Shoulder lost",""],
+    ["elbowshoulder1", "", "", "", "", "", "", "", "", "", "", "", "", "", "1", "", "", "", "", "", "", ""],
+    ["elbowshoulder2", "", "", "", "", "", "", "", "", "", "", "", "", "", "2", "", "", "", "", "", "", ""],
+    ["elbowshoulder3", "", "", "", "", "", "", "", "", "", "", "", "", "", "4", "", "2", "", "", "", "Elbow or Shoulder Broken (Fractured)", ""],
+    ["elbowshoulder4", "", "", "", "", "", "", "", "", "", "", "", "", "2", "4", "", "", "", "", "", "Elbow or Shoulder Broken (Shattered)", ""],
+    ["elbowshoulder5", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "9", "Elbow or Shoulder lost", ""],
 
-  ["foot1","","","","","","","","","","2","","","","","","","","","","",""],
-  ["foot2","","","","","","","","","","3","","","","","","","","","","",""],
-  ["foot3","","","","","","","","","","5","","","","","","","","2","","Foot Broken (Fractured)",""],
-  ["foot4","","","","","","","","","","6","","","","","","","","2","","Foot Broken (Shattered)",""],
-  ["foot5","","","","","","","","","","10","","","","","","","","4","","Foot lost",""],
+    ["foot1", "", "", "", "", "", "", "", "", "", "2", "", "", "", "", "", "", "", "", "", "", ""],
+    ["foot2", "", "", "", "", "", "", "", "", "", "3", "", "", "", "", "", "", "", "", "", "", ""],
+    ["foot3", "", "", "", "", "", "", "", "", "", "5", "", "", "", "", "", "", "", "2", "", "Foot Broken (Fractured)", ""],
+    ["foot4", "", "", "", "", "", "", "", "", "", "6", "", "", "", "", "", "", "", "2", "", "Foot Broken (Shattered)", ""],
+    ["foot5", "", "", "", "", "", "", "", "", "", "10", "", "", "", "", "", "", "", "4", "", "Foot lost", ""],
 
-  ["shinthigh1","","","","","","","","","","1","","","","","","","","","","",""],
-  ["shinthigh2","","","","","","","","","","3","","","","","","","","","","",""],
-  ["shinthigh3","","","","","","","","","","6","","","2","","","","","","","Shin or Thigh Broken (Fractured)",""],
-  ["shinthigh4","","","","","","","","","","7","","","3","","","","","","","Shin or Thigh Broken (Shattered)",""],
-  ["shinthigh5","","","","","","","","","","10","","","4","","","","","","8","Leg Lost",""],
+    ["shinthigh1", "", "", "", "", "", "", "", "", "", "1", "", "", "", "", "", "", "", "", "", "", ""],
+    ["shinthigh2", "", "", "", "", "", "", "", "", "", "3", "", "", "", "", "", "", "", "", "", "", ""],
+    ["shinthigh3", "", "", "", "", "", "", "", "", "", "6", "", "", "2", "", "", "", "", "", "", "Shin or Thigh Broken (Fractured)", ""],
+    ["shinthigh4", "", "", "", "", "", "", "", "", "", "7", "", "", "3", "", "", "", "", "", "", "Shin or Thigh Broken (Shattered)", ""],
+    ["shinthigh5", "", "", "", "", "", "", "", "", "", "10", "", "", "4", "", "", "", "", "", "8", "Leg Lost", ""],
 
-  ["kneehip1","","","","","","","","","","","","","","","","","","","","",""],
-  ["kneehip2","","","","","","","","","","","","","","","","","","1","","",""],
-  ["kneehip3","","","","","","","","","","3","","","","","","","","2","","Knee or Hip Broken (Fractured)",""],
-  ["kneehip4","","","","","","","","","","5","","","","","","","","3","","Knee or Hip Broken (Shattered)",""],
-  ["kneehip5","","","","","","","","","","10","","","","","","","","10","8","Leg Lost",""],
+    ["kneehip1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["kneehip2", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "1", "", "", ""],
+    ["kneehip3", "", "", "", "", "", "", "", "", "", "3", "", "", "", "", "", "", "", "2", "", "Knee or Hip Broken (Fractured)", ""],
+    ["kneehip4", "", "", "", "", "", "", "", "", "", "5", "", "", "", "", "", "", "", "3", "", "Knee or Hip Broken (Shattered)", ""],
+    ["kneehip5", "", "", "", "", "", "", "", "", "", "10", "", "", "", "", "", "", "", "10", "8", "Leg Lost", ""],
 
-  ["pelvis1","","","","","","","","","","2","","","","","","","","","","",""],
-  ["pelvis2","","","","","","","","","","3","","2","","","","","","","","",""],
-  ["pelvis3","","","","","","","","","","4","","3","","","","","","","","Pelvis Broken (Fractured)",""],
-  ["pelvis4","","","","","","","","","","4","","5","","","","","","","","Pelvis Broken (Shattered)",""],
-  ["pelvis5","","","","","","","","","","P","","20","","","","","","","","Pelvis Broken (Shattered)",""],
+    ["pelvis1", "", "", "", "", "", "", "", "", "", "2", "", "", "", "", "", "", "", "", "", "", ""],
+    ["pelvis2", "", "", "", "", "", "", "", "", "", "3", "", "2", "", "", "", "", "", "", "", "", ""],
+    ["pelvis3", "", "", "", "", "", "", "", "", "", "4", "", "3", "", "", "", "", "", "", "", "Pelvis Broken (Fractured)", ""],
+    ["pelvis4", "", "", "", "", "", "", "", "", "", "4", "", "5", "", "", "", "", "", "", "", "Pelvis Broken (Shattered)", ""],
+    ["pelvis5", "", "", "", "", "", "", "", "", "", "P", "", "20", "", "", "", "", "", "", "", "Pelvis Broken (Shattered)", ""],
 
-  ["intestines1","","","","","","","","","","","","2","","","","","","","","",""],
-  ["intestines2","","","","","","","","","","","","3","","2","","","","","","",""],
-  ["intestines3","","","","","","","","","","","","4","","4","","","","","","",""],
-  ["intestines4","","","","","","","","","","","","5","","5","","","","","15","",""],
-  ["intestines5","","","","","","","","","","","","6","","5","","","","","1d10","",""],
+    ["intestines1", "", "", "", "", "", "", "", "", "", "", "", "2", "", "", "", "", "", "", "", "", ""],
+    ["intestines2", "", "", "", "", "", "", "", "", "", "", "", "3", "", "2", "", "", "", "", "", "", ""],
+    ["intestines3", "", "", "", "", "", "", "", "", "", "", "", "4", "", "4", "", "", "", "", "", "", ""],
+    ["intestines4", "", "", "", "", "", "", "", "", "", "", "", "5", "", "5", "", "", "", "", "15", "", ""],
+    ["intestines5", "", "", "", "", "", "", "", "", "", "", "", "6", "", "5", "", "", "", "", "1d10", "", ""],
 
-  ["spine1","","","","","","","","","","","","","","","1","","","","","",""],
-  ["spine2","","","","","","","","","","","","","","","2","2","","1","","",""],
-  ["spine3","","","","","","","","","","","","","2","","","","","3","","Spine Broken (Fractured)",""],
-  ["spine4","","","","","","","","","","","","","5","","","","","5","","Spine Broken (Shattered)",""],
-  ["spine5","","","","","","","","","","","","","","","","","","","","Spine destroyed, Instant Death",""],
+    ["spine1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "1", "", "", "", "", "", ""],
+    ["spine2", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "2", "2", "", "1", "", "", ""],
+    ["spine3", "", "", "", "", "", "", "", "", "", "", "", "", "2", "", "", "", "", "3", "", "Spine Broken (Fractured)", ""],
+    ["spine4", "", "", "", "", "", "", "", "", "", "", "", "", "5", "", "", "", "", "5", "", "Spine Broken (Shattered)", ""],
+    ["spine5", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Spine destroyed, Instant Death", ""],
 
-  ["stomach1","","","","","","","","","1","","","","","","","","","","","",""],
-  ["stomach2","","","","","","","","","2","","","1","","","","","","","","",""],
-  ["stomach3","","","","","","","","","3","","","2","","","","","","","","",""],
-  ["stomach4","","","","","","","","","4","","","5","","","","","","","20","",""],
-  ["stomach5","","","","","","","","","5","","","6","","","","","","","10","",""],
+    ["stomach1", "", "", "", "", "", "", "", "", "1", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["stomach2", "", "", "", "", "", "", "", "", "2", "", "", "1", "", "", "", "", "", "", "", "", ""],
+    ["stomach3", "", "", "", "", "", "", "", "", "3", "", "", "2", "", "", "", "", "", "", "", "", ""],
+    ["stomach4", "", "", "", "", "", "", "", "", "4", "", "", "5", "", "", "", "", "", "", "20", "", ""],
+    ["stomach5", "", "", "", "", "", "", "", "", "5", "", "", "6", "", "", "", "", "", "", "10", "", ""],
 
-  ["heart1","","","","","","","","5","","","","","","","","","","","","",""],
-  ["heart2","2d5","","","","","","","10","","","","","","","","","","","5d10","",""],
-  ["heart3","3d5","","","","","","","10","","","","","","","","","","","3d10","",""],
-  ["heart4","3d5","","","","","","","P","","","","","","","","","","","1d10","",""],
-  ["heart5","","","","","","","","","","","","","","","","","","","","Heart destroyed, Instant Death",""],
+    ["heart1", "", "", "", "", "", "", "", "5", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["heart2", "2d5", "", "", "", "", "", "", "10", "", "", "", "", "", "", "", "", "", "", "5d10", "", ""],
+    ["heart3", "3d5", "", "", "", "", "", "", "10", "", "", "", "", "", "", "", "", "", "", "3d10", "", ""],
+    ["heart4", "3d5", "", "", "", "", "", "", "P", "", "", "", "", "", "", "", "", "", "", "1d10", "", ""],
+    ["heart5", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Heart destroyed, Instant Death", ""],
 
-  ["lungs1","","","","","","","","2","2","","","","","","","","","","","",""],
-  ["lungs2","","","","","","","","3","3","","","","","","","","","","","",""],
-  ["lungs3","","","","","","","","4","5","","","","","","","","","","20","",""],
-  ["lungs4","","","","","","","","5","5","","","","","","","","","","15","",""],
-  ["lungs5","","","","","","","","6","5","","Math.floor((tou+tou_advancement)/10)*2","","","","","","","","","",""],
+    ["lungs1", "", "", "", "", "", "", "", "2", "2", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["lungs2", "", "", "", "", "", "", "", "3", "3", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["lungs3", "", "", "", "", "", "", "", "4", "5", "", "", "", "", "", "", "", "", "", "20", "", ""],
+    ["lungs4", "", "", "", "", "", "", "", "5", "5", "", "", "", "", "", "", "", "", "", "15", "", ""],
+    ["lungs5", "", "", "", "", "", "", "", "6", "5", "", "Math.floor((tou+tou_advancement)/10)*2", "", "", "", "", "", "", "", "", "", ""],
 
-  ["ribcage1","","","","","","","","1","1","","","","","","","","","","","",""],
-  ["ribcage2","","","","","","","","2","1","","","","","","","","","","","",""],
-  ["ribcage3","","","","","","","","3","2","","","","","","","","","","","",""],
-  ["ribcage4","","","","","","","","4","4","","","","","","","","","","","Ribcage Broken (Fractured)",""],
-  ["ribcage5","","","","","","","","5","4","","","","","","","","","","","Ribcage Broken (Shattered)",""]
+    ["ribcage1", "", "", "", "", "", "", "", "1", "1", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["ribcage2", "", "", "", "", "", "", "", "2", "1", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["ribcage3", "", "", "", "", "", "", "", "3", "2", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["ribcage4", "", "", "", "", "", "", "", "4", "4", "", "", "", "", "", "", "", "", "", "", "Ribcage Broken (Fractured)", ""],
+    ["ribcage5", "", "", "", "", "", "", "", "5", "4", "", "", "", "", "", "", "", "", "", "", "Ribcage Broken (Shattered)", ""]
   ];
 
-  const checkAndReturnMax = (input1, input2) =>{
+  const checkAndReturnMax = (input1, input2) => {
     const lowercaseInput1 = String(input1).toLowerCase();
     const lowercaseInput2 = String(input2).toLowerCase();
 
@@ -4870,7 +4869,7 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
     return "";
   }
 
-  const checkAndReturnMin = (input1, input2) =>{
+  const checkAndReturnMin = (input1, input2) => {
     const lowercaseInput1 = String(input1).toLowerCase();
     const lowercaseInput2 = String(input2).toLowerCase();
 
@@ -4900,9 +4899,9 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
     return "";
   }
 
-  const reducedbymod = (input,mod) =>{
-    if(input!==""){
-      return Math.max( input-Math.floor(mod),1)
+  const reducedbymod = (input, mod) => {
+    if (input !== "") {
+      return Math.max(input - Math.floor(mod), 1)
     }
     return input
   }
@@ -4911,7 +4910,7 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
   medicalconditions.forEach(button => {
     var buttonparsed = button.slice()
 
-    on(`clicked:${button[0]}`, function() {
+    on(`clicked:${button[0]}`, function () {
 
       for (var i = 0; i < button.length; i++) {
         var element = button[i];
@@ -4921,42 +4920,42 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
 
           if (match) {
             var numbers = match[0].match(/\d+/g).map(Number);
-            buttonparsed[i] = Math.floor(Math.random() * (numbers[1]*numbers[0] - numbers[0] + 1)) + numbers[0];
+            buttonparsed[i] = Math.floor(Math.random() * (numbers[1] * numbers[0] - numbers[0] + 1)) + numbers[0];
           }
         }
       }
 
       getAttrs([
-      "tou",
-      "tou_mythic",
-      "tou_advancement",
+        "tou",
+        "tou_mythic",
+        "tou_advancement",
 
-      "medical_status_Concussed",
-      "medical_status_Lost",
-      "medical_status_Lockjaw",
-      "medical_status_Tinnitus",
-      "medical_status_Visionloss",
-      "medical_status_Shellshock",
-      "medical_status_Whiplash",
-      "medical_status_Winded",
-      "medical_status_Gasping",
-      "medical_status_Slowed",
-      "medical_status_Choking",
-      "medical_status_Tattered",
-      "medical_status_Paralyzed",
-      "medical_status_Weakened",
-      "medical_status_Flinch",
-      "medical_status_Drop",
-      "medical_status_Bloodloss",
-      "medical_status_Knockdown",
-      "medical_status_Loomingdeath",
-      "medical_status_Othereffects"
+        "medical_status_Concussed",
+        "medical_status_Lost",
+        "medical_status_Lockjaw",
+        "medical_status_Tinnitus",
+        "medical_status_Visionloss",
+        "medical_status_Shellshock",
+        "medical_status_Whiplash",
+        "medical_status_Winded",
+        "medical_status_Gasping",
+        "medical_status_Slowed",
+        "medical_status_Choking",
+        "medical_status_Tattered",
+        "medical_status_Paralyzed",
+        "medical_status_Weakened",
+        "medical_status_Flinch",
+        "medical_status_Drop",
+        "medical_status_Bloodloss",
+        "medical_status_Knockdown",
+        "medical_status_Loomingdeath",
+        "medical_status_Othereffects"
 
-      ], function(values) {
+      ], function (values) {
         const tou = parseInt(values["tou"], 10) || 0;
         const tou_mythic = parseInt(values["tou_mythic"], 10) || 0;
         const tou_advancement = parseInt(values["tou_advancement"], 10) || 0;
-        const tou_mod = Math.floor((tou + tou_advancement)/10)+tou_mythic
+        const tou_mod = Math.floor((tou + tou_advancement) / 10) + tou_mythic
 
         var Current_Concussed   = values["medical_status_Concussed"];
         var Current_Lost        = values["medical_status_Lost"];
@@ -4979,8 +4978,8 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
         var Current_Loomingdeath= values["medical_status_Loomingdeath"];
         var Current_Othereffects= values["medical_status_Othereffects"];
 
-        if(buttonparsed[20] !==""){
-          if(Current_Othereffects !==""){
+        if (buttonparsed[20] !== "") {
+          if (Current_Othereffects !== "") {
             Current_Othereffects = Current_Othereffects + "\n" + buttonparsed[20] + buttonparsed[21]
           } else {
             Current_Othereffects = buttonparsed[20] + buttonparsed[21]
@@ -5013,7 +5012,7 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
     });
   });
 
-  on("clicked:medicalreset", function() {
+  on("clicked:medicalreset", function () {
     setAttrs({
       medical_status_Concussed    : "",
       medical_status_Lost         : "",
@@ -5038,28 +5037,28 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
     });
   });
 
-  on(`clicked:medicalturn`, function() {
+  on(`clicked:medicalturn`, function () {
 
     getAttrs([
-    "medical_status_Concussed",
-    "medical_status_Lost",
-    "medical_status_Lockjaw",
-    "medical_status_Tinnitus",
-    "medical_status_Visionloss",
-    "medical_status_Shellshock",
-    "medical_status_Whiplash",
-    "medical_status_Winded",
-    "medical_status_Gasping",
-    "medical_status_Slowed",
-    "medical_status_Choking",
-    "medical_status_Tattered",
-    "medical_status_Paralyzed",
-    "medical_status_Weakened",
-    "medical_status_Flinch",
-    "medical_status_Drop",
-    "medical_status_Bloodloss",
-    "medical_status_Knockdown",
-    "medical_status_Loomingdeath"
+      "medical_status_Concussed",
+      "medical_status_Lost",
+      "medical_status_Lockjaw",
+      "medical_status_Tinnitus",
+      "medical_status_Visionloss",
+      "medical_status_Shellshock",
+      "medical_status_Whiplash",
+      "medical_status_Winded",
+      "medical_status_Gasping",
+      "medical_status_Slowed",
+      "medical_status_Choking",
+      "medical_status_Tattered",
+      "medical_status_Paralyzed",
+      "medical_status_Weakened",
+      "medical_status_Flinch",
+      "medical_status_Drop",
+      "medical_status_Bloodloss",
+      "medical_status_Knockdown",
+      "medical_status_Loomingdeath"
 
     ], function(values) {
       var Current_Concussed   = values["medical_status_Concussed"];
@@ -5114,7 +5113,7 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
   // Advancements experience sheet worker___________________________________________________________
   // _______________________________________________________________________________________________
   on("change:repeating_advancements remove:repeating_advancements", () => {
-    repeatingSum(["xp_spent"],"advancements",["advancement_cost"])
+    repeatingSum(["xp_spent"], "advancements", ["advancement_cost"])
   });
 
 
@@ -5127,73 +5126,73 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
   // _______________________________________________________________________________________________
 
   on("change:repeating_characteristics remove:repeating_characteristics", () => {
-    repeatingSum([    "characteristic_spending_str_extra","characteristic_spending_tou_extra","characteristic_spending_agi_extra","characteristic_spending_wfr_extra","characteristic_spending_wfm_extra","characteristic_spending_int_extra","characteristic_spending_per_extra","characteristic_spending_crg_extra","characteristic_spending_cha_extra","characteristic_spending_ldr_extra"],"characteristics",["characteristic_spending_str_extra_r","characteristic_spending_tou_extra_r","characteristic_spending_agi_extra_r","characteristic_spending_wfr_extra_r","characteristic_spending_wfm_extra_r","characteristic_spending_int_extra_r","characteristic_spending_per_extra_r","characteristic_spending_crg_extra_r","characteristic_spending_cha_extra_r","characteristic_spending_ldr_extra_r"])
+    repeatingSum(["characteristic_spending_str_extra", "characteristic_spending_tou_extra", "characteristic_spending_agi_extra", "characteristic_spending_wfr_extra", "characteristic_spending_wfm_extra", "characteristic_spending_int_extra", "characteristic_spending_per_extra", "characteristic_spending_crg_extra", "characteristic_spending_cha_extra", "characteristic_spending_ldr_extra"], "characteristics", ["characteristic_spending_str_extra_r", "characteristic_spending_tou_extra_r", "characteristic_spending_agi_extra_r", "characteristic_spending_wfr_extra_r", "characteristic_spending_wfm_extra_r", "characteristic_spending_int_extra_r", "characteristic_spending_per_extra_r", "characteristic_spending_crg_extra_r", "characteristic_spending_cha_extra_r", "characteristic_spending_ldr_extra_r"])
   });
 
   on("change:characteristic_spending_lock", () => {
     getAttrs([
-    "characteristic_spending_lock",
-    "str",
-    "tou",
-    "agi",
-    "wfr",
-    "wfm",
-    "int",
-    "per",
-    "crg",
-    "cha",
-    "ldr",
-    "characteristic_spending_str_base", "characteristic_spending_str_spending", "characteristic_spending_str_extra",
-    "characteristic_spending_tou_base", "characteristic_spending_tou_spending", "characteristic_spending_tou_extra",
-    "characteristic_spending_agi_base", "characteristic_spending_agi_spending", "characteristic_spending_agi_extra",
-    "characteristic_spending_wfr_base", "characteristic_spending_wfr_spending", "characteristic_spending_wfr_extra",
-    "characteristic_spending_wfm_base", "characteristic_spending_wfm_spending", "characteristic_spending_wfm_extra",
-    "characteristic_spending_int_base", "characteristic_spending_int_spending", "characteristic_spending_int_extra",
-    "characteristic_spending_per_base", "characteristic_spending_per_spending", "characteristic_spending_per_extra",
-    "characteristic_spending_crg_base", "characteristic_spending_crg_spending", "characteristic_spending_crg_extra",
-    "characteristic_spending_cha_base", "characteristic_spending_cha_spending", "characteristic_spending_cha_extra",
-    "characteristic_spending_ldr_base", "characteristic_spending_ldr_spending", "characteristic_spending_ldr_extra",
+      "characteristic_spending_lock",
+      "str",
+      "tou",
+      "agi",
+      "wfr",
+      "wfm",
+      "int",
+      "per",
+      "crg",
+      "cha",
+      "ldr",
+      "characteristic_spending_str_base", "characteristic_spending_str_spending", "characteristic_spending_str_extra",
+      "characteristic_spending_tou_base", "characteristic_spending_tou_spending", "characteristic_spending_tou_extra",
+      "characteristic_spending_agi_base", "characteristic_spending_agi_spending", "characteristic_spending_agi_extra",
+      "characteristic_spending_wfr_base", "characteristic_spending_wfr_spending", "characteristic_spending_wfr_extra",
+      "characteristic_spending_wfm_base", "characteristic_spending_wfm_spending", "characteristic_spending_wfm_extra",
+      "characteristic_spending_int_base", "characteristic_spending_int_spending", "characteristic_spending_int_extra",
+      "characteristic_spending_per_base", "characteristic_spending_per_spending", "characteristic_spending_per_extra",
+      "characteristic_spending_crg_base", "characteristic_spending_crg_spending", "characteristic_spending_crg_extra",
+      "characteristic_spending_cha_base", "characteristic_spending_cha_spending", "characteristic_spending_cha_extra",
+      "characteristic_spending_ldr_base", "characteristic_spending_ldr_spending", "characteristic_spending_ldr_extra",
 
-    ], function(values) {
-      var str_base     = parseInt(values["characteristic_spending_str_base"], 10) || 0;
+    ], function (values) {
+      var str_base = parseInt(values["characteristic_spending_str_base"], 10) || 0;
       var str_spending = parseInt(values["characteristic_spending_str_spending"], 10) || 0;
-      var str_extra    = parseInt(values["characteristic_spending_str_extra"], 10) || 0;
+      var str_extra = parseInt(values["characteristic_spending_str_extra"], 10) || 0;
 
-      var tou_base     = parseInt(values["characteristic_spending_tou_base"], 10) || 0;
+      var tou_base = parseInt(values["characteristic_spending_tou_base"], 10) || 0;
       var tou_spending = parseInt(values["characteristic_spending_tou_spending"], 10) || 0;
-      var tou_extra    = parseInt(values["characteristic_spending_tou_extra"], 10) || 0;
+      var tou_extra = parseInt(values["characteristic_spending_tou_extra"], 10) || 0;
 
-      var agi_base     = parseInt(values["characteristic_spending_agi_base"], 10) || 0;
+      var agi_base = parseInt(values["characteristic_spending_agi_base"], 10) || 0;
       var agi_spending = parseInt(values["characteristic_spending_agi_spending"], 10) || 0;
-      var agi_extra    = parseInt(values["characteristic_spending_agi_extra"], 10) || 0;
+      var agi_extra = parseInt(values["characteristic_spending_agi_extra"], 10) || 0;
 
-      var wfr_base     = parseInt(values["characteristic_spending_wfr_base"], 10) || 0;
+      var wfr_base = parseInt(values["characteristic_spending_wfr_base"], 10) || 0;
       var wfr_spending = parseInt(values["characteristic_spending_wfr_spending"], 10) || 0;
-      var wfr_extra    = parseInt(values["characteristic_spending_wfr_extra"], 10) || 0;
+      var wfr_extra = parseInt(values["characteristic_spending_wfr_extra"], 10) || 0;
 
-      var wfm_base     = parseInt(values["characteristic_spending_wfm_base"], 10) || 0;
+      var wfm_base = parseInt(values["characteristic_spending_wfm_base"], 10) || 0;
       var wfm_spending = parseInt(values["characteristic_spending_wfm_spending"], 10) || 0;
-      var wfm_extra    = parseInt(values["characteristic_spending_wfm_extra"], 10) || 0;
+      var wfm_extra = parseInt(values["characteristic_spending_wfm_extra"], 10) || 0;
 
-      var int_base     = parseInt(values["characteristic_spending_int_base"], 10) || 0;
+      var int_base = parseInt(values["characteristic_spending_int_base"], 10) || 0;
       var int_spending = parseInt(values["characteristic_spending_int_spending"], 10) || 0;
-      var int_extra    = parseInt(values["characteristic_spending_int_extra"], 10) || 0;
+      var int_extra = parseInt(values["characteristic_spending_int_extra"], 10) || 0;
 
-      var per_base     = parseInt(values["characteristic_spending_per_base"], 10) || 0;
+      var per_base = parseInt(values["characteristic_spending_per_base"], 10) || 0;
       var per_spending = parseInt(values["characteristic_spending_per_spending"], 10) || 0;
-      var per_extra    = parseInt(values["characteristic_spending_per_extra"], 10) || 0;
+      var per_extra = parseInt(values["characteristic_spending_per_extra"], 10) || 0;
 
-      var crg_base     = parseInt(values["characteristic_spending_crg_base"], 10) || 0;
+      var crg_base = parseInt(values["characteristic_spending_crg_base"], 10) || 0;
       var crg_spending = parseInt(values["characteristic_spending_crg_spending"], 10) || 0;
-      var crg_extra    = parseInt(values["characteristic_spending_crg_extra"], 10) || 0;
+      var crg_extra = parseInt(values["characteristic_spending_crg_extra"], 10) || 0;
 
-      var cha_base     = parseInt(values["characteristic_spending_cha_base"], 10) || 0;
+      var cha_base = parseInt(values["characteristic_spending_cha_base"], 10) || 0;
       var cha_spending = parseInt(values["characteristic_spending_cha_spending"], 10) || 0;
-      var cha_extra    = parseInt(values["characteristic_spending_cha_extra"], 10) || 0;
+      var cha_extra = parseInt(values["characteristic_spending_cha_extra"], 10) || 0;
 
-      var ldr_base     = parseInt(values["characteristic_spending_ldr_base"], 10) || 0;
+      var ldr_base = parseInt(values["characteristic_spending_ldr_base"], 10) || 0;
       var ldr_spending = parseInt(values["characteristic_spending_ldr_spending"], 10) || 0;
-      var ldr_extra    = parseInt(values["characteristic_spending_ldr_extra"], 10) || 0;
+      var ldr_extra = parseInt(values["characteristic_spending_ldr_extra"], 10) || 0;
 
       setAttrs({
         str: str_base + str_spending + str_extra,
@@ -5206,7 +5205,7 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
         crg: crg_base + crg_spending + crg_extra,
         cha: cha_base + cha_spending + cha_extra,
         ldr: ldr_base + ldr_spending + ldr_extra,
-        characteristic_spending_lock : 0
+        characteristic_spending_lock: 0
       });
     });
   });
@@ -5222,21 +5221,21 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
   on("change:repeating_vehicles:doomedstate_value", (eventInfo) => {
     console.log(eventInfo.triggerName);
     getAttrs([
-    eventInfo.triggerName,
+      eventInfo.triggerName,
 
     ], values => {
       var doomedstate = parseInt(values[eventInfo.triggerName], 10) || 0;
       var doomedstatedesc = "Nothing happens.";
-      const updateAttrs ={}
+      const updateAttrs = {}
 
-      if (doomedstate>10) {doomedstatedesc = "The Vehicle’s current Armor is reduced by 1 on all Locations."};
-      if (doomedstate>20) {doomedstatedesc = "The Vehicle’s current Armor is reduced by 2 on all Locations. \n\tA Character within the Vehicle takes the Damage of the Attack, reduced by half of the current Armor of the Vehicle."};
-      if (doomedstate>30) {doomedstatedesc = "The Vehicle’s current Armor is reduced by 3 on all Locations. \n\tA Character within the Vehicle takes the full Damage of the Attack."};
-      if (doomedstate>40) {doomedstatedesc = "The Vehicle’s current Armor is reduced by 4 on all Locations. \n\t  The Vehicle cannot move and any weapon that needs an engine to move can no longer turn and aim."};
-      if (doomedstate>50) {doomedstatedesc = "The Vehicle’s current Armor is reduced by 5 on all Locations. \n\t  The Vehicle catches fire and the Characters inside will take Flame (2) each Round until they escape."};
-      if (doomedstate>65) {doomedstatedesc = "The Vehicle catches fire and major sections of the Vehicle have been destroyed. \n\tThe Vehicle’s ammunition and fuel will soon detonate. \n\tThe Characters have 4 Rounds to escape the Vehicle before it fully detonates. The Blast Radius is the Vehicle’s Size Points multiplied by 2, while the Kill Radius is the Vehicle’s Size Points."};
-      if (doomedstate>80) {doomedstatedesc = "The Vehicle violently explodes due to the damage to the fuel systems and ammunition in the Vehicle. \n\tThis gives the Characters 2 Rounds to escape before the Vehicle fully detonates. The Blast Radius is the Vehicle’s Size Points multiplied by 3, while the Kill Radius is the Vehicle’s Size Points multiplied by 2."};
-      if (doomedstate>99) {doomedstatedesc = "The Vehicle instantly detonates with no chance of escaping. \n\tThe Blast Radius is the Vehicle’s Size Points multiplied by 4, while the Kill Radius is the Vehicle’s Size Points multiplied by 3."}
+      if (doomedstate > 10) { doomedstatedesc = "The Vehicle’s current Armor is reduced by 1 on all Locations." };
+      if (doomedstate > 20) { doomedstatedesc = "The Vehicle’s current Armor is reduced by 2 on all Locations. \n\tA Character within the Vehicle takes the Damage of the Attack, reduced by half of the current Armor of the Vehicle." };
+      if (doomedstate > 30) { doomedstatedesc = "The Vehicle’s current Armor is reduced by 3 on all Locations. \n\tA Character within the Vehicle takes the full Damage of the Attack." };
+      if (doomedstate > 40) { doomedstatedesc = "The Vehicle’s current Armor is reduced by 4 on all Locations. \n\t  The Vehicle cannot move and any weapon that needs an engine to move can no longer turn and aim." };
+      if (doomedstate > 50) { doomedstatedesc = "The Vehicle’s current Armor is reduced by 5 on all Locations. \n\t  The Vehicle catches fire and the Characters inside will take Flame (2) each Round until they escape." };
+      if (doomedstate > 65) { doomedstatedesc = "The Vehicle catches fire and major sections of the Vehicle have been destroyed. \n\tThe Vehicle’s ammunition and fuel will soon detonate. \n\tThe Characters have 4 Rounds to escape the Vehicle before it fully detonates. The Blast Radius is the Vehicle’s Size Points multiplied by 2, while the Kill Radius is the Vehicle’s Size Points." };
+      if (doomedstate > 80) { doomedstatedesc = "The Vehicle violently explodes due to the damage to the fuel systems and ammunition in the Vehicle. \n\tThis gives the Characters 2 Rounds to escape before the Vehicle fully detonates. The Blast Radius is the Vehicle’s Size Points multiplied by 3, while the Kill Radius is the Vehicle’s Size Points multiplied by 2." };
+      if (doomedstate > 99) { doomedstatedesc = "The Vehicle instantly detonates with no chance of escaping. \n\tThe Blast Radius is the Vehicle’s Size Points multiplied by 4, while the Kill Radius is the Vehicle’s Size Points multiplied by 3." }
 
       updateAttrs[eventInfo.triggerName.split('_doomedstate_value')[0] + "_doomedstate_desc"] = doomedstatedesc
       setAttrs(updateAttrs);
@@ -5252,9 +5251,9 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
   // Compendium sheet workers_______________________________________________________________________
   // _______________________________________________________________________________________________
 
-  const compcheck = (value,index="none") =>{
+  const compcheck = (value, index = "none") => {
 
-    try{
+    try {
       if (index != "none") value = value[index]
     }
     finally {
@@ -5288,22 +5287,22 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
   // R20 compendium drop handler
   on("change:comp_data", () => {
     getAttrs([
-    "comp_name",
-    "comp_data",
+      "comp_name",
+      "comp_data",
 
     ], values => {
 
-      if(values["comp_name"] != "" && values["comp_data"] != ""){
+      if (values["comp_name"] != "" && values["comp_data"] != "") {
         compendiumhandler(
-        values["comp_name"],
-        safeparse(values["comp_data"])
+          values["comp_name"],
+          safeparse(values["comp_data"])
         )
       }
     });
 
     setAttrs({
-      comp_name:"",
-      comp_data:"",
+      comp_name: "",
+      comp_data: "",
     });
   });
 
@@ -5311,59 +5310,59 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
   // Armory manual compendium entry drop handler
   on("clicked:compendiumapply", () => {
     getAttrs([
-    "comp_manual",
+      "comp_manual",
 
     ], values => {
       manual_compendium_entry = safeparse(values["comp_manual"])
 
       // Check if manual_compendium_entry is an object and not an array
       if (typeof manual_compendium_entry !== "object" || manual_compendium_entry === null) {
-        setAttrs({comp_feedback: "JSON invalid - No valid compendium data provided."});
+        setAttrs({ comp_feedback: "JSON invalid - No valid compendium data provided." });
         return;
       }
 
       if (Array.isArray(manual_compendium_entry)) {
-        setAttrs({comp_feedback: "JSON valid - Multi item compendium drop attempted."});
+        setAttrs({ comp_feedback: "JSON valid - Multi item compendium drop attempted." });
         for (const single_compendium_entry of manual_compendium_entry) {
           compendiumhandler(
-          single_compendium_entry["Name"],
-          single_compendium_entry["Data"]
+            single_compendium_entry["Name"],
+            single_compendium_entry["Data"]
           );
         }
       }
 
-      else{
-        setAttrs({comp_feedback:"JSON valid - Single item compendium drop attempted."});
+      else {
+        setAttrs({ comp_feedback: "JSON valid - Single item compendium drop attempted." });
         compendiumhandler(
-        manual_compendium_entry["Name"],
-        manual_compendium_entry["Data"]
+          manual_compendium_entry["Name"],
+          manual_compendium_entry["Data"]
         )
       }
 
       setAttrs({
-        comp_manual:""
+        comp_manual: ""
       });
     });
   });
 
 
 
-  const compendiumhandler = (comp_name,comp_data) => {
+  const compendiumhandler = (comp_name, comp_data) => {
     getAttrs([
-    "sheet_tab",
-    "sheet_select",
-    "npc_tab",
-    "WFR", "WFR_advancement",
-    "WFM", "WFM_advancement",
-    "AGI", "AGI_advancement",
-    "TOU", "TOU_advancement"
+      "sheet_tab",
+      "sheet_select",
+      "npc_tab",
+      "WFR", "WFR_advancement",
+      "WFM", "WFM_advancement",
+      "AGI", "AGI_advancement",
+      "TOU", "TOU_advancement"
 
 
     ], values => {
-      const wfm_total = Math.floor(((parseInt(values["WFM"], 10) || 0) + (parseInt(values["WFM_advancement"], 10) || 0 ))/10);
-      const tou_total = Math.floor(((parseInt(values["TOU"], 10) || 0) + (parseInt(values["TOU_advancement"], 10) || 0 ))/10);
-      const wfr_total = Math.floor(((parseInt(values["WFR"], 10) || 0) + (parseInt(values["WFR_advancement"], 10) || 0 ))/10);
-      const agi_total = Math.floor(((parseInt(values["AGI"], 10) || 0) + (parseInt(values["AGI_advancement"], 10) || 0 ))/10);
+      const wfm_total = Math.floor(((parseInt(values["WFM"], 10) || 0) + (parseInt(values["WFM_advancement"], 10) || 0)) / 10);
+      const tou_total = Math.floor(((parseInt(values["TOU"], 10) || 0) + (parseInt(values["TOU_advancement"], 10) || 0)) / 10);
+      const wfr_total = Math.floor(((parseInt(values["WFR"], 10) || 0) + (parseInt(values["WFR_advancement"], 10) || 0)) / 10);
+      const agi_total = Math.floor(((parseInt(values["AGI"], 10) || 0) + (parseInt(values["AGI_advancement"], 10) || 0)) / 10);
 
       const sheet_tab = values["sheet_tab"]
       const sheet_select = values["sheet_select"]
@@ -5391,9 +5390,9 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
         updateAttrs["repeating_abilities_" + UUID1 + "_ability_desc"]  = compcheck(comp_data_Parsed["COMP_description"])
 
         const UUID2 = generateRowID();
-        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_name"]  = compcheck(comp_name_Parsed)
-        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_cost"]  = compcheck(comp_data_Parsed["COMP_experience"])
-        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_pgnr"]  = ""
+        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_name"] = compcheck(comp_name_Parsed)
+        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_cost"] = compcheck(comp_data_Parsed["COMP_experience"])
+        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_pgnr"] = ""
         setAttrs(updateAttrs);
       };
 
@@ -5463,14 +5462,14 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
         updateAttrs["repeating_education_" + UUID1 + "_education_name"]   = compcheck(comp_name_Parsed) + " (" + compcheck(comp_data_Parsed["COMP_difficulty"]) + ")"
         if(compcheck(comp_data_Parsed["COMP_bonus_10"]) == "1"){
           updateAttrs["repeating_education_" + UUID1 + "_education_mod3"] = "10"
-        }else{
+        } else {
           updateAttrs["repeating_education_" + UUID1 + "_education_mod3"] = "5"
         }
 
         const UUID2 = generateRowID();
-        updateAttrs["repeating_advancements_" + UUID2 + "_advancement_name"]  = compcheck(comp_name_Parsed)
-        updateAttrs["repeating_advancements_" + UUID2 + "_advancement_cost"]  = compcheck(comp_data_Parsed["COMP_experience"])
-        updateAttrs["repeating_advancements_" + UUID2 + "_advancement_pgnr"]  = ""
+        updateAttrs["repeating_advancements_" + UUID2 + "_advancement_name"] = compcheck(comp_name_Parsed)
+        updateAttrs["repeating_advancements_" + UUID2 + "_advancement_cost"] = compcheck(comp_data_Parsed["COMP_experience"])
+        updateAttrs["repeating_advancements_" + UUID2 + "_advancement_pgnr"] = ""
         setAttrs(updateAttrs);
       };
 
@@ -5497,10 +5496,10 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
       if (comp_data_Parsed.COMP_field == "Mel_Wep") {
 
         if (sheet_select == "PC" && sheet_tab == "vehicles") {
-          loc="repeating_vmeleeweapons_"
+          loc = "repeating_vmeleeweapons_"
         }
         else if (sheet_select == "NPC" && npc_tab == "vehicleweps") {
-          loc="repeating_vmeleeweapons_"
+          loc = "repeating_vmeleeweapons_"
         }
         else {
           loc = "repeating_meleeweapons_"
@@ -5509,31 +5508,31 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
         const wep_data_Parsed = comp_data_Parsed["data-MeleeWeapon"]
 
         for (let i = 0; i < wep_data_Parsed.length; i++) {
-          if ("COMP_name" in wep_data_Parsed[i]){
-            if (wep_data_Parsed[i]["COMP_name"] != ""){
+          if ("COMP_name" in wep_data_Parsed[i]) {
+            if (wep_data_Parsed[i]["COMP_name"] != "") {
 
               const UUID1 = generateRowID();
 
-              if (wep_data_Parsed[i]["COMP_attribute"] == "STR") {wep_data_Parsed[i]["COMP_attribute"] = "@{STR} + @{STR_advancement} + @{fatigue_mod}"}
-              if (wep_data_Parsed[i]["COMP_attribute"] == "TOU") {wep_data_Parsed[i]["COMP_attribute"] = "@{TOU} + @{TOU_advancement} + @{fatigue_mod}"}
-              if (wep_data_Parsed[i]["COMP_attribute"] == "AGI") {wep_data_Parsed[i]["COMP_attribute"] = "@{AGI} + @{AGI_advancement} + @{fatigue_mod}"}
-              if (wep_data_Parsed[i]["COMP_attribute"] == "WFR") {wep_data_Parsed[i]["COMP_attribute"] = "@{WFR} + @{WFR_advancement} + @{fatigue_mod}"}
-              if (wep_data_Parsed[i]["COMP_attribute"] == "WFM") {wep_data_Parsed[i]["COMP_attribute"] = "@{WFM} + @{WFM_advancement} + @{fatigue_mod}"}
-              if (wep_data_Parsed[i]["COMP_attribute"] == "INT") {wep_data_Parsed[i]["COMP_attribute"] = "@{INT} + @{INT_advancement} + @{fatigue_mod}"}
-              if (wep_data_Parsed[i]["COMP_attribute"] == "PER") {wep_data_Parsed[i]["COMP_attribute"] = "@{PER} + @{PER_advancement} + @{fatigue_mod}"}
-              if (wep_data_Parsed[i]["COMP_attribute"] == "CRG") {wep_data_Parsed[i]["COMP_attribute"] = "@{CRG} + @{CRG_advancement} + @{fatigue_mod}"}
-              if (wep_data_Parsed[i]["COMP_attribute"] == "CHA") {wep_data_Parsed[i]["COMP_attribute"] = "@{CHA} + @{CHA_advancement} + @{fatigue_mod}"}
-              if (wep_data_Parsed[i]["COMP_attribute"] == "LDR") {wep_data_Parsed[i]["COMP_attribute"] = "@{LDR} + @{LDR_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "STR") { wep_data_Parsed[i]["COMP_attribute"] = "@{STR} + @{STR_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "TOU") { wep_data_Parsed[i]["COMP_attribute"] = "@{TOU} + @{TOU_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "AGI") { wep_data_Parsed[i]["COMP_attribute"] = "@{AGI} + @{AGI_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "WFR") { wep_data_Parsed[i]["COMP_attribute"] = "@{WFR} + @{WFR_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "WFM") { wep_data_Parsed[i]["COMP_attribute"] = "@{WFM} + @{WFM_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "INT") { wep_data_Parsed[i]["COMP_attribute"] = "@{INT} + @{INT_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "PER") { wep_data_Parsed[i]["COMP_attribute"] = "@{PER} + @{PER_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "CRG") { wep_data_Parsed[i]["COMP_attribute"] = "@{CRG} + @{CRG_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "CHA") { wep_data_Parsed[i]["COMP_attribute"] = "@{CHA} + @{CHA_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "LDR") { wep_data_Parsed[i]["COMP_attribute"] = "@{LDR} + @{LDR_advancement} + @{fatigue_mod}"}
 
-              if (wep_data_Parsed[i]["COMP_base_add"] == "N/A")    {wep_data_Parsed[i]["COMP_base_add"] = "0"}
-              if (wep_data_Parsed[i]["COMP_base_add"] == "Half")   {wep_data_Parsed[i]["COMP_base_add"] = "[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]"}
-              if (wep_data_Parsed[i]["COMP_base_add"] == "Full")   {wep_data_Parsed[i]["COMP_base_add"] = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]"}
-              if (wep_data_Parsed[i]["COMP_base_add"] == "Double") {wep_data_Parsed[i]["COMP_base_add"] = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]"}
+              if (wep_data_Parsed[i]["COMP_base_add"] == "N/A")    { wep_data_Parsed[i]["COMP_base_add"] = "0"}
+              if (wep_data_Parsed[i]["COMP_base_add"] == "Half")   { wep_data_Parsed[i]["COMP_base_add"] = "[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]"}
+              if (wep_data_Parsed[i]["COMP_base_add"] == "Full")   { wep_data_Parsed[i]["COMP_base_add"] = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]"}
+              if (wep_data_Parsed[i]["COMP_base_add"] == "Double") { wep_data_Parsed[i]["COMP_base_add"] = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]"}
 
-              if (wep_data_Parsed[i]["COMP_pierce_add"] == "N/A")    {wep_data_Parsed[i]["COMP_pierce_add"] = "0"}
-              if (wep_data_Parsed[i]["COMP_pierce_add"] == "Half")   {wep_data_Parsed[i]["COMP_pierce_add"] = "[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]"}
-              if (wep_data_Parsed[i]["COMP_pierce_add"] == "Full")   {wep_data_Parsed[i]["COMP_pierce_add"] = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]"}
-              if (wep_data_Parsed[i]["COMP_pierce_add"] == "Double") {wep_data_Parsed[i]["COMP_pierce_add"] = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]"}
+              if (wep_data_Parsed[i]["COMP_pierce_add"] == "N/A")    { wep_data_Parsed[i]["COMP_pierce_add"] = "0"}
+              if (wep_data_Parsed[i]["COMP_pierce_add"] == "Half")   { wep_data_Parsed[i]["COMP_pierce_add"] = "[[floor(((@{STR} + @{STR_advancement})/10 + @{str_mythic})/2)]]"}
+              if (wep_data_Parsed[i]["COMP_pierce_add"] == "Full")   { wep_data_Parsed[i]["COMP_pierce_add"] = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})]]"}
+              if (wep_data_Parsed[i]["COMP_pierce_add"] == "Double") { wep_data_Parsed[i]["COMP_pierce_add"] = "[[floor((@{STR} + @{STR_advancement})/10 + @{STR_mythic})*2]]"}
 
               updateAttrs[loc + UUID1 + "_weapon_name"]                         = compcheck(wep_data_Parsed[i]["COMP_name"])
               updateAttrs[loc + UUID1 + "_weapon_type"]                         = compcheck(wep_data_Parsed[i]["COMP_type"])
@@ -5570,7 +5569,7 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
       // Compendium NPC sheet worker
       if (comp_data_Parsed.COMP_field == "Baseline" || comp_data_Parsed.COMP_field == "Npc") {
 
-        if(comp_data_Parsed.COMP_field == "Npc"){
+        if (comp_data_Parsed.COMP_field == "Npc") {
           updateAttrs["character_name"] = compcheck(comp_name_Parsed)
           updateAttrs["npc_XP"] = compcheck(comp_data_Parsed["COMP_experience"])
           updateAttrs["npc_SIZE"] = compcheck(comp_data_Parsed["COMP_size"])
@@ -5637,7 +5636,7 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
 
         updateAttrs["settings_race"] = "dont mod"
 
-        if((compcheck(comp_data_Parsed["COMP_armor_chest"]) + compcheck(comp_data_Parsed["COMP_armor_chest"]) + compcheck(comp_data_Parsed["COMP_armor_head"]) + compcheck(comp_data_Parsed["COMP_armor_legs"]) + compcheck(comp_data_Parsed["COMP_shield_delay"]) + compcheck(comp_data_Parsed["COMP_shield_integrity"]) + compcheck(comp_data_Parsed["COMP_shield_recharge"])) != ""){
+        if ((compcheck(comp_data_Parsed["COMP_armor_chest"]) + compcheck(comp_data_Parsed["COMP_armor_chest"]) + compcheck(comp_data_Parsed["COMP_armor_head"]) + compcheck(comp_data_Parsed["COMP_armor_legs"]) + compcheck(comp_data_Parsed["COMP_shield_delay"]) + compcheck(comp_data_Parsed["COMP_shield_integrity"]) + compcheck(comp_data_Parsed["COMP_shield_recharge"])) != "") {
 
           const UUID1 = generateRowID();
           updateAttrs["repeating_armor_" + UUID1 + "_name"]           = compcheck(comp_name_Parsed)
@@ -5652,23 +5651,23 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
           updateAttrs["repeating_armor_" + UUID1 + "_description"]    = compcheck(comp_name_Parsed) + "\n" + compcheck(comp_data_Parsed["COMP_armor_description"])
         }
 
-        if("data-Ability" in comp_data_Parsed){
+        if ("data-Ability" in comp_data_Parsed) {
           const ability_data_Parsed = comp_data_Parsed["data-Ability"]
 
           for (let i = 0; i < ability_data_Parsed.length; i++) {
-            if (ability_data_Parsed[i]["COMP_aditional_info"] != ""){
+            if (ability_data_Parsed[i]["COMP_aditional_info"] != "") {
               const UUID2 = generateRowID();
 
-              updateAttrs["repeating_abilities_" + UUID2 + "_ability"]       = compcheck(ability_data_Parsed[i]["COMP_aditional_info"])
-              updateAttrs["repeating_abilities_" + UUID2 + "_ability_desc"]  = compcheck(ability_data_Parsed[i]["COMP_description"])
+              updateAttrs["repeating_abilities_" + UUID2 + "_ability"]      = compcheck(ability_data_Parsed[i]["COMP_aditional_info"])
+              updateAttrs["repeating_abilities_" + UUID2 + "_ability_desc"] = compcheck(ability_data_Parsed[i]["COMP_description"])
             }
           }
         }
 
         const UUID3 = generateRowID();
-        updateAttrs["repeating_advancements_" + UUID3 + "_advancement_name"]  = compcheck(comp_name_Parsed)
-        updateAttrs["repeating_advancements_" + UUID3 + "_advancement_cost"]  = compcheck(comp_data_Parsed["COMP_experience"])
-        updateAttrs["repeating_advancements_" + UUID3 + "_advancement_pgnr"]  = ""
+        updateAttrs["repeating_advancements_" + UUID3 + "_advancement_name"] = compcheck(comp_name_Parsed)
+        updateAttrs["repeating_advancements_" + UUID3 + "_advancement_cost"] = compcheck(comp_data_Parsed["COMP_experience"])
+        updateAttrs["repeating_advancements_" + UUID3 + "_advancement_pgnr"] = ""
 
         setAttrs(updateAttrs);
       };
@@ -5680,13 +5679,13 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
       if (comp_data_Parsed.COMP_field == "Outlier") {
 
         const UUID1 = generateRowID();
-        updateAttrs["repeating_abilities_" + UUID1 + "_ability"]       = compcheck(comp_name_Parsed)
-        updateAttrs["repeating_abilities_" + UUID1 + "_ability_desc"]  = compcheck(comp_data_Parsed["COMP_description"])
+        updateAttrs["repeating_abilities_" + UUID1 + "_ability"]      = compcheck(comp_name_Parsed)
+        updateAttrs["repeating_abilities_" + UUID1 + "_ability_desc"] = compcheck(comp_data_Parsed["COMP_description"])
 
         const UUID2 = generateRowID();
-        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_name"]  = compcheck(comp_name_Parsed) + " (" + compcheck(comp_data_Parsed["COMP_experience"]) + ")"
-        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_cost"]  = ""
-        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_pgnr"]  = ""
+        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_name"] = compcheck(comp_name_Parsed) + " (" + compcheck(comp_data_Parsed["COMP_experience"]) + ")"
+        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_cost"] = ""
+        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_pgnr"] = ""
         setAttrs(updateAttrs);
       };
 
@@ -5697,10 +5696,10 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
       if (comp_data_Parsed.COMP_field == "Ran_Wep") {
 
         if (sheet_select == "PC" && sheet_tab == "vehicles") {
-          loc="repeating_vrangedweapons_"
+          loc = "repeating_vrangedweapons_"
         }
         else if (sheet_select == "NPC" && npc_tab == "vehicleweps") {
-          loc="repeating_vrangedweapons_"
+          loc = "repeating_vrangedweapons_"
         }
         else {
           loc = "repeating_rangedweapons_"
@@ -5709,21 +5708,21 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
         const wep_data_Parsed = comp_data_Parsed["data-RangedWeapon"]
 
         for (let i = 0; i < wep_data_Parsed.length; i++) {
-          if ("COMP_name" in wep_data_Parsed[i]){
-            if (wep_data_Parsed[i]["COMP_name"] != ""){
+          if ("COMP_name" in wep_data_Parsed[i]) {
+            if (wep_data_Parsed[i]["COMP_name"] != "") {
 
               const UUID1 = generateRowID();
 
-              if (wep_data_Parsed[i]["COMP_attribute"] == "STR") {wep_data_Parsed[i]["COMP_attribute"] = "@{STR} + @{STR_advancement} + @{fatigue_mod}"}
-              if (wep_data_Parsed[i]["COMP_attribute"] == "TOU") {wep_data_Parsed[i]["COMP_attribute"] = "@{TOU} + @{TOU_advancement} + @{fatigue_mod}"}
-              if (wep_data_Parsed[i]["COMP_attribute"] == "AGI") {wep_data_Parsed[i]["COMP_attribute"] = "@{AGI} + @{AGI_advancement} + @{fatigue_mod}"}
-              if (wep_data_Parsed[i]["COMP_attribute"] == "WFR") {wep_data_Parsed[i]["COMP_attribute"] = "@{WFR} + @{WFR_advancement} + @{fatigue_mod}"}
-              if (wep_data_Parsed[i]["COMP_attribute"] == "WFM") {wep_data_Parsed[i]["COMP_attribute"] = "@{WFM} + @{WFM_advancement} + @{fatigue_mod}"}
-              if (wep_data_Parsed[i]["COMP_attribute"] == "INT") {wep_data_Parsed[i]["COMP_attribute"] = "@{INT} + @{INT_advancement} + @{fatigue_mod}"}
-              if (wep_data_Parsed[i]["COMP_attribute"] == "PER") {wep_data_Parsed[i]["COMP_attribute"] = "@{PER} + @{PER_advancement} + @{fatigue_mod}"}
-              if (wep_data_Parsed[i]["COMP_attribute"] == "CRG") {wep_data_Parsed[i]["COMP_attribute"] = "@{CRG} + @{CRG_advancement} + @{fatigue_mod}"}
-              if (wep_data_Parsed[i]["COMP_attribute"] == "CHA") {wep_data_Parsed[i]["COMP_attribute"] = "@{CHA} + @{CHA_advancement} + @{fatigue_mod}"}
-              if (wep_data_Parsed[i]["COMP_attribute"] == "LDR") {wep_data_Parsed[i]["COMP_attribute"] = "@{LDR} + @{LDR_advancement} + @{fatigue_mod}"}
+              if (wep_data_Parsed[i]["COMP_attribute"] == "STR") { wep_data_Parsed[i]["COMP_attribute"] = "@{STR} + @{STR_advancement} + @{fatigue_mod}" }
+              if (wep_data_Parsed[i]["COMP_attribute"] == "TOU") { wep_data_Parsed[i]["COMP_attribute"] = "@{TOU} + @{TOU_advancement} + @{fatigue_mod}" }
+              if (wep_data_Parsed[i]["COMP_attribute"] == "AGI") { wep_data_Parsed[i]["COMP_attribute"] = "@{AGI} + @{AGI_advancement} + @{fatigue_mod}" }
+              if (wep_data_Parsed[i]["COMP_attribute"] == "WFR") { wep_data_Parsed[i]["COMP_attribute"] = "@{WFR} + @{WFR_advancement} + @{fatigue_mod}" }
+              if (wep_data_Parsed[i]["COMP_attribute"] == "WFM") { wep_data_Parsed[i]["COMP_attribute"] = "@{WFM} + @{WFM_advancement} + @{fatigue_mod}" }
+              if (wep_data_Parsed[i]["COMP_attribute"] == "INT") { wep_data_Parsed[i]["COMP_attribute"] = "@{INT} + @{INT_advancement} + @{fatigue_mod}" }
+              if (wep_data_Parsed[i]["COMP_attribute"] == "PER") { wep_data_Parsed[i]["COMP_attribute"] = "@{PER} + @{PER_advancement} + @{fatigue_mod}" }
+              if (wep_data_Parsed[i]["COMP_attribute"] == "CRG") { wep_data_Parsed[i]["COMP_attribute"] = "@{CRG} + @{CRG_advancement} + @{fatigue_mod}" }
+              if (wep_data_Parsed[i]["COMP_attribute"] == "CHA") { wep_data_Parsed[i]["COMP_attribute"] = "@{CHA} + @{CHA_advancement} + @{fatigue_mod}" }
+              if (wep_data_Parsed[i]["COMP_attribute"] == "LDR") { wep_data_Parsed[i]["COMP_attribute"] = "@{LDR} + @{LDR_advancement} + @{fatigue_mod}" }
 
               updateAttrs[loc + UUID1 + "_weapon_name"]           = compcheck(wep_data_Parsed[i]["COMP_name"])
               updateAttrs[loc + UUID1 + "_weapon_type"]           = compcheck(wep_data_Parsed[i]["COMP_type"])
@@ -5760,9 +5759,9 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
       if (comp_data_Parsed.COMP_field == "Skill") {
 
         const UUID1 = generateRowID();
-        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_name"]  = compcheck(comp_name_Parsed)
-        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_cost"]  = compcheck(comp_data_Parsed["COMP_experience"])
-        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_pgnr"]  = ""
+        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_name"] = compcheck(comp_name_Parsed)
+        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_cost"] = compcheck(comp_data_Parsed["COMP_experience"])
+        updateAttrs["repeating_advancements_" + UUID1 + "_advancement_pgnr"] = ""
         setAttrs(updateAttrs);
       };
 
@@ -5773,7 +5772,7 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
       if (comp_data_Parsed.COMP_field == "Faction Training") {
 
         const UUID1 = generateRowID();
-        updateAttrs["repeating_traininfaction_" + UUID1 + "_training"]  = compcheck(comp_name_Parsed)
+        updateAttrs["repeating_traininfaction_" + UUID1 + "_training"] = compcheck(comp_name_Parsed)
         setAttrs(updateAttrs);
       };
 
@@ -5784,7 +5783,7 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
       if (comp_data_Parsed.COMP_field == "Weapon Training") {
 
         const UUID1 = generateRowID();
-        updateAttrs["repeating_trainingweapon_" + UUID1 + "_training"]  = compcheck(comp_name_Parsed)
+        updateAttrs["repeating_trainingweapon_" + UUID1 + "_training"] = compcheck(comp_name_Parsed)
         setAttrs(updateAttrs);
       };
 
@@ -5796,7 +5795,7 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
 
         const UUID1 = generateRowID();
 
-        if(compcheck(comp_data_Parsed["COMP_shield_rating"]) > 0) updateAttrs["repeating_vehicles_" + UUID1 + "_vehicle-shield"] = 1
+        if (compcheck(comp_data_Parsed["COMP_shield_rating"]) > 0) updateAttrs["repeating_vehicles_" + UUID1 + "_vehicle-shield"] = 1
 
         if(compcheck(comp_data_Parsed["COMP_accelerate"])>0)  updateAttrs["repeating_vehicles_" + UUID1 + "_vehicle-type"] = 0
         else if(compcheck(comp_data_Parsed["COMP_AGI"])>0)    updateAttrs["repeating_vehicles_" + UUID1 + "_vehicle-type"] = 1
@@ -5850,35 +5849,35 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
           const rwep_data_Parsed = comp_data_Parsed["data-RangedWeapon"]
 
           for (let i = 0; i < rwep_data_Parsed.length; i++) {
-            if ("COMP_name" in rwep_data_Parsed[i]){
-              if (rwep_data_Parsed[i]["COMP_name"] != ""){
+            if ("COMP_name" in rwep_data_Parsed[i]) {
+              if (rwep_data_Parsed[i]["COMP_name"] != "") {
                 const UUID2 = generateRowID();
 
-                if (rwep_data_Parsed[i]["COMP_attribute"] == "STR") {rwep_data_Parsed[i]["COMP_attribute"] = "@{STR} + @{STR_advancement} + @{fatigue_mod}"}
-                if (rwep_data_Parsed[i]["COMP_attribute"] == "TOU") {rwep_data_Parsed[i]["COMP_attribute"] = "@{TOU} + @{TOU_advancement} + @{fatigue_mod}"}
-                if (rwep_data_Parsed[i]["COMP_attribute"] == "AGI") {rwep_data_Parsed[i]["COMP_attribute"] = "@{AGI} + @{AGI_advancement} + @{fatigue_mod}"}
-                if (rwep_data_Parsed[i]["COMP_attribute"] == "WFR") {rwep_data_Parsed[i]["COMP_attribute"] = "@{WFR} + @{WFR_advancement} + @{fatigue_mod}"}
-                if (rwep_data_Parsed[i]["COMP_attribute"] == "WFM") {rwep_data_Parsed[i]["COMP_attribute"] = "@{WFM} + @{WFM_advancement} + @{fatigue_mod}"}
-                if (rwep_data_Parsed[i]["COMP_attribute"] == "INT") {rwep_data_Parsed[i]["COMP_attribute"] = "@{INT} + @{INT_advancement} + @{fatigue_mod}"}
-                if (rwep_data_Parsed[i]["COMP_attribute"] == "PER") {rwep_data_Parsed[i]["COMP_attribute"] = "@{PER} + @{PER_advancement} + @{fatigue_mod}"}
-                if (rwep_data_Parsed[i]["COMP_attribute"] == "CRG") {rwep_data_Parsed[i]["COMP_attribute"] = "@{CRG} + @{CRG_advancement} + @{fatigue_mod}"}
-                if (rwep_data_Parsed[i]["COMP_attribute"] == "CHA") {rwep_data_Parsed[i]["COMP_attribute"] = "@{CHA} + @{CHA_advancement} + @{fatigue_mod}"}
-                if (rwep_data_Parsed[i]["COMP_attribute"] == "LDR") {rwep_data_Parsed[i]["COMP_attribute"] = "@{LDR} + @{LDR_advancement} + @{fatigue_mod}"}
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "STR") { rwep_data_Parsed[i]["COMP_attribute"] = "@{STR} + @{STR_advancement} + @{fatigue_mod}" }
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "TOU") { rwep_data_Parsed[i]["COMP_attribute"] = "@{TOU} + @{TOU_advancement} + @{fatigue_mod}" }
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "AGI") { rwep_data_Parsed[i]["COMP_attribute"] = "@{AGI} + @{AGI_advancement} + @{fatigue_mod}" }
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "WFR") { rwep_data_Parsed[i]["COMP_attribute"] = "@{WFR} + @{WFR_advancement} + @{fatigue_mod}" }
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "WFM") { rwep_data_Parsed[i]["COMP_attribute"] = "@{WFM} + @{WFM_advancement} + @{fatigue_mod}" }
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "INT") { rwep_data_Parsed[i]["COMP_attribute"] = "@{INT} + @{INT_advancement} + @{fatigue_mod}" }
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "PER") { rwep_data_Parsed[i]["COMP_attribute"] = "@{PER} + @{PER_advancement} + @{fatigue_mod}" }
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "CRG") { rwep_data_Parsed[i]["COMP_attribute"] = "@{CRG} + @{CRG_advancement} + @{fatigue_mod}" }
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "CHA") { rwep_data_Parsed[i]["COMP_attribute"] = "@{CHA} + @{CHA_advancement} + @{fatigue_mod}" }
+                if (rwep_data_Parsed[i]["COMP_attribute"] == "LDR") { rwep_data_Parsed[i]["COMP_attribute"] = "@{LDR} + @{LDR_advancement} + @{fatigue_mod}" }
 
-                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_name"]           = compcheck(rwep_data_Parsed[i]["COMP_name"])
-                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_type"]           = compcheck(rwep_data_Parsed[i]["COMP_type"])
-                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_Weapon_attr"]           = compcheck(rwep_data_Parsed[i]["COMP_attribute"])
-                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_range"]          = compcheck(rwep_data_Parsed[i]["COMP_range"])
-                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_dam-roll"]       = compcheck(rwep_data_Parsed[i]["COMP_damage_roll"])
-                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_base"]           = compcheck(rwep_data_Parsed[i]["COMP_damage_base"])
-                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_pierce"]         = compcheck(rwep_data_Parsed[i]["COMP_pierce"])
-                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_hitmod"]         = compcheck(rwep_data_Parsed[i]["COMP_hitmod"])
-                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_mag"]            = compcheck(rwep_data_Parsed[i]["COMP_magazine"])
-                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_mag_max"]        = compcheck(rwep_data_Parsed[i]["COMP_magazine"])
-                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_rof"]            = compcheck(rwep_data_Parsed[i]["COMP_rof"])
-                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_reload"]         = compcheck(rwep_data_Parsed[i]["COMP_reload"])
-                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_special_rules"]  = compcheck(rwep_data_Parsed[i]["COMP_special_rules"])
-                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_description"]           = compcheck(rwep_data_Parsed[i]["COMP_description"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_name"]          = compcheck(rwep_data_Parsed[i]["COMP_name"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_type"]          = compcheck(rwep_data_Parsed[i]["COMP_type"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_Weapon_attr"]          = compcheck(rwep_data_Parsed[i]["COMP_attribute"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_range"]         = compcheck(rwep_data_Parsed[i]["COMP_range"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_dam-roll"]      = compcheck(rwep_data_Parsed[i]["COMP_damage_roll"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_base"]          = compcheck(rwep_data_Parsed[i]["COMP_damage_base"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_pierce"]        = compcheck(rwep_data_Parsed[i]["COMP_pierce"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_hitmod"]        = compcheck(rwep_data_Parsed[i]["COMP_hitmod"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_mag"]           = compcheck(rwep_data_Parsed[i]["COMP_magazine"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_mag_max"]       = compcheck(rwep_data_Parsed[i]["COMP_magazine"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_rof"]           = compcheck(rwep_data_Parsed[i]["COMP_rof"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_reload"]        = compcheck(rwep_data_Parsed[i]["COMP_reload"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_weapon_special_rules"] = compcheck(rwep_data_Parsed[i]["COMP_special_rules"])
+                updateAttrs["repeating_vrangedweapons_" + UUID2 + "_description"]          = compcheck(rwep_data_Parsed[i]["COMP_description"])
               }
             }
           }
@@ -5888,20 +5887,20 @@ const repeatingSum = (destinations, section, fields, ...extras) => {
           const mwep_data_Parsed = comp_data_Parsed["data-MeleeWeapon"]
 
           for (let i = 0; i < mwep_data_Parsed.length; i++) {
-            if ("COMP_name" in mwep_data_Parsed[i]){
-              if (mwep_data_Parsed[i]["COMP_name"] != ""){
+            if ("COMP_name" in mwep_data_Parsed[i]) {
+              if (mwep_data_Parsed[i]["COMP_name"] != "") {
                 const UUID3 = generateRowID();
 
-                if (mwep_data_Parsed[i]["COMP_attribute"] == "STR") {mwep_data_Parsed[i]["COMP_attribute"] = "@{STR} + @{STR_advancement} + @{fatigue_mod}"}
-                if (mwep_data_Parsed[i]["COMP_attribute"] == "TOU") {mwep_data_Parsed[i]["COMP_attribute"] = "@{TOU} + @{TOU_advancement} + @{fatigue_mod}"}
-                if (mwep_data_Parsed[i]["COMP_attribute"] == "AGI") {mwep_data_Parsed[i]["COMP_attribute"] = "@{AGI} + @{AGI_advancement} + @{fatigue_mod}"}
-                if (mwep_data_Parsed[i]["COMP_attribute"] == "WFR") {mwep_data_Parsed[i]["COMP_attribute"] = "@{WFR} + @{WFR_advancement} + @{fatigue_mod}"}
-                if (mwep_data_Parsed[i]["COMP_attribute"] == "WFM") {mwep_data_Parsed[i]["COMP_attribute"] = "@{WFM} + @{WFM_advancement} + @{fatigue_mod}"}
-                if (mwep_data_Parsed[i]["COMP_attribute"] == "INT") {mwep_data_Parsed[i]["COMP_attribute"] = "@{INT} + @{INT_advancement} + @{fatigue_mod}"}
-                if (mwep_data_Parsed[i]["COMP_attribute"] == "PER") {mwep_data_Parsed[i]["COMP_attribute"] = "@{PER} + @{PER_advancement} + @{fatigue_mod}"}
-                if (mwep_data_Parsed[i]["COMP_attribute"] == "CRG") {mwep_data_Parsed[i]["COMP_attribute"] = "@{CRG} + @{CRG_advancement} + @{fatigue_mod}"}
-                if (mwep_data_Parsed[i]["COMP_attribute"] == "CHA") {mwep_data_Parsed[i]["COMP_attribute"] = "@{CHA} + @{CHA_advancement} + @{fatigue_mod}"}
-                if (mwep_data_Parsed[i]["COMP_attribute"] == "LDR") {mwep_data_Parsed[i]["COMP_attribute"] = "@{LDR} + @{LDR_advancement} + @{fatigue_mod}"}
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "STR") { mwep_data_Parsed[i]["COMP_attribute"] = "@{STR} + @{STR_advancement} + @{fatigue_mod}" }
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "TOU") { mwep_data_Parsed[i]["COMP_attribute"] = "@{TOU} + @{TOU_advancement} + @{fatigue_mod}" }
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "AGI") { mwep_data_Parsed[i]["COMP_attribute"] = "@{AGI} + @{AGI_advancement} + @{fatigue_mod}" }
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "WFR") { mwep_data_Parsed[i]["COMP_attribute"] = "@{WFR} + @{WFR_advancement} + @{fatigue_mod}" }
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "WFM") { mwep_data_Parsed[i]["COMP_attribute"] = "@{WFM} + @{WFM_advancement} + @{fatigue_mod}" }
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "INT") { mwep_data_Parsed[i]["COMP_attribute"] = "@{INT} + @{INT_advancement} + @{fatigue_mod}" }
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "PER") { mwep_data_Parsed[i]["COMP_attribute"] = "@{PER} + @{PER_advancement} + @{fatigue_mod}" }
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "CRG") { mwep_data_Parsed[i]["COMP_attribute"] = "@{CRG} + @{CRG_advancement} + @{fatigue_mod}" }
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "CHA") { mwep_data_Parsed[i]["COMP_attribute"] = "@{CHA} + @{CHA_advancement} + @{fatigue_mod}" }
+                if (mwep_data_Parsed[i]["COMP_attribute"] == "LDR") { mwep_data_Parsed[i]["COMP_attribute"] = "@{LDR} + @{LDR_advancement} + @{fatigue_mod}" }
 
                 updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_name"]                         = compcheck(mwep_data_Parsed[i]["COMP_name"])
                 updateAttrs["repeating_vmeleeweapons_" + UUID3 + "_weapon_type"]                         = compcheck(mwep_data_Parsed[i]["COMP_type"])
