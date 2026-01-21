@@ -4580,9 +4580,9 @@
 
           perceptive_range: ((per+per_advancement + settings_perceptive_addi) * settings_perceptive_mult),
 
-          carry: (((str + str_advancement + str_mythic*10) * settings_carry_mult_str + (tou + tou_advancement + tou_mythic*10) * settings_carry_mult_tou) * 1 + settings_carry_addi),
-          lift:  (((str + str_advancement + str_mythic*10) * settings_lift_mult_str + (tou + tou_advancement + tou_mythic*10) * settings_lift_mult_tou) * 2 + settings_lift_addi),
-          push:  (((str + str_advancement + str_mythic*10) * settings_push_mult_str + (tou + tou_advancement + tou_mythic*10) * settings_push_mult_tou) * 4 + settings_push_addi),
+          carry: (((str + str_advancement + str_mythic*10) * settings_carry_mult_str + (tou + tou_advancement + tou_mythic*10) * settings_carry_mult_tou) * 0.5 * 1 + settings_carry_addi),
+          lift:  (((str + str_advancement + str_mythic*10) * settings_lift_mult_str + (tou + tou_advancement + tou_mythic*10) * settings_lift_mult_tou) * 0.5  * 3 + settings_lift_addi),
+          push:  (((str + str_advancement + str_mythic*10) * settings_push_mult_str + (tou + tou_advancement + tou_mythic*10) * settings_push_mult_tou) * 0.5  * 5 + settings_push_addi),
         });
       }
 
