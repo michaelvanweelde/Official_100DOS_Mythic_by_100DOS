@@ -1168,8 +1168,7 @@
               <input name="attr_education_mod2" type="text" value="0" class="full_width" />
               <div class="education4"><input name="attr_education_mod3" type="checkbox" value="5" class="skills_item " /></div>
               <div class="education5"><input name="attr_education_mod3" type="checkbox" value="10" class="skills_item" /></div>
-              <button name="educationoll" type="roll" class="clear"
-                      value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=@{education_name} }} {{roll=[[@{settings_rounding}([[@{education_mod1}]]+@{education_mod2}+@{education_mod3}+@{inlinemod-toggle}-1d100)/10)]]}}">
+              <button name="Education_roll" type="roll" class="clear" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=@{education_name} }} {{roll=[[@{settings_rounding}([[@{education_mod1}]]+@{education_mod2}+@{education_mod3}+@{inlinemod-toggle}-1d100)/10)]]}}">
                 <input name="attr_education_total" value="@{education_mod1}+@{education_mod2}+@{education_mod3}" class="input_background" disabled /></button>
             </div>
           </fieldset>
@@ -1192,7 +1191,7 @@
         <fieldset name="abilities" class="repeating_abilities">
           <input name="attr_ability" type="text" placeholder="Name" class="full_width_49px" />
           <label class="margin_adjust"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text ">▼</span></label>
-          <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{ability} }} {{description=@{ability_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+          <label class="margin_adjust2"><button type="roll" name="Ability_Description" value="@{to-gm}&{template:mythic} {{title=@{ability} }} {{description=@{ability_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
           <input name="attr_collapse" type="checkbox" value="3" class="hider hidden" />
           <textarea name="attr_ability_desc"></textarea>
         </fieldset>
@@ -1245,8 +1244,8 @@
                 <input class="equipment_ranged_weapons_gs16 full_width" type="text" value="0" name="attr_weapon_mag" />
                 <div class="equipment_ranged_weapons_gs17">/</div>
                 <input class="equipment_ranged_weapons_gs18 full_width" type="text" value="0" name="attr_weapon_mag_max" />
-                <button class="equipment_ranged_weapons_gs19 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
-                <button class="equipment_ranged_weapons_gs20 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
+                <button type="roll" name="To_hit" class="equipment_ranged_weapons_gs19 full_width clear" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
+                <button type="roll" name="Damage" class="equipment_ranged_weapons_gs20 full_width clear" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
               </div>
               <div class="equipment_ranged_weapons_grid4">
                 <div class="equipment_ranged_weapons_gs21">RoF</div>
@@ -1257,7 +1256,7 @@
               <div>
                 <input name="attr_weapon_special_rules" type="text" placeholder="Description" class="full_width_49px border_none radius_border_left" />
                 <label class="margin_adjust_wep"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text radius_border_right_wep">▼</span></label>
-                <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                <label class="margin_adjust_wep2"><button type="roll" name="Description" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
                 <input name="attr_collapse" type="checkbox" value="3" class="hider hidden" />
                 <div>
                   <div class="equipment_ranged_weapons_grid5">
@@ -1321,8 +1320,8 @@
                 <input class="equipment_melee_weapons_gs6 full_width" type="text" value="0" name="attr_weapon_breakpoints" />
                 <div class="equipment_melee_weapons_gs7">/</div>
                 <input class="equipment_melee_weapons_gs8 full_width" type="text" value="0" name="attr_weapon_breakpoints_max" />
-                <button class="equipment_melee_weapons_gs9 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
-                <button class="equipment_melee_weapons_gs10 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
+                <button name="To_hit" class="equipment_melee_weapons_gs9 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
+                <button name="Damage" class="equipment_melee_weapons_gs10 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
               </div>
               <div class="equipment_melee_weapons_grid4">
                 <div class="equipment_melee_weapons_gs11">damage plus Strength</div>
@@ -1347,7 +1346,7 @@
               <div>
                 <input name="attr_weapon_special_rules" type="text" placeholder="Description" class="full_width_49px border_none radius_border_left" />
                 <label class="margin_adjust_wep"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text radius_border_right_wep">▼</span></label>
-                <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                <label class="margin_adjust_wep2"><button type="roll" name="Description" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
                 <input name="attr_collapse" type="checkbox" value="3" class="hider hidden" />
                 <div>
                   <div class="equipment_ranged_weapons_grid5">
@@ -1440,7 +1439,7 @@
             <input class="full_width" type="text" name="attr_permutation_location" placeholder="Location & Hardpoints">
           </div>
           <label class="margin_adjust"><input type="checkbox" name="attr_collapse" value="2" class="hider select_button hidden" /><span class="select_text">▼</span></label>
-          <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{permutation_name} }} {{description=@{permutation_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+          <label class="margin_adjust2"><button type="roll" name="Permutation_Description" value="@{to-gm}&{template:mythic} {{title=@{permutation_name} }} {{description=@{permutation_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
           <input name="attr_collapse" type="checkbox" value="2" class="hider hidden" />
           <textarea name="attr_permutation_desc" class="radius_border_bottom" placeholder="All Human BDUs and Armor are designed to take Permutations. Permutations are attachments that modify Armor and offer various forms of function. Each section of Armor can only fit so many Permutations, which are shown as Hardpoints."></textarea>
         </fieldset>
@@ -1493,7 +1492,7 @@
           <div>
             <Button type="action" class="medical_button" name="act_medicalturn">&nbsp;Turn&nbsp;</Button>
             <Button type="action" class="medical_button" name="act_medicalreset">&nbsp;Reset all&nbsp;</Button>
-            <button class="medical_button clear" type="roll" name="vehicle-evade" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Natural Healing}} {{roll= [[(1+?{Medical test DOS (empty if not done)|0}+[[[[floor((@{TOU} + @{TOU_advancement})/10)]]*ceil(?{Medical test DOS (empty if not done)|0}/100000)]])*?{Vigorous|None,1|Level 1,2|Level 2,3}*?{At medical facility|Yes,3|No,1}*?{other multipliers(empty if none)|1}]] }}">&nbsp;&nbsp;Natural Healing&nbsp;&nbsp;</button>
+            <button class="medical_button clear" type="roll" name="vehicle_evade" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Natural Healing}} {{roll= [[(1+?{Medical test DOS (empty if not done)|0}+[[[[floor((@{TOU} + @{TOU_advancement})/10)]]*ceil(?{Medical test DOS (empty if not done)|0}/100000)]])*?{Vigorous|None,1|Level 1,2|Level 2,3}*?{At medical facility|Yes,3|No,1}*?{other multipliers(empty if none)|1}]] }}">&nbsp;&nbsp;Natural Healing&nbsp;&nbsp;</button>
           </div>
 
           <div>
@@ -1817,7 +1816,7 @@
 
         <div class="border_full">
           <label>
-            <h3 class="medical_header">Hit Location</h3> <button type="roll" name="button" value="@{to-gm}&{template:mythic} {{loc=[[1d100]]}}" class="hidden"></button>
+            <h3 class="medical_header">Hit Location</h3> <button type="roll" name="Medical_hitlocation" value="@{to-gm}&{template:mythic} {{loc=[[1d100]]}}" class="hidden"></button>
           </label>
           <h3> 01-10 HEAD</h3>
           <div class="medical_table"> 01-02 Neck</div>
@@ -1891,7 +1890,7 @@
         <fieldset name="medical" class="repeating_medical">
           <input name="attr_medical" type="text" placeholder="Name" class="full_width_49px" />
           <label class="margin_adjust"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text ">▼</span></label>
-          <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{medical} }} {{description=@{medical_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+          <label class="margin_adjust2"><button type="roll" name="Medical_Description" value="@{to-gm}&{template:mythic} {{title=@{medical} }} {{description=@{medical_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
           <input name="attr_collapse" type="checkbox" value="3" class="hider hidden" />
           <textarea name="attr_medical_desc" placeholder="Not all injuries in 100DOS are lethal. Exhaustion, combat trauma, or exchanging blows with bare fists can all leave a character tattered, but intact. Fatigue measures the amount of non-lethal injury a character can take. For every level of Fatigue a Character has, they take a -5 Penalty to all Tests made.&#10;&#10;Once a Character surpasses their Toughness Modifier, multiplied by 2, in Fatigue, they fall into a coma. The Character’s coma will last one hour for every level of Fatigue the Character has. Every hour that passes, the level of Fatigue is reduced by one. The Character may wake up once their level of Fatigue is their Toughness Modifier or lower."></textarea>
         </fieldset>
@@ -2052,7 +2051,7 @@
         <fieldset name="abilities" class="repeating_abilities">
           <input name="attr_ability" type="text" placeholder="Name" class="full_width_49px" />
           <label class="margin_adjust"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text ">▼</span></label>
-          <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{ability} }} {{description=@{ability_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+          <label class="margin_adjust2"><button type="roll" name="Ability_Description" value="@{to-gm}&{template:mythic} {{title=@{ability} }} {{description=@{ability_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
           <input name="attr_collapse" type="checkbox" value="3" class="hider hidden" />
           <textarea name="attr_ability_desc"></textarea>
         </fieldset>
@@ -2084,7 +2083,7 @@
         <fieldset name="Notes" class="repeating_notes">
           <input name="attr_note" type="text" placeholder="Name" class="full_width_49px" />
           <label class="margin_adjust"><input type="checkbox" name="attr_collapse" value="4" class="hider select_button hidden" checked /><span class="select_text ">▼</span></label>
-          <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{note} }} {{description=@{note_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+          <label class="margin_adjust2"><button type="roll" name="Note" value="@{to-gm}&{template:mythic} {{title=@{note} }} {{description=@{note_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
           <input name="attr_collapse" type="checkbox" value="4" class="hider hidden" checked />
           <textarea name="attr_note_desc" placeholder="Enter information such as plot details, unresolved mission details such as escaped targets, character relationships, et cetera here.&#10;
           &#10;Also feel free to write appearance details here or in Bio & Info for public viewing: age, height, weight, colors of eyes, hair, skin, more that come to mind."></textarea>
@@ -2137,8 +2136,8 @@
               <div>
                 <h3 class="radius_border_top">MOBILITY</h3>
                 <div class="vehicles_grid_5x vehicle_break vehicle_background">
-                  <button class="clear vehicle_smallrollbutton" type="roll" name="vehicle-accelerate" value="!token-mod {{--set bar@{Vehicle-speed_bar}_max|@{vehicle-top_speed} bar@{Vehicle-speed_bar}_value|+@{vehicle-accelerate}}}">Accelerate</button>
-                  <button class="clear vehicle_smallrollbutton" type="roll" name="vehicle-Brake" value="!token-mod {{--set bar@{Vehicle-speed_bar}_max|@{vehicle-top_speed} bar@{Vehicle-speed_bar}_value|-@{vehicle-brake}}}">Brake</button>
+                  <button class="clear vehicle_smallrollbutton" type="roll" name="vehicle_accelerate" value="!token-mod {{--set bar@{Vehicle-speed_bar}_max|@{vehicle-top_speed} bar@{Vehicle-speed_bar}_value|+@{vehicle-accelerate}}}">Accelerate</button>
+                  <button class="clear vehicle_smallrollbutton" type="roll" name="vehicle_Brake" value="!token-mod {{--set bar@{Vehicle-speed_bar}_max|@{vehicle-top_speed} bar@{Vehicle-speed_bar}_value|-@{vehicle-brake}}}">Brake</button>
                   <div>Top Speed</div>
                   <div>Maneuver</div>
                   <div></div>
@@ -2147,7 +2146,7 @@
                   <input name="attr_vehicle-brake" type="text" class="full_width" placeholder="MpT" />
                   <input name="attr_vehicle-top_speed" type="text" class="full_width" placeholder="MpT (Km/H)" />
                   <input name="attr_vehicle-maneuver" type="text" class="full_width" placeholder="Max Evasion" />
-                  <button class="clear " type="roll" name="vehicle-evade" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Vehicle Evasion}} {{roll=[[@{settings_rounding}([[ {0d1+(@{AGI} + @{AGI_advancement} + @{fatigue_mod}),0d1+@{vehicle-maneuver}}kl1 ]][lowest of AGI,AGI]+@{mod2_evasion}+[[@{mod3_evasion} -20]]+@{inlinemod-toggle}-1d100)/10)]]}}">Evade</button>
+                  <button class="clear " type="roll" name="vehicle_evade" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Vehicle Evasion}} {{roll=[[@{settings_rounding}([[ {0d1+(@{AGI} + @{AGI_advancement} + @{fatigue_mod}),0d1+@{vehicle-maneuver}}kl1 ]][lowest of AGI,AGI]+@{mod2_evasion}+[[@{mod3_evasion} -20]]+@{inlinemod-toggle}-1d100)/10)]]}}">Evade</button>
                 </div>
               </div>
 
@@ -2181,8 +2180,8 @@
 
                   <input name="attr_vehicle-jump" type="text" class="full_width" value="@{vehicle-STR_mythic}/2" disabled />
                   <input name="attr_vehicle-leap" type="text" class="full_width" value="@{vehicle-STR_mythic}" disabled />
-                  <button class="clear " type="roll" name="vehicle-evade" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Vehicle Evasion}} {{roll=[[@{settings_rounding}([[ {0d1+(@{AGI} + @{AGI_advancement} + @{fatigue_mod}),0d1+@{vehicle-AGI}}kl1 ]][lowest of AGI,AGI]+@{mod2_evasion}+[[@{mod3_evasion} -20]]+@{inlinemod-toggle}-1d100)/10)]]}}">Evade</button>
-                  <button class="clear " type="roll" name="vehicle-parry" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Vehicle Parry}} {{roll=[[@{settings_rounding}([[ {0d1+(@{WFM} + @{WFM_advancement} + @{fatigue_mod}),0d1+@{vehicle-AGI}}kl1 ]][lowest of WFM,AGI]+@{mod2_evasion}+[[@{mod3_evasion} -20]]+@{inlinemod-toggle}-1d100)/10)]]}}">Parry</button>
+                  <button class="clear " type="roll" name="vehicle_evade" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Vehicle Evasion}} {{roll=[[@{settings_rounding}([[ {0d1+(@{AGI} + @{AGI_advancement} + @{fatigue_mod}),0d1+@{vehicle-AGI}}kl1 ]][lowest of AGI,AGI]+@{mod2_evasion}+[[@{mod3_evasion} -20]]+@{inlinemod-toggle}-1d100)/10)]]}}">Evade</button>
+                  <button class="clear " type="roll" name="vehicle_parry" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Vehicle Parry}} {{roll=[[@{settings_rounding}([[ {0d1+(@{WFM} + @{WFM_advancement} + @{fatigue_mod}),0d1+@{vehicle-AGI}}kl1 ]][lowest of WFM,AGI]+@{mod2_evasion}+[[@{mod3_evasion} -20]]+@{inlinemod-toggle}-1d100)/10)]]}}">Parry</button>
                 </div>
               </div>
 
@@ -2222,7 +2221,7 @@
                 <div>
                   <input name="attr_doomedstate_value" type="text" placeholder="Doomedstate damage taken" class="full_width_49px vehicles_descriptor" />
                   <label class="margin_adjust"><input type="checkbox" name="attr_collapse2" value="7" class="hider select_button hidden" /><span class="select_text radius_border_right">▼</span></label>
-                  <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title= @{vehicle-name} Doomed State (@{doomedstate_value})}} {{description=@{doomedstate_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                  <label class="margin_adjust2"><button type="roll" name="Doomedstate" value="@{to-gm}&{template:mythic} {{title= @{vehicle-name} Doomed State (@{doomedstate_value})}} {{description=@{doomedstate_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
 
                   <input name="attr_collapse2" type="checkbox" value="7" class="hider hidden" />
                   <textarea name="attr_doomedstate_desc" class=" description_rounded_margin"></textarea>
@@ -2306,14 +2305,14 @@
               <div>
                 <input name="attr_aditional_info" type="text" placeholder="Additional Info" class="full_width_49px" />
                 <label class="margin_adjust"><input type="checkbox" name="attr_collapse" value="5" class="hider select_button hidden" /><span class="select_text ">▼</span></label>
-                <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{aditional_info} }} {{description=@{aditional_info_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                <label class="margin_adjust2"><button type="roll" name="vehicle_description" value="@{to-gm}&{template:mythic} {{title=@{aditional_info} }} {{description=@{aditional_info_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
                 <input name="attr_collapse" type="checkbox" value="5" class="hider hidden" />
                 <textarea name="attr_aditional_info_desc" class="description_rounded_margin" placeholder="Enter any vehicle-specific rules or other unique information here."></textarea>
               </div>
               <div>
                 <input name="attr_modifications" type="text" placeholder="Modifications" class="full_width_49px vehicles_descriptor" />
                 <label class="margin_adjust"><input type="checkbox" name="attr_collapse2" value="6" class="hider select_button hidden" /><span class="select_text radius_border_right">▼</span></label>
-                <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{modifications} }} {{description=@{modifications_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                <label class="margin_adjust2"><button type="roll" name="vehicle_modification" value="@{to-gm}&{template:mythic} {{title=@{modifications} }} {{description=@{modifications_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
                 <input name="attr_collapse2" type="checkbox" value="6" class="hider hidden" />
                 <textarea name="attr_modifications_desc" class=" description_rounded_margin" placeholder="Vehicles in Mythic can be modified in many ways.  These use a Vehicle’s Weapon Points and Size Points, which are specialized Hardpoints on a Vehicle. Each Modification takes a specified amount of Weapon and Size Points.
                 &#10;Vehicle modifications are classified into five categories; Body, Propulsion, Electronic, Combat, and Miscellaneous."></textarea>
@@ -2365,8 +2364,8 @@
                   <input class="equipment_ranged_weapons_gs16 full_width" type="text" value="0" name="attr_weapon_mag" />
                   <div class="equipment_ranged_weapons_gs17">/</div>
                   <input class="equipment_ranged_weapons_gs18 full_width" type="text" value="0" name="attr_weapon_mag_max" />
-                  <button class="equipment_ranged_weapons_gs19 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
-                  <button class="equipment_ranged_weapons_gs20 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
+                  <button class="equipment_ranged_weapons_gs19 full_width clear" type="roll" name="To_hit" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
+                  <button class="equipment_ranged_weapons_gs20 full_width clear" type="roll" name="Damage" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
                 </div>
                 <div class="equipment_ranged_weapons_grid4">
                   <div class="equipment_ranged_weapons_gs21">RoF</div>
@@ -2377,7 +2376,7 @@
                 <div>
                   <input name="attr_weapon_special_rules" type="text" placeholder="Description" class="full_width_49px border_none radius_border_left" />
                   <label class="margin_adjust_wep"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text radius_border_right_wep">▼</span></label>
-                  <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                  <label class="margin_adjust_wep2"><button type="roll" name= "Description" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
                   <input name="attr_collapse" type="checkbox" value="3" class="hider hidden" />
                   <div>
                     <div class="equipment_ranged_weapons_grid5">
@@ -2441,8 +2440,8 @@
                   <input class="equipment_melee_weapons_gs6 full_width" type="text" value="0" name="attr_weapon_breakpoints" />
                   <div class="equipment_melee_weapons_gs7">/</div>
                   <input class="equipment_melee_weapons_gs8 full_width" type="text" value="0" name="attr_weapon_breakpoints_max" />
-                  <button class="equipment_melee_weapons_gs9 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}"" >Hit</button>
-                  <button class=" equipment_melee_weapons_gs10 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
+                  <button class="equipment_melee_weapons_gs9 full_width clear" name="To_hit" type="roll" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}"" >Hit</button>
+                  <button class="equipment_melee_weapons_gs10 full_width clear" name="Damage" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
                 </div>
                 <div>
                   <input name="attr_weapon_special_rules" type="text" placeholder="Description" class="full_width_49px border_none radius_border_left" />
@@ -2704,8 +2703,7 @@
 
       <!-- Initiative -->
       <div class="initiative_container bttn_top_padding">
-        <button name="initiative" type="roll" class="clear bttn_top_padding"
-                value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{initiative=@{initmod0}(@{initmod1}+@{initmod2}+@{initmod3}+[[((((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) + @{AGI_mythic}) - abs((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) - @{AGI_mythic})) / 2)]])&{tracker}]]}}">
+        <button name="initiative" type="roll" class="clear bttn_top_padding" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{initiative=@{initmod0}(@{initmod1}+@{initmod2}+@{initmod3}+[[((((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) + @{AGI_mythic}) - abs((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) - @{AGI_mythic})) / 2)]])&{tracker}]]}}">
           Initiative|<input name="attr_init_total" value="floor(@{initmod2}+@{initmod3}+ ((((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) + @{AGI_mythic}) - abs((((floor(@{AGI_mythic}/2) + 1) + abs(floor(@{AGI_mythic}/2) - 1)) / 2) - @{AGI_mythic})) / 2))" class="input_background input_init_background" disabled /></button>
         <select name="attr_initmod1" class="init_field">
           <option value="1d10" selected="selected">Standard</option>
@@ -3048,8 +3046,8 @@
                 <div>
                   <h3 class="radius_border_top">MOBILITY</h3>
                   <div class="vehicles_grid_5x vehicle_break vehicle_background">
-                    <button class="clear vehicle_smallrollbutton" type="roll" name="vehicle-accelerate" value="!token-mod {{--set bar@{Vehicle-speed_bar}_max|@{vehicle-top_speed} bar@{Vehicle-speed_bar}_value|+@{vehicle-accelerate}}}">Accelerate</button>
-                    <button class="clear vehicle_smallrollbutton" type="roll" name="vehicle-Brake" value="!token-mod {{--set bar@{Vehicle-speed_bar}_max|@{vehicle-top_speed} bar@{Vehicle-speed_bar}_value|-@{vehicle-brake}}}">Brake</button>
+                    <button class="clear vehicle_smallrollbutton" type="roll" name="vehicle_accelerate" value="!token-mod {{--set bar@{Vehicle-speed_bar}_max|@{vehicle-top_speed} bar@{Vehicle-speed_bar}_value|+@{vehicle-accelerate}}}">Accelerate</button>
+                    <button class="clear vehicle_smallrollbutton" type="roll" name="vehicle_Brake" value="!token-mod {{--set bar@{Vehicle-speed_bar}_max|@{vehicle-top_speed} bar@{Vehicle-speed_bar}_value|-@{vehicle-brake}}}">Brake</button>
                     <div>Top Speed</div>
                     <div>Maneuver</div>
                     <div></div>
@@ -3058,7 +3056,7 @@
                     <input name="attr_vehicle-brake" type="text" class="full_width" placeholder="MpT" />
                     <input name="attr_vehicle-top_speed" type="text" class="full_width" placeholder="MpT (Km/H)" />
                     <input name="attr_vehicle-maneuver" type="text" class="full_width" placeholder="Max Evasion" />
-                    <button class="clear " type="roll" name="vehicle-evade" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Vehicle Evasion}} {{roll=[[@{settings_rounding}([[ {0d1+(@{AGI} + @{AGI_advancement} + @{fatigue_mod}),0d1+@{vehicle-maneuver}}kl1 ]][lowest of AGI,AGI]+@{mod2_evasion}+[[@{mod3_evasion} -20]]+@{inlinemod-toggle}-1d100)/10)]]}}">Evade</button>
+                    <button class="clear " type="roll" name="vehicle_evade" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Vehicle Evasion}} {{roll=[[@{settings_rounding}([[ {0d1+(@{AGI} + @{AGI_advancement} + @{fatigue_mod}),0d1+@{vehicle-maneuver}}kl1 ]][lowest of AGI,AGI]+@{mod2_evasion}+[[@{mod3_evasion} -20]]+@{inlinemod-toggle}-1d100)/10)]]}}">Evade</button>
                   </div>
                 </div>
 
@@ -3092,8 +3090,8 @@
 
                     <input name="attr_vehicle-jump" type="text" class="full_width" value="@{vehicle-STR_mythic}/2" disabled />
                     <input name="attr_vehicle-leap" type="text" class="full_width" value="@{vehicle-STR_mythic}" disabled />
-                    <button class="clear " type="roll" name="vehicle-evade" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Vehicle Evasion}} {{roll=[[@{settings_rounding}([[ {0d1+(@{AGI} + @{AGI_advancement} + @{fatigue_mod}),0d1+@{vehicle-AGI}}kl1 ]][lowest of AGI,AGI]+@{mod2_evasion}+[[@{mod3_evasion} -20]]+@{inlinemod-toggle}-1d100)/10)]]}}">Evade</button>
-                    <button class="clear " type="roll" name="vehicle-parry" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Vehicle Parry}} {{roll=[[@{settings_rounding}([[ {0d1+(@{WFM} + @{WFM_advancement} + @{fatigue_mod}),0d1+@{vehicle-AGI}}kl1 ]][lowest of WFM,AGI]+@{mod2_evasion}+[[@{mod3_evasion} -20]]+@{inlinemod-toggle}-1d100)/10)]]}}">Parry</button>
+                    <button class="clear " type="roll" name="vehicle_evade" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Vehicle Evasion}} {{roll=[[@{settings_rounding}([[ {0d1+(@{AGI} + @{AGI_advancement} + @{fatigue_mod}),0d1+@{vehicle-AGI}}kl1 ]][lowest of AGI,AGI]+@{mod2_evasion}+[[@{mod3_evasion} -20]]+@{inlinemod-toggle}-1d100)/10)]]}}">Evade</button>
+                    <button class="clear " type="roll" name="vehicle_parry" value="@{to-gm}&{template:mythic} {{character= @{character_name}}} {{roll-name=Vehicle Parry}} {{roll=[[@{settings_rounding}([[ {0d1+(@{WFM} + @{WFM_advancement} + @{fatigue_mod}),0d1+@{vehicle-AGI}}kl1 ]][lowest of WFM,AGI]+@{mod2_evasion}+[[@{mod3_evasion} -20]]+@{inlinemod-toggle}-1d100)/10)]]}}">Parry</button>
                   </div>
                 </div>
 
@@ -3133,7 +3131,7 @@
                   <div>
                     <input name="attr_doomedstate_value" type="text" placeholder="Doomedstate damage taken" class="full_width_49px vehicles_descriptor" />
                     <label class="margin_adjust"><input type="checkbox" name="attr_collapse2" value="7" class="hider select_button hidden" /><span class="select_text radius_border_right">▼</span></label>
-                    <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title= @{vehicle-name} Doomed State (@{doomedstate_value})}} {{description=@{doomedstate_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                    <label class="margin_adjust2"><button type="roll" name= "Doomedstate" value="@{to-gm}&{template:mythic} {{title= @{vehicle-name} Doomed State (@{doomedstate_value})}} {{description=@{doomedstate_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
 
                     <input name="attr_collapse2" type="checkbox" value="7" class="hider hidden" />
                     <textarea name="attr_doomedstate_desc" class=" description_rounded_margin"></textarea>
@@ -3203,14 +3201,14 @@
                 <div>
                   <input name="attr_aditional_info" type="text" placeholder="Additional Info" class="full_width_49px" />
                   <label class="margin_adjust"><input type="checkbox" name="attr_collapse" value="5" class="hider select_button hidden" /><span class="select_text ">▼</span></label>
-                  <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{aditional_info} }} {{description=@{aditional_info_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                  <label class="margin_adjust2"><button type="roll" name="vehicle_description" value="@{to-gm}&{template:mythic} {{title=@{aditional_info} }} {{description=@{aditional_info_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
                   <input name="attr_collapse" type="checkbox" value="5" class="hider hidden" />
                   <textarea name="attr_aditional_info_desc" class="description_rounded_margin" placeholder="Enter any vehicle-specific rules or other unique information here."></textarea>
                 </div>
                 <div>
                   <input name="attr_modifications" type="text" placeholder="Modifications" class="full_width_49px vehicles_descriptor" />
                   <label class="margin_adjust"><input type="checkbox" name="attr_collapse2" value="6" class="hider select_button hidden" /><span class="select_text radius_border_right">▼</span></label>
-                  <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{modifications} }} {{description=@{modifications_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                  <label class="margin_adjust2"><button type="roll" name="vehicle_modification" value="@{to-gm}&{template:mythic} {{title=@{modifications} }} {{description=@{modifications_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
                   <input name="attr_collapse2" type="checkbox" value="6" class="hider hidden" />
                   <textarea name="attr_modifications_desc" class=" description_rounded_margin" placeholder="Vehicles in Mythic can be modified in many ways.  These use a Vehicle’s Weapon Points and Size Points, which are specialized Hardpoints on a Vehicle. Each Modification takes a specified amount of Weapon and Size Points.
                   &#10;Vehicle modifications are classified into five categories; Body, Propulsion, Electronic, Combat, and Miscellaneous."></textarea>
@@ -3599,8 +3597,8 @@
                       <input class="equipment_ranged_weapons_gs16 full_width" type="text" value="0" name="attr_weapon_mag" />
                       <div class="equipment_ranged_weapons_gs17">/</div>
                       <input class="equipment_ranged_weapons_gs18 full_width" type="text" value="0" name="attr_weapon_mag_max" />
-                      <button class="equipment_ranged_weapons_gs19 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
-                      <button class="equipment_ranged_weapons_gs20 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
+                      <button class="equipment_ranged_weapons_gs19 full_width clear" type="roll" name="To_hit" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
+                      <button class="equipment_ranged_weapons_gs20 full_width clear" type="roll" name="Damage" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
                     </div>
                     <div class="equipment_ranged_weapons_grid4">
                       <div class="equipment_ranged_weapons_gs21">RoF</div>
@@ -3611,7 +3609,7 @@
                     <div>
                       <input name="attr_weapon_special_rules" type="text" placeholder="Description" class="full_width_49px border_none radius_border_left" />
                       <label class="margin_adjust_wep"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text radius_border_right_wep">▼</span></label>
-                      <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                      <label class="margin_adjust_wep2"><button type="roll" name="weapon_description" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
                       <input name="attr_collapse" type="checkbox" value="3" class="hider hidden" />
                       <div>
                         <div class="equipment_ranged_weapons_grid5">
@@ -3674,13 +3672,13 @@
                       <input class="equipment_melee_weapons_gs6 full_width" type="text" value="0" name="attr_weapon_breakpoints" />
                       <div class="equipment_melee_weapons_gs7">/</div>
                       <input class="equipment_melee_weapons_gs8 full_width" type="text" value="0" name="attr_weapon_breakpoints_max" />
-                      <button class="equipment_melee_weapons_gs9 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
-                      <button class="equipment_melee_weapons_gs10 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
+                      <button class="equipment_melee_weapons_gs9 full_width clear" type="roll" name="To_hit" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
+                      <button class="equipment_melee_weapons_gs10 full_width clear" type="roll" name="Damage" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
                     </div>
                     <div>
                       <input name="attr_weapon_special_rules" type="text" placeholder="Description" class="full_width_49px border_none radius_border_left" />
                       <label class="margin_adjust_wep"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text radius_border_right_wep">▼</span></label>
-                      <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                      <label class="margin_adjust_wep2"><button type="roll" name="weapon_description" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
                       <input name="attr_collapse" type="checkbox" value="3" class="hider hidden" />
                       <div>
                         <div class="equipment_ranged_weapons_grid5">
@@ -3772,8 +3770,8 @@
                 <input class="equipment_ranged_weapons_gs16 full_width" type="text" value="0" name="attr_weapon_mag" />
                 <div class="equipment_ranged_weapons_gs17">/</div>
                 <input class="equipment_ranged_weapons_gs18 full_width" type="text" value="0" name="attr_weapon_mag_max" />
-                <button class="equipment_ranged_weapons_gs19 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
-                <button class="equipment_ranged_weapons_gs20 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
+                <button class="equipment_ranged_weapons_gs19 full_width clear" type="roll" name="To_hit" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
+                <button class="equipment_ranged_weapons_gs20 full_width clear" type="roll" name="Damage" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
               </div>
               <div class="equipment_ranged_weapons_grid4">
                 <div class="equipment_ranged_weapons_gs21">RoF</div>
@@ -3784,7 +3782,7 @@
               <div>
                 <input name="attr_weapon_special_rules" type="text" placeholder="Description" class="full_width_49px border_none radius_border_left" />
                 <label class="margin_adjust_wep"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text radius_border_right_wep">▼</span></label>
-                <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                <label class="margin_adjust_wep2"><button type="roll" name="weapon_description" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
                 <input name="attr_collapse" type="checkbox" value="3" class="hider hidden" />
                 <div>
                   <div class="equipment_ranged_weapons_grid5">
@@ -3847,8 +3845,8 @@
                 <input class="equipment_melee_weapons_gs6 full_width" type="text" value="0" name="attr_weapon_breakpoints" />
                 <div class="equipment_melee_weapons_gs7">/</div>
                 <input class="equipment_melee_weapons_gs8 full_width" type="text" value="0" name="attr_weapon_breakpoints_max" />
-                <button class="equipment_melee_weapons_gs9 full_width clear" type="roll" value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
-                <button class="equipment_melee_weapons_gs10 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
+                <button class="equipment_melee_weapons_gs9 full_width clear" type="roll" name="To_hit"value="@{to-gm}&{template:mythic} @{settings_autorolldamage} {{character= @{character_name} }} {{weapon= @{weapon_name} }} {{rollhit=[[@{settings_rounding}([[@{Weapon_attr}]]+@{weapon_hitmod}+@{inlinemod-toggle}-1d100)/10)]] }} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }} @{settings_hitroll}">Hit</button>
+                <button class="equipment_melee_weapons_gs10 full_width clear" type="roll" name="Damage" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
               </div>
               <div class="equipment_melee_weapons_grid4">
                 <div class="equipment_melee_weapons_gs11">damage plus Strength</div>
@@ -3873,7 +3871,7 @@
               <div>
                 <input name="attr_weapon_special_rules" type="text" placeholder="Description" class="full_width_49px border_none radius_border_left" />
                 <label class="margin_adjust_wep"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text radius_border_right_wep">▼</span></label>
-                <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
+                <label class="margin_adjust_wep2"><button type="roll" name="weapon_description" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
                 <input name="attr_collapse" type="checkbox" value="3" class="hider hidden" />
                 <div>
                   <div class="equipment_ranged_weapons_grid5">
@@ -3905,7 +3903,7 @@
       <fieldset name="abilities" class="repeating_abilities">
         <input name="attr_ability" type="text" placeholder="Name" class="full_width_49px" />
         <label class="margin_adjust"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text ">▼</span></label>
-        <label class="margin_adjust2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{ability} }} {{description=@{ability_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
+        <label class="margin_adjust2"><button type="roll" name="ability_description" value="@{to-gm}&{template:mythic} {{title=@{ability} }} {{description=@{ability_desc} }}" class="hidden"></button><span class="select_text">❖</span></label>
         <input name="attr_collapse" type="checkbox" value="3" class="hider hidden" />
         <textarea name="attr_ability_desc"></textarea>
       </fieldset>
@@ -4056,7 +4054,7 @@
               <input class="equipment_ranged_weapons_gs16 full_width" type="text" value="0" name="attr_weapon_mag" />
               <div class="equipment_ranged_weapons_gs17">/</div>
               <input class="equipment_ranged_weapons_gs18 full_width" type="text" value="0" name="attr_weapon_mag_max" />
-              <button class="equipment_ranged_weapons_gs20 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
+              <button class="equipment_ranged_weapons_gs20 full_width clear" type="roll" name="Damage" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
             </div>
             <div class="equipment_ranged_weapons_grid4">
               <div class="equipment_ranged_weapons_gs21">RoF</div>
@@ -4067,7 +4065,7 @@
             <div>
               <input name="attr_weapon_special_rules" type="text" placeholder="Description" class="full_width_49px border_none radius_border_left" />
               <label class="margin_adjust_wep"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text radius_border_right_wep">▼</span></label>
-              <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
+              <label class="margin_adjust_wep2"><button type="roll" name="weapon_description" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
               <input name="attr_collapse" type="checkbox" value="3" class="hider hidden" />
               <div>
                 <div class="equipment_ranged_weapons_grid5">
@@ -4131,7 +4129,7 @@
               <input class="equipment_melee_weapons_gs6 full_width" type="text" value="0" name="attr_weapon_breakpoints" />
               <div class="equipment_melee_weapons_gs7">/</div>
               <input class="equipment_melee_weapons_gs8 full_width" type="text" value="0" name="attr_weapon_breakpoints_max" />
-              <button class="equipment_melee_weapons_gs10 full_width clear" type="roll" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
+              <button class="equipment_melee_weapons_gs10 full_width clear" type="roll" name="Damage" value="@{to-gm}&{template:mythic} {{damage= }} {{character= @{character_name}}} {{weapon= @{weapon_name}}} {{rolldamage=[[@{weapon_dam-roll}+@{weapon_base}+@{weapon_base_mod}+@{weapon_base_add}]] }} {{rollpierce=[[@{weapon_pierce}+@{weapon_pierce_mod}+@{weapon_pierce_add}]] }} {{@{settings_weapondescription}=@{weapon_special_rules} }}">DMG</button>
             </div>
             <div class="equipment_melee_weapons_grid4">
               <div class="equipment_melee_weapons_gs11">damage plus Strength</div>
@@ -4156,7 +4154,7 @@
             <div>
               <input name="attr_weapon_special_rules" type="text" placeholder="Description" class="full_width_49px border_none radius_border_left" />
               <label class="margin_adjust_wep"><input type="checkbox" name="attr_collapse" value="3" class="hider select_button hidden" /><span class="select_text radius_border_right_wep">▼</span></label>
-              <label class="margin_adjust_wep2"><button type="roll" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
+              <label class="margin_adjust_wep2"><button type="roll" name="weapon_description" value="@{to-gm}&{template:mythic} {{title=@{weapon_special_rules} }} {{description=@{description} }}" class="hidden"></button><span class="select_text">❖</span></label>
               <input name="attr_collapse" type="checkbox" value="3" class="hider hidden" />
               <div>
                 <div class="equipment_ranged_weapons_grid5">
