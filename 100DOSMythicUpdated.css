@@ -281,7 +281,8 @@ ______________________________ start of grid structure for character information
 	font-family: Orbitron;
 	letter-spacing: 1px;
 	display: grid;
-	grid-template-columns: 145px auto 123px auto 145px;
+	justify-content: space-evenly;
+	grid-template-columns: 145px 1fr 123px 1fr 145px;
 	grid-template-rows: 30px 30px 30px 30px 30px 30px;
 	grid-template-areas:
 	'ah1 ah7  ah13 ah14 ah20'
@@ -308,6 +309,7 @@ ______________________________ start of structure for characteristics __________
 	grid-column-gap: 0.5%;
 	grid-template-columns: repeat(9,calc(100%/10 - 0.5%)) calc(100%/10);
 	grid-template-rows: 26px 40px 26px;
+	margin-right: -0.1%;
 }
 
 .sheet-characteristics_button {
