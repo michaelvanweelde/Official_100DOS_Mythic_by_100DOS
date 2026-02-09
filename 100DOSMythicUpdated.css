@@ -490,7 +490,9 @@ ______________________________ start of minimisable infographic ________________
 	grid-template-rows: 26px 26px;
 }
 
-
+.sheet-armorgrid_box {
+	overflow: hidden;
+}
 .sheet-armorgrid_description_container{overflow: hidden;border-radius: 10px}
 .sheet-armorgrid_description{height:calc(100% - 11px); border-radius: 10px}
 .sheet-armorgrid {
@@ -499,6 +501,8 @@ ______________________________ start of minimisable infographic ________________
 	grid-column-gap: 5px;
 	grid-template-columns: 203px 203px calc(100% - 203px*2 - 5px*3);
 }
+
+
 
 /* ______________________________ end of minimisable infographic ______________________________
 ______________________________ start of core tab ______________________________ */
