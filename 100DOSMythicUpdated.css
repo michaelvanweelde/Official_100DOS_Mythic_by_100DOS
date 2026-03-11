@@ -964,7 +964,6 @@ ______________________________ start of advancements tab _______________________
 
 .repcontainer[data-groupname="repeating_traininfaction"],
 .repcontainer[data-groupname="repeating_advancements"] {
-	display: inline-block;
 	justify-content: center;
 	display: grid;
 	grid-template-columns: 49.5% 49.5%;
@@ -973,7 +972,6 @@ ______________________________ start of advancements tab _______________________
 
 .repcontainer[data-groupname="repeating_trainingweapon"] {
 	margin: 0 5px 0 5px;
-	display: inline-block;
 	justify-content: center;
 	display: grid;
 	grid-template-columns: 19.5% 19.5% 19.5% 19.5% 19.5%;
