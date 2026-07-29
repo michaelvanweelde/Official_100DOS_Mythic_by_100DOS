@@ -312,6 +312,7 @@
           <select name="attr_initmod3" class="init_field">
             <option value="[[(@{AGI}+@{AGI_advancement} + @{fatigue_mod})/10]]" selected="selected">Agility</option>
             <option value="[[(@{INT}+@{INT_advancement} + @{fatigue_mod})/10]]">Intellect</option>
+            <option value="[[(@{LDR}+@{LDR_advancement} + @{fatigue_mod})/10]]">Leadership</option>
             <option value="0">N/A</option>
           </select>
         </div>
@@ -2717,6 +2718,7 @@
         <select name="attr_initmod3" class="init_field">
           <option value="[[(@{AGI}+@{AGI_advancement} + @{fatigue_mod})/10]]" selected="selected">Agility</option>
           <option value="[[(@{INT}+@{INT_advancement} + @{fatigue_mod})/10]]">Intellect</option>
+          <option value="[[(@{LDR}+@{LDR_advancement} + @{fatigue_mod})/10]]">Leadership</option>
           <option value="0">N/A</option>
         </select>
       </div>
@@ -4487,7 +4489,8 @@
   });
 
   // Calculating and setting atributes
-  on("change:settings_race change:settings_fatigue change:settings_half_mult change:settings_half_addi change:settings_full_mult change:settings_full_addi change:settings_charge_mult change:settings_charge_addi change:settings_run_mult change:settings_run_addi change:settings_blur_mult change:settings_blur_addi change:settings_jump_mult change:settings_jump_addi change:settings_leap_mult change:settings_leap_addi change:settings_carry_mult_str change:settings_carry_mult_tou change:settings_carry_addi change:settings_lift_mult_str change:settings_lift_mult_tou change:settings_lift_addi change:settings_push_mult_str_change:settings_push_mult_tou change:settings_push_addi change:settings_fatigue_mult change:settings_fatigue_addi change:fatigue change:agi change:agi_mythic change:agi_advancement change:str change:str_mythic change:str_advancement change:tou change:tou_mythic change:tou_advancement change:per change:per_advancement", function () {
+  on("change:settings_race change:settings_fatigue change:settings_half_mult change:settings_half_addi change:settings_full_mult change:settings_full_addi change:settings_charge_mult change:settings_charge_addi change:settings_run_mult change:settings_run_addi change:settings_blur_mult change:settings_blur_addi change:settings_jump_mult change:settings_jump_addi change:settings_leap_mult change:settings_leap_addi change:settings_fatigue_mult change:settings_fatigue_addi change:settings_perceptive_mult change:settings_perceptive_addi change:settings_carry_mult_str change:settings_carry_mult_tou change:settings_carry_addi change:settings_lift_mult_str change:settings_lift_mult_tou change:settings_lift_addi change:settings_push_mult_str change:settings_push_mult_tou change:settings_push_addi change:agi change:agi_mythic change:agi_advancement change:str change:str_mythic change:str_advancement change:tou change:tou_mythic change:tou_advancement change:per change:per_advancement change:fatigue"
+  , function () {
     getAttrs([
       "settings_race",
       "settings_fatigue",
@@ -4535,7 +4538,6 @@
       "tou_advancement",
       "per",
       "per_advancement",
-
       "fatigue",
 
     ], function (values) {

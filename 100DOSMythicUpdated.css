@@ -414,7 +414,7 @@ ______________________________ start of grid structure for initiative and sheet 
 
 .sheet-initiative_container {
 	display: grid;
-	grid-template-columns: 100px 78px 16px 50px 16px 70px;
+	grid-template-columns: 100px 78px 16px 50px 16px 90px;
 }
 
 .sheet-init_field {
